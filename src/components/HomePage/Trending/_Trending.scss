@@ -1,0 +1,10 @@
+.trending {
+    display: flex;
+    margin: 3rem auto;
+    max-width: 1400px;
+    overflow: hidden;
+
+    &-space {
+        width: 4%;
+    }
+}

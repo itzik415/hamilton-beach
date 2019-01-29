@@ -17,11 +17,11 @@ const navBar = () => {
                         </div>
                     </span>
                     <Link id="Link" to="/about" className="navBar__section-rightSide-category">אודותינו</Link>
-                    <span id="Link" to="/recipes" className="navBar__section-rightSide-category">מתקונים
+                    <span id="Link" to="/recipes" className="navBar__section-rightSide-category">מתכונים
                         <div className="navBar__section-rightSide-category-dropDown">
-                            <Link id="Link2" to="/recieps/entrees">מנות ראשונות</Link>
-                            <Link id="Link2" to="/recieps/main-courses">עיקריות</Link>
-                            <Link id="Link2" to="/recieps/deserts">קינוחים</Link>
+                            <Link id="Link2" to="/recipes/entrees">מנות ראשונות</Link>
+                            <Link id="Link2" to="/recipes/main-courses">עקריות</Link>
+                            <Link id="Link2" to="/recipes/deserts">קינוחים</Link>
                         </div>
                     </span>
                     <span id="Link" className="navBar__section-rightSide-category">מוצרים
