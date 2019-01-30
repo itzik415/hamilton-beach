@@ -30,7 +30,8 @@ const footer = () => {
                     <Link className="footer__section-navigation-contact" to="/support/contact"><p>צור קשר</p></Link>
                 </div>
             </div>
-            <p className="footer-copyright">Copyright © 2019 Shaoulian Trading Ltd. All rights reserved.</p>
+            <p className="footer-copyright">© כל הזכויות שמורות לחברת שאוליאן סחר בע״מ 2019
+</p>
         </div>
     )
 }

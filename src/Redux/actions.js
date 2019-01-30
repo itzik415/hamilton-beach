@@ -51,15 +51,12 @@ export function goToPrevSlide() {
     }    
 }
 
-// export function moveSliderWithButton () {
-//     const buttonsLength = document.querySelectorAll('#sliderImage').length;
-//     for(let i = 0; i < buttonsLength; i++) {
-//         document.querySelector(`.slider-buttons-pointer-${i}`).classList.add('activePointer');
-//     }   
-// }
-
-
-// if(itemIndex > 0) {
-//     for(let i = 0; i < itemsCount; i++) {
-//         document.querySelector(`.slider__section-middle-${i}`).style.transform = `translateX(${store.getState().translate+1200}px)`; 
-//     }
+export function getSliderImages() {
+    return function(dispatch){
+        fetch('http://localhost:5000/api/backgroundimages')
+        .then(response => response.json())
+        .then(myJson => dispatch({type: 'RECIVE_SLIDER_IMAGES', payload: myJson.map(value => value)}))
+        .catch(err => dispatch({type: 'ERROR', payload: err}));
+    }
+}
+            

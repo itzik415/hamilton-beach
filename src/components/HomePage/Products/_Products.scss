@@ -1,0 +1,99 @@
+.products {
+    max-width: 1400px;
+    margin: 0px auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    &__section {
+        display: flex;
+        justify-content: space-between;
+
+        &-product {
+            display: flex;
+            flex-direction: column;
+            max-width: 320px;
+
+            &-img {
+                box-shadow: 0px 0px 15px gray;
+                border-bottom: 2px solid rgb(184, 184, 184);
+                border-radius: 5px;
+            }
+
+            &-details {
+                border: 1px solid rgb(202, 202, 202);
+                border-top: 0;
+                padding: 0 3px;
+                box-shadow: 0px 0px 3px rgb(202, 202, 202);
+                display: flex;
+                height: 250px;
+                width: 300px;
+                margin: 0 auto;
+                flex-direction: column;
+                text-align: center;
+                background-color: rgb(246, 246, 246);
+
+                &-category {
+                    font-size: 2.8rem;
+                    font-weight: 700;
+                    margin-top: 15px;
+                    font-family: $suez-font;
+                    letter-spacing: 1px;
+                }
+
+                &-model {
+                    font-size: 2.3rem;
+                    // font-family: $suez-font;
+                }
+
+                &-description {
+                    font-size: 1.7rem;
+                }
+
+                &-bottom {
+                    display: flex;
+                    border-top: 1px solid gray;
+                    margin: 0 15px;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    &-price {
+                        font-size: 2.2rem;
+                        margin: 10px 0;
+                        font-weight: 500;
+                    }
+
+                    &-cart {
+                        margin: 10px 0;
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.products-button {
+    display: flex;
+    justify-content: center;
+    margin: 40px auto;
+    padding: 10px 90px;
+    font-size: 2rem;
+    transition: .5s;
+    border-radius: 3px;
+    color: $main-color;
+    border: 2px solid $main-color;
+    font-weight: 600;
+
+    &:hover {
+        box-shadow: 1px 5px 10px gray;
+        cursor: pointer;
+        color: white;
+        background-color: $main-color;
+        text-decoration: none;
+    }
+    
+}

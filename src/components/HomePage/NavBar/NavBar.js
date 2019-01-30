@@ -36,9 +36,10 @@ const navBar = () => {
                         </div>
                     </span>
                 </div>
-                <Link id="Link2" to="/cart"><ion-icon id="cart-logo" name="cart"></ion-icon></Link>
-                <p id="separate-line"> / </p>
-                <Link id="Link2" to="/search-result"><ion-icon id="search-button" name="search"></ion-icon></Link>
+                <div className="navBar__section-rightSide-icons">
+                    <Link id="Link3" to="/cart"><ion-icon id="cart-logo" name="cart"></ion-icon></Link>
+                    <Link id="Link3" to="/search-result"><ion-icon id="search-button" name="search"></ion-icon></Link>
+                </div>
             </div>
         </div>
     )

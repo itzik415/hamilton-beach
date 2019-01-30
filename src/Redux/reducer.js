@@ -4,6 +4,8 @@
 export const initialState = {
     currentIndex: 1,
     translateValue: 0,
+    sliderImages: [],
+    error: '',
 }
 
 export const rootReducer = (state = initialState, action) => {
@@ -35,6 +37,16 @@ export const rootReducer = (state = initialState, action) => {
                 ...state, 
                 currentIndex: action.payload,
                 translateValue: action.payload2,
+            }
+        case 'RECIVE_SLIDER_IMAGES':
+            return {
+                ...state, 
+                sliderImages: action.payload,
+            }
+        case 'ERROR':
+            return {
+                ...state, 
+                error: action.payload 
             }
 
         default:
