@@ -7,24 +7,33 @@
 html {
   font-size: 62.5%;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  overflow-x: hidden; }
 
 body {
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  overflow-x: hidden; }
+
+body::before {
+  height: 60px;
+  content: " ";
+  width: 100%;
+  display: block; }
 
 .footer {
-  border-top: 6px solid black; }
+  border-top: 6px solid black;
+  background-color: #ebebeb; }
   .footer__section {
-    background-color: #ebebeb;
+    max-width: 1400px;
     margin: 0 auto;
     display: flex;
-    padding: 5rem 0; }
+    padding: 5rem 0 3.5rem 0; }
     .footer__section-companyDetails {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      width: 33%; }
+      text-align: end;
+      width: 25%; }
       .footer__section-companyDetails-title {
         font-size: 2.5rem;
         font-weight: 600;
@@ -32,37 +41,67 @@ body {
       .footer__section-companyDetails p {
         font-size: 1.8rem;
         font-weight: 300;
-        text-align: center; }
+        text-align: end; }
     .footer__section-socialMedia {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      width: 33%; }
+      text-align: end;
+      width: 25%; }
       .footer__section-socialMedia-title {
         font-size: 2.5rem;
         font-weight: 600;
         text-decoration: underline; }
-      .footer__section-socialMedia-div i {
+      .footer__section-socialMedia-div a {
         font-size: 3rem;
         text-align: center;
         width: 45px;
         height: 45px;
         background-color: black;
         border-radius: 50%;
-        padding-top: 7px;
-        margin-left: 10px;
-        margin-right: 10px;
+        padding: 7px 2px;
+        margin-left: 13px;
         margin-top: 5px;
         color: white;
         transition: .3s; }
-        .footer__section-socialMedia-div i:hover {
+        .footer__section-socialMedia-div a:hover {
+          cursor: pointer;
           box-shadow: 1px 5px 10px gray;
-          transform: scale(1.1); }
+          transform: scale(1.1);
+          text-decoration: none; }
+          .footer__section-socialMedia-div a:hover:first-child {
+            background: #337ab7; }
+          .footer__section-socialMedia-div a:hover:nth-child(2) {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+          .footer__section-socialMedia-div a:hover:nth-child(3) {
+            background: #38A1F3; }
+          .footer__section-socialMedia-div a:hover:last-child {
+            background: #BD081C; }
+    .footer__section-websites {
+      display: flex;
+      flex-direction: column;
+      text-align: end;
+      width: 25%; }
+      .footer__section-websites-title {
+        font-size: 2.5rem;
+        font-weight: 600;
+        text-decoration: underline; }
+      .footer__section-websites-div {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end; }
+        .footer__section-websites-div-brandName {
+          font-size: 1.8rem;
+          font-weight: 300;
+          text-align: center;
+          color: black;
+          margin-bottom: 1rem; }
+          .footer__section-websites-div-brandName:hover {
+            color: gray; }
     .footer__section-navigation {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      width: 33%; }
+      text-align: end;
+      width: 25%; }
       .footer__section-navigation-title {
         font-size: 2.5rem;
         font-weight: 600;
@@ -90,6 +129,7 @@ body {
   position: fixed;
   z-index: 30;
   width: 100%;
+  top: 0px;
   background-color: #ebebeb; }
   .navBar__section {
     display: flex;
@@ -101,7 +141,8 @@ body {
       align-items: center;
       flex: 1; }
       .navBar__section-leftSide-logo {
-        width: 40rem; }
+        width: 40rem;
+        margin-left: 1rem; }
     .navBar__section-rightSide {
       display: flex;
       align-items: center; }
@@ -120,7 +161,6 @@ body {
           font-weight: 300;
           position: absolute;
           width: 210px;
-          padding: 1rem;
           background-color: #f8f8f8;
           right: 0%;
           top: 100%;
@@ -146,16 +186,16 @@ body {
 
 #cart-logo:hover,
 #search-button:hover {
-  color: #9e9e9e; }
+  color: #ff3c3c; }
 
 #Link {
   text-decoration: none;
-  padding: 1.5rem 3rem;
+  padding: 1rem 3rem;
   font-size: 2.3rem; }
 
 #Link:hover {
   background-color: #f8f8f8;
-  color: black; }
+  color: #ff3c3c; }
 
 #Link2 {
   text-decoration: none;
@@ -168,72 +208,150 @@ body {
 
 #Link2:last-child {
   border: 0;
-  padding-bottom: 3px; }
+  margin-bottom: 0px; }
 
 #Link2:hover {
-  color: #636363; }
+  color: #ff3c3c;
+  background-color: #616161;
+  transform: translateX(-20px); }
 
+/*---- NUMBER OF SLIDE CONFIGURATION ----*/
 .slider {
-  padding-top: 110px;
-  max-width: 1400px;
-  height: 800px;
-  margin: 0 auto;
+  width: 100%;
+  height: 820px;
   position: relative; }
-  .slider-images {
-    display: flex;
-    max-width: 1400px;
-    overflow: hidden;
-    height: 90%; }
-    .slider-images img {
-      object-fit: cover;
-      width: 100%; }
-  .slider-arrows {
-    margin-bottom: 30px;
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    position: absolute;
-    bottom: 45%; }
-    .slider-arrows:hover {
-      cursor: pointer; }
-  .slider-buttons {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
-    height: 10%; }
-    .slider-buttons-pointer-1, .slider-buttons-pointer-2, .slider-buttons-pointer-3, .slider-buttons-pointer-4, .slider-buttons-pointer-5 {
-      width: 20px;
-      height: 20px;
-      background-color: white;
-      border: 3px solid black;
-      margin: 0 3px;
-      border-radius: 50%; }
-      .slider-buttons-pointer-1:hover, .slider-buttons-pointer-2:hover, .slider-buttons-pointer-3:hover, .slider-buttons-pointer-4:hover, .slider-buttons-pointer-5:hover {
-        background: #e7e7e7;
-        cursor: pointer; }
+  .slider-input {
+    display: none; }
 
-#slider-arrows-left,
-#slider-arrows-right {
-  margin: 0 10px;
-  font-size: 60px;
-  color: white;
-  transition: .3s; }
+.inner {
+  width: 500%; }
 
-#slider-arrows-left:hover,
-#slider-arrows-right:hover {
+article {
+  width: 20%;
+  float: left;
+  position: relative; }
+
+article img {
+  width: 100%;
+  height: 760px;
+  object-fit: cover; }
+
+/*---- SET UP CONTROL ----*/
+.slider-arrows {
+  height: 50px;
+  position: absolute;
+  top: 20%;
+  width: 100%;
+  z-index: 10; }
+
+.slider-dot-control {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  text-align: center; }
+
+.slider-dot-control label {
+  cursor: pointer;
+  border-radius: 50%;
+  border: 5px solid black;
+  height: 25px;
+  width: 25px;
+  margin: 0 2px;
+  background: #bbb;
+  transition: all 0.3s; }
+
+.slider-dot-control label:hover {
+  background: #ccc;
+  border-color: #777; }
+
+/* Slider Styling */
+.slider-wrapper {
+  width: 100%;
+  overflow: hidden;
+  transition: all 500ms ease-out; }
+
+.slider-wrapper .inner {
+  transition: all 800ms cubic-bezier(0.77, 0, 0.175, 1); }
+
+/*---- SET POSITION FOR SLIDE ----*/
+#slide1:checked ~ .slider-arrows label:nth-child(2)::after,
+#slide2:checked ~ .slider-arrows label:nth-child(3)::after,
+#slide3:checked ~ .slider-arrows label:nth-child(4)::after,
+#slide4:checked ~ .slider-arrows label:nth-child(5)::after,
+#slide5:checked ~ .slider-arrows label:nth-child(1)::after,
+#slide2:checked ~ .slider-arrows label:nth-child(1)::after,
+#slide3:checked ~ .slider-arrows label:nth-child(2)::after,
+#slide4:checked ~ .slider-arrows label:nth-child(3)::after,
+#slide5:checked ~ .slider-arrows label:nth-child(4)::after,
+#slide1:checked ~ .slider-arrows label:nth-child(5)::after {
+  font-size: 5rem;
+  display: block;
   color: black;
-  cursor: pointer; }
+  margin: 0 10px; }
 
-.activePointer {
-  background: black;
+#slide1:checked ~ .slider-arrows label:nth-child(2)::after,
+#slide2:checked ~ .slider-arrows label:nth-child(3)::after,
+#slide3:checked ~ .slider-arrows label:nth-child(4)::after,
+#slide4:checked ~ .slider-arrows label:nth-child(5)::after,
+#slide5:checked ~ .slider-arrows label:nth-child(1)::after {
+  content: '\02F2';
+  cursor: pointer;
+  font-size: 20rem;
+  color: white; }
+
+#slide1:checked ~ .slider-arrows label:nth-child(2),
+#slide2:checked ~ .slider-arrows label:nth-child(3),
+#slide3:checked ~ .slider-arrows label:nth-child(4),
+#slide4:checked ~ .slider-arrows label:nth-child(5),
+#slide5:checked ~ .slider-arrows label:nth-child(1) {
+  display: block;
+  float: right; }
+
+#slide2:checked ~ .slider-arrows label:nth-child(1)::after,
+#slide3:checked ~ .slider-arrows label:nth-child(2)::after,
+#slide4:checked ~ .slider-arrows label:nth-child(3)::after,
+#slide5:checked ~ .slider-arrows label:nth-child(4)::after,
+#slide1:checked ~ .slider-arrows label:nth-child(5)::after {
+  content: "\02F1";
+  cursor: pointer;
+  font-size: 20rem;
+  color: white; }
+
+#slide1:checked ~ .slider-dot-control label:nth-child(1),
+#slide2:checked ~ .slider-dot-control label:nth-child(2),
+#slide3:checked ~ .slider-dot-control label:nth-child(3),
+#slide4:checked ~ .slider-dot-control label:nth-child(4),
+#slide5:checked ~ .slider-dot-control label:nth-child(5) {
+  background: #333;
   transform: scale(1.3);
-  transition: 1s; }
-  .activePointer:hover {
-    background: black; }
+  margin: 0 5px; }
 
-.slider-arrows:hover > #slider-arrows-left,
-.slider-arrows:hover > #slider-arrows-right {
-  display: flex; }
+#slide1:checked ~ .slider-wrapper .inner {
+  margin-left: 0%; }
+
+#slide2:checked ~ .slider-wrapper .inner {
+  margin-left: -100%; }
+
+#slide3:checked ~ .slider-wrapper .inner {
+  margin-left: -200%; }
+
+#slide4:checked ~ .slider-wrapper .inner {
+  margin-left: -300%; }
+
+#slide5:checked ~ .slider-wrapper .inner {
+  margin-left: -400%; }
+
+/*---- TABLET ----*/
+@media only screen and (max-width: 850px) and (min-width: 450px) {
+  .slider-wrapper {
+    border-radius: 0; } }
+
+/*---- MOBILE----*/
+@media only screen and (max-width: 450px) {
+  .slider-wrapper {
+    border-radius: 0; }
+  .slider-wrapper .info {
+    opacity: 0; } }
 
 .trending {
   display: flex;
@@ -417,3 +535,281 @@ body {
     color: white;
     background-color: black;
     text-decoration: none; }
+
+.about {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 0 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center; }
+  .about-title {
+    font-size: 2.6rem;
+    font-family: "Suez One", serif;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    text-align: end; }
+  .about-paragraph {
+    font-size: 1.8rem;
+    text-align: end;
+    margin-right: 20px; }
+
+#website-link {
+  font-weight: 700;
+  color: red; }
+
+.recipePage-details {
+  max-width: 1400px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column; }
+  .recipePage-details-img {
+    max-width: 1400px;
+    height: 600px;
+    object-fit: cover;
+    border: 3px solid black; }
+  .recipePage-details-name {
+    text-align: end;
+    font-size: 1.5rem;
+    font-family: sans-serif; }
+  .recipePage-details-div {
+    display: flex;
+    border-top: 1px solid gray;
+    padding-top: 2rem;
+    width: 100%;
+    margin-top: 2rem; }
+    .recipePage-details-div-rightSide {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      border-right: 1px solid gray;
+      padding-right: 20px; }
+      .recipePage-details-div-rightSide-title {
+        font-family: "Suez One", serif;
+        font-size: 3rem;
+        margin-bottom: 3rem;
+        border-bottom: 1px solid black; }
+      .recipePage-details-div-rightSide-container {
+        display: block;
+        position: relative;
+        margin: 0 1.5rem 3.5rem 0;
+        cursor: pointer;
+        user-select: none; }
+        .recipePage-details-div-rightSide-container-ingredient {
+          position: absolute;
+          right: 30px;
+          top: -10px;
+          font-size: 2.2rem;
+          display: flex;
+          max-width: 700px;
+          min-width: 500px;
+          justify-content: flex-end;
+          font-family: sans-serif;
+          text-align: end; }
+        .recipePage-details-div-rightSide-container:hover input ~ .recipePage-details-div-rightSide-container-checkmark {
+          background-color: #ffdf76;
+          transition: .2s; }
+        .recipePage-details-div-rightSide-container input {
+          display: none; }
+          .recipePage-details-div-rightSide-container input:checked ~ .recipePage-details-div-rightSide-container-checkmark {
+            background-color: black; }
+          .recipePage-details-div-rightSide-container input:checked ~ .recipePage-details-div-rightSide-container-checkmark:after {
+            display: block;
+            position: absolute; }
+        .recipePage-details-div-rightSide-container-checkmark {
+          position: absolute;
+          top: 0;
+          right: 0;
+          height: 17px;
+          width: 17px;
+          background-color: white;
+          border: 2px solid black; }
+          .recipePage-details-div-rightSide-container-checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+            left: 5px;
+            top: 2px;
+            width: 4px;
+            height: 8px;
+            border: solid white;
+            border-width: 0 1px 1px 0;
+            transform: rotate(45deg); }
+      .recipePage-details-div-rightSide-tags {
+        display: flex;
+        margin-top: 20px;
+        padding-right: 20px; }
+        .recipePage-details-div-rightSide-tags-link {
+          font-size: 2rem;
+          color: white;
+          background-color: black;
+          border-radius: 3px;
+          padding: 3px 10px;
+          margin: 3px;
+          transition: .3s; }
+          .recipePage-details-div-rightSide-tags-link:hover {
+            color: #ffb43c;
+            text-decoration: none; }
+    .recipePage-details-div-leftSide {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      margin-right: 10px; }
+      .recipePage-details-div-leftSide-title {
+        font-family: "Suez One", serif;
+        font-size: 3rem;
+        border-bottom: 1px solid black; }
+      .recipePage-details-div-leftSide-instructions {
+        max-width: 700px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        text-align: end; }
+        .recipePage-details-div-leftSide-instructions label p {
+          font-size: 2rem;
+          font-family: sans-serif;
+          display: flex;
+          align-items: baseline;
+          flex-direction: row-reverse; }
+          .recipePage-details-div-leftSide-instructions label p span {
+            font-size: 3rem;
+            font-family: "Suez One", serif;
+            margin: 0 10px; }
+
+#tag-icon {
+  font-size: 3rem; }
+
+#btnControl0,
+#btnControl1,
+#btnControl2,
+#btnControl3,
+#btnControl4,
+#btnControl5,
+#btnControl6,
+#btnControl7 {
+  display: none; }
+
+#btnControl0:checked + label > p,
+#btnControl1:checked + label > p,
+#btnControl2:checked + label > p,
+#btnControl3:checked + label > p,
+#btnControl4:checked + label > p,
+#btnControl5:checked + label > p,
+#btnControl6:checked + label > p,
+#btnControl7:checked + label > p {
+  color: #ff3c3c;
+  text-decoration: line-through; }
+
+.recipeHeader__section {
+  width: 100%;
+  height: 380px;
+  background-color: #ffb43c;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center; }
+  .recipeHeader__section-type {
+    font-size: 2rem;
+    padding: 2px 5px;
+    background-color: #ffdf76;
+    border-radius: 3px;
+    color: #3b3a38;
+    border: 1px solid gray;
+    font-family: "Suez One", serif;
+    z-index: 10;
+    box-shadow: 1px 1px 5px gray; }
+  .recipeHeader__section-title {
+    color: white;
+    margin-bottom: 20px;
+    font-family: "Suez One", serif;
+    font-size: 7rem;
+    text-shadow: 1px 2px 5px gray;
+    text-align: center; }
+  .recipeHeader__section-properties {
+    display: flex; }
+    .recipeHeader__section-properties p {
+      color: white;
+      border-left: 1px solid white;
+      font-size: 1.8rem;
+      padding: 0 5px;
+      margin-left: 3px; }
+      .recipeHeader__section-properties p:first-child {
+        border: 0px; }
+    .recipeHeader__section-properties span {
+      color: white;
+      font-size: 1.8rem; }
+
+.productPage {
+  display: flex;
+  flex-direction: column; }
+  .productPage-accordion {
+    max-width: 700px; }
+    .productPage-accordion-card {
+      margin: 1rem 0; }
+      .productPage-accordion-card-header {
+        text-align: end; }
+        .productPage-accordion-card-header-title {
+          font-size: 4rem;
+          font-weight: 100;
+          font-family: sans-serif;
+          display: flex;
+          justify-content: space-between; }
+          .productPage-accordion-card-header-title-button {
+            font-size: 2rem;
+            color: black;
+            font-family: "Gill Sans"; }
+            .productPage-accordion-card-header-title-button:hover {
+              color: #ff3c3c;
+              text-decoration: none; }
+      .productPage-accordion-card-collapse {
+        text-align: end; }
+        .productPage-accordion-card-collapse-body {
+          font-size: 2rem; }
+
+#prev-arrow,
+#next-arrow {
+  color: black;
+  font-size: 4rem; }
+
+.productHeader__section {
+  width: 100%;
+  height: 380px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center; }
+  .productHeader__section-type {
+    font-size: 2rem;
+    padding: 2px 5px;
+    background-color: lightblue;
+    border-radius: 3px;
+    color: #3b3a38;
+    border: 1px solid gray;
+    font-family: "Suez One", serif;
+    z-index: 10;
+    box-shadow: 1px 1px 5px gray; }
+  .productHeader__section-title {
+    color: white;
+    margin-bottom: 20px;
+    font-family: "Suez One", serif;
+    font-size: 7rem;
+    text-shadow: 1px 2px 5px gray;
+    text-align: center; }
+  .productHeader__section-properties {
+    display: flex; }
+    .productHeader__section-properties p {
+      color: white;
+      border-left: 1px solid white;
+      font-size: 1.8rem;
+      padding: 0 5px;
+      margin-left: 3px; }
+      .productHeader__section-properties p:first-child {
+        border: 0px; }
+    .productHeader__section-properties span {
+      color: white;
+      font-size: 1.8rem; }

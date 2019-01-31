@@ -6,7 +6,6 @@ import Products from './Products/Products';
 import { connect } from 'react-redux';
 // import {store} from '../../Redux/store';
 import { getSliderImages } from '../../Redux/actions';
-// import { switchingSliderAuto } from '../../Redux/actions';
 
 
 class HomePage extends Component {
@@ -28,4 +27,3 @@ class HomePage extends Component {
 }
 
 export default connect(null)(HomePage);
-// export default HomePage;

@@ -1,17 +1,30 @@
+//BASE
 @import './Scss/variables';
 @import './Scss/base';
 
-// @import './src/components/HomePage/HomePage';
+//Main Components
 @import './src/components/Footer/Footer';
 @import './src/components/HomePage/NavBar/NavBar';
-@import './src/components/HomePage/Slider/Slider';
 
+//HomePage components
+@import './src/components/HomePage/Slider/Slider';
 @import './src/components/HomePage/Trending/Trending';
 @import './src/components/HomePage/Trending/LeftSideContent/LeftSideContent';
 @import './src/components/HomePage/Trending/RightSideContent/RightSideContent';
-
 @import './src/components/HomePage/Recipes/Recipes';
 @import './src/components/HomePage/Products/Products';
+
+
+//Website different Pages components
+@import './src/components/About/About';
+
+@import './src/components/RecipePage/RecipePage';
+@import './src/components/RecipePage/RecipeHeader/RecipeHeader';
+
+@import './src/components/ProductPage/ProductPage';
+@import './src/components/ProductPage/ProductHeader/ProductHeader';
+
+
 
 
 

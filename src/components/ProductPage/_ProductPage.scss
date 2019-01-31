@@ -1,0 +1,49 @@
+.productPage {
+    display: flex;
+    flex-direction: column;
+
+    &-accordion {
+        max-width: 700px;
+
+        &-card {
+            margin: 1rem 0;
+
+            &-header {
+                text-align: end;
+
+                &-title {
+                    font-size: 4rem;
+                    font-weight: 100;
+                    font-family: $sans-serif;
+                    display: flex;
+                    justify-content: space-between;
+
+                    &-button {
+                        font-size: 2rem;
+                        color: $main-color;
+                        font-family: $gill-sans;
+
+                        &:hover {
+                            color: $red;
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+
+            &-collapse {
+                text-align: end;
+
+                &-body {
+                    font-size: 2rem;
+                }
+            }
+        }
+    }
+}
+
+#prev-arrow,
+#next-arrow {
+    color: $main-color;
+    font-size: 4rem;
+}

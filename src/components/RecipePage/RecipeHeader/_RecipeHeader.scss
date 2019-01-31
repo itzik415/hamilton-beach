@@ -1,0 +1,54 @@
+.recipeHeader {
+
+    &__section {
+        width: 100%;
+        height: 380px;
+        background-color: $orange;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+
+        &-type {
+            font-size: 2rem;
+            padding: 2px 5px;
+            background-color: $orange-light;
+            border-radius: 3px;
+            color: rgb(59, 58, 56);
+            border: 1px solid gray;
+            font-family: $suez-font;
+            z-index: 10;
+            box-shadow: 1px 1px 5px gray;
+        }
+
+        &-title {
+            color: white;
+            margin-bottom: 20px;
+            font-family: $suez-font;
+            font-size: 7rem;
+            text-shadow: 1px 2px 5px gray;
+            text-align: center;
+        }
+
+        &-properties {
+            display: flex;
+
+            p {
+                color: white;
+                border-left: 1px solid white;
+                font-size: 1.8rem;
+                padding: 0 5px;
+                margin-left: 3px;
+
+                &:first-child {
+                    border: 0px;
+                }
+            }
+
+            span {
+                color: white;
+                font-size: 1.8rem;
+            }
+        }
+    }
+}

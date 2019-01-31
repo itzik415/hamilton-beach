@@ -1,7 +1,17 @@
 
 //COLORS
-$base-red: rgb(212, 0, 0);
+// $base-red: rgb(212, 0, 0);
+$red: rgb(255, 60, 60);
+$red-dark: #c82027;
+
+$blue-light: lightblue;
+
+$orange: rgb(255, 180, 60);
+$orange-light: rgb(255, 223, 118);
+
 // $main-color: #79b722;
+$yellow: #fc0;
+
 $main-color: black;
 
 //FONT-SIZE
@@ -13,7 +23,7 @@ $xxl-size: 4rem;
 
 
 //FONT-FAMILY
-
 $suez-font: 'Suez One', serif;
 $david-font: 'David Libre', serif;
-
+$sans-serif: sans-serif;
+$gill-sans: 'Gill Sans';

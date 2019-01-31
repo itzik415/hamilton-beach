@@ -1,18 +1,18 @@
 .footer {
     border-top: 6px solid $main-color;
+    background-color: rgb(235, 235, 235);
 
     &__section {
-        // max-width: 1400px;
-        background-color: rgb(235, 235, 235);
+        max-width: 1400px;
         margin: 0 auto;
         display: flex;
-        padding: 5rem 0;
+        padding: 5rem 0 3.5rem 0;
 
         &-companyDetails {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            width: 33%;
+            text-align: end;
+            width: 25%;
 
             &-title {
                 font-size: 2.5rem;
@@ -23,16 +23,15 @@
             p {
                 font-size: 1.8rem;
                 font-weight: 300;
-                text-align: center;
-
+                text-align: end;
             }
         }
 
         &-socialMedia {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            width: 33%;
+            text-align: end;
+            width: 25%;
 
             &-title {
                 font-size: 2.5rem;
@@ -42,23 +41,75 @@
 
             &-div {
 
-                i {
+                a {
                     font-size: 3rem;
                     text-align: center;
                     width: 45px;
                     height: 45px;
                     background-color: $main-color;
                     border-radius: 50%;
-                    padding-top: 7px;
-                    margin-left: 10px;
-                    margin-right: 10px;
+                    padding: 7px 2px;
+                    margin-left: 13px;
                     margin-top: 5px;
                     color: white;
                     transition: .3s;
 
                     &:hover {
+                        cursor: pointer;
                         box-shadow: 1px 5px 10px gray;
                         transform: scale(1.1);
+                        text-decoration: none;
+        
+                        &:first-child {
+                            background: #337ab7;
+                        }
+
+                        &:nth-child(2) {
+                            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+                        }
+
+                        
+                        &:nth-child(3) {
+                            background: #38A1F3;
+                        }
+
+                        &:last-child {
+                            background: #BD081C
+                            ;
+                        }
+                    }
+
+                }
+                
+            }
+        }
+
+        &-websites {
+            display: flex;
+            flex-direction: column;
+            text-align: end;
+            width: 25%;
+
+            &-title {
+                font-size: 2.5rem;
+                font-weight: 600;
+                text-decoration: underline;
+            }
+
+            &-div {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+
+                &-brandName {
+                    font-size: 1.8rem;
+                    font-weight: 300;
+                    text-align: center;
+                    color: black;
+                    margin-bottom: 1rem;
+
+                    &:hover {
+                        color: gray;
                     }
                 }
             }
@@ -67,8 +118,8 @@
         &-navigation {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            width: 33%;
+            text-align: end;
+            width: 25%;
 
             &-title {
                 font-size: 2.5rem;

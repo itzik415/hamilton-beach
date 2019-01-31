@@ -15,10 +15,22 @@ const footer = () => {
                 <div className="footer__section-socialMedia">
                     <h1 className="footer__section-socialMedia-title">מוזמנים לבקר</h1>
                     <div className="footer__section-socialMedia-div">
-                        <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/HamiltonBeach"><i className="fab fa-facebook-f"></i></a>
-                        <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/hamiltonbeach/"><i className="fab fa-instagram"></i></a>
-                        <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/HamiltonBeach"><i className="fab fa-twitter"></i></a>
-                        <a target="_blank" rel="noopener noreferrer" href="https://www.pinterest.com/hamiltonbeach/"><i className="fab fa-pinterest-p"></i></a>
+                        <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/HamiltonBeach" className="fab fa-facebook-f"></a>
+                        <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/hamiltonbeach/" className="fab fa-instagram"></a>
+                        <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/HamiltonBeach" className="fab fa-twitter"></a>
+                        <a target="_blank" rel="noopener noreferrer" href="https://www.pinterest.com/hamiltonbeach/" className="fab fa-pinterest-p"></a>
+                    </div>
+                </div>
+                <div className="footer__section-websites">
+                    <h1 className="footer__section-websites-title">אתרי החברה</h1>
+                    <div className="footer__section-websites-div">
+                        <a className="footer__section-websites-div-brandName" rel="noopener noreferrer" href="http://www.shaoulian.co.il" target="_blank"> shaoulian.co.il</a>
+                        <a className="footer__section-websites-div-brandName" rel="noopener noreferrer" href="http://www.lofra.co.il" target="_blank"> lofra.co.il </a>
+                        <a className="footer__section-websites-div-brandName" rel="noopener noreferrer" href="http://www.sol.co.il" target="_blank">sol.co.il</a>
+                        <a className="footer__section-websites-div-brandName" rel="noopener noreferrer" href="http://www.turboair.co.il" target="_blank">turboair.co.il</a>
+                        <a className="footer__section-websites-div-brandName" rel="noopener noreferrer" href="http://www.valera.co.il" target="_blank">Valera.co.il </a>
+                        <a className="footer__section-websites-div-brandName" rel="noopener noreferrer" href="http://www.ufesa.co.il" target="_blank">ufesa.co.il</a>
+                        <a className="footer__section-websites-div-brandName" rel="noopener noreferrer" href="http://www.boohr.co.il" target="_blank">Boohr.co.il</a>
                     </div>
                 </div>
                 <div className="footer__section-navigation">
