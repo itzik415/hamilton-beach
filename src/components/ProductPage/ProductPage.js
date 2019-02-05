@@ -47,9 +47,9 @@ const productPage = (props) => {
             </div>
             <div className="row productPage-accordion">
                 <div className="productPage-accordion-line col-12 col-sm-10 px-sm-0 px-5 mx-auto my-2 d-flex flex-column">
-                    <div className="d-flex flex-row-reverse justify-content-between">
-                        <h1 className="m-0">מפרט טכני</h1>
-                        <h1 onClick={props.openAccordion1} className="m-0 productPage-accordion-line-btn">+</h1>
+                    <div className="productPage-accordion-line-div d-flex flex-row-reverse justify-content-between align-items-center">
+                        <h1 className="productPage-accordion-line-div-title mb-0">מפרט טכני</h1>
+                        <h1 onClick={props.openAccordion1} className="productPage-accordion-line-btn"><ion-icon name="add"></ion-icon></h1>
                     </div>
                     <div className="row productPage-accordion-line-text">
                         <div className="productPage-accordion-line-text-div col-8 ml-auto" style={{display: `${props.dis1}`}}>
@@ -58,10 +58,10 @@ const productPage = (props) => {
                         </div>
                     </div>
                 </div>
-                <div className="productPage-accordion-line col-12 col-sm-10 px-sm-0 px-5 mx-auto my-2 d-flex flex-column">
-                    <div className="d-flex flex-row-reverse justify-content-between">
-                        <h1 className="m-0">חלקי חילוף</h1>
-                        <h1 onClick={props.openAccordion2} className="m-0 productPage-accordion-line-btn">+</h1>
+                <div className="productPage-accordion-line2 col-12 col-sm-10 px-sm-0 px-5 mx-auto d-flex flex-column">
+                    <div className="productPage-accordion-line-div d-flex flex-row-reverse justify-content-between align-items-center">
+                        <h1 className="productPage-accordion-line-div-title mb-0">חלקי חילוף</h1>
+                        <h1 onClick={props.openAccordion2} className="productPage-accordion-line-btn"><ion-icon name="add"></ion-icon></h1>
                     </div>
                     <div className="row productPage-accordion-line-text">
                         <div className="productPage-accordion-line-text-div col-8 ml-auto" style={{display: `${props.dis2}`}}>

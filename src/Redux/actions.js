@@ -1,8 +1,5 @@
 import { store } from "./store";
 
-// import { initialState } from "./reducer";
-// import { store } from './store';
-
 // Slider actions
 
 //Importing all the slider images from a json file
@@ -34,5 +31,15 @@ export function accordionToggle2 () {
     } 
     return {
         type: 'CLOSE_ACCORDION_2'
+    }
+}
+export function toggleHiddenNav () {
+    if(store.getState().translateYHidden === '-400px') {
+        return {
+            type: 'OPEN_NAV',
+        }
+    }
+    return {
+        type: 'CLOSE_NAV'
     }
 }

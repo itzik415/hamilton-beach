@@ -32,16 +32,36 @@
         max-width: 1400px;
         display: flex;
         justify-content: space-between;
-        flex-wrap: wrap;
+
+        @media screen and (max-width: 750px) {
+            flex-direction: column;
+        }
 
         &-recipe {
             overflow:hidden;
-            height: 500px;
-            background-color: $main-color;
-            border-radius: 3px;
             position: relative;
 
+            &:last-child {
+                margin-left: 1rem;
+
+                @media screen and (max-width: 1400px) {
+                    display: none;
+                }
+
+            }
+
+            &:nth-child(2) {
+                margin-left: 1rem;
+
+                @media screen and (max-width: 750px) {
+                    margin-left: 0;
+                    margin-top: 1rem;
+                }
+            }
+
+
             &-title {
+                display: none;
                 position: absolute;
                 top: 61%;
                 left: 42%;
@@ -52,8 +72,7 @@
             }
 
             &-img {
-                max-width: 450px;
-                height: 320px;
+                max-width: 100%;
                 transform-origin:50% 100%;
                 transition: .3s;
 
@@ -66,32 +85,35 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                justify-content: left;
+                background-color: $main-color;
+                width: 100%;
 
                 &-title {
                     color: white;
-                    margin-top: 50px;
-                    font-size: 3rem;
+                    margin-top: 5rem;
+                    font-size: 2.2rem;
                 }
 
                 &-recipe {
                     display: flex;
+                    margin-bottom: 4rem;
 
                     p {
                         color: white;
                         border-left: 1px solid white;
-                        font-size: 1.8rem;
+                        font-size: 1.4rem;
                         padding: 0 5px;
                         margin-left: 3px;
 
                         &:first-child {
                             border: 0px;
                         }
+
                     }
 
                     span {
                         color: white;
-                        font-size: 1.8rem;
+                        font-size: 1.4rem;
                     }
                 }
             }

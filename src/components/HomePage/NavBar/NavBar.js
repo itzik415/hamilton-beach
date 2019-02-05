@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import HiddenNav from './HiddenNav/HiddenNav';
+import { toggleHiddenNav } from '../../../Redux/actions';
+import { connect } from 'react-redux';
 
-const navBar = () => {
+const navBar = (props) => {
     return (
         <div className="navBar">
             <div className="navBar__section">
@@ -39,10 +42,17 @@ const navBar = () => {
                 <div className="navBar__section-rightSide-icons">
                     <Link id="Link3" to="/cart"><ion-icon id="cart-logo" name="cart"></ion-icon></Link>
                     <Link id="Link3" to="/search-result"><ion-icon id="search-button" name="search"></ion-icon></Link>
+                    <ion-icon onClick={props.toggleNav} id="navigation-icon" name="menu"></ion-icon>
                 </div>
             </div>
         </div>
     )
 }
 
-export default navBar;
+const mapDispatchToProps = dispatch => {
+    return {
+        toggleNav: () => dispatch(toggleHiddenNav()),
+    }
+}
+
+export default connect(null,mapDispatchToProps)(navBar);

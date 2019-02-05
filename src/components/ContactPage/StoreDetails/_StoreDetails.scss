@@ -1,0 +1,44 @@
+.storeDetails {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    max-height: 610px;
+
+    @media screen and (max-width: 870px) {
+        align-items: center;
+    }
+
+    &-title {
+        text-decoration: underline;
+        font-family: $suez-font;
+        font-size: 3rem;
+        text-align: end;
+
+        @media screen and (max-width: 870px) {
+            text-align: center;
+        }
+    }
+
+    &-info {
+        display: flex;
+        flex-direction: column;
+        text-align: end;
+        flex: 1;
+
+        @media screen and (max-width: 870px) {
+            text-align: center;
+            flex: 0;
+        }
+
+        p {
+            font-size: 2rem;
+        }
+        
+        p span {
+            color: $red;
+            font-size: 2rem;
+        }
+
+    }
+}
+

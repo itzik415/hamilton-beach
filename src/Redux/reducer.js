@@ -3,6 +3,7 @@ export const initialState = {
     sliderImages: [],
     accordionToggleDis1: 'none',
     accordionToggleDis2: 'none',
+    translateYHidden: '-400px',
     error: '',
 }
 
@@ -33,6 +34,18 @@ export const rootReducer = (state = initialState, action) => {
                 ...state, 
                 accordionToggleDis2: 'none',
             }
+
+        case 'OPEN_NAV':
+            return {
+                ...state, 
+                translateYHidden: '0px'
+            }
+        case 'CLOSE_NAV':   
+            return {
+                ...state, 
+                translateYHidden: '-400px'
+            }
+
         case 'ERROR':
             return {
                 ...state, 

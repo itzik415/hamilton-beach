@@ -1,11 +1,13 @@
-
 //COLORS
+$blue-dark:  #0062ff;
 $blue-light: #87cefa;
 $grey-dark: #666;
 $grey-dark2: #383838;
 $grey-light: #ebebeb;
+$purple: #39054e;
 $main-color: #000000;
 $orange: #ffb43c;
+$orange-dark: #ff7b00;
 $orange-light: #ffdf76;
 $red: #ff3c3c;
 $red-dark: #c82027;
@@ -14,8 +16,6 @@ $yellow: #fc0;
 
 $grey-dark: #242424;
 
-$purple: rgb(57, 5, 78);
-
 //FONT-SIZE
 $small-size: 1rem;
 $medium-size: 1.5rem;
@@ -23,9 +23,14 @@ $large-size: 2rem;
 $xl-size: 3rem;
 $xxl-size: 4rem;
 
-
 //FONT-FAMILY
 $suez-font: 'Suez One', serif;
 $david-font: 'David Libre', serif;
 $sans-serif: sans-serif;
 $gill-sans: 'Gill Sans';
+
+//GRID
+$break-small: 576px;
+$break-medium: 768px;	
+$break-large: 992px;
+$break-extra-large: 1200px;

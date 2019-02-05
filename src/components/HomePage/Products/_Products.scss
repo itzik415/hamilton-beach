@@ -7,67 +7,155 @@
 
     &__section {
         display: flex;
-        justify-content: space-between;
-
-        &-product {
+        flex-direction: column;
+        
+        &-top,
+        &-bottom {
             display: flex;
-            flex-direction: column;
-            max-width: 320px;
+            justify-content: space-between;
 
-            &-img {
-                box-shadow: 0px 0px 15px gray;
-                border-bottom: 2px solid rgb(184, 184, 184);
-                border-radius: 5px;
-            }
-
-            &-details {
-                border: 1px solid rgb(202, 202, 202);
-                border-top: 0;
-                padding: 0 3px;
-                box-shadow: 0px 0px 3px rgb(202, 202, 202);
-                display: flex;
-                height: 250px;
-                width: 300px;
-                margin: 0 auto;
+            @media screen and (max-width: 1400px) {
                 flex-direction: column;
-                text-align: center;
-                background-color: rgb(246, 246, 246);
+                align-items: center;
+            }
+            
+            &-product {
+                display: flex;
+                margin-bottom: 1rem;
 
-                &-category {
-                    font-size: 2.8rem;
-                    font-weight: 700;
-                    margin-top: 15px;
-                    font-family: $suez-font;
-                    letter-spacing: 1px;
+                @media screen and (max-width: 1400px) {
+                    width: 100%;
                 }
 
-                &-model {
-                    font-size: 2.3rem;
-                    // font-family: $suez-font;
-                }
-
-                &-description {
-                    font-size: 1.7rem;
-                }
-
-                &-bottom {
-                    display: flex;
-                    border-top: 1px solid gray;
-                    margin: 0 15px;
-                    justify-content: space-between;
+                @media screen and (max-width: 660px) {
+                    flex-direction: column;
                     align-items: center;
+                }
+                
+                
+                &-img {
+                    width: 50%;
+                    height: 100%;
+                    border: 2px solid $grey-light;
 
-                    &-price {
-                        font-size: 2.2rem;
-                        margin: 10px 0;
-                        font-weight: 500;
+                    @media screen and (max-width: 1400px) {
+                        width: 50%;
                     }
 
-                    &-cart {
-                        margin: 10px 0;
+                    @media screen and (max-width: 940px) {
+                        width: 370px;
+                    }
 
-                        &:hover {
-                            cursor: pointer;
+                    @media screen and (max-width: 661px) {
+                        flex-direction: column;
+                        width: 100%;
+                    }
+
+                }
+                
+                &-details {
+                    background-color: $grey-light;
+                    display: flex;
+                    flex-direction: column;
+                    padding: 0 1rem 1rem 1rem;
+                    text-align: end;
+                    width: 100%;
+
+                    @media screen and (max-width: 1400px) {
+                        width: 100%;
+                    }
+
+                    @media screen and (max-width: 940px) {
+                        flex-direction: column;
+                    }
+    
+                    &-category {
+                        font-size: 4rem;
+                        font-weight: 700;
+                        margin-top: 15px;
+                        font-family: $suez-font;
+                        letter-spacing: 1px;
+                    }
+                    
+                    &-description {
+                        font-size: 1.7rem;
+                    }
+                    
+                    &-model {
+                        font-size: 2rem;
+                        font-weight: 100;
+                        color: grey;
+                        flex: 1;
+                    }
+    
+                    &-lastPrice {
+                        text-decoration: line-through;
+                        margin: 0;
+                        font-size: 1.4rem;
+                        font-weight: 100;
+                        color: #06c;
+                        transform: skew(-10deg);
+                    }
+    
+                    &-price {
+                        font-size: 4rem;
+                        margin: 0;
+                        font-weight: 100;
+                        letter-spacing: -2px;
+                        color: #06c;
+                        transform: skew(-15deg);
+                    }
+    
+                    &-save {
+                        font-size: 1.8rem;
+                        font-weight: 100;
+                        color: #06c;
+                        transform: skew(-10deg);
+
+                        @media screen and(min-width: 1400px) {
+                            display: none;
+                        }
+
+                        @media screen and(max-width: 940px) {
+                            display: none;
+                        }
+
+                        @media screen and(max-width: 660px) {
+                            display: block;
+                        }
+                    }   
+    
+                    &-cart {
+                        transform: perspective(1px) translateZ(0);
+                        box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+                        position: relative;
+                        overflow: hidden;
+                        padding: 1rem 3rem;
+                        color: $main-color;
+                        font-weight: 700;
+                        background-color: $yellow;
+                        transition-duration: 0.3s;
+                        font-size: 2rem;
+                        cursor: pointer;
+                        display: flex;
+                        width: 200px;
+                        margin-left: auto;
+                        justify-content: center;
+    
+                        &:before {
+                            content: "";
+                            position: absolute;
+                            z-index: -1;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            bottom: 0;
+                            background-color: rgba(53, 53, 53, 0.137);
+                            border-radius: 100%;
+                            transform: scale(0);
+                            transition-property: transform;
+                            transition-duration: 0.6s;
+                            transition-timing-function: ease-out;
                         }
                     }
                 }
@@ -97,3 +185,9 @@
     }
     
 }
+
+  .products__section-product-details-cart:hover:before, 
+  .products__section-product-details-cart:focus:before, 
+  .products__section-product-details-cart:active:before {
+    transform: scale(2);
+  }

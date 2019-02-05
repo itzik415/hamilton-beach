@@ -2,59 +2,32 @@
     display: flex;
     flex-direction: column;
 
-    // &-accordion {
-    //     max-width: 700px;
-
-    //     &-card {
-    //         margin: 1rem 0;
-
-    //         &-header {
-    //             text-align: end;
-
-    //             &-title {
-    //                 font-size: 4rem;
-    //                 font-weight: 100;
-    //                 font-family: $sans-serif;
-    //                 display: flex;
-    //                 justify-content: space-between;
-
-    //                 &-button {
-    //                     font-size: 2rem;
-    //                     color: $main-color;
-    //                     font-family: $gill-sans;
-
-    //                     &:hover {
-    //                         color: $red;
-    //                         text-decoration: none;
-    //                     }
-    //                 }
-    //             }
-    //         }
-
-    //         &-collapse {
-    //             text-align: end;
-
-    //             &-body {
-    //                 font-size: 2rem;
-    //             }
-    //         }
-    //     }
-    // }
-
     &-accordion {
         
 
-        &-line {
-            border: 2px solid grey;
+        &-line,
+        &-line2 {
+            border: 1px solid grey;
             border-right: 0;
             border-left: 0;
             padding: 10px;
 
             &-btn {
-                font-size: 3rem;
+                font-size: 2.2rem;
+                margin-left: 2rem;
+                margin-bottom: 0;
+                display: flex;
+                align-items: center;
 
                 &:hover {
                     cursor: pointer;
+                }
+            }
+
+            &-div {
+
+                &-title {
+                    font-size: 2rem;
                 }
             }
 
@@ -71,7 +44,11 @@
 }
 
 .productPage-accordion-line-btn:hover ~ .productPage-accordion-line-text-div {
-    color: red;
+    color: $red;
+}
+
+.productPage-accordion-line2 {
+    margin-bottom: 3rem;
 }
 
 #prev-arrow,
