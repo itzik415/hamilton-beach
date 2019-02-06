@@ -14,32 +14,28 @@ export function getSliderImages() {
 
 export function accordionToggle1 () {
     if(store.getState().accordionToggleDis1 === 'none'){
-        return {
-            type: 'OPEN_ACCORDION_1'
-        }
+        return {type: 'OPEN_ACCORDION_1'}
     } 
-    return {
-        type: 'CLOSE_ACCORDION_1'
-    }
+    return {type: 'CLOSE_ACCORDION_1'}
 }
 
 export function accordionToggle2 () {
     if(store.getState().accordionToggleDis2  === 'none'){
-        return {
-            type: 'OPEN_ACCORDION_2'
-        }
+        return {type: 'OPEN_ACCORDION_2'}
     } 
-    return {
-        type: 'CLOSE_ACCORDION_2'
-    }
+    return {type: 'CLOSE_ACCORDION_2'}
 }
+
 export function toggleHiddenNav () {
     if(store.getState().translateYHidden === '-400px') {
-        return {
-            type: 'OPEN_NAV',
-        }
+        return{type: 'OPEN_NAV'}
     }
-    return {
-        type: 'CLOSE_NAV'
+    return{type: 'CLOSE_NAV'};
+}
+
+export function toggleDropDown () {
+    if(store.getState().dropDown === 'none') {
+        return {type: 'OPEN_DROP_DOWN',}
     }
+    return {type: 'CLOSE_DROP_DOWN',}
 }

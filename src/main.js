@@ -8,6 +8,8 @@ import About from './components/About/About';
 import RecipePage from './components/RecipePage/RecipePage';
 import ProductPage from './components/ProductPage/ProductPage';
 import ContactPage from './components/ContactPage/ContactPage';
+import AuthorizedSellersPage from './components/AuthorizedSellersPage/AuthorizedSellersPage';
+import ServiceLocationsPage from './components/ServiceLocationsPage/ServiceLocationsPage';
 
 const Main = () => {
     return (
@@ -16,8 +18,10 @@ const Main = () => {
                 <Nav />
                 <Route exact path='/' component={HomePage} />
                 <Route path='/about' component={About} />
-                <Route path='/support/contact' component={ContactPage} />
-                <Route path='/recipes/:name' component={RecipePage} />
+                <Route path='/contact' component={ContactPage} />
+                <Route path='/authorized-sellers' component={AuthorizedSellersPage} />
+                <Route path='/service-locations' component={ServiceLocationsPage} />
+                <Route path='/recipes/:category/:name' component={RecipePage} />
                 <Route path='/products/:category/:name' component={ProductPage} />
                 {/* <Route path='/article/:name' component={articlePage} /> */}
                 <Footer />

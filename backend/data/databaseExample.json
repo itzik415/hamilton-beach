@@ -1,0 +1,46 @@
+[
+    {
+        "products": [{ 
+            "id": "number that is generating by the database",
+            "model": "string",
+            "mainImage": "src",
+            "sliderImages": ["src", "src", "src"],
+            "shortDescription": "string",
+            "lastPrice": "number",
+            "price": "number",
+            "saving": "number",
+            "category": "string",
+            "features": "string"
+        }]
+    },
+    {
+        "spareParts": [{
+            "id": "number that is generating by the database",
+            "model": "string",
+            "image": "src",
+            "category":"string",
+            "price": "number",
+            "name": "string"
+        }]
+    },
+    {
+        "recipes": [{
+            "id": "number that is generating by the database",
+            "name":"string",
+            "image": "src",
+            "category":"string",
+            "level": "string",
+            "time": "string",
+            "kosher": "string",
+            "type": "string",
+            "ingredients": ["string", "string"],
+            "instructions": ["string", "string"],
+            "descriptionList": ["string", "string"]
+        }],
+            
+        "slider": [{
+            "id":"number that is generating by the database",
+            "image":"src"
+        }]
+    }
+]

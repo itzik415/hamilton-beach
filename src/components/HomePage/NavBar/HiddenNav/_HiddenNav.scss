@@ -12,14 +12,18 @@
         display: none;
     }
 
-    &-category {
+    &-category1, 
+    &-category2, 
+    &-category3, 
+    &-category4, 
+    &-category5 {
         background-color: white;
         text-align: end;
         font-size: 2rem;
         width: 100%;
         padding: 1rem;
         color: black;
-        background-color: #666;
+        background-color: $grey-dark;
         border-bottom: 1px solid grey;
         transition: .3s;
 
@@ -28,13 +32,35 @@
             color: $yellow;
             cursor: pointer;
             text-decoration: none;
-            background-color: $grey-dark;
+            background-color: $grey-dark3;
             transform: translateX(-15px);
+            // border-right
         }
 
-        &-dropDown {
-            display: none;
-        }
+    }
+
+    // &-category1,  
+    // &-category3, 
+    // &-category4 {
+
+    //     &:focus {
+    //         color: $yellow;
+    //         cursor: pointer;
+    //         text-decoration: none;
+    //         background-color: $grey-dark3;
+    //         transform: translateX(-15px);
+    //         // border-right
+    //     }
+    // }
+
+    &-dropDown {
+        display: none;
+        width: 100%;
+        background-color: $yellow;
+        align-items: flex-end;
+        flex-direction: column;
+        // transform: translateX(-15px);
+        // padding-right: 1.5rem;
     }
 
     &-categorySearch {
@@ -47,7 +73,7 @@
         width: 100%;
         padding: 1rem;
         color: black;
-        background-color: #666;
+        background-color: $grey-dark;
         border-bottom: 1px solid grey;
         transition: .3s;
 
@@ -62,7 +88,7 @@
         // }
 
         input {
-            background-color: #666;
+            background-color: $grey-dark;
             border: 0;
             // border-bottom: 2px solid grey;
             text-align: end;
@@ -93,9 +119,31 @@
     background-color: white;
     font-size: 3rem;
     color: black;
-    background-color: #666;
+    background-color: $grey-dark;
 
     &:hover {
         cursor: pointer;
     }
 }
+
+#Link5 {
+    color: black;
+    font-size: 1.8rem;
+    background-color: $grey-dark;
+    width: 100%;
+    text-align: end;
+    padding: 1rem 2.5rem 1rem 0;
+    transition: .3s;
+
+    &:hover {
+        text-decoration: none;
+        color: $yellow;
+        transform: translateX(-20px);
+        background-color: $grey-dark3;
+        padding-right: 1rem;
+    }
+}
+
+// #Link4:hover + .hiddenNav-dropDown {
+//     display: flex;
+// }

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import HiddenNav from './HiddenNav/HiddenNav';
 import { toggleHiddenNav } from '../../../Redux/actions';
 import { connect } from 'react-redux';
 
@@ -14,17 +13,19 @@ const navBar = (props) => {
                 <div className="navBar__section-rightSide">
                     <span id="Link" className="navBar__section-rightSide-category">תמיכה
                         <div className="navBar__section-rightSide-category-dropDown">
-                            <Link id="Link2" to="/support/authorized-sellers">משווקים מורשים</Link>
-                            <Link id="Link2" to="/support/spare-parts">אביזרים</Link>
-                            <Link id="Link2" to="/support/contact">צור קשר</Link>
+                            <Link id="Link2" to="/authorized-sellers">משווקים מורשים</Link>
+                            <Link id="Link2" to="/service-locations">נקודות שירות</Link>
+                            <Link id="Link2" to="/spare-parts">אביזרים</Link>
+                            <Link id="Link2" to="/contact">צור קשר</Link>
                         </div>
                     </span>
                     <Link id="Link" to="/about" className="navBar__section-rightSide-category">אודותינו</Link>
                     <span id="Link" to="/recipes" className="navBar__section-rightSide-category">מתכונים
                         <div className="navBar__section-rightSide-category-dropDown">
-                            <Link id="Link2" to="/recipes/entrees">מנות ראשונות</Link>
-                            <Link id="Link2" to="/recipes/main-courses">עקריות</Link>
-                            <Link id="Link2" to="/recipes/deserts">קינוחים</Link>
+                            <Link id="Link2" to="/recipes/vegan">טבעונים</Link>
+                            <Link id="Link2" to="/recipes/vegetarian">צמחונים</Link>
+                            <Link id="Link2" to="/recipes/dairy">חלביים</Link>
+                            <Link id="Link2" to="/recipes/meaty">בשריים</Link>
                         </div>
                     </span>
                     <span id="Link" className="navBar__section-rightSide-category">מוצרים
@@ -41,7 +42,7 @@ const navBar = (props) => {
                 </div>
                 <div className="navBar__section-rightSide-icons">
                     <Link id="Link3" to="/cart"><ion-icon id="cart-logo" name="cart"></ion-icon></Link>
-                    <Link id="Link3" to="/search-result"><ion-icon id="search-button" name="search"></ion-icon></Link>
+                    <ion-icon id="search-button" name="search"></ion-icon>
                     <ion-icon onClick={props.toggleNav} id="navigation-icon" name="menu"></ion-icon>
                 </div>
             </div>
@@ -51,7 +52,10 @@ const navBar = (props) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        toggleNav: () => dispatch(toggleHiddenNav()),
+        toggleNav: () => {
+            dispatch(toggleHiddenNav());
+            dispatch({type: 'CLOSE_DROP_DOWN'});
+        }
     }
 }
 

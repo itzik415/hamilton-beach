@@ -310,7 +310,7 @@ body::before {
   @media screen and (min-width: 1001px) {
     .hiddenNav {
       display: none; } }
-  .hiddenNav-category {
+  .hiddenNav-category1, .hiddenNav-category2, .hiddenNav-category3, .hiddenNav-category4, .hiddenNav-category5 {
     background-color: white;
     text-align: end;
     font-size: 2rem;
@@ -320,14 +320,18 @@ body::before {
     background-color: #666;
     border-bottom: 1px solid grey;
     transition: .3s; }
-    .hiddenNav-category:hover, .hiddenNav-category:active {
+    .hiddenNav-category1:hover, .hiddenNav-category1:active, .hiddenNav-category2:hover, .hiddenNav-category2:active, .hiddenNav-category3:hover, .hiddenNav-category3:active, .hiddenNav-category4:hover, .hiddenNav-category4:active, .hiddenNav-category5:hover, .hiddenNav-category5:active {
       color: #fc0;
       cursor: pointer;
       text-decoration: none;
       background-color: #242424;
       transform: translateX(-15px); }
-    .hiddenNav-category-dropDown {
-      display: none; }
+  .hiddenNav-dropDown {
+    display: none;
+    width: 100%;
+    background-color: #fc0;
+    align-items: flex-end;
+    flex-direction: column; }
   .hiddenNav-categorySearch {
     background-color: white;
     display: flex;
@@ -369,6 +373,21 @@ body::before {
   background-color: #666; }
   #search-button-hidden:hover {
     cursor: pointer; }
+
+#Link5 {
+  color: black;
+  font-size: 1.8rem;
+  background-color: #666;
+  width: 100%;
+  text-align: end;
+  padding: 1rem 2.5rem 1rem 0;
+  transition: .3s; }
+  #Link5:hover {
+    text-decoration: none;
+    color: #fc0;
+    transform: translateX(-20px);
+    background-color: #242424;
+    padding-right: 1rem; }
 
 /*---- NUMBER OF SLIDE CONFIGURATION ----*/
 .slider {
@@ -782,7 +801,7 @@ article img {
 
 .about {
   max-width: 1400px;
-  margin: 0 auto;
+  margin: 1rem auto;
   padding: 40px 0 50px 0;
   display: flex;
   flex-direction: column;
@@ -924,6 +943,9 @@ article img {
             font-family: "Suez One", serif;
             margin: 0 10px; }
 
+.instructions-text {
+  cursor: pointer; }
+
 #tag-icon {
   font-size: 3rem; }
 
@@ -951,8 +973,8 @@ article img {
 .recipeHeader__section {
   width: 100%;
   height: 380px;
-  margin-top: 2rem;
-  background-color: #242424;
+  margin-top: 1rem;
+  background-color: #666;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -985,7 +1007,8 @@ article img {
 
 .productPage {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  margin-top: 1rem; }
   .productPage-accordion-line, .productPage-accordion-line2 {
     border: 1px solid grey;
     border-right: 0;
@@ -1098,7 +1121,7 @@ article img {
 .productHeader__section {
   width: 100%;
   height: 380px;
-  margin-top: 2rem;
+  margin-top: 1rem;
   background-color: #000000;
   display: flex;
   justify-content: center;
@@ -1132,7 +1155,7 @@ article img {
 
 .contactPage {
   max-width: 850px;
-  margin: 0 auto; }
+  margin: 1rem auto; }
   .contactPage-locationDetails {
     display: flex;
     justify-content: space-between;
@@ -1147,7 +1170,7 @@ article img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 3rem auto; }
+  margin: 0rem auto; }
   .contact-title {
     border-bottom: 2px solid black;
     font-family: "Suez One", serif;
@@ -1412,3 +1435,82 @@ article img {
     .storeDetails-info p span {
       color: #ff3c3c;
       font-size: 2rem; }
+
+.authorizedSellers {
+  max-width: 1400px;
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .authorizedSellers-title {
+    font-size: 4rem;
+    border-bottom: 2px solid black;
+    font-family: "Suez One", serif; }
+  .authorizedSellers-chart {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 0; }
+    .authorizedSellers-chart-header {
+      display: flex;
+      text-align: end;
+      font-size: 3rem;
+      font-weight: bolder;
+      align-items: flex-end; }
+      .authorizedSellers-chart-header h1 {
+        flex: 1;
+        border: 1px solid black;
+        text-align: center;
+        font-weight: 900;
+        margin: 0; }
+    .authorizedSellers-chart-line {
+      display: flex;
+      text-align: end;
+      justify-content: space-around; }
+      .authorizedSellers-chart-line p {
+        flex: 1;
+        font-size: 1.8rem;
+        border: 1px solid black;
+        text-align: center;
+        margin: 0; }
+
+.serviceLocations {
+  max-width: 1400px;
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .serviceLocations-title {
+    font-size: 4rem;
+    border-bottom: 2px solid black;
+    font-family: "Suez One", serif; }
+  .serviceLocations-para {
+    font-size: 2rem;
+    margin: 2rem 0; }
+  .serviceLocations-chart {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 0; }
+    .serviceLocations-chart-header {
+      display: flex;
+      text-align: end;
+      font-size: 3rem;
+      font-weight: bolder;
+      align-items: flex-end; }
+      .serviceLocations-chart-header h1 {
+        flex: 1;
+        border: 1px solid black;
+        text-align: center;
+        font-weight: 900;
+        margin: 0; }
+    .serviceLocations-chart-line {
+      display: flex;
+      text-align: end;
+      justify-content: space-around; }
+      .serviceLocations-chart-line p {
+        flex: 1;
+        font-size: 1.8rem;
+        border: 1px solid black;
+        text-align: center;
+        margin: 0; }

@@ -36,14 +36,14 @@ const footer = () => {
                 <div className="footer__section-navigation">
                     <h1 className="footer__section-navigation-title">מפת האתר</h1>
                     <Link className="footer__section-navigation-mainPage" to="/"><p>ראשי</p></Link>
+                    <Link className="footer__section-navigation-products" to="/products"><p>מוצרים</p></Link>
                     <Link className="footer__section-navigation-recipes" to="/recipes"><p>מתכונים</p></Link>
-                    <Link className="footer__section-navigation-authorizedSellers" to="/support/authorized-sellers"><p>משווקים מורשים</p></Link>
+                    <Link className="footer__section-navigation-authorizedSellers" to="/authorized-sellers"><p>משווקים מורשים</p></Link>
                     <Link className="footer__section-navigation-about" to="/about"><p>אודותינו</p></Link>
-                    <Link className="footer__section-navigation-contact" to="/support/contact"><p>צור קשר</p></Link>
+                    <Link className="footer__section-navigation-contact" to="/contact"><p>צור קשר</p></Link>
                 </div>
             </div>
-            <p className="footer-copyright">© כל הזכויות שמורות לחברת שאוליאן סחר בע״מ 2019
-</p>
+            <p className="footer-copyright">© כל הזכויות שמורות לחברת שאוליאן סחר בע״מ 2019</p>
         </div>
     )
 }

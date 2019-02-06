@@ -87,49 +87,49 @@ const recipePage = (props) => {
                     <div className="recipePage-details-div-leftSide-instructions">
                         <input type="checkbox" id="btnControl0"/>
                         <label htmlFor="btnControl0">
-                            <p><span>.1</span>מערבבים ידנית את כל החומרים בתוך קערה ולשים 3 דקות לקבלת בצק רך ודביק. אם הבצק יבש מדי, מוסיפים כף מים בכל פעם עד שמתקבל מרקם אלסטי. מכסים בניילון נצמד ומניחים במקרר ל-30 דקות</p>
+                            <p className="instructions-text"><span>.1</span>מערבבים ידנית את כל החומרים בתוך קערה ולשים 3 דקות לקבלת בצק רך ודביק. אם הבצק יבש מדי, מוסיפים כף מים בכל פעם עד שמתקבל מרקם אלסטי. מכסים בניילון נצמד ומניחים במקרר ל-30 דקות</p>
                         </label>
                     </div>
                     <div className="recipePage-details-div-leftSide-instructions">
                         <input type="checkbox" id="btnControl1"/>
                         <label htmlFor="btnControl1">
-                            <p><span>.2</span>מערבבים ידנית את כל החומרים בתוך קערה ולשים 3 דקות לקבלת בצק רך ודביק. אם הבצק יבש מדי, מוסיפים כף מים בכל פעם עד שמתקבל מרקם אלסטי. מכסים בניילון נצמד ומניחים במקרר ל-30 דקות</p>
+                            <p className="instructions-text"><span>.2</span>מערבבים ידנית את כל החומרים בתוך קערה ולשים 3 דקות לקבלת בצק רך ודביק. אם הבצק יבש מדי, מוסיפים כף מים בכל פעם עד שמתקבל מרקם אלסטי. מכסים בניילון נצמד ומניחים במקרר ל-30 דקות</p>
                         </label>
                     </div>
                     <div className="recipePage-details-div-leftSide-instructions">
                         <input type="checkbox" id="btnControl2"/>
                         <label htmlFor="btnControl2">
-                            <p><span>.3</span>מערבבים ידנית את כל החומרים בתוך קערה ולשים 3 דקות לקבלת בצק רך ודביק. אם הבצק יבש מדי, מוסיפים כף מים בכל פעם עד שמתקבל מרקם אלסטי. מכסים בניילון נצמד ומניחים במקרר ל-30 דקות</p>
+                            <p className="instructions-text"><span>.3</span>מערבבים ידנית את כל החומרים בתוך קערה ולשים 3 דקות לקבלת בצק רך ודביק. אם הבצק יבש מדי, מוסיפים כף מים בכל פעם עד שמתקבל מרקם אלסטי. מכסים בניילון נצמד ומניחים במקרר ל-30 דקות</p>
                         </label>
                     </div>
                     <div className="recipePage-details-div-leftSide-instructions">
                         <input type="checkbox" id="btnControl3"/>
                         <label htmlFor="btnControl3">
-                            <p><span>.4</span>מערבבים ידנית את כל החומרים בתוך קערה ולשים 3 דקות לקבלת בצק רך ודביק. אם הבצק יבש מדי, מוסיפים כף מים בכל פעם עד שמתקבל מרקם אלסטי. מכסים בניילון נצמד ומניחים במקרר ל-30 דקות</p>
+                            <p className="instructions-text"><span>.4</span>מערבבים ידנית את כל החומרים בתוך קערה ולשים 3 דקות לקבלת בצק רך ודביק. אם הבצק יבש מדי, מוסיפים כף מים בכל פעם עד שמתקבל מרקם אלסטי. מכסים בניילון נצמד ומניחים במקרר ל-30 דקות</p>
                         </label>
                     </div>
                     <div className="recipePage-details-div-leftSide-instructions">
                         <input type="checkbox" id="btnControl4"/>
                         <label htmlFor="btnControl4">
-                            <p><span>.5</span>מערבבים ידנית את כל החומרים בתוך קערה ולשים 3 דקות לקבלת בצק רך ודביק. אם הבצק יבש מדי, מוסיפים כף מים בכל פעם עד שמתקבל מרקם אלסטי. מכסים בניילון נצמד ומניחים במקרר ל-30 דקות</p>
+                            <p className="instructions-text"><span>.5</span>מערבבים ידנית את כל החומרים בתוך קערה ולשים 3 דקות לקבלת בצק רך ודביק. אם הבצק יבש מדי, מוסיפים כף מים בכל פעם עד שמתקבל מרקם אלסטי. מכסים בניילון נצמד ומניחים במקרר ל-30 דקות</p>
                         </label>
                     </div>
                     <div className="recipePage-details-div-leftSide-instructions">
                         <input type="checkbox" id="btnControl5"/>
                         <label htmlFor="btnControl5">
-                            <p><span>.6</span>מערבבים ידנית את כל החומרים בתוך קערה ולשים 3 דקות לקבלת בצק רך ודביק. אם הבצק יבש מדי, מוסיפים כף מים בכל פעם עד שמתקבל מרקם אלסטי. מכסים בניילון נצמד ומניחים במקרר ל-30 דקות</p>
+                            <p className="instructions-text"><span>.6</span>מערבבים ידנית את כל החומרים בתוך קערה ולשים 3 דקות לקבלת בצק רך ודביק. אם הבצק יבש מדי, מוסיפים כף מים בכל פעם עד שמתקבל מרקם אלסטי. מכסים בניילון נצמד ומניחים במקרר ל-30 דקות</p>
                         </label>
                     </div>
                     <div className="recipePage-details-div-leftSide-instructions">
                         <input type="checkbox" id="btnControl6"/>
                         <label htmlFor="btnControl6">
-                            <p><span>.7</span>מערבבים ידנית את כל החומרים בתוך קערה ולשים 3 דקות לקבלת בצק רך ודביק. אם הבצק יבש מדי, מוסיפים כף מים בכל פעם עד שמתקבל מרקם אלסטי. מכסים בניילון נצמד ומניחים במקרר ל-30 דקות</p>
+                            <p className="instructions-text"><span>.7</span>מערבבים ידנית את כל החומרים בתוך קערה ולשים 3 דקות לקבלת בצק רך ודביק. אם הבצק יבש מדי, מוסיפים כף מים בכל פעם עד שמתקבל מרקם אלסטי. מכסים בניילון נצמד ומניחים במקרר ל-30 דקות</p>
                         </label>
                     </div>
                     <div className="recipePage-details-div-leftSide-instructions">
                         <input type="checkbox" id="btnControl7"/>
                         <label htmlFor="btnControl7">
-                            <p><span>.8</span>מערבבים ידנית את כל החומרים בתוך קערה ולשים 3 דקות לקבלת בצק רך ודביק. אם הבצק יבש מדי, מוסיפים כף מים בכל פעם עד שמתקבל מרקם אלסטי. מכסים בניילון נצמד ומניחים במקרר ל-30 דקות</p>
+                            <p className="instructions-text"><span>.8</span>מערבבים ידנית את כל החומרים בתוך קערה ולשים 3 דקות לקבלת בצק רך ודביק. אם הבצק יבש מדי, מוסיפים כף מים בכל פעם עד שמתקבל מרקם אלסטי. מכסים בניילון נצמד ומניחים במקרר ל-30 דקות</p>
                         </label>
                     </div>
                 </div>

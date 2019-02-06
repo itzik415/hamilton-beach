@@ -4,6 +4,7 @@ export const initialState = {
     accordionToggleDis1: 'none',
     accordionToggleDis2: 'none',
     translateYHidden: '-400px',
+    dropDown: 'none',
     error: '',
 }
 
@@ -44,6 +45,17 @@ export const rootReducer = (state = initialState, action) => {
             return {
                 ...state, 
                 translateYHidden: '-400px'
+            }
+        case 'OPEN_DROP_DOWN':   
+            return {
+                ...state, 
+                dropDown: 'flex'
+            }
+
+        case 'CLOSE_DROP_DOWN':   
+            return {
+                ...state, 
+                dropDown: 'none'
             }
 
         case 'ERROR':
