@@ -8,15 +8,12 @@ const hiddenNav = (props) => {
         transition: '1s',
         transform: `translateY(${props.translateY})`,
     }
-    const style2 = {
-        display: `${props.dropDown}`
-    }
 
     return (
         <div className="hiddenNav" style={style}>
 
-            <span onClick={props.toggleDropDown} id="Link4"  className="hiddenNav-category1">תמיכה</span>
-            <div className="hiddenNav-dropDown" style={style2}>
+            <span onClick={props.toggleDropDown} id="Link4"  className="dropD hiddenNav-category1">תמיכה</span>
+            <div className="hiddenNav-dropDown">
                 <Link id="Link5" to="/authorized-sellers">משווקים מורשים</Link>
                 <Link id="Link5" to="/spare-parts">אביזרים</Link>
                 <Link id="Link5" to="/contact">צור קשר</Link>
@@ -24,15 +21,15 @@ const hiddenNav = (props) => {
 
             <Link id="Link4" to="/about" className="hiddenNav-category2">אודותינו</Link>
 
-            <span onClick={props.toggleDropDown} id="Link4" to="/recipes" className="hiddenNav-category3">מתכונים</span>
-            <div className="hiddenNav-dropDown" style={style2}>
+            <span onClick={props.toggleDropDown} id="Link4" to="/recipes" className="dropD hiddenNav-category3">מתכונים</span>
+            <div className="hiddenNav-dropDown">
                 <Link id="Link5" to="/recipes/vegan">טבעוניים</Link>
                 <Link id="Link5" to="/recipes/vegetarian">צמחוניים</Link>
                 <Link id="Link5" to="/recipes/milky">חלביים</Link>
                 <Link id="Link5" to="/recipes/meaty">בשריים</Link>
             </div>
 
-            <span id="Link4" className="hiddenNav-category4">מוצרים</span>
+            <span onClick={props.toggleDropDown} id="Link4" className="dropD hiddenNav-category4">מוצרים</span>
             <div className="hiddenNav-dropDown">
                 <Link id="Link5" to="/products/blenders">בלנדרים</Link>
                 <Link id="Link5" to="/products/waffle-makers">וופל מייקר</Link>
@@ -63,7 +60,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        toggleDropDown: () => dispatch(toggleDropDown()),
+        toggleDropDown: (e) => dispatch(toggleDropDown(e)),
     }
 }
 

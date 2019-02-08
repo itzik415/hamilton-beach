@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { toggleHiddenNav } from '../../../Redux/actions';
+import { toggleHiddenNav, closeAll } from '../../../Redux/actions';
 import { connect } from 'react-redux';
 
 const navBar = (props) => {
@@ -54,7 +54,8 @@ const mapDispatchToProps = dispatch => {
     return {
         toggleNav: () => {
             dispatch(toggleHiddenNav());
-            dispatch({type: 'CLOSE_DROP_DOWN'});
+            dispatch(closeAll());
+            // dispatch({type: 'CLOSE_DROP_DOWN'});
         }
     }
 }

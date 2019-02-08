@@ -4,7 +4,6 @@ import Trending from './Trending/Trending';
 import Recipes from './Recipes/Recipes';
 import Products from './Products/Products';
 import { connect } from 'react-redux';
-// import {store} from '../../Redux/store';
 import { getSliderImages } from '../../Redux/actions';
 
 

@@ -4,7 +4,7 @@ export const initialState = {
     accordionToggleDis1: 'none',
     accordionToggleDis2: 'none',
     translateYHidden: '-400px',
-    dropDown: 'none',
+    serviceLocationsList: [],
     error: '',
 }
 
@@ -14,6 +14,12 @@ export const rootReducer = (state = initialState, action) => {
             return {
                 ...state, 
                 sliderImages: action.payload,
+            }
+        case 'RECIVE_SERVICE_LOCATIONS':
+        // console.log("dsd");
+            return {
+                ...state, 
+                serviceLocationsList: action.payload,
             }
         case 'OPEN_ACCORDION_1':
             return {
@@ -45,17 +51,6 @@ export const rootReducer = (state = initialState, action) => {
             return {
                 ...state, 
                 translateYHidden: '-400px'
-            }
-        case 'OPEN_DROP_DOWN':   
-            return {
-                ...state, 
-                dropDown: 'flex'
-            }
-
-        case 'CLOSE_DROP_DOWN':   
-            return {
-                ...state, 
-                dropDown: 'none'
             }
 
         case 'ERROR':

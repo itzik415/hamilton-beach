@@ -385,9 +385,18 @@ body::before {
   #Link5:hover {
     text-decoration: none;
     color: #fc0;
-    transform: translateX(-20px);
+    transform: translateX(-15px);
     background-color: #242424;
     padding-right: 1rem; }
+
+.displayChange {
+  display: flex; }
+
+.linkStyleChange {
+  text-decoration: none;
+  color: #fc0;
+  background-color: #242424;
+  padding-right: 1rem; }
 
 /*---- NUMBER OF SLIDE CONFIGURATION ----*/
 .slider {

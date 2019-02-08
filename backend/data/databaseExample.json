@@ -4,13 +4,13 @@
             "id": "number that is generating by the database",
             "model": "string",
             "mainImage": "src",
-            "sliderImages": ["src", "src", "src"],
             "shortDescription": "string",
             "lastPrice": "number",
             "price": "number",
             "saving": "number",
             "category": "string",
-            "features": "string"
+            "sliderImages": ["src", "src", "src"], // separate table
+            "features": ["string"] // separate table
         }]
     },
     {
@@ -33,14 +33,106 @@
             "time": "string",
             "kosher": "string",
             "type": "string",
-            "ingredients": ["string", "string"],
-            "instructions": ["string", "string"],
-            "descriptionList": ["string", "string"]
-        }],
-            
+            "recipeingredients": ["string", "string"], // separate table
+            "recipeinstructions": ["string", "string"], // separate table
+            "recipeproperties": ["string", "string"] // separate table
+        }]
+    },
+    {
         "slider": [{
             "id":"number that is generating by the database",
             "image":"src"
         }]
+    },
+    {
+        "authorizedSellers": [{
+            "id":"number that is generating by the database",
+            "name":"string",
+            "city": "string",
+            "address": "string",
+            "phoneNumber": "number"
+        }]
+    },
+    {
+        "serviceLocations": [{
+            "id":"number that is generating by the database",
+            "name":"string",
+            "city": "string",
+            "address": "string",
+            "phoneNumber": "number"
+        }]
     }
 ]
+
+ALTER TABLE sliderimages RENAME TO promotional-images;
+
+INSERT into products(model,mainimage,shortdescription,lastprice,price,saving,category) VALUES(58149, 'https://www.hamiltonbeach.com/media/products/blender-chopper-58149.jpg', 'מותאם לכל סוגי השייקים כולל פירות וירקות קשים', 299.99, 249.99, 50, 'blenders');
+
+CREATE TABLE recipes(
+    id SERIAL PRIMARY KEY,
+    name text NOT NULL, 
+    mainimage text NOT NULL, 
+    category text NOT NULL, 
+    level text NOT NULL, 
+    cookingtime smallint NOT NULL, 
+    kosher text NOT NULL, 
+    type text NOT NULL
+);
+
+INSERT into servicelocations(name,city,address,phonenumber) 
+VALUES(046903674, '44 רסקו', 'קרית שמונה', 'שרות רם');
+
+CREATE TABLE recipeingredients(
+    id SERIAL PRIMARY KEY,
+    recipe_id smallint NOT NULL,
+    ingredient text NOT NULL
+);
+
+CREATE TABLE recipeinstructions(
+    id SERIAL PRIMARY KEY,
+    recipe_id smallint NOT NULL,
+    instructions text NOT NULL
+);
+
+CREATE TABLE recipeproperties(
+    id SERIAL PRIMARY KEY,
+    recipe_id smallint NOT NULL,
+    property text NOT NULL
+);
+
+CREATE TABLE productfeature(
+    id SERIAL PRIMARY KEY,
+    product_id smallint NOT NULL,
+    feature text NOT NULL
+);
+
+CREATE TABLE spareparts(
+    id SERIAL PRIMARY KEY,
+    imageURL text NOT NULL,
+    model text NOT NULL,
+    category text NOT NULL,
+    price smallint NOT NULL,
+    name text NOT NULL
+);
+CREATE TABLE authorizedsellers(
+    id SERIAL PRIMARY KEY,
+    name text NOT NULL,
+    city text NOT NULL,
+    address text NOT NULL,
+    phonenumber bigint NOT NULL
+);
+CREATE TABLE servicelocations(
+    id SERIAL PRIMARY KEY,
+    name text NOT NULL,
+    city text NOT NULL,
+    address text NOT NULL,
+    phonenumber integer NOT NULL
+);
+
+CREATE TABLE servicelocations(
+    id SERIAL PRIMARY KEY,
+    phonenumber integer NOT NULL,
+    address text NOT NULL,
+    city text NOT NULL,
+    name text NOT NULL
+);

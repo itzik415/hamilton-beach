@@ -35,7 +35,8 @@ const Slider = (props) => {
                     props.sliderImages.map((item) => {
                         return(
                             <article key={item.id}>
-                                <img src={item.imageSrc}  alt="slider company"/>
+                                {/* <img src={item.imageSrc}  alt="slider company"/> */}
+                                <img src={item.imageurl}  alt="slider company"/>
                             </article>
                         )
                     }) 
