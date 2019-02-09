@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 const contact = () => {
     return (
     <form className="contact">
-        <h1 className="contact-title">צור קשר</h1>
         <div className="contact-topFields">
             <div className="contact-topFields-email">
                 <input 

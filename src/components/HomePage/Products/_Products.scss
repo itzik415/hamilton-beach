@@ -98,7 +98,7 @@
                     }
     
                     &-price {
-                        font-size: 4rem;
+                        font-size: 3rem;
                         margin: 0;
                         font-weight: 100;
                         letter-spacing: -2px;
@@ -131,14 +131,14 @@
                         position: relative;
                         overflow: hidden;
                         padding: 1rem 3rem;
-                        color: $main-color;
+                        color: $white;
                         font-weight: 700;
-                        background-color: $yellow;
+                        background-color: #c82027;
                         transition-duration: 0.3s;
-                        font-size: 2rem;
+                        font-size: 1.5rem;
                         cursor: pointer;
                         display: flex;
-                        width: 200px;
+                        // width: 130px;
                         margin-left: auto;
                         justify-content: center;
     

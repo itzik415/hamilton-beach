@@ -5,12 +5,6 @@
     align-items: center;
     margin: 0rem auto;
 
-    &-title {
-        border-bottom: 2px solid black;
-        font-family: $suez-font;
-        font-size: 4rem;
-    }
-
     &-topFields,
     &-bottomFields {
         display: flex;
@@ -196,9 +190,9 @@
         margin: 1rem 0;
         color: $white;
         border-radius: 3px;
-        border: 5px solid #3cff9d;
+        border: 5px solid #c82027;
         cursor: pointer;
-        background-color: #3cff9d;
+        background-color: #c82027;
     }
 }
 

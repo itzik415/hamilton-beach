@@ -10,6 +10,10 @@ import ProductPage from './components/ProductPage/ProductPage';
 import ContactPage from './components/ContactPage/ContactPage';
 import AuthorizedSellersPage from './components/AuthorizedSellersPage/AuthorizedSellersPage';
 import ServiceLocationsPage from './components/ServiceLocationsPage/ServiceLocationsPage';
+import FoodTypePage from './components/FoodTypePage/FoodTypePage';
+import AllRecipesPage from './components/AllRecipesPage/AllRecipesPage';
+import AllProductsPage from './components/AllProductsPage/AllProductsPage';
+import SparePartsPage from './components/SparePartsPage/SparePartsPage';
 
 const Main = () => {
     return (
@@ -21,9 +25,12 @@ const Main = () => {
                 <Route path='/contact' component={ContactPage} />
                 <Route path='/authorized-sellers' component={AuthorizedSellersPage} />
                 <Route path='/service-locations' component={ServiceLocationsPage} />
-                <Route path='/recipes/:category/:name' component={RecipePage} />
-                <Route path='/products/:category/:name' component={ProductPage} />
-                {/* <Route path='/article/:name' component={articlePage} /> */}
+                <Route path='/spare-parts' component={SparePartsPage} />
+                <Route exact path='/recipes' component={AllRecipesPage} />
+                <Route exact path='/recipes/:category' component={FoodTypePage} />
+                <Route exact path='/recipes/:category/:name' component={RecipePage} />
+                <Route exact path='/products' component={AllProductsPage} />
+                <Route exact path='/products/:category/:name' component={ProductPage} />
                 <Footer />
             </div>
         </Router>

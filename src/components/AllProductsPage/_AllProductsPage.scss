@@ -1,4 +1,4 @@
-.serviceLocations {
+.productsPage {
 
     &__section {
         width: 100%;
@@ -9,7 +9,7 @@
         justify-content: center;
         flex-direction: column;
         align-items: center;
-        background-image: url('https://www.hamiltonbeach.com/media/campaigns/support-banner-2.jpg');
+        background-image: url('https://www.hamiltonbeach.com/media/cat-headers/category_banner_hbpro.jpg');
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -24,7 +24,7 @@
             left: 0;
             right: 0;
             background-color: black;
-            opacity: 0.6;
+            opacity: 0.5;
         }
 
         &-type {
@@ -48,58 +48,26 @@
 
     &-main {
         max-width: 1400px;
-        margin: 1rem auto;
+        margin: 2rem auto;
         display: flex;
         flex-direction: column;
         align-items: center;
 
-        &-title {
-            font-size: 4rem;
-            border-bottom: 2px solid black;
-            font-family: $suez-font;
-        }
-    
-        &-para {
-            font-size: 2rem;
-            margin: 2rem 0;
-        }
-    
-        &-chart {
-            width: 100%;
+        &-shortDescription {    
             display: flex;
             flex-direction: column;
-            margin: 2rem 0;
+            align-items: flex-end;
     
-            &-header {
-                display: flex;
-                text-align: end;
-                font-size: 3rem;
+            &-title {
+                font-size: 2rem;
                 font-weight: bolder;
-                align-items: flex-end;
-                
-                h1 {
-                    flex: 1;
-                    border: 1px solid black;
-                    text-align: center;
-                    font-weight: 900;
-                    margin: 0;
-                }
-                
-            }
-            
-            &-line {
-                display: flex;
                 text-align: end;
-                justify-content: space-around;
+            }
     
-                p {
-                    flex: 1;
-                    font-size: 1.8rem;
-                    border: 1px solid black;
-                    text-align: center;
-                    margin: 0;
-                }
-                
+            &-text {
+                font-size: 2rem;
+                color: grey;
+                text-align: end;
             }
         }
     }

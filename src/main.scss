@@ -19,9 +19,15 @@
 //About page
 @import './src/components/About/About';
 
+//All Recipes page
+@import './src/components/AllRecipesPage/AllRecipesPage';
+
 //Recipe page
 @import './src/components/RecipePage/RecipePage';
 @import './src/components/RecipePage/RecipeHeader/RecipeHeader';
+
+//All Products page
+@import './src/components/AllProductsPage/AllProductsPage';
 
 //Product page
 @import './src/components/ProductPage/ProductPage';
@@ -38,6 +44,12 @@
 
 //Service Locations Page
 @import './src/components/ServiceLocationsPage/ServiceLocationsPage';
+
+//Spare Parts page
+@import './src/components/SparePartsPage/SparePartsPage';
+
+//Food type Page
+@import './src/components/FoodTypePage/FoodTypePage';
 
 
 
