@@ -1,8 +1,51 @@
 .rightSideContent {
-    height: 350px;
     width: 48%;
-    background-image: url("https://www.hamiltonbeach.com/media/article_images/vegetarian-approved-game-day-menu/vegetarian-approved-game-day_article-menu-1400-cta.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    
+    &:hover {
+        text-decoration: none;
+    }
+    
+    &__section {
+        width: 100%;
+        height: 350px;
+        background-color: $grey-dark;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        background-image: url("https://www.hamiltonbeach.com/media/cat-headers/category_banner_tips_and_tutorials.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        align-items: center;
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: black;
+            opacity: 0.4;
+        }
+
+        &-title {
+            color: white;
+            font-family: $suez-font;
+            font-size: 7rem;
+            text-align: center;
+            z-index: 10;
+            animation-name: makeItBig;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+            text-shadow: 0;
+
+            &:hover {
+                animation-play-state: paused;
+            }
+        }
+    }
 }
+
