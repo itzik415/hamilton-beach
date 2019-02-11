@@ -11,6 +11,11 @@ class HomePage extends Component {
 
   componentDidMount() {
     this.props.dispatch(getSliderImages())
+    document.body.scrollTop = 0;
+  }
+
+  componentDidUpdate() {
+    document.body.scrollTop = 0;
   }
   
   render() {

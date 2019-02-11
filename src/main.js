@@ -14,25 +14,27 @@ import FoodTypePage from './components/FoodTypePage/FoodTypePage';
 import AllRecipesPage from './components/AllRecipesPage/AllRecipesPage';
 import AllProductsPage from './components/AllProductsPage/AllProductsPage';
 import SparePartsPage from './components/SparePartsPage/SparePartsPage';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 const Main = () => {
     return (
         <Router>
-            <div className="router-div">
-                <Nav />
-                <Route exact path='/' component={HomePage} />
-                <Route path='/about' component={About} />
-                <Route path='/contact' component={ContactPage} />
-                <Route path='/authorized-sellers' component={AuthorizedSellersPage} />
-                <Route path='/service-locations' component={ServiceLocationsPage} />
-                <Route path='/spare-parts' component={SparePartsPage} />
-                <Route exact path='/recipes' component={AllRecipesPage} />
-                <Route exact path='/recipes/:category' component={FoodTypePage} />
-                <Route exact path='/recipes/:category/:name' component={RecipePage} />
-                <Route exact path='/products' component={AllProductsPage} />
-                <Route exact path='/products/:category/:name' component={ProductPage} />
-                <Footer />
-            </div>
+                <div className="router-div">
+                    <Nav />
+                    <ScrollToTop />
+                    <Route exact path='/' component={HomePage} />
+                    <Route path='/about' component={About} />
+                    <Route path='/contact' component={ContactPage} />
+                    <Route path='/authorized-sellers' component={AuthorizedSellersPage} />
+                    <Route path='/service-locations' component={ServiceLocationsPage} />
+                    <Route path='/spare-parts' component={SparePartsPage} />
+                    <Route exact path='/recipes' component={AllRecipesPage} />
+                    <Route exact path='/recipes/:category' component={FoodTypePage} />
+                    <Route exact path='/recipes/:category/:name' component={RecipePage} />
+                    <Route exact path='/products' component={AllProductsPage} />
+                    <Route exact path='/products/:category/:name' component={ProductPage} />
+                    <Footer />
+                </div>
         </Router>
     )
 }

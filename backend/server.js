@@ -12,13 +12,6 @@ const db = knex({
     }
 });
 
-// const fs = require('fs');
-// const pgp = require('pg-promise')();
-// const cons = require('consolidate');
-// const dust = require('dustjs-helpers');
-// const path = require('path');
-// const bodyParser = require('body-parser');
-
 const app = express();
 
 
