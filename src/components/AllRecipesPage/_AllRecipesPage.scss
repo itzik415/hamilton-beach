@@ -73,22 +73,96 @@
         font-weight: bolder;
         text-align: end;
         text-decoration: underline;
+
+        @media screen and(max-width: 654px) { 
+            text-align: center;
+        }
     }
 
     &-recipesPart {
         max-width: 1400px;
         margin: 1rem auto;
-
+        display: flex;
+        @media screen and(max-width: 1015px) {
+            flex-direction: column-reverse;
+        }
+        
         &-leftSide {
+            display: flex;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            width: 75%;
 
+            @media screen and(max-width: 1015px) {
+                width: 100%;
+            }
+            
+
+            &-imageDiv {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                margin: 2rem 1rem;
+                color: black;
+                transition: .3s;
+                overflow:hidden;
+
+                @media screen and(max-width: 654px) { 
+                    margin: 1rem 0;
+                }
+                
+
+                &:hover {
+                    text-decoration: none;
+                    color: black;
+                }
+                
+                img {
+                    width: 330px;
+                    height: 330px;
+                    object-fit: cover;
+                    transition: .3s;
+                    transform-origin: 50% 100%;
+
+                    @media screen and(max-width: 654px) { 
+                        width: 100%;
+                        height: 380px;
+                        margin: inherit 0;
+                    }
+                    
+
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+                }
+                
+                p{
+                    background-color: lightgreen;
+                    padding: 0.5rem;
+                    width: 100%;
+                    text-align: end;
+                    font-size: 1.6rem;
+                    font-weight: 900;
+                }
+            }
         }
 
         &-rightSide {
             display: flex;
             flex-direction: column;
             margin-top: 1rem;
-            width: 25%;
-            margin-left: auto;
+            width: 350px;
+
+            
+            @media screen and(max-width: 1015px) {
+                margin-left: auto;
+                max-width: 350px;
+                flex-direction: row;
+            }
+
+            @media screen and(max-width: 654px) { 
+                min-width: 100%;
+            }
             
             &-div {
                 display: flex;
@@ -96,35 +170,62 @@
                 align-items: flex-end;
                 justify-items: center;
                 width: 100%;
+
+                @media screen and(max-width: 654px) { 
+                    align-items: center;
+                }
                 
                 &-text {
-                    background-color: $red;
-                    width: 50%;
+                    width: 70%;
+
+                    @media screen and(max-width: 654px) { 
+                        min-width: 100%;
+                    }
                 }
 
                 p {
-                    margin: 0;
+                    margin: 1rem 0;
                     transition: .3s;
-                    background-color: $grey-light;
                     text-align: end;
                     padding:1rem 2rem 1rem 0;
                     font-size: 1.5rem;
-                    border: 1px solid black;
                     color: $main-color;
-
+                    position: relative;
+                    border: 2px solid grey;
+                    
                     &:hover {
-                        transform: translateX(-15px);
-                        font-weight: 900;
+
+                        
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            z-index: -1;
+                            top: 0;
+                            bottom: 0;
+                            right: 0;
+                            animation-name: textBackground;
+                            animation-iteration-count: 1;
+                            animation-duration: .8s;
+                        }
                     }
+                    
                 }
             }
         }
     }
 }
+@keyframes textBackground {
+    0% {
+        width: 0;
+    }
+    100%{
+        background-color: $grey-light;
+        width: 100%;
+    }
+}
 
 #recipe-type {
     transition: .3s;
-    // color: black;
     
 
     &:hover {

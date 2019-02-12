@@ -24,15 +24,35 @@ const allRecipes = (props) => {
             <h1 className="allRecipes-filterTitle">סינון</h1>
             <div className="allRecipes-recipesPart">
                 <div className="allRecipes-recipesPart-leftSide">
-
+                    <Link to="/recipes/:name" className="allRecipes-recipesPart-leftSide-imageDiv">
+                        <img src="https://foodrevolution.org/wp-content/uploads/2018/04/blog-featured-diabetes-20180406-1330.jpg" alt="sdfs" />
+                        <p>שייק פירות</p>
+                    </Link>
+                    <Link to="/recipes/:name" className="allRecipes-recipesPart-leftSide-imageDiv">
+                        <img src="https://foodrevolution.org/wp-content/uploads/2018/04/blog-featured-diabetes-20180406-1330.jpg" alt="sdfs" />
+                        <p>שייק פירות</p>
+                    </Link>
+                    <Link to="/recipes/:name" className="allRecipes-recipesPart-leftSide-imageDiv">
+                        <img src="https://foodrevolution.org/wp-content/uploads/2018/04/blog-featured-diabetes-20180406-1330.jpg" alt="sdfs" />
+                        <p>שייק פירות</p>
+                    </Link>
+                    <Link to="/recipes/:name" className="allRecipes-recipesPart-leftSide-imageDiv">
+                        <img src="https://foodrevolution.org/wp-content/uploads/2018/04/blog-featured-diabetes-20180406-1330.jpg" alt="sdfs" />
+                        <p>שייק פירות</p>
+                    </Link>
+                    <Link to="/recipes/:name" className="allRecipes-recipesPart-leftSide-imageDiv">
+                        <img src="https://foodrevolution.org/wp-content/uploads/2018/04/blog-featured-diabetes-20180406-1330.jpg" alt="sdfs" />
+                        <p>שייק פירות</p>
+                    </Link>
                 </div>
                 <div className="allRecipes-recipesPart-rightSide">
                     <div className="allRecipes-recipesPart-rightSide-div">
                         <div className="allRecipes-recipesPart-rightSide-div-text">
-                            <Link id="recipe-type" to='/recipes/vegan'><p>טבעוניים -</p></Link>
-                            <Link id="recipe-type" to='/recipes/vegetarian'><p>צמחוניים -</p></Link>
-                            <Link id="recipe-type" to='/recipes/milky'><p>חלביים -</p></Link>
-                            <Link id="recipe-type" to='/recipes/meaty'><p>בשריים -</p></Link>
+                            <Link id="recipe-type" to='/recipes/vegan'><p>כל המתכונים</p></Link>
+                            <Link id="recipe-type" to='/recipes/vegan'><p>טבעוניים</p></Link>
+                            <Link id="recipe-type" to='/recipes/vegetarian'><p>צמחוניים</p></Link>
+                            <Link id="recipe-type" to='/recipes/milky'><p>חלביים</p></Link>
+                            <Link id="recipe-type" to='/recipes/meaty'><p>בשריים</p></Link>
                         </div>
                     </div>
                 </div>

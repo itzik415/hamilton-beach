@@ -68,15 +68,15 @@ ALTER TABLE sliderimages RENAME TO promotional-images;
 
 INSERT into products(model,mainimage,shortdescription,lastprice,price,saving,category) VALUES(58149, 'https://www.hamiltonbeach.com/media/products/blender-chopper-58149.jpg', 'מותאם לכל סוגי השייקים כולל פירות וירקות קשים', 299.99, 249.99, 50, 'blenders');
 
-CREATE TABLE recipes(
+CREATE TABLE products(
     id SERIAL PRIMARY KEY,
-    name text NOT NULL, 
-    mainimage text NOT NULL, 
-    category text NOT NULL, 
-    level text NOT NULL, 
-    cookingtime smallint NOT NULL, 
-    kosher text NOT NULL, 
-    type text NOT NULL
+    type text NOT NULL,
+    category text NOT NULL,
+    price integer NOT NULL,
+    lastprice integer NOT NULL,
+    shortdescription text NOT NULL,
+    mainimage text NOT NULL,
+    model text NOT NULL
 );
 
 INSERT into servicelocations(name,city,address,phonenumber) 

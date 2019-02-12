@@ -21,6 +21,15 @@ export function getServiceLocations() {
     }
 }
 
+export function getProducts() {
+    return function(dispatch) {
+        fetch('http://localhost:5000/api/products')
+            .then(response => response.json())
+            .then(myJson => dispatch({type: 'RECIVE_PRODUCTS', payload: myJson.map(value => value)}))
+            .catch(err => dispatch({type: 'ERROR', payload: err}));
+    }
+}
+
 export function accordionToggle1 () {
     if(store.getState().accordionToggleDis1 === 'none'){
         return {type: 'OPEN_ACCORDION_1'}

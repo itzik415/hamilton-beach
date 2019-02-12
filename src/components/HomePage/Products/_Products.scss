@@ -22,6 +22,7 @@
             &-product {
                 display: flex;
                 margin-bottom: 1rem;
+                width: 50%;
 
                 @media screen and (max-width: 1400px) {
                     width: 100%;
@@ -37,6 +38,7 @@
                     width: 50%;
                     height: 100%;
                     border: 2px solid $grey-light;
+                    object-fit: cover;
 
                     @media screen and (max-width: 1400px) {
                         width: 50%;
@@ -111,18 +113,6 @@
                         font-weight: 100;
                         color: #06c;
                         transform: skew(-10deg);
-
-                        @media screen and(min-width: 1400px) {
-                            display: none;
-                        }
-
-                        @media screen and(max-width: 940px) {
-                            display: none;
-                        }
-
-                        @media screen and(max-width: 660px) {
-                            display: block;
-                        }
                     }   
     
                     &-cart {
