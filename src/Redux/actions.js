@@ -1,4 +1,5 @@
 import { store } from "./store";
+import { initialState } from './reducer';
 
 // Slider actions
 
@@ -12,6 +13,7 @@ export function getSliderImages() {
     }
 }
 
+//Importing the service locations 
 export function getServiceLocations() {
     return function(dispatch) {
         fetch('http://localhost:5000/api/servicelocations')
@@ -21,6 +23,7 @@ export function getServiceLocations() {
     }
 }
 
+//Importing the proucts
 export function getProducts() {
     return function(dispatch) {
         fetch('http://localhost:5000/api/products')
@@ -73,10 +76,28 @@ export function closeAll() {
     }
 }
 
-// for(let i = 0; i < document.querySelectorAll('.hiddenNav-dropDown').length; i++) {
-//     document.querySelectorAll('.hiddenNav-dropDown')[i].style.display = 'flex';
-    // if(store.getState().dropDown === 'none') {
-        // return {type: 'OPEN_DROP_DOWN',}
-    // }
-    // return {type: 'CLOSE_DROP_DOWN',}
-// }
+//Choosing the right product
+export function getProductByClick(selectedProductId) {
+    return function(dispatch) {
+        let chosenProductArray = store.getState().products.filter(item => {
+            return selectedProductId.target.alt === item.shortdescription;
+        })
+        store.dispatch({type: 'RECIVE_RIGHT_PRODUCT', payload: initialState.chosenProduct = chosenProductArray[0]})
+    }
+}
+
+
+//Fetching the right product when refreshing the page
+export function productHandle() {
+    let urlLocation = window.location.href;
+    let pageUrl = urlLocation.slice(urlLocation.indexOf('products/')+9);
+    // .replace(/[\/\\(),.-]/, ' ').replace(/\s+/, '-').replace(/(^-|-$)/, '')
+    if(window.location.href.indexOf('products/') > -1) {
+        fetch(`http://localhost:5000/api/products/${pageUrl}`)
+            .then(response => response.json())
+            .then(myJson => store.dispatch({type: 'RECIVE_RIGHT_PRODUCT', payload: myJson[0]}))
+            .catch(err => store.dispatch({type: 'ERROR', payload: err}))
+    }else {
+        console.log('didnt find the right product')
+    }
+}

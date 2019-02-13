@@ -32,7 +32,7 @@ const Main = () => {
                     <Route exact path='/recipes/:category' component={FoodTypePage} />
                     <Route exact path='/recipes/:category/:name' component={RecipePage} />
                     <Route exact path='/products' component={AllProductsPage} />
-                    <Route exact path='/products/:category/:name' component={ProductPage} />
+                    <Route exact path='/products/:model' component={ProductPage} />
                     <Footer />
                 </div>
         </Router>

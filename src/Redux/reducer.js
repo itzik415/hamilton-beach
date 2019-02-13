@@ -6,11 +6,17 @@ export const initialState = {
     translateYHidden: '-400px',
     products: [],
     serviceLocationsList: [],
+    chosenProduct: [],
     error: '',
 }
 
 export const rootReducer = (state = initialState, action) => {
     switch(action.type) {
+        case 'RECIVE_RIGHT_PRODUCT':
+            return {
+                ...state,
+                chosenProduct: action.payload,
+            }
         case 'RECIVE_SLIDER_IMAGES':
             return {
                 ...state, 

@@ -32,10 +32,14 @@ app.get('/api/products', (req, res) => {
         .then(products => res.json(products))
 })
 
-app.get('/api/products/:category', (req, res) => {
-    db('products').where({category: req.params.category}).select('*')
-        .then(products => res.json(products))
-    
+// app.get('/api/products/:category', (req, res) => {
+//     db('products').where({category: req.params.category}).select('*')
+//         .then(products => res.json(products))  
+// })
+
+app.get('/api/products/:model', (req, res) => {
+    db('products').where({model: req.params.model}).select('*')
+        .then(products => res.json(products))  
 })
 
 app.get('/api/servicelocations', (req, res) => {

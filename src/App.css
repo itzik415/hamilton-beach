@@ -565,7 +565,12 @@ article img {
       .products__section-top-product, .products__section-bottom-product {
         display: flex;
         margin-bottom: 1rem;
-        width: 50%; }
+        width: 50%;
+        color: black;
+        overflow-y: hidden; }
+        .products__section-top-product:hover, .products__section-bottom-product:hover {
+          text-decoration: none;
+          color: black; }
         @media screen and (max-width: 1400px) {
           .products__section-top-product, .products__section-bottom-product {
             width: 100%; } }
