@@ -1,7 +1,7 @@
 /*---- NUMBER OF SLIDE CONFIGURATION ----*/
 .slider {
     width: 100%;
-    height: 820px;
+    height: 680px;
     position: relative;
     margin-top: 1rem;
 
@@ -11,18 +11,19 @@
 }
 
 .inner {
-    width: 500%;
+    width: 2000%;
+    display: flex;
 }
 
 article {
-    width: 20%;
+    width: 5%;
     float: left;
     position: relative;
 }
 
 article img {
     width: 100%;
-    height: 760px;
+    height: 630px;
     object-fit: cover;
 }
 
@@ -68,82 +69,28 @@ article img {
 }
 
 /*---- SET POSITION FOR SLIDE ----*/
-#slide1:checked ~ .slider-arrows label:nth-child(2)::after, 
-#slide2:checked ~ .slider-arrows label:nth-child(3)::after, 
-#slide3:checked ~ .slider-arrows label:nth-child(4)::after, 
-#slide4:checked ~ .slider-arrows label:nth-child(5)::after, 
-#slide5:checked ~ .slider-arrows label:nth-child(1)::after, 
-#slide2:checked ~ .slider-arrows label:nth-child(1)::after, 
-#slide3:checked ~ .slider-arrows label:nth-child(2)::after, 
-#slide4:checked ~ .slider-arrows label:nth-child(3)::after, 
-#slide5:checked ~ .slider-arrows label:nth-child(4)::after, 
-#slide1:checked ~ .slider-arrows label:nth-child(5)::after {
-    font-size: 5rem;
-    display: block;
-    color: black;
-    margin:0 10px;
-}
 
-#slide1:checked ~ .slider-arrows label:nth-child(2)::after, 
-#slide2:checked ~ .slider-arrows label:nth-child(3)::after, 
-#slide3:checked ~ .slider-arrows label:nth-child(4)::after, 
-#slide4:checked ~ .slider-arrows label:nth-child(5)::after, 
-#slide5:checked ~ .slider-arrows label:nth-child(1)::after {
-    content: '\02F2';
-    cursor: pointer;
-    font-size: 20rem;
-    color: white;
-}
+$class-slug1: slide !default;
+$class-slug2: slider-dot-control label !default;
 
-#slide1:checked ~ .slider-arrows label:nth-child(2), 
-#slide2:checked ~ .slider-arrows label:nth-child(3), 
-#slide3:checked ~ .slider-arrows label:nth-child(4), 
-#slide4:checked ~ .slider-arrows label:nth-child(5), 
-#slide5:checked ~ .slider-arrows label:nth-child(1) {
-    display: block;
-    float: right;
-}
+@for $i from 1 through 20 {
+  ##{$class-slug1}#{$i}:checked ~ .#{$class-slug2}:nth-child(#{$i}) {
+      background: #333;
+      transform: scale(1.3);
+      margin: 0 5px;
 
-#slide2:checked ~ .slider-arrows label:nth-child(1)::after, 
-#slide3:checked ~ .slider-arrows label:nth-child(2)::after, 
-#slide4:checked ~ .slider-arrows label:nth-child(3)::after, 
-#slide5:checked ~ .slider-arrows label:nth-child(4)::after, 
-#slide1:checked ~ .slider-arrows label:nth-child(5)::after {
-    content: "\02F1";
-    cursor: pointer;
-    font-size: 20rem;
-    color: white;
-}
-
-#slide1:checked ~ .slider-dot-control label:nth-child(1), 
-#slide2:checked ~ .slider-dot-control label:nth-child(2), 
-#slide3:checked ~ .slider-dot-control label:nth-child(3), 
-#slide4:checked ~ .slider-dot-control label:nth-child(4), 
-#slide5:checked ~ .slider-dot-control label:nth-child(5) {
-    background: #333;
-    transform: scale(1.3);
-    margin: 0 5px;
+  }
 }
 
 
-#slide1:checked ~ .slider-wrapper .inner {
-    margin-left: 0%;
-}
+$class-slug3: slider-wrapper !default;
+$class-slug4: inner !default;
 
-#slide2:checked ~ .slider-wrapper .inner {
-    margin-left: -100%;
-}
+@for $i from 0 through 20 {
+  ##{$class-slug1}#{$i+1}:checked ~ .#{$class-slug3} .#{$class-slug4} {
+    margin-left: $i * -100%;
 
-#slide3:checked ~ .slider-wrapper .inner {
-    margin-left: -200%;
-}
-
-#slide4:checked ~ .slider-wrapper .inner {
-  margin-left: -300%;
-}
-
-#slide5:checked ~ .slider-wrapper .inner {
-  margin-left: -400%;
+  }
 }
 
 /*---- TABLET ----*/

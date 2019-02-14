@@ -14,6 +14,7 @@ import FoodTypePage from './components/FoodTypePage/FoodTypePage';
 import AllRecipesPage from './components/AllRecipesPage/AllRecipesPage';
 import AllProductsPage from './components/AllProductsPage/AllProductsPage';
 import SparePartsPage from './components/SparePartsPage/SparePartsPage';
+import ProductCategoryPage from './components/ProductCategoryPage/ProductCategoryPage';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 const Main = () => {
@@ -32,7 +33,8 @@ const Main = () => {
                     <Route exact path='/recipes/:category' component={FoodTypePage} />
                     <Route exact path='/recipes/:category/:name' component={RecipePage} />
                     <Route exact path='/products' component={AllProductsPage} />
-                    <Route exact path='/products/:model' component={ProductPage} />
+                    <Route exact path='/products/:category' component={ProductCategoryPage}/>
+                    <Route exact path='/products/:category/:model' component={ProductPage} />
                     <Footer />
                 </div>
         </Router>

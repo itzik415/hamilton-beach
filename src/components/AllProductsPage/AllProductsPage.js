@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
 // import { getServiceLocations } from '../../Redux/actions';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class ProductsPage extends Component {
-    // constructor(props) {
-    //     super(props);
-    // }
 
     componentDidMount() {
-        // this.props.dispatch(getServiceLocations());
     }
     render() {
         return (
             <div className="productsPage">
                 <div className="productsPage__section">
                     <p className="productsPage__section-type">מוצרים</p>
-                    <h1 className="productsPage__section-title">כלל המוצרים</h1>
+                    <h1 className="productsPage__section-title"> מוצרים לפי קטגוריה</h1>
                 </div>
                 <div className="productsPage-main">
                     <div className="productsPage-main-shortDescription">
@@ -28,6 +25,30 @@ class ProductsPage extends Component {
                         מתבשילי תנור איטיים לגלידת וניל קלאסית, תוכלו למצוא בדיוק את מה שאתם מחפשים כאשר אתם מחפשים מתכונים לפי הקטגוריות השונות.
                         המטבח שלנו יוצר מתכונים חדשים כל הזמן. גם למוצרים חדשים וגם בכדי לנסות לקלוע לטעם שלכם. היו הראשונים לנסות את המתכונים החדשים ביותר שלנו כאשר אתם בודקים אותנו שוב ושוב
                         </p>
+                    </div>
+                </div>
+                <div className="allRecipes-recipesPart">
+                    <div className="allRecipes-recipesPart-leftSide">
+                        <Link to="/recipes/:name" className="allRecipes-recipesPart-leftSide-imageDiv">
+                            <img src="https://foodrevolution.org/wp-content/uploads/2018/04/blog-featured-diabetes-20180406-1330.jpg" alt="sdfs" />
+                            <p>שייק פירות</p>
+                        </Link>
+                        <Link to="/recipes/:name" className="allRecipes-recipesPart-leftSide-imageDiv">
+                            <img src="https://foodrevolution.org/wp-content/uploads/2018/04/blog-featured-diabetes-20180406-1330.jpg" alt="sdfs" />
+                            <p>שייק פירות</p>
+                        </Link>
+                        <Link to="/recipes/:name" className="allRecipes-recipesPart-leftSide-imageDiv">
+                            <img src="https://foodrevolution.org/wp-content/uploads/2018/04/blog-featured-diabetes-20180406-1330.jpg" alt="sdfs" />
+                            <p>שייק פירות</p>
+                        </Link>
+                        <Link to="/recipes/:name" className="allRecipes-recipesPart-leftSide-imageDiv">
+                            <img src="https://foodrevolution.org/wp-content/uploads/2018/04/blog-featured-diabetes-20180406-1330.jpg" alt="sdfs" />
+                            <p>שייק פירות</p>
+                        </Link>
+                        <Link to="/recipes/:name" className="allRecipes-recipesPart-leftSide-imageDiv">
+                            <img src="https://foodrevolution.org/wp-content/uploads/2018/04/blog-featured-diabetes-20180406-1330.jpg" alt="sdfs" />
+                            <p>שייק פירות</p>
+                        </Link>
                     </div>
                 </div>
             </div>

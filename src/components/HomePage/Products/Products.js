@@ -17,7 +17,7 @@ const products = (props) => {
                         props.products.map((item, index) => {
                             return (
                                 index <= 1?
-                                    <Link onClick={props.getProduct} to={`/products/${item.model}`} className="products__section-top-product" key={item.id}>
+                                    <Link onClick={props.getProduct} to={`/products/${item.category}/${item.model}`} className="products__section-top-product" key={item.id}>
                                         <img className="products__section-top-product-img" src={`${item.mainimage}`} alt={`${item.shortdescription}`}/>
                                         <div className="products__section-top-product-details">
                                             <p className="products__section-top-product-details-category">{item.type}</p>
@@ -40,7 +40,7 @@ const products = (props) => {
                         props.products.map((item, index) => {
                             return (
                                 index >= 2 && index <=3?
-                                    <Link to={`/products/${item.model}`} className="products__section-bottom-product" key={item.id}>
+                                    <Link to={`/products/${item.category}/${item.model}`} className="products__section-bottom-product" key={item.id}>
                                         <img className="products__section-bottom-product-img" src={`${item.mainimage}`} alt={`${item.shortdescription}`}/>
                                         <div className="products__section-bottom-product-details">
                                             <p className="products__section-bottom-product-details-category">{item.type}</p>

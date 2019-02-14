@@ -1,5 +1,6 @@
 import { store } from "./store";
 import { initialState } from './reducer';
+var _ = require('lodash');
 
 // Slider actions
 
@@ -28,7 +29,8 @@ export function getProducts() {
     return function(dispatch) {
         fetch('http://localhost:5000/api/products')
             .then(response => response.json())
-            .then(myJson => dispatch({type: 'RECIVE_PRODUCTS', payload: myJson.map(value => value)}))
+            // .then(myJson => console.log(myJson.map(value => value)))
+            .then(myJson => dispatch({type: 'RECIVE_PRODUCTS', payload: myJson}))
             .catch(err => dispatch({type: 'ERROR', payload: err}));
     }
 }
@@ -82,6 +84,7 @@ export function getProductByClick(selectedProductId) {
         let chosenProductArray = store.getState().products.filter(item => {
             return selectedProductId.target.alt === item.shortdescription;
         })
+        console.log(selectedProductId.target.alt)
         store.dispatch({type: 'RECIVE_RIGHT_PRODUCT', payload: initialState.chosenProduct = chosenProductArray[0]})
     }
 }
@@ -91,13 +94,32 @@ export function getProductByClick(selectedProductId) {
 export function productHandle() {
     let urlLocation = window.location.href;
     let pageUrl = urlLocation.slice(urlLocation.indexOf('products/')+9);
+    let modelUrl = window.location.href.slice(-8);
     // .replace(/[\/\\(),.-]/, ' ').replace(/\s+/, '-').replace(/(^-|-$)/, '')
-    if(window.location.href.indexOf('products/') > -1) {
-        fetch(`http://localhost:5000/api/products/${pageUrl}`)
-            .then(response => response.json())
-            .then(myJson => store.dispatch({type: 'RECIVE_RIGHT_PRODUCT', payload: myJson[0]}))
-            .catch(err => store.dispatch({type: 'ERROR', payload: err}))
-    }else {
-        console.log('didnt find the right product')
-    }
+    fetch(`http://localhost:5000/api/products/${pageUrl}`)
+        .then(response => response.json())
+        .then(myJson => store.dispatch({type: 'RECIVE_RIGHT_PRODUCT', payload: myJson[0]}))
+        .catch(err => store.dispatch({type: 'ERROR', payload: err}));
+    fetch(`http://localhost:5000/api/products-images/${modelUrl}`)
+        .then(response => response.json())
+        .then(myJson => store.dispatch({type: 'RECIVE_PRODUCT_IMAGES', payload: myJson.map(item => item)}))
+        .catch(err => store.dispatch({type: 'ERROR', payload: err}));
 }
+
+//Fetching product background image
+export function fetchProductImageBackground() {
+    let category = window.location.href.slice(window.location.href.indexOf('products/')+9);
+    fetch(`http://localhost:5000/api/product-category-background-images/${category}`)
+        .then(response => response.json())
+        .then(myJson => store.dispatch({type: 'RECIVE_PRODUCT_BACKGROUND_IMAGE', payload: myJson[0].imageurl}))
+        .catch(err => store.dispatch({type: 'ERROR', payload: err}));
+}
+
+//Fetching product category
+export function fetchProductCategory() {
+    fetch(`http://localhost:5000/api/products`)
+        .then(response => response.json())
+        .then(myJson => store.dispatch({type: 'RECIVE_PRODUCT_CATEGORY', payload: _.uniqBy(myJson, 'category').map(item => [item.category,item.type])}))
+        .catch(err => store.dispatch({type: 'ERROR', payload: err}));
+}
+

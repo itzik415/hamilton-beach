@@ -21,21 +21,12 @@ const Slider = (props) => {
         <input type="radio" className="slider-input" name="slider" id="slide4" />
         <input type="radio" className="slider-input" name="slider" id="slide5" />
 
-        <div className="slider-arrows">
-            <label htmlFor="slide1"></label>
-            <label htmlFor="slide2"></label>
-            <label htmlFor="slide3"></label>
-            <label htmlFor="slide4"></label>
-            <label htmlFor="slide5"></label>
-        </div>
-
         <div className="slider-wrapper">
             <div className="inner">
                 {
                     props.sliderImages.map((item) => {
                         return(
                             <article key={item.id}>
-                                {/* <img src={item.imageSrc}  alt="slider company"/> */}
                                 <img src={item.imageurl}  alt="slider company"/>
                             </article>
                         )

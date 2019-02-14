@@ -7,6 +7,11 @@ export const initialState = {
     products: [],
     serviceLocationsList: [],
     chosenProduct: [],
+    productsImages: [],
+    productsCategories: [],
+    productCategoryBackgroundImage:null,
+    // productCategoryBackgroundImage:[],
+    pageHeight: null,
     error: '',
 }
 
@@ -27,10 +32,25 @@ export const rootReducer = (state = initialState, action) => {
                 ...state, 
                 serviceLocationsList: action.payload,
             }
+        case 'RECIVE_PRODUCT_BACKGROUND_IMAGE':
+            return {
+                ...state, 
+                productCategoryBackgroundImage: action.payload,
+            }
         case 'RECIVE_PRODUCTS':
             return {
                 ...state, 
                 products: action.payload,
+            }
+        case 'RECIVE_PRODUCT_IMAGES':
+            return {
+                ...state, 
+                productsImages: action.payload,
+            }
+        case 'RECIVE_PRODUCT_CATEGORY':
+            return {
+                ...state, 
+                productsCategories: action.payload,
             }
         case 'OPEN_ACCORDION_1':
             return {
