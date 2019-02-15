@@ -3,9 +3,6 @@ import { getServiceLocations } from '../../Redux/actions';
 import { connect } from 'react-redux';
 
 class ServiceLocations extends Component {
-    // constructor(props) {
-    //     super(props);
-    // }
 
     componentDidMount() {
         this.props.dispatch(getServiceLocations());

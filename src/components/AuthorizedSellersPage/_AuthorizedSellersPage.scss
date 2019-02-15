@@ -52,6 +52,17 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+
+        &-title {
+            font-size: 4rem;
+            border-bottom: 2px solid black;
+            font-family: $suez-font;
+        }
+    
+        &-para {
+            font-size: 2rem;
+            margin: 2rem 0;
+        }
     
         &-chart {
             width: 100%;

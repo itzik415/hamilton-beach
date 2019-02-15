@@ -6,6 +6,7 @@ export const initialState = {
     translateYHidden: '-400px',
     products: [],
     serviceLocationsList: [],
+    authorizedStores: [],
     chosenProduct: [],
     productsImages: [],
     productsCategories: [],
@@ -31,6 +32,11 @@ export const rootReducer = (state = initialState, action) => {
             return {
                 ...state, 
                 serviceLocationsList: action.payload,
+            }
+        case 'RECIVE_AUTHORIZED_SELLERS':
+            return {
+                ...state, 
+                authorizedStores: action.payload,
             }
         case 'RECIVE_PRODUCT_BACKGROUND_IMAGE':
             return {

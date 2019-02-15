@@ -24,6 +24,16 @@ export function getServiceLocations() {
     }
 }
 
+//Importing the Authorized Sellers
+export function getAuthorizedStores() {
+    return function(dispatch) {
+        fetch('http://localhost:5000/api/authorized-sellers')
+            .then(response => response.json())
+            .then(myJson => dispatch({type: 'RECIVE_AUTHORIZED_SELLERS', payload: myJson.map(value => value)}))
+            .catch(err => dispatch({type: 'ERROR', payload: err}));
+    }
+}
+
 //Importing the proucts
 export function getProducts() {
     return function(dispatch) {

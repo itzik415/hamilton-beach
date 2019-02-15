@@ -61,6 +61,11 @@ app.get('/api/servicelocations', (req, res) => {
         .then(locations => res.json(locations))
 })
 
+app.get('/api/authorized-sellers', (req, res) => {
+    db.select('*').from('authorized_stores')
+        .then(store => res.json(store))
+})
+
 
 const port = process.env.port || 5000;
     app.listen(port, () => {
@@ -69,7 +74,7 @@ const port = process.env.port || 5000;
 
 
 
-// COPY products FROM '/Users/itzikshaoulian/Desktop/hamilton-beach/backend/hamilton-beach-products-entry.csv' DELIMITER ';' ;
+// COPY authorized_stores FROM '/Users/itzikshaoulian/Desktop/hamilton-beach/backend/stores-list.csv' DELIMITER ';' ;
 
     // Connecting to a json file
     // fs.readFile('./data/sliderImages.json', (err, json) => {
@@ -77,14 +82,10 @@ const port = process.env.port || 5000;
     //     res.json(obj);
     // });
 
-    // INSERT INTO product_category_background_images (imageUrl,category) 
+
+    // INSERT INTO authorized_stores  (phonenumber , address , name , city ) 
     // VALUES 
-    // ('https://www.hamiltonbeach.com/media/cat-headers/category_banner_blenders.jpg', 'blenders');
-    // ('https://www.hamiltonbeach.com/media/cat-headers/category_banner_food_processor.jpg','food-processors'),
-    // ('https://www.hamiltonbeach.com/media/cat-headers/category_banner_slowcooker.jpg','multi-coockers'),
-    // ('https://www.hamiltonbeach.com/media/cat-headers/category_banner_waffle_maker.jpg','waffle-makers'),
-    // ('https://www.hamiltonbeach.com/media/cat-headers/category_banner_waffle_maker.jpg','waffle-makers'),
-    // ('https://www.hamiltonbeach.com/media/cat-headers/category_banner_toasters.jpg','toasters'),
-    // ('https://www.hamiltonbeach.com/media/cat-headers/category_banner_food_processor.jpg','food-processors'),
-    // ('https://www.hamiltonbeach.com/media/cat-headers/category_banner_juicers.jpg','juciers');
+    // 
+
+    
     
