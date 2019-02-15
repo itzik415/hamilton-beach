@@ -39,7 +39,6 @@ export function getProducts() {
     return function(dispatch) {
         fetch('http://localhost:5000/api/products')
             .then(response => response.json())
-            // .then(myJson => console.log(myJson.map(value => value)))
             .then(myJson => dispatch({type: 'RECIVE_PRODUCTS', payload: myJson}))
             .catch(err => dispatch({type: 'ERROR', payload: err}));
     }
@@ -133,3 +132,48 @@ export function fetchProductCategory() {
         .catch(err => store.dispatch({type: 'ERROR', payload: err}));
 }
 
+//Fetching recipes
+export function fetchRecipes() {
+    return function(dispatch) {
+        fetch(`http://localhost:5000/api/recipes`)
+            .then(response => response.json())
+            .then(myJson => store.dispatch({type: 'RECIVE_RECIPES', payload: myJson}))
+            .catch(err => store.dispatch({type: 'ERROR', payload: err}));
+    }
+}
+
+//Fetching recipes category
+export function fetchRecipesCategory(category) {
+    return function(dispatch) {
+        const type = category.target.id.slice(category.target.id.indexOf('-')+1);
+        fetch(`http://localhost:5000/api/recipes`)
+            .then(response => response.json())
+            .then(myJson => store.dispatch({type: 'RECIVE_RECIPES', payload: myJson.filter(item => item.category === type)}))
+            .catch(err => store.dispatch({type: 'ERROR', payload: err}));
+    }
+}
+
+//Fetching the right recipe
+export function fetchChosenRecipe() {
+    return function(dispatch) {
+        let urlLocation = window.location.href;
+        let pageRecipeName = urlLocation.slice(urlLocation.indexOf('recipes/')+8).replace(/-/g, ' ');
+        fetch(`http://localhost:5000/api/recipes/${pageRecipeName}`)
+            .then(response => response.json())
+            // .then(myJson => console.log(myJson))
+            .then(myJson => store.dispatch({type: 'RECIVE_RIGHT_RECIPE', payload: myJson.filter(item => item.englishname === pageRecipeName.slice(pageRecipeName.lastIndexOf('/')+1).replace(/-/g, " "))}))
+            .catch(err => store.dispatch({type: 'ERROR', payload: err}));
+    }
+}
+
+
+//Choosing the right product
+export function getRecipeByClick(selectedRecipetId) {
+    return function(dispatch) {
+        let chosenRecipeArray = store.getState().recipes.filter(item => {
+            return selectedRecipetId.target.alt === item.name;
+        })
+        console.log(selectedRecipetId.target.alt)
+        store.dispatch({type: 'RECIVE_RIGHT_RECIPE', payload: initialState.chosenRecipe = chosenRecipeArray[0]})
+    }
+}

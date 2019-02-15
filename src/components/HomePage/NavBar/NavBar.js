@@ -27,14 +27,7 @@ class NavBar extends Component {
                             </div>
                         </span>
                         <Link id="Link" to="/about" className="navBar__section-rightSide-category">אודותינו</Link>
-                        <span id="Link" to="/recipes" className="navBar__section-rightSide-category">מתכונים
-                            <div className="navBar__section-rightSide-category-dropDown">
-                                <Link id="Link2" to="/recipes/vegan">טבעונים</Link>
-                                <Link id="Link2" to="/recipes/vegetarian">צמחונים</Link>
-                                <Link id="Link2" to="/recipes/dairy">חלביים</Link>
-                                <Link id="Link2" to="/recipes/meaty">בשריים</Link>
-                            </div>
-                        </span>
+                        <Link id="Link" to="/recipes" className="navBar__section-rightSide-category">מתכונים</Link>
                         <span id="Link" className="navBar__section-rightSide-category">מוצרים
                             <div className="navBar__section-rightSide-category-dropDown">
                             {

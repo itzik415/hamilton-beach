@@ -5,9 +5,11 @@ export const initialState = {
     accordionToggleDis2: 'none',
     translateYHidden: '-400px',
     products: [],
+    recipes: [],
     serviceLocationsList: [],
     authorizedStores: [],
     chosenProduct: [],
+    chosenRecipe: [],
     productsImages: [],
     productsCategories: [],
     productCategoryBackgroundImage:null,
@@ -22,6 +24,11 @@ export const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 chosenProduct: action.payload,
+            }
+        case 'RECIVE_RIGHT_RECIPE':
+            return {
+                ...state,
+                chosenRecipe: action.payload,
             }
         case 'RECIVE_SLIDER_IMAGES':
             return {
@@ -47,6 +54,11 @@ export const rootReducer = (state = initialState, action) => {
             return {
                 ...state, 
                 products: action.payload,
+            }
+        case 'RECIVE_RECIPES':
+            return {
+                ...state, 
+                recipes: action.payload,
             }
         case 'RECIVE_PRODUCT_IMAGES':
             return {

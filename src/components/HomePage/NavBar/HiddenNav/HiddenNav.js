@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { toggleDropDown, fetchProductCategory } from '../../../../Redux/actions';
+import { toggleDropDown, fetchProductCategory, closeAll, toggleHiddenNav } from '../../../../Redux/actions';
 
 class HiddenNav extends Component {
 
@@ -19,33 +19,27 @@ class HiddenNav extends Component {
     
                 <span onClick={this.props.toggleDropDown} id="Link4"  className="dropD hiddenNav-category1">תמיכה</span>
                 <div className="hiddenNav-dropDown">
-                    <Link id="Link5" to="/authorized-sellers">משווקים מורשים</Link>
-                    <Link id="Link5" to="/spare-parts">אביזרים</Link>
-                    <Link id="Link5" to="/contact">צור קשר</Link>
+                    <Link onClick={this.props.closeAll} id="Link5" to="/authorized-sellers">משווקים מורשים</Link>
+                    <Link onClick={this.props.closeAll} id="Link5" to="/spare-parts">אביזרים</Link>
+                    <Link onClick={this.props.closeAll} id="Link5" to="/contact">צור קשר</Link>
                 </div>
     
-                <Link id="Link4" to="/about" className="hiddenNav-category2">אודותינו</Link>
+                <Link onClick={this.props.closeAll} id="Link4" to="/about" className="hiddenNav-category2">אודותינו</Link>
     
-                <span onClick={this.props.toggleDropDown} id="Link4" to="/recipes" className="dropD hiddenNav-category3">מתכונים</span>
-                <div className="hiddenNav-dropDown">
-                    <Link id="Link5" to="/recipes/vegan">טבעוניים</Link>
-                    <Link id="Link5" to="/recipes/vegetarian">צמחוניים</Link>
-                    <Link id="Link5" to="/recipes/milky">חלביים</Link>
-                    <Link id="Link5" to="/recipes/meaty">בשריים</Link>
-                </div>
+                <Link onClick={this.props.closeAll} id="Link4" to="/recipes" className="hiddenNav-category3">מתכונים</Link>
     
                 <span onClick={this.props.toggleDropDown} id="Link4" className="dropD hiddenNav-category4">מוצרים</span>
                 <div className="hiddenNav-dropDown">
                     {
                         this.props.productsCategories.map((item,index) => {
                             return (
-                                <Link key={index} id="Link5" to={`/products/${item[0]}`}>{item[1]}</Link>
+                                <Link onClick={this.props.closeAll} key={index} id="Link5" to={`/products/${item[0]}`}>{item[1]}</Link>
                             )
                         })   
                     }
                 </div>
                 
-                <Link id="Link4" to="/cart" className="hiddenNav-category5">עגלת הקניות</Link>
+                <Link onClick={this.props.closeAll} id="Link4" to="/cart" className="hiddenNav-category5">עגלת הקניות</Link>
     
                 <span className="hiddenNav-categorySearch">
                     <input type="text" name="search" placeholder="...חפש" autoComplete="nope"/>
@@ -60,7 +54,7 @@ class HiddenNav extends Component {
 const mapStateToProps = state => {
     return {
         translateY: state.translateYHidden,
-        dropDown: state.dropDown,
+        // dropDown: state.dropDown,
         productsCategories: state.productsCategories
     }
 }
@@ -68,6 +62,13 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         toggleDropDown: (e) => dispatch(toggleDropDown(e)),
+        closeAll: () => {
+            return (
+                dispatch(closeAll()),
+                dispatch(toggleHiddenNav())
+            )
+        }
+            
     }
 }
 

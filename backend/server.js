@@ -5,9 +5,6 @@ const path = require('path');
 // const multer = require('multer');
 // const upload = multer({ dest: 'public/uploads/'});
 
-var filename = path.basename('/Users/Refsnes/demo_path.js');
-console.log(filename);
-
 const db = knex({
     client: 'pg',
     connection: {
@@ -26,23 +23,13 @@ app.get('/api/backgroundimages', (req, res) => {
         .then(sliderImages => res.json(sliderImages))
 })
 
-app.get('/api/product-category-background-images/:category', (req, res) => {
-    db.select('*').where({category: req.params.category}).from('product_category_background_images')
-        .then(sliderImages => res.json(sliderImages))
-})
-
-app.get('/api/product-category-background-images', (req, res) => {
-    db.select('*').from('product_category_background_images')
-        .then(category => res.json(category))
-})
-
 app.get('/api/products', (req, res) => {
     db.select('*').from('products')
         .then(products => res.json(products))
 })
 
-app.get('/api/products-images/:model', (req, res) => {
-    db('productimages').where({model: req.params.model}).select('*')
+app.get('/api/products/:category', (req, res) => {
+    db('products').where({category: req.params.category}).select('*')
         .then(products => res.json(products))  
 })
 
@@ -51,9 +38,34 @@ app.get('/api/products/:category/:model', (req, res) => {
         .then(products => res.json(products))  
 })
 
-app.get('/api/products/:category', (req, res) => {
-    db('products').where({category: req.params.category}).select('*')
+app.get('/api/product-category-background-images', (req, res) => {
+    db.select('*').from('product_category_background_images')
+        .then(category => res.json(category))
+})
+
+app.get('/api/product-category-background-images/:category', (req, res) => {
+    db.select('*').where({category: req.params.category}).from('product_category_background_images')
+        .then(sliderImages => res.json(sliderImages))
+})
+
+app.get('/api/products-images/:model', (req, res) => {
+    db('productimages').where({model: req.params.model}).select('*')
         .then(products => res.json(products))  
+})
+
+app.get('/api/recipes', (req, res) => {
+    db.select('*').from(('recipes'))
+        .then(category => res.json(category))  
+})
+
+app.get('/api/recipes/:category', (req, res) => {
+    db.select('*').where({category: req.params.category}).from(('recipes'))
+        .then(category => res.json(category))  
+})
+
+app.get('/api/recipes/:category/:englishname', (req, res) => {
+    db('recipes').where({category: req.params.category, englishname: req.params.englishname}).select('*')
+        .then(englishname => res.json(englishname))  
 })
 
 app.get('/api/servicelocations', (req, res) => {
