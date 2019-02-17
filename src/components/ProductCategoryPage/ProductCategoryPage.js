@@ -6,27 +6,29 @@ import { Link } from 'react-router-dom';
 
 class ProductCategoryPage extends Component {
     
-    async componentDidMount() {
-        await store.dispatch(getProducts());
-        await fetchProductImageBackground();
-        await getProductCategory();
+    componentDidMount() {
+        store.dispatch(getProducts());
+        fetchProductImageBackground();
+        getProductCategory();
     }
     
-    async componentDidUpdate(prevProps) {
+    componentDidUpdate(prevProps) {
         if(prevProps !== this.props) {
-            await fetchProductImageBackground();
-            await getProducts();
-            await store.dispatch(getProductCategory());
+            // store.dispatch(getProducts());
+            fetchProductImageBackground();
+            getProductCategory();
         }
     }
 
     
     render() {
+        console.log(this.props.products)
+        console.log(this.props.chosenProductCategory)
         return (
             <div className="productCategoryPage">
                 <div className="productCategoryPage__section" style={{backgroundImage: "url(" + this.props.backgroundImages + ")"}}>
                     <p className="productCategoryPage__section-type">קטגורית מוצרים</p>
-                    <h1 className="productCategoryPage__section-title">{this.props.chosenProductCategory.type}</h1>
+                    <h1 className="productCategoryPage__section-title">{this.props.chosenProductCategory}</h1>
                 </div>
                 <div className="productCategoryPage-shortDescription">
                     <p className="productCategoryPage-shortDescription-title">

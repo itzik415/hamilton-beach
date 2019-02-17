@@ -102,14 +102,21 @@ export function getProductByClick(selectedProductId) {
 
 //Choosing the right product category
 export function getProductCategory() {
-    return function(dispatch) {
-        let chosenProductCategoryArray = store.getState().products.filter(product => {
-            return product.category === window.location.href.slice(window.location.href.lastIndexOf('/')+1)
-        })
-        dispatch({type: 'RECIVE_RIGHT_PRODUCT_CATEGORY', payload: initialState.chosenProductCategory = chosenProductCategoryArray[0]})
-    }
+    let category = window.location.href.slice(window.location.href.lastIndexOf('/')+1);
+    fetch(`http://localhost:5000/api/products/${category}`)
+        .then(response => response.json())
+        .then(myJson => store.dispatch({type: 'RECIVE_RIGHT_PRODUCT_CATEGORY', payload: myJson[0].type}))
+        .catch(err => store.dispatch({type: 'ERROR', payload: err}));
 }
 
+//Fetching product background image
+export function fetchProductImageBackground() {
+    let category = window.location.href.slice(window.location.href.indexOf('products/')+9);
+    fetch(`http://localhost:5000/api/product-category-background-images/${category}`)
+        .then(response => response.json())
+        .then(myJson => store.dispatch({type: 'RECIVE_PRODUCT_BACKGROUND_IMAGE', payload: myJson[0].imageurl}))
+        .catch(err => store.dispatch({type: 'ERROR', payload: err}));
+}
 
 //Fetching the right product when refreshing the page
 export function productHandle() {
@@ -124,15 +131,6 @@ export function productHandle() {
     fetch(`http://localhost:5000/api/products-images/${modelUrl}`)
         .then(response => response.json())
         .then(myJson => store.dispatch({type: 'RECIVE_PRODUCT_IMAGES', payload: myJson.map(item => item)}))
-        .catch(err => store.dispatch({type: 'ERROR', payload: err}));
-}
-
-//Fetching product background image
-export function fetchProductImageBackground() {
-    let category = window.location.href.slice(window.location.href.indexOf('products/')+9);
-    fetch(`http://localhost:5000/api/product-category-background-images/${category}`)
-        .then(response => response.json())
-        .then(myJson => store.dispatch({type: 'RECIVE_PRODUCT_BACKGROUND_IMAGE', payload: myJson[0].imageurl}))
         .catch(err => store.dispatch({type: 'ERROR', payload: err}));
 }
 

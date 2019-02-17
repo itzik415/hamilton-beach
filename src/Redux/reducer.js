@@ -10,7 +10,7 @@ export const initialState = {
     authorizedStores: [],
     chosenProduct: [],
     chosenRecipe: [],
-    chosenProductCategory: '',
+    chosenProductCategory: [],
     productsImages: [],
     productsCategories: [],
     productCategoryBackgroundImage:null,
