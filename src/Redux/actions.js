@@ -59,9 +59,12 @@ export function accordionToggle2 () {
 }
 
 export function toggleHiddenNav () {
+    var hamburger = document.querySelector(".hamburger");
     if(store.getState().translateYHidden === '-400px') {
+        hamburger.classList.toggle("is-active");
         return{type: 'OPEN_NAV'}
     }
+    hamburger.classList.toggle("is-active");
     return{type: 'CLOSE_NAV'};
 }
 
@@ -93,8 +96,17 @@ export function getProductByClick(selectedProductId) {
         let chosenProductArray = store.getState().products.filter(item => {
             return selectedProductId.target.alt === item.shortdescription;
         })
-        console.log(selectedProductId.target.alt)
         store.dispatch({type: 'RECIVE_RIGHT_PRODUCT', payload: initialState.chosenProduct = chosenProductArray[0]})
+    }
+}
+
+//Choosing the right product category
+export function getProductCategory() {
+    return function(dispatch) {
+        let chosenProductCategoryArray = store.getState().products.filter(product => {
+            return product.category === window.location.href.slice(window.location.href.lastIndexOf('/')+1)
+        })
+        dispatch({type: 'RECIVE_RIGHT_PRODUCT_CATEGORY', payload: initialState.chosenProductCategory = chosenProductCategoryArray[0]})
     }
 }
 

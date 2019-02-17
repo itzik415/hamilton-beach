@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { store } from '../../Redux/store';
-import { fetchProductImageBackground , getProductByClick,getProducts} from '../../Redux/actions';
+import { fetchProductImageBackground , getProductByClick, getProducts, getProductCategory} from '../../Redux/actions';
 import { Link } from 'react-router-dom';
 
 class ProductCategoryPage extends Component {
     
     componentDidMount() {
-        fetchProductImageBackground();
         store.dispatch(getProducts());
+        fetchProductImageBackground();
+        getProductCategory();
     }
-
+    
     componentDidUpdate(prevProps) {
         if(prevProps !== this.props) {
             fetchProductImageBackground();
             getProducts();
+            store.dispatch(getProductCategory());
         }
     }
 
@@ -24,7 +26,7 @@ class ProductCategoryPage extends Component {
             <div className="productCategoryPage">
                 <div className="productCategoryPage__section" style={{backgroundImage: "url(" + this.props.backgroundImages + ")"}}>
                     <p className="productCategoryPage__section-type">קטגורית מוצרים</p>
-                    <h1 className="productCategoryPage__section-title">מטחנות קפה</h1>
+                    <h1 className="productCategoryPage__section-title">{this.props.chosenProductCategory.type}</h1>
                 </div>
                 <div className="productCategoryPage-shortDescription">
                     <p className="productCategoryPage-shortDescription-title">
@@ -65,7 +67,8 @@ const mapStateToProps = state => {
     return {
         backgroundImages:state.productCategoryBackgroundImage,
         products: state.products,
-        chosenProduct: state.chosenProduct
+        chosenProduct: state.chosenProduct,
+        chosenProductCategory: state.chosenProductCategory
     }
 }
 

@@ -11,7 +11,10 @@ class ProductPage extends Component {
     render() {
         return (
             <div className="productPage">
-                <ProductHeader title={this.props.chosenProduct.type} model={this.props.chosenProduct.model}/>
+                <ProductHeader 
+                    title={this.props.chosenProduct.type} 
+                    price={this.props.chosenProduct.price} 
+                    model={this.props.chosenProduct.model}/>
                 <div className="row">
                     <div className="col-0 col-md-1 col-lg-0 col-xl-1"></div>
                     <div className="slider my-5 col-12 col-md-10 col-lg-5 col-xl-5 d-flex align-items-center">

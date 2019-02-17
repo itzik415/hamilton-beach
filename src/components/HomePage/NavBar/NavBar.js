@@ -30,21 +30,24 @@ class NavBar extends Component {
                         <Link id="Link" to="/recipes" className="navBar__section-rightSide-category">מתכונים</Link>
                         <span id="Link" className="navBar__section-rightSide-category">מוצרים
                             <div className="navBar__section-rightSide-category-dropDown">
-                            {
-                                this.props.productsCategories.map((item,index) => {
-                                    return (
-                                        <Link key={index} id="Link2" to={`/products/${item[0]}`}>{item[1]}</Link>
-                                    )
-                                })   
-                            }
-
+                                {
+                                    this.props.productsCategories.map((item,index) => {
+                                        return (
+                                            <Link key={index} id="Link2" to={`/products/${item[0]}`}>{item[1]}</Link>
+                                        )
+                                    })   
+                                }
                             </div>
                         </span>
                     </div>
                     <div className="navBar__section-rightSide-icons">
                         <Link id="Link3" to="/cart"><ion-icon id="cart-logo" name="cart"></ion-icon></Link>
                         <ion-icon id="search-button" name="search"></ion-icon>
-                        <ion-icon onClick={this.props.toggleNav} id="navigation-icon" name="menu"></ion-icon>
+                        <button onClick={this.props.toggleNav} className="hamburger hamburger--squeeze" type="button">
+                            <span className="hamburger-box">
+                                <span className="hamburger-inner"></span>
+                            </span>
+                        </button>
                     </div>
                 </div>
             </div>

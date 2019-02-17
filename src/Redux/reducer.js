@@ -10,6 +10,7 @@ export const initialState = {
     authorizedStores: [],
     chosenProduct: [],
     chosenRecipe: [],
+    chosenProductCategory: '',
     productsImages: [],
     productsCategories: [],
     productCategoryBackgroundImage:null,
@@ -20,10 +21,20 @@ export const initialState = {
 
 export const rootReducer = (state = initialState, action) => {
     switch(action.type) {
+        case 'RECIVE_PRODUCTS':
+            return {
+                ...state, 
+                products: action.payload,
+            }
         case 'RECIVE_RIGHT_PRODUCT':
             return {
                 ...state,
                 chosenProduct: action.payload,
+            }
+        case 'RECIVE_RIGHT_PRODUCT_CATEGORY':
+            return {
+                ...state,
+                chosenProductCategory: action.payload,
             }
         case 'RECIVE_RIGHT_RECIPE':
             return {
@@ -49,11 +60,6 @@ export const rootReducer = (state = initialState, action) => {
             return {
                 ...state, 
                 productCategoryBackgroundImage: action.payload,
-            }
-        case 'RECIVE_PRODUCTS':
-            return {
-                ...state, 
-                products: action.payload,
             }
         case 'RECIVE_RECIPES':
             return {

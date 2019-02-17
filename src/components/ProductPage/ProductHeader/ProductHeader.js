@@ -8,10 +8,7 @@ const productHeader = (props) => {
                 <h1 className="productHeader__section-title">{props.title}</h1>
                 <div className="productHeader__section-properties">
                     <p>{props.model}</p>
-                    <p>עיקרית</p>
-                    <p>כשר</p>
-                    <p>קל</p>
-                    <p>שעות</p>
+                    <p>{`${props.price}.99 ₪`}</p>
                 </div>
             </div>
         </div>
