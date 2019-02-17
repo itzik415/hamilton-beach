@@ -6,17 +6,17 @@ import { Link } from 'react-router-dom';
 
 class ProductCategoryPage extends Component {
     
-    componentDidMount() {
-        store.dispatch(getProducts());
-        fetchProductImageBackground();
-        getProductCategory();
+    async componentDidMount() {
+        await store.dispatch(getProducts());
+        await fetchProductImageBackground();
+        await getProductCategory();
     }
     
-    componentDidUpdate(prevProps) {
+    async componentDidUpdate(prevProps) {
         if(prevProps !== this.props) {
-            fetchProductImageBackground();
-            getProducts();
-            store.dispatch(getProductCategory());
+            await fetchProductImageBackground();
+            await getProducts();
+            await store.dispatch(getProductCategory());
         }
     }
 
