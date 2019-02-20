@@ -51,6 +51,166 @@
         margin: 1rem auto;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-end;
+
+        &-shortDescription {    
+            max-width: 1400px;
+            margin: 2rem auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+    
+            &-title {
+                font-size: 2rem;
+                font-weight: 900;
+                color: $grey-dark2;
+                text-align: end;
+            }
+    
+            &-text {
+                font-size: 2rem;
+                color: grey;
+                text-align: end;
+            }
+        }
+    
+        &-find {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+
+            &-title {
+                font-size: 1.7rem;
+                font-weight: 900;
+                color: black;
+            }
+
+            &-search {
+                display: flex;
+                flex-direction: row-reverse;
+
+                &-input {
+                    width: 320px;
+                    padding: 1rem 0.5rem;
+                    font-size: 1.5rem;
+                    text-align: end;
+
+                    &::placeholder {
+                        text-align: end;
+                        font-weight: 100;
+                    }
+
+                    &:focus {
+                        outline: none;
+                        border: 1px solid $grey-dark;
+                        box-shadow: 1px 1px 5px grey;
+                        text-align: end;
+                    }
+                }
+
+                &-button {
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            &-model {
+                margin-top: 1rem;
+                font-size: 1.5rem;
+                transition: .3s;
+
+                &:hover {
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
+            }
+
+            &-notFound {
+                // display: none;
+                margin: 0;
+                font-size: 1.5rem;
+                padding: 1rem 0;
+                font-weight: 900;
+            }
+        }
+
+        &-allParts {
+            text-align: end;
+            // overflow-x: scroll;
+            max-width: 1400px;
+            // display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+                
+            &-sparePart {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                text-align: center;
+                margin: 2rem 0 2rem 5rem;
+
+                @media screen and(max-width: 1065px) {
+                    margin: 2rem auto;
+                }
+
+                &:hover {
+                    text-decoration: none;
+                }
+                
+                img {
+                    height: 300px;
+                    width: 300px;
+                    border: 1px solid rgb(189, 189, 189);
+                }
+                
+                &-name {
+                    text-align: end;
+                    font-size: 2rem;
+                    margin: 2rem 0;
+                    color: black;
+                    width: 100%;
+                    font-weight: 900;
+                }
+
+                &-model {
+                    text-align: end;
+                    font-size: 1.8rem;
+                    color: grey;
+                    width: 100%;
+                    font-weight: 100;
+                }
+
+                &-price {
+                    text-align: end;
+                    font-size: 1.8rem;
+                    color: $red-dark;
+                    font-weight: 900;
+                    width: 100%;
+                }
+
+                &-button {
+                    text-align: end;
+                    padding: 0.8rem 2rem;
+                    font-size: 1.8rem;
+                    color: $white;
+                    background-color: $red-dark;
+                    font-weight: 900;
+                }
+            }
+        }
     }
+}
+
+#search-button2 {
+    font-size: 2.5rem;
+    width: 40px;
+    color: grey;
+    transition: .3s;
+
+    &:hover {
+        color: black;
+    }
+
 }

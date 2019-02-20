@@ -22,7 +22,7 @@ class NavBar extends Component {
                             <div className="navBar__section-rightSide-category-dropDown">
                                 <Link id="Link2" to="/authorized-sellers">משווקים מורשים</Link>
                                 <Link id="Link2" to="/service-locations">נקודות שירות</Link>
-                                <Link id="Link2" to="/spare-parts">אביזרים</Link>
+                                <Link id="Link2" to="/spare-parts">חלקי חילוף ואביזרים</Link>
                                 <Link id="Link2" to="/contact">צור קשר</Link>
                             </div>
                         </span>
@@ -33,7 +33,7 @@ class NavBar extends Component {
                                 {
                                     this.props.productsCategories.map((item,index) => {
                                         return (
-                                            <Link key={index} id="Link2" to={`/products/${item[0]}`}>{item[1]}</Link>
+                                            <Link key={index} id="Link2" to={`/products/${item[0]}`}>{item[3]}</Link>
                                         )
                                     })   
                                 }

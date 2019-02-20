@@ -53,8 +53,9 @@
         align-items: flex-end;
 
         &-title {
-            font-size: 2rem;
-            font-weight: bolder;
+            font-size: 3rem;
+            font-weight: 100;
+            color: $grey-dark2;
             text-align: end;
         }
 

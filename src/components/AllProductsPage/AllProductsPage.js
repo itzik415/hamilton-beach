@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-// import { getServiceLocations } from '../../Redux/actions';
+import { fetchProductCategory } from '../../Redux/actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 class ProductsPage extends Component {
 
     componentDidMount() {
+        fetchProductCategory();
     }
+
     render() {
+        console.log(this.props.productsCategories.map((item,index) => item));
         return (
             <div className="productsPage">
                 <div className="productsPage__section">
@@ -20,35 +23,25 @@ class ProductsPage extends Component {
                             .המוצרים שלנו מעוצבים בקפידה על מנת לעשות לכם את החיים קלים יותר
                         </p>
                         <p className="productsPage-main-shortDescription-text">
-                        עיינו במתכונים, תכננו תפריטים למסיבה, מיצאו את ההשראה לסעודת ערב ולבדוק מתכונים שיכולים לעזור לכם להפיק את המרב מהמוצרים החדשים שלכם.
-                        כל מתכון שלנו נבחן בקפידה במטבח שלנו על ידי המכשירים שלנו כדי להבטיח ביצועים אופטימליים, וכמובן שגם הטעם בהתאם.
-                        מתבשילי תנור איטיים לגלידת וניל קלאסית, תוכלו למצוא בדיוק את מה שאתם מחפשים כאשר אתם מחפשים מתכונים לפי הקטגוריות השונות.
-                        המטבח שלנו יוצר מתכונים חדשים כל הזמן. גם למוצרים חדשים וגם בכדי לנסות לקלוע לטעם שלכם. היו הראשונים לנסות את המתכונים החדשים ביותר שלנו כאשר אתם בודקים אותנו שוב ושוב
+                        אנו משתמשים בתובנות הצרכנים, מחקרים מעמיקים ובדיקות קפדניות כדי לספק את הפתרון הטוב ביותר לצרכים היומיומיים שלכם.
+                        בין אם זה הכנת ארוחות טעימות ומשקאות ללא מאמץ, או דאגה שהבגדים שאתם לובשים יראו במיטבם.
+                        אתם יכולים לסמוך על המותג כי בילה מעל ל 100 שנים של יצירת מוצרים עם דגש על רצונותיכם וצרכיכם
                         </p>
                     </div>
                 </div>
-                <div className="allRecipes-recipesPart">
-                    <div className="allRecipes-recipesPart-leftSide">
-                        <Link to="/recipes/:name" className="allRecipes-recipesPart-leftSide-imageDiv">
-                            <img src="https://foodrevolution.org/wp-content/uploads/2018/04/blog-featured-diabetes-20180406-1330.jpg" alt="sdfs" />
-                            <p>שייק פירות</p>
-                        </Link>
-                        <Link to="/recipes/:name" className="allRecipes-recipesPart-leftSide-imageDiv">
-                            <img src="https://foodrevolution.org/wp-content/uploads/2018/04/blog-featured-diabetes-20180406-1330.jpg" alt="sdfs" />
-                            <p>שייק פירות</p>
-                        </Link>
-                        <Link to="/recipes/:name" className="allRecipes-recipesPart-leftSide-imageDiv">
-                            <img src="https://foodrevolution.org/wp-content/uploads/2018/04/blog-featured-diabetes-20180406-1330.jpg" alt="sdfs" />
-                            <p>שייק פירות</p>
-                        </Link>
-                        <Link to="/recipes/:name" className="allRecipes-recipesPart-leftSide-imageDiv">
-                            <img src="https://foodrevolution.org/wp-content/uploads/2018/04/blog-featured-diabetes-20180406-1330.jpg" alt="sdfs" />
-                            <p>שייק פירות</p>
-                        </Link>
-                        <Link to="/recipes/:name" className="allRecipes-recipesPart-leftSide-imageDiv">
-                            <img src="https://foodrevolution.org/wp-content/uploads/2018/04/blog-featured-diabetes-20180406-1330.jpg" alt="sdfs" />
-                            <p>שייק פירות</p>
-                        </Link>
+                <div className="productsPage-productsPart">
+                    <div className="productsPage-productsPart-product">
+                    {
+                        this.props.productsCategories.map((item,index) => {    
+                            return (
+                                <Link to={`/products/${item[0]}`} key={index} className="productsPage-productsPart-product-imageDiv">
+                                    <img src={item[2]} alt={item[3]} />
+                                    <p>{item[3]}</p>
+                                </Link>
+                            )
+                        })
+                    }
+                
                     </div>
                 </div>
             </div>
@@ -56,10 +49,10 @@ class ProductsPage extends Component {
     }
 }
 
-// const mapStateToProps = state => {
-//     return {
-//         serviceLocationsList: state.serviceLocationsList
-//     }
-// }
+const mapStateToProps = state => {
+    return {
+        productsCategories: state.productsCategories,
+    }
+}
 
-export default connect(null, null)(ProductsPage);
+export default connect(mapStateToProps, null)(ProductsPage);

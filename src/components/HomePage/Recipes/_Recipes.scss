@@ -33,19 +33,34 @@
         display: flex;
         justify-content: space-between;
 
-        @media screen and (max-width: 750px) {
+        @media screen and (max-width: 755px) {
             flex-direction: column;
+            align-items: center;
         }
 
         &-recipe {
             overflow:hidden;
             position: relative;
+            width: 33%;
+            height: 100%;
+            &:hover {
+                text-decoration: none;
+            }
+            
+            @media screen and (max-width: 755px) {
+                width: 70%;
+                margin: 1rem 0;
+            }
+
+            @media screen and (max-width: 555px) {
+                width: 100%;
+            }
 
             &:last-child {
                 margin-left: 1rem;
 
-                @media screen and (max-width: 1400px) {
-                    display: none;
+                @media screen and (max-width: 755px) {
+                    margin-left: 0;
                 }
 
             }
@@ -72,7 +87,7 @@
             }
 
             &-img {
-                max-width: 100%;
+                width: 100%;
                 transform-origin:50% 100%;
                 transition: .3s;
 

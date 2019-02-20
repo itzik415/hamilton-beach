@@ -28,13 +28,6 @@ article img {
 }
 
 /*---- SET UP CONTROL ----*/
-.slider-arrows {
-    height: 50px;
-    position: absolute;
-    top: 20%;
-    width: 100%;
-    z-index: 10;
-}
 
 .slider-dot-control {
     position: absolute;
@@ -108,7 +101,4 @@ $class-slug4: inner !default;
   .slider-wrapper .info {
     opacity: 0;
   }
-}
-@media only screen and (min-width: 850px) {
-
 }

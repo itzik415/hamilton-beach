@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { store } from '../../Redux/store';
-import { fetchProductImageBackground , getProductByClick, getProducts, getProductCategory} from '../../Redux/actions';
+import { fetchProductImageBackground,
+         fetchRightProductCategoryDetails, 
+         getProductByClick, 
+         getProducts, 
+         getProductCategory} from '../../Redux/actions';
 import { Link } from 'react-router-dom';
 
 class ProductCategoryPage extends Component {
@@ -9,21 +13,23 @@ class ProductCategoryPage extends Component {
     componentDidMount() {
         store.dispatch(getProducts());
         fetchProductImageBackground();
+        store.dispatch(fetchRightProductCategoryDetails());
         getProductCategory();
     }
     
     componentDidUpdate(prevProps) {
         if(prevProps !== this.props) {
-            // store.dispatch(getProducts());
-            fetchProductImageBackground();
             getProductCategory();
+        }
+        if(prevProps.location.pathname !== this.props.location.pathname) {
+            fetchProductImageBackground();
+            store.dispatch(fetchRightProductCategoryDetails());
         }
     }
 
     
     render() {
-        console.log(this.props.products)
-        console.log(this.props.chosenProductCategory)
+        // console.log(this.props.chosenProductCategoryDetails[0])
         return (
             <div className="productCategoryPage">
                 <div className="productCategoryPage__section" style={{backgroundImage: "url(" + this.props.backgroundImages + ")"}}>
@@ -32,13 +38,10 @@ class ProductCategoryPage extends Component {
                 </div>
                 <div className="productCategoryPage-shortDescription">
                     <p className="productCategoryPage-shortDescription-title">
-                        בשלו ארוחות בלתי נשכחות עם מתכונים מהמטבח הפרטי שלנו
+                        {this.props.chosenProductCategoryDetails.title}
                     </p>
                     <p className="productCategoryPage-shortDescription-text">
-                    עיינו במתכונים, תכננו תפריטים למסיבה, מיצאו את ההשראה לסעודת ערב ולבדוק מתכונים שיכולים לעזור לכם להפיק את המרב מהמוצרים החדשים שלכם.
-                    כל מתכון שלנו נבחן בקפידה במטבח שלנו על ידי המכשירים שלנו כדי להבטיח ביצועים אופטימליים, וכמובן שגם הטעם בהתאם.
-                    מתבשילי תנור איטיים לגלידת וניל קלאסית, תוכלו למצוא בדיוק את מה שאתם מחפשים כאשר אתם מחפשים מתכונים לפי הקטגוריות השונות.
-                    המטבח שלנו יוצר מתכונים חדשים כל הזמן. גם למוצרים חדשים וגם בכדי לנסות לקלוע לטעם שלכם. היו הראשונים לנסות את המתכונים החדשים ביותר שלנו כאשר אתם בודקים אותנו שוב ושוב
+                    {this.props.chosenProductCategoryDetails.para_text}
                     </p>
                 </div>
                 <div className="productCategoryPage-productsSection">
@@ -48,9 +51,9 @@ class ProductCategoryPage extends Component {
                                 item.category === window.location.href.slice(window.location.href.indexOf('products/')+9)?
                                     <div className="productCategoryPage-productsSection-item" key={index}>
                                         <Link to={`/products/${item.category}/${item.model}`}>
-                                            <img onClick={this.props.getProduct} className="productCategoryPage-productsSection-item-img" src={`https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/${item.model.slice(0,5)}/${item.model.slice(0,5)}-1.jpg`} alt={item.shortdescription}/>
+                                            <img onClick={this.props.getProduct} className="productCategoryPage-productsSection-item-img" src={`https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/${item.model.slice(0,5)}/${item.model.slice(0,5)}-1.jpg`} alt={item.short_description}/>
                                         </Link>
-                                        <p className="productCategoryPage-productsSection-item-title">{item.shortdescription}</p>
+                                        <p className="productCategoryPage-productsSection-item-title">{item.short_description}</p>
                                         <p className="productCategoryPage-productsSection-item-model">{item.model} דגם</p>
                                         <p className="productCategoryPage-productsSection-item-price">{`${item.price}.99₪`}</p>
                                         <button className="productCategoryPage-productsSection-item-btn">הוסף לעגלה</button>
@@ -69,7 +72,8 @@ const mapStateToProps = state => {
     return {
         backgroundImages:state.productCategoryBackgroundImage,
         products: state.products,
-        chosenProduct: state.chosenProduct,
+        // chosenProduct: state.chosenProduct,
+        chosenProductCategoryDetails: state.chosenProductCategoryDetails,
         chosenProductCategory: state.chosenProductCategory
     }
 }

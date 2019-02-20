@@ -18,14 +18,14 @@ const products = (props) => {
                             return (
                                 index <= 1?
                                     <Link onClick={props.getProduct} to={`/products/${item.category}/${item.model}`} className="products__section-top-product" key={item.id}>
-                                        <img className="products__section-top-product-img" src={`${item.mainimage}`} alt={`${item.shortdescription}`}/>
+                                        <img className="products__section-top-product-img" src={`${item.image_url}`} alt={`${item.short_description}`}/>
                                         <div className="products__section-top-product-details">
                                             <p className="products__section-top-product-details-category">{item.type}</p>
-                                            <p className="products__section-top-product-details-description">{item.shortdescription}</p>
+                                            <p className="products__section-top-product-details-description">{item.short_description}</p>
                                             <p className="products__section-top-product-details-model">{item.model} דגם</p>
-                                            <p className="products__section-top-product-details-lastPrice">מחיר קודם {`${item.lastprice}.99₪`}</p>
+                                            <p className="products__section-top-product-details-lastPrice">מחיר קודם {`${item.last_price}.99₪`}</p>
                                             <p className="products__section-top-product-details-price">{`${item.price}.99₪`}</p>
-                                            <p className="products__section-top-product-details-save">חיסכון של {`${item.lastprice - item.price}₪`}</p>
+                                            <p className="products__section-top-product-details-save">חיסכון של {`${item.last_price - item.price}₪`}</p>
                                             <p className="products__section-top-product-details-cart">הוסף לעגלה</p>
                                         </div>
                                     </Link>:
@@ -40,13 +40,13 @@ const products = (props) => {
                         props.products.map((item, index) => {
                             return (
                                 index >= 2 && index <=3?
-                                    <Link to={`/products/${item.category}/${item.model}`} className="products__section-bottom-product" key={item.id}>
-                                        <img className="products__section-bottom-product-img" src={`${item.mainimage}`} alt={`${item.shortdescription}`}/>
+                                    <Link onClick={props.getProduct} to={`/products/${item.category}/${item.model}`} className="products__section-bottom-product" key={item.id}>
+                                        <img className="products__section-bottom-product-img" src={`${item.image_url}`} alt={`${item.short_description}`}/>
                                         <div className="products__section-bottom-product-details">
                                             <p className="products__section-bottom-product-details-category">{item.type}</p>
-                                            <p className="products__section-bottom-product-details-description">{item.shortdescription}</p>
+                                            <p className="products__section-bottom-product-details-description">{item.short_description}</p>
                                             <p className="products__section-bottom-product-details-model">{item.model} דגם</p>
-                                            <p className="products__section-bottom-product-details-lastPrice">מחיר קודם {`${item.lastprice}.99₪`}</p>
+                                            <p className="products__section-bottom-product-details-lastPrice">מחיר קודם {`${item.last_price}.99₪`}</p>
                                             <p className="products__section-bottom-product-details-price">{`${item.price}.99₪`}</p>
                                             <p className="products__section-bottom-product-details-save">חיסכון של {`${item.lastprice - item.price}₪`}</p>
                                             <p className="products__section-bottom-product-details-cart">הוסף לעגלה</p>

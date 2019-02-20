@@ -4,7 +4,7 @@ import Trending from './Trending/Trending';
 import Recipes from './Recipes/Recipes';
 import Products from './Products/Products';
 import { connect } from 'react-redux';
-import { getSliderImages, getProducts } from '../../Redux/actions';
+import { getSliderImages, getProducts, fetchRecipes } from '../../Redux/actions';
 
 
 class HomePage extends Component {
@@ -12,6 +12,7 @@ class HomePage extends Component {
   componentDidMount() {
     this.props.dispatch(getSliderImages());
     this.props.dispatch(getProducts());
+    this.props.dispatch(fetchRecipes());
     document.body.scrollTop = 0;
   }
 

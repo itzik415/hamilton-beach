@@ -43,6 +43,11 @@ app.get('/api/product-category-background-images', (req, res) => {
         .then(category => res.json(category))
 })
 
+app.get('/api/product-category-details', (req, res) => {
+    db.select('*').from('product_category_details')
+        .then(category => res.json(category))
+})
+
 app.get('/api/product-category-background-images/:category', (req, res) => {
     db.select('*').where({category: req.params.category}).from('product_category_background_images')
         .then(sliderImages => res.json(sliderImages))
@@ -66,6 +71,16 @@ app.get('/api/recipes/:category', (req, res) => {
 app.get('/api/recipes/:category/:englishname', (req, res) => {
     db('recipes').where({category: req.params.category, englishname: req.params.englishname}).select('*')
         .then(englishname => res.json(englishname))  
+})
+
+app.get('/api/spare_parts', (req, res) => {
+    db.select('*').from(('spare_parts'))
+        .then(part => res.json(part))
+})
+
+app.get('/api/spare_parts/:product_model', (req, res) => {
+    db('spare_parts').where({product_model: req.params.product_model}).select('*')
+        .then(product_model => res.json(product_model))  
 })
 
 app.get('/api/servicelocations', (req, res) => {

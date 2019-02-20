@@ -1,5 +1,7 @@
 import { store } from "./store";
 import { initialState } from './reducer';
+import SparePartsPage from "../components/SparePartsPage/SparePartsPage";
+import { bindActionCreators } from "redux";
 var _ = require('lodash');
 
 // Slider actions
@@ -34,13 +36,53 @@ export function getAuthorizedStores() {
     }
 }
 
-//Importing the proucts
+//Importing the products
 export function getProducts() {
     return function(dispatch) {
         fetch('http://localhost:5000/api/products')
             .then(response => response.json())
             .then(myJson => dispatch({type: 'RECIVE_PRODUCTS', payload: myJson}))
             .catch(err => dispatch({type: 'ERROR', payload: err}));
+    }
+}
+
+//Fetching recipes
+export function fetchRecipes() {
+    return function(dispatch) {
+        fetch(`http://localhost:5000/api/recipes`)
+            .then(response => response.json())
+            .then(myJson => dispatch({type: 'RECIVE_RECIPES', payload: myJson}))
+            .catch(err => dispatch({type: 'ERROR', payload: err}));
+    }
+}
+
+//Fetching spare_parts
+export function fetchSparePartsByProductModel() {
+    const sparePart = window.location.href.slice(window.location.href.lastIndexOf('/')+1, 52);
+    return function(dispatch) {
+        fetch(`http://localhost:5000/api/spare_parts/${sparePart}`)
+            .then(response => response.json())
+            .then(myJson => dispatch({type: 'RECIVE_SPARE_PARTS_BY_MODEL', payload: myJson}))
+            .catch(err => dispatch({type: 'ERROR', payload: err}));
+    }
+}
+
+//Finding spare part 
+export function findSparePartEvent(event) {
+    return function(dispatch) {
+        const model2 = event.target.name;
+        const model = document.querySelector('.spareParts-main-find-search-input').value;
+        if(event.key === 'Enter' || model2 === 'search') {
+            if(model === '') return dispatch({type: 'SPARE_PARTS_NOT_FOUND'});
+            fetch(`http://localhost:5000/api/spare_parts/${model}`)
+                .then(response => response.json())
+                .then(myJson => 
+                    myJson.length === 0? 
+                    dispatch({type: 'SPARE_PARTS_NOT_FOUND'}):
+                    dispatch({type: 'SPARE_PARTS_FOUND', payload: myJson})
+                )
+                .catch(err => dispatch({type: 'ERROR', payload: err}));
+        }
     }
 }
 
@@ -94,9 +136,9 @@ export function closeAll() {
 export function getProductByClick(selectedProductId) {
     return function(dispatch) {
         let chosenProductArray = store.getState().products.filter(item => {
-            return selectedProductId.target.alt === item.shortdescription;
+            return selectedProductId.target.alt === item.short_description;
         })
-        store.dispatch({type: 'RECIVE_RIGHT_PRODUCT', payload: initialState.chosenProduct = chosenProductArray[0]})
+        dispatch({type: 'RECIVE_RIGHT_PRODUCT', payload: initialState.chosenProduct = chosenProductArray[0]})
     }
 }
 
@@ -105,7 +147,7 @@ export function getProductCategory() {
     let category = window.location.href.slice(window.location.href.lastIndexOf('/')+1);
     fetch(`http://localhost:5000/api/products/${category}`)
         .then(response => response.json())
-        .then(myJson => store.dispatch({type: 'RECIVE_RIGHT_PRODUCT_CATEGORY', payload: myJson[0].type}))
+        .then(myJson => store.dispatch({type: 'RECIVE_RIGHT_PRODUCT_CATEGORY', payload: myJson[0].hebrew_category}))
         .catch(err => store.dispatch({type: 'ERROR', payload: err}));
 }
 
@@ -116,6 +158,18 @@ export function fetchProductImageBackground() {
         .then(response => response.json())
         .then(myJson => store.dispatch({type: 'RECIVE_PRODUCT_BACKGROUND_IMAGE', payload: myJson[0].imageurl}))
         .catch(err => store.dispatch({type: 'ERROR', payload: err}));
+}
+
+//Fetching the right category from product-category-details
+export function fetchRightProductCategoryDetails() {
+    return function(dispatch) {
+        let urlLocation = window.location.href;
+        let pageRecipeName = urlLocation.slice(urlLocation.indexOf('products/')+9);
+        fetch(`http://localhost:5000/api/product-category-details`)
+            .then(response => response.json())
+            .then(myJson => dispatch({type: 'RECIVE_RIGHT_PRODUCT_CATEGORY_DETAILS', payload: myJson.filter(item => item.category === pageRecipeName)}))
+            .catch(err => dispatch({type: 'ERROR', payload: err}));
+    }
 }
 
 //Fetching the right product when refreshing the page
@@ -138,18 +192,8 @@ export function productHandle() {
 export function fetchProductCategory() {
     fetch(`http://localhost:5000/api/products`)
         .then(response => response.json())
-        .then(myJson => store.dispatch({type: 'RECIVE_PRODUCT_CATEGORY', payload: _.uniqBy(myJson, 'category').map(item => [item.category,item.type])}))
+        .then(myJson => store.dispatch({type: 'RECIVE_PRODUCT_CATEGORY', payload: _.uniqBy(myJson, 'category').map(item => [item.category,item.type, item.image_url, item.hebrew_category])}))
         .catch(err => store.dispatch({type: 'ERROR', payload: err}));
-}
-
-//Fetching recipes
-export function fetchRecipes() {
-    return function(dispatch) {
-        fetch(`http://localhost:5000/api/recipes`)
-            .then(response => response.json())
-            .then(myJson => store.dispatch({type: 'RECIVE_RECIPES', payload: myJson}))
-            .catch(err => store.dispatch({type: 'ERROR', payload: err}));
-    }
 }
 
 //Fetching recipes category
@@ -170,7 +214,6 @@ export function fetchChosenRecipe() {
         let pageRecipeName = urlLocation.slice(urlLocation.indexOf('recipes/')+8).replace(/-/g, ' ');
         fetch(`http://localhost:5000/api/recipes/${pageRecipeName}`)
             .then(response => response.json())
-            // .then(myJson => console.log(myJson))
             .then(myJson => store.dispatch({type: 'RECIVE_RIGHT_RECIPE', payload: myJson.filter(item => item.englishname === pageRecipeName.slice(pageRecipeName.lastIndexOf('/')+1).replace(/-/g, " "))}))
             .catch(err => store.dispatch({type: 'ERROR', payload: err}));
     }
@@ -183,7 +226,6 @@ export function getRecipeByClick(selectedRecipetId) {
         let chosenRecipeArray = store.getState().recipes.filter(item => {
             return selectedRecipetId.target.alt === item.name;
         })
-        console.log(selectedRecipetId.target.alt)
         store.dispatch({type: 'RECIVE_RIGHT_RECIPE', payload: initialState.chosenRecipe = chosenRecipeArray[0]})
     }
 }

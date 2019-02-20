@@ -71,15 +71,70 @@
 //insert into recipe table
 INSERT INTO recipes(name, englishname,imageurl, category, type, kosher, cookingtime, level) VALUES ('צלי בשר בבישול איטי', 'Slow Cooker Beef Pot Roast', 'https://www.hamiltonbeach.com/media/recipes/pot-roast-10.jpg', 'meat', 'בשרי', 'כשר', '5-8 שעות', 'בינוני');
 INSERT INTO recipes(name, englishname,imageurl, category, type, kosher, cookingtime, level) VALUES ('סלסה עגבניות', 'Fresh and Spicy Salsa', 'https://www.hamiltonbeach.com/media/recipes/Salsa.jpg', 'vegan', 'טבעוני', 'כשר', '20 דקות', 'קל מאוד');
+INSERT INTO recipes(name, englishname,imageurl, category, type, kosher, cookingtime, level) VALUES ('גוואקמולי', 'Guacamole', 'https://www.hamiltonbeach.com/media/recipes/guacamole.jpg', 'vegan', 'טבעוני', 'כשר', '15 דקות', 'קל מאוד');
+
+//insert into product table
+INSERT INTO products(type, category, hebrew_category, price, last_price, short_description, image_url, model) 
+VALUES ('מטחנת קפה', 'grinders', 'מטחנות קפה', '179', '219', 'מטחנת קפה המתאימה גם לכל סוגי התבלינים', 'https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/80393/80393-1.jpg', '80393-IS'),
+('מעבד מזון', 'food-processors', 'מעבדי מזון', '1399', '1699', 'מעבד מזון מקצועי עם שלל אביזרים', 'https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/70825/70825-1.jpg', '70825-IS'),
+('סיר רב תכליתי', 'multi-cookers', 'סירים רב תכליתיים', '339', '399', 'סיר רב תכליתי לבישול מגוון רחב של מתכונים', 'https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/37571/37571-1.jpg', '37571-IS'),
+('וופל מייקר', 'waffle-makers', 'וופל מייקרים', '349', '399', 'מכשיר להכנת וופל בלגי המתאים ל 4 בו זמנית', ' https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/26021/26021-1.jpg', '26021-IS'),
+('וופל מייקר', 'waffle-makers', 'וופל מייקרים', '299', '349', 'מכשיר להכנת וופל בלגי המתאים ל 2 בו זמנית', 'https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/22083/22083-1.jpg', '22083-IS'),
+('טוסטר לחיצה', 'toasters', 'טוסטרים', '149', '179', 'טוסטר שטוח קומפקטי', 'https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/22082/22082-1.jpg', '22082-IS'),
+('מעבד מזון', 'food-processors', 'מעבדי מזון', '269', '319', 'מעבד מזון ביתי עם שלל חלקים', 'https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/70450/70450-1.jpg', '70450-IS'),
+('מסחטת מיצים', 'juciers', 'מסחטות מיצים', '579', '699', 'מסחטת מיצים להכנת מיצים צלולים וסמיכים', 'https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/67750/67750-1.jpg', '67750-IS');
+
+//insert into spare_parts table
+INSERT INTO spare_parts(image_url, product_model, part_model, price, name, hebrew_name) 
+VALUES ('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/70825/70825-1.jpg', '70825', '990218300', '109', 'Dicing Grid', 'רשת קוביות(לא כולל הסכין)'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/70825/70825-2.jpg', '70825', '990218700', '15', 'Grid Cleaning Tool', 'מנקה רשת'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/70825/70825-3.jpg', '70825', '990219000', '109', 'Shedding Disc', 'דיסק פומפיה'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/70825/70825-4.jpg', '70825', '990218900', '219', 'Slice Disc', 'דיסק סלייסר'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/70825/70825-5.jpg', '70825', '990219300', '109', 'S Blade', 'סכין מסתובבת'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/70825/70825-6.jpg', '70825', '990218600', '27', 'Dough Blade', 'סכין לישה'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/70825/70825-7.jpg', '70825', '990218500', '190', 'Base-Dicing Housing', 'קופסת אכסון'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/70825/70825-8.jpg', '70825', '990219100', '245', 'Bowl', 'קערה'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/70825/70825-9.jpg', '70825', '990218400', '135', 'Dicing Blade', 'סכין חיתוך קוביות'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/70825/70825-10.jpg', '70825', '990218200', '130', 'Lid', 'מכסה'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/70825/70825-11.jpg', '70825', '990218000', '32', 'Medium Pusher', 'דחסן בינוני'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/70825/70825-12.jpg', '70825', '990218100', '55', 'Large Pusher', 'דחסן גדול'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/70825/70825-13.jpg', '70825', '990217900', '27', 'Small Pusher', 'דחסן קטן');
+
+INSERT INTO product_category_details(category, title, para_text) VALUES 
+('grinders', 'פעולה ללא ידיים ומדידה מדויקת עד לקבלת טחינה ברמה המושלמת בשבילכם', 'מטחנות התבלינים של המילטון ביץ׳ בעלות הטחינה המותאמת הן האידיאליות ביותר עבור קפה ותבלינים עד לקבלת המרקם המדויק עבורכם בכל פעם. הגדרות מוסברות היטב המבטיחות תוצאות מושלמות וסימנים ברורים הנמצאים על הכוס אשר יבטיחו לכם מדידה מדוייקת להבטיח מדידה קפדנית. המטחנות שלנו קלות לשימוש ונקיון. הן מציעות טחינה ללא שימוש בידיים עם כיבוי אוטומטי, כמו גם מיקום מוסתר לאיכסון הכבל. חלק ממטחנות הקפה אף כוללות קערית נירוסטה מחוספסת נשלפת לניקוי קל במדיח כלים.'),
+('food-processors', 'מעבדי המזון שלנו מפחיתים את זמן ההכנה עם מנועים חזקים ואביזרים קלים לניקוי','מעבדי המזון של המילטון ביץ׳ מסתמכים על מנועים חזקים כדי ליקצוץ, לפרוס, לגרוס ולערבב כמעט כל דבר שתוסיפו לקערה. מהירים וקלים לשימוש, ובעלי  רעיונות חכמים ומגוונים - במיוחד בדגמים בעלי פתח ההזנה הרחב אשר מאפשרים הכנסה של מזון בשלמותו. בעוד מעבדי מזון יכולים להוות מטרד כאשר מדובר על ניקיון המוצר, העיצוב הקפדני והזהיר שלנו מאפשר אחסנה נוחה של המוצרים בארון וניקיון רוב החלקים במדיח. ביחרו את גודל מעבד המזון שעובד ומתאים לצרכיכם האישיים בצורה הטובה ביותר. מעבדי המזון של המילטון ביץ׳ הם המוצרים האולטימטיביים, בין אם אתם מבשלים עבור שניים או בין אם אתם מבשלים עבור אירוע משפחתי'),
+('waffle-makers', 'פריך, היישר מהאופה בהבלגי האישי שלכם', 'איפו וופלים פריכים בתוך דקות עם האוסף הפופולרי של המילטון ביץ׳ Waffle Makers. נורית הביקורת תאמר לכם כאשר הוופל שלכם מוכן לאכילה, ולוחיות ה nonstick שלנו יעשו את עבודת הוצאת הוופל מהמכשיר בצורה חלקה ומושלמת.
+הWaffle Makers של המילטון ביץ׳ מיועדים לניקוי מהיר, ובדגמים נבחרים אשר כוללים: ציפוי nonstick וגומחה לשאריות הנוזל עושים את עבודת הניקוי לקלה במיוחד. את משטחי ה nonstick קל לנקות עם מטלית לחה, ובדגמים נבחרים אף ניתן לשלוף את הפלטות ולהכניסם לניקיון במדיח'),
+('toasters', 'טוסטים פריכים בתוך דקות', 'הכינו טוסטים פריכים בתוך דקות עם אוסף הטוסטרים של המילטון ביץ׳. נורית הביקורת תאמר לכם כאשר הטוסטר הגיע לטמפרטורה הרצויה. לוחיות ה nonstick שלנו יעשו את עבודת הוצאת הטוסט קלה ובצורה חלקה ומושלמת. הטוסטרים של המילטון ביץ׳ מיועדים לניקוי מהיר. את משטחי ה nonstick קל לנקות עם מטלית לחה, ובדגמים נבחרים אף ניתן לשלוף את הפלטות ולהכניסם לניקיון במדיח'),
+('juciers', 'עבור המיצים האיכותיים ביותר', 'המסחטות של המילטון ביץ׳ מושלמות בכדי להכין מיצים טריים, מלהיבים וכמובן בריאים. גזרים, תפוזים, תפוחים, כרוב וסלק הם רק תמצית משלל הפירות והירקות שבהם תוכלו להשתמש בכדי להכין את המיץ המושלם עבורכם. בידקו את המתכונים שלנו למיצים טבעיים ובריאים על מנת לקבל טעימה מיעילות המכשירים שלנו. כמו כל שאר המוצרים של המילטון ביץ גם המסחטות שלנו מציעות יעילות ושוב פעם יעילות. אנו מציעים דגמים עם מנועים רבי עוצמה המסוגלים לסחוט מיץ ממגוון של פירות וירקות. הפיה הגדולה מאפשרת יתרון נוסף אשר לא תצטרכו לחתוך את הפרי/ירק לפני אלא, תוכלו להכניס אותו בשלמותו ובכך לחסוך זמן ומאמץ נוספים בזמן ההכנה. ייתרון נוסף הוא שרוב החלקים כמובן בטוחים לשימוש במדיח. ביחרו מתוך שלל הדגמים שאנו מציעים ועוד מגוון של עיצובים אחרים אשר ייסיעו לכם להנות ממיצים בריאים וטעימים בכל עת'),
+('multi-cookers', 'לשלל מאכלים עם שימוש במכשיר אחד בלבד', 'המולטי קוקר של המילטון ביץ׳ מושלם בכדי להכין מגוון רחב של מאכלים ותבשילים. אורז ומרקים הם רק תמצית משלל התבשילים והמאכלים אשר תוכלו להכין באמצעות המכשיר. בידקו את המתכונים שלנו למגוון המאכליםשלנו על מנת לקבל טעימה מיעילות המכשיר. כמו כל שאר המוצרים של המילטון ביץ גם המולטי קוקר שלנו מציע יעילות רבה. פנים המוצר עשוי שכבת nonestick אשר מונעת ממאכלים מסויימים להידבק למכשיר ובאותו הזמן כמובן גם נוכה מאוד לניקיון.');
+
+CREATE TABLE product_category_details (
+    id SERIAL PRIMARY KEY,
+    category text NOT NULL,
+    title text NOT NULL,
+    para_text text NOT NULL
+);
+
+CREATE TABLE spare_parts(
+    id SERIAL PRIMARY KEY,
+    image_url text,
+    product_model text NOT NULL,
+    part_model text NOT NULL,
+    price integer NOT NULL,
+    name text NOT NULL,
+    hebrew_name text NOT NULL
+);
 
 CREATE TABLE products(
     id SERIAL PRIMARY KEY,
     type text NOT NULL,
     category text NOT NULL,
     price integer NOT NULL,
-    lastprice integer NOT NULL,
-    shortdescription text NOT NULL,
-    mainimage text NOT NULL,
+    hebrew_category text NOT NULL,
+    last_price integer NOT NULL,
+    short_description text NOT NULL,
+    image_url text NOT NULL,
     model text NOT NULL
 );
 
@@ -122,14 +177,7 @@ CREATE TABLE productfeature(
     feature text NOT NULL
 );
 
-CREATE TABLE spareparts(
-    id SERIAL PRIMARY KEY,
-    imageURL text NOT NULL,
-    model text NOT NULL,
-    category text NOT NULL,
-    price smallint NOT NULL,
-    name text NOT NULL
-);
+
 CREATE TABLE authorizedsellers(
     id SERIAL PRIMARY KEY,
     name text NOT NULL,

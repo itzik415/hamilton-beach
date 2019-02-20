@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { fetchChosenRecipe } from '../../../Redux/actions';
 
-const Recipes = () => {
-
+const Recipes = (props) => {
     return (
         <div className="recipes">
             <div className="recipes-line">
@@ -12,48 +12,27 @@ const Recipes = () => {
                 <hr className="recipes-line-hr"/>
             </div>
             <div className="recipes-container">
-                <div className="recipes-container-recipe">
-                    <h1 className="recipes-container-recipe-title">סלטים</h1>
-                    <img src="https://static.hashulchan.co.il/www/uploads/2018/12/DSC08464-750x500.jpg" className="recipes-container-recipe-img pdLeft" alt="recipe name"/>
-                    <div className="recipes-container-recipe-description">
-                        <h1 className="recipes-container-recipe-description-title">גוואקמולי</h1>
-                        <div className="recipes-container-recipe-description-recipe">
-                            <p>צמחוני</p>
-                            <p>כשר</p>
-                            <p>קל</p>
-                            <p>שעות</p>
-                            <span>3.5</span>
-                        </div>
-                    </div>
-                </div>
-                <div className="recipes-container-recipe">
-                    <h1 className="recipes-container-recipe-title">סלטים</h1>
-                    <img src="https://static.hashulchan.co.il/www/uploads/2018/12/IMGL1917-e1546329990476-750x500-1546330038.jpg" className="recipes-container-recipe-img pdLeft" alt="recipe name"/>
-                    <div className="recipes-container-recipe-description">
-                        <h1 className="recipes-container-recipe-description-title">גוואקמולי</h1>
-                        <div className="recipes-container-recipe-description-recipe">
-                            <p>צמחוני</p>
-                            <p>כשר</p>
-                            <p>קל</p>
-                            <p>שעות</p>
-                            <span>3.5</span>
-                        </div>
-                    </div>
-                </div>
-                <div className="recipes-container-recipe">
-                    <h1 className="recipes-container-recipe-title">סלטים</h1>
-                    <img src="https://static.hashulchan.co.il/www/uploads/2018/11/At_015-750x500-1545300669.jpg" className="recipes-container-recipe-img pdLeft" alt="recipe name"/>
-                    <div className="recipes-container-recipe-description">
-                        <h1 className="recipes-container-recipe-description-title">גוואקמולי</h1>
-                        <div className="recipes-container-recipe-description-recipe">
-                            <p>צמחוני</p>
-                            <p>כשר</p>
-                            <p>קל</p>
-                            <p>שעות</p>
-                            <span>3.5</span>
-                        </div>
-                    </div>
-                </div>
+                {
+                    props.recipes.map((recipe, index) => {
+                        return (
+                            index <= 2?
+                                <Link onClick={props.getRecipe} to={`/recipes/${recipe.category}/${recipe.englishname.replace(/\s/g, '-')}`} key={recipe.id} className="recipes-container-recipe">
+                                    <h1 className="recipes-container-recipe-title">סלטים</h1>
+                                    <img src={recipe.imageurl} className="recipes-container-recipe-img pdLeft" alt="recipe name"/>
+                                    <div className="recipes-container-recipe-description">
+                                        <h1 className="recipes-container-recipe-description-title">{recipe.name}</h1>
+                                        <div className="recipes-container-recipe-description-recipe">
+                                            <p>{recipe.type}</p>
+                                            <p>{recipe.kosher}</p>
+                                            <p>{recipe.level}</p>
+                                            <p>{recipe.cookingtime.slice(3)}</p>
+                                            <span>{recipe.cookingtime.slice(0,3)}</span>
+                                        </div>
+                                    </div>
+                                </Link>: null
+                        )
+                    })
+                }
             </div>            
             <Link to="/recipes" className="recipes-button">לכל המתכונים</Link>
         </div>
@@ -63,14 +42,16 @@ const Recipes = () => {
 
 const mapStateToProps = state => {
     return {
-        // currentImage: state.slider.currentImage,
+        recipes: state.recipes,
+        chosenRecipe: state.chosenRecipe
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        // moveToTheLeft: () => dispatch(goToNextSlide())
+        getRecipe: (recipe) => dispatch(fetchChosenRecipe(recipe))
     }
 }
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Recipes);

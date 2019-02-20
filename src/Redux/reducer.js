@@ -1,22 +1,28 @@
 
 export const initialState = {
-    sliderImages: [],
     accordionToggleDis1: 'none',
     accordionToggleDis2: 'none',
-    translateYHidden: '-400px',
-    products: [],
-    recipes: [],
-    serviceLocationsList: [],
     authorizedStores: [],
     chosenProduct: [],
     chosenRecipe: [],
     chosenProductCategory: [],
-    productsImages: [],
-    productsCategories: [],
-    productCategoryBackgroundImage:null,
-    // productCategoryBackgroundImage:[],
-    pageHeight: null,
+    chosenProductCategoryDetails: [],
     error: '',
+    pageHeight: null,
+    productCategoryBackgroundImage: null,
+    products: [],
+    productsCategories: [],
+    productsImages: [],
+    recipes: [],
+    serviceLocationsList: [],
+    sliderImages: [],
+    sparePartsByProductModel: [],
+    sparePartsPage: {
+        situationDisplay: 'none',
+        partsGridDisplay: 'none',
+        sparePartsByProductModel: [],
+    },
+    translateYHidden: '-400px',
 }
 
 export const rootReducer = (state = initialState, action) => {
@@ -25,6 +31,24 @@ export const rootReducer = (state = initialState, action) => {
             return {
                 ...state, 
                 products: action.payload,
+            }
+        case 'SPARE_PARTS_FOUND':
+            return {
+                ...state, 
+                sparePartsPage: {
+                    situationDisplay: 'none',
+                    partsGridDisplay: 'flex',
+                    sparePartsByProductModel: action.payload
+                }
+            }
+        case 'SPARE_PARTS_NOT_FOUND':
+            return {
+                ...state, 
+                sparePartsPage: {
+                    situationDisplay: 'block',
+                    partsGridDisplay: 'none',
+                    sparePartsByProductModel: [],
+                }
             }
         case 'RECIVE_RIGHT_PRODUCT':
             return {
@@ -35,6 +59,11 @@ export const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 chosenProductCategory: action.payload,
+            }
+        case 'RECIVE_RIGHT_PRODUCT_CATEGORY_DETAILS':
+            return {
+                ...state,
+                chosenProductCategoryDetails: action.payload[0],
             }
         case 'RECIVE_RIGHT_RECIPE':
             return {
@@ -75,6 +104,11 @@ export const rootReducer = (state = initialState, action) => {
             return {
                 ...state, 
                 productsCategories: action.payload,
+            }
+        case 'RECIVE_SPARE_PARTS_BY_MODEL':
+            return {
+                ...state, 
+                sparePartsByProductModel: action.payload,
             }
         case 'OPEN_ACCORDION_1':
             return {
