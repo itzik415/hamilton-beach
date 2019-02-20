@@ -12,7 +12,6 @@ class ProductPage extends Component {
     }
 
     render() {
-        console.log(this.props.sparePartsByProductModel)
         return (
             <div className="productPage">
                 <ProductHeader 
@@ -88,7 +87,7 @@ class ProductPage extends Component {
                             <h1 onClick={this.props.openAccordion2} className="productPage-accordion-line-btn"><ion-icon name="add"></ion-icon></h1>
                         </div>
                         <div className="row productPage-accordion-line2-text" style={{display: `${this.props.dis2}`}}>
-                            <div className="productPage-accordion-line2-text-div2" style={{display: `${this.props.dis2}`}}>
+                            <div className="productPage-accordion-line2-text-div2">
                                 {
                                     this.props.sparePartsByProductModel.map((part, index) => {
                                         return (

@@ -192,13 +192,12 @@
 
 .add-to-cart-btn {
     transform: perspective(1px) translateZ(0);
-    // box-shadow: 0 0 1px rgba(0, 0, 0, 0);
     position: relative;
     overflow: hidden;
     padding: 1.5rem 6rem;
     color: $white;
     font-weight: 900;
-    background-color: #c82027;
+    background-color: $red-dark;
     transition-duration: 0.3s;
     font-size: 2rem;
     cursor: pointer;
@@ -209,25 +208,25 @@
     }
 
     &:before {
-        content: "sdfsdfsdf";
-        // position: absolute;
+        content: "";
+        position: absolute;
+        transform-origin: 100% 0%;
         z-index: -10;
         top: 0;
         left: 0;
-        // right: 0;
-        // bottom: 0;
+        right: 0;
+        bottom: 0;
         background-color: rgba(255, 255, 255, 0.952);
         color: $red-dark;
-        border-radius: 50%;
         transform: scale(0);
         transition-property: transform;
-        transition-duration: 0.3s;
+        transition-duration: 0.2s;
         transition-timing-function: ease-out;
       }
-  }
+}
 
-  .add-to-cart-btn:hover:before, 
-  .add-to-cart-btn:focus:before, 
-  .add-to-cart-btn:active:before {
-    transform: scale(2);
-  }
+.add-to-cart-btn:hover:before, 
+.add-to-cart-btn:focus:before, 
+.add-to-cart-btn:active:before {
+    transform: scale(1);
+}

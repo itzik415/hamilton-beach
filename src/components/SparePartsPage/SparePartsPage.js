@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
-import { findSparePartEvent } from '../../Redux/actions';
+import { findSparePartEvent, getProducts } from '../../Redux/actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { store } from '../../Redux/store';
 
 class SpareParts extends Component {
 
-    render() {
+    componentDidMount() {
+        store.dispatch(getProducts());
+    }
 
+    render() {
+        console.log(this.props.chosenProduct)
         const style1 = {
             display: `${this.props.situationDisplay}`
         }
@@ -38,14 +43,47 @@ class SpareParts extends Component {
                                 className="spareParts-main-find-search-input" 
                                 name="model" 
                                 type="text" 
-                                placeholder="...הכנס את דגם מספר הדגם של המוצר" />
+                                placeholder="...הכנס את מספר הדגם של המוצר" />
                             <button onClick={this.props.findSparePartEvent} className="spareParts-main-find-search-button">
                                 <ion-icon id="search-button2" name="search"></ion-icon>
                             </button>
                         </div>
                         <p className="spareParts-main-find-notFound" style={style1}>הדגם שהוכנס שגוי יש לנסות שוב</p>
-                        <p className="spareParts-main-find-model">?היכן ניתן למצוא את דגם המוצר שברשותנו</p>
+                        <p className="spareParts-main-find-model" data-toggle="modal" data-target="#exampleModal">?היכן ניתן למצוא את דגם המוצר שלכם</p>
+                        <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div className="modal-dialog" role="document">
+                                <div className="modal-content">
+                                    <div className="modal-header">
+                                        <button type="button" className="close mr-auto ml-0" data-dismiss="modal" aria-label="Close">
+                                            <span className="h1" aria-hidden="true">&times;</span>
+                                        </button>
+                                        <h3 className="modal-title" id="exampleModalLabel">ניתן למצוא מדבקה זו בתחתית המוצר</h3>
+                                    </div>
+                                <div className="modal-body">
+                                    <img style={{width: '100%'}} src={require('../../images/sticker-model.png')} alt="מדבקת מוצר"/>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    {
+                        // this.state.sparePartsByProductModel.length > 0 ?
+                            this.props.chosenProduct.map((item,index) => {
+                                return (
+                                    <div className="spareParts-main-product" key={index}>
+                                        <div className="spareParts-main-product-rightDiv">
+                                            <p className="spareParts-main-product-rightDiv-title">:חלקים עבור</p>
+                                            <p className="spareParts-main-product-rightDiv-description">{item.short_description}</p>
+                                            <p className="spareParts-main-product-rightDiv-model">{item.model}</p>
+                                            <Link to={`/products/${item.category}/${item.model}`}className="spareParts-main-product-rightDiv-link">{`<< לחץ לפרטים נוספים`}</Link>
+                                        </div>
+                                        <img className="spareParts-main-product-img" src={item.image_url} alt={item.hebrew_name} />
+                                    </div>
+                                    
+                                )
+                            })
+                        // null
+                    }
                     <div className="spareParts-main-allParts" style={style2}>
                         {
                             this.props.sparePartsByProductModel.map((part,index) => {
@@ -72,7 +110,7 @@ const mapStateToProps = state => {
         sparePartsByProductModel: state.sparePartsPage.sparePartsByProductModel,
         situationDisplay: state.sparePartsPage.situationDisplay,
         partsGridDisplay: state.sparePartsPage.partsGridDisplay,
-
+        chosenProduct: state.chosenProduct
     }
 }
 

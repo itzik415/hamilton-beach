@@ -1,7 +1,5 @@
 import { store } from "./store";
 import { initialState } from './reducer';
-import SparePartsPage from "../components/SparePartsPage/SparePartsPage";
-import { bindActionCreators } from "redux";
 var _ = require('lodash');
 
 // Slider actions
@@ -78,8 +76,12 @@ export function findSparePartEvent(event) {
                 .then(response => response.json())
                 .then(myJson => 
                     myJson.length === 0? 
-                    dispatch({type: 'SPARE_PARTS_NOT_FOUND'}):
-                    dispatch({type: 'SPARE_PARTS_FOUND', payload: myJson})
+                    dispatch({type: 'SPARE_PARTS_NOT_FOUND', payload: []}):
+                    dispatch({type: 'SPARE_PARTS_FOUND', payload: myJson}) &&
+                    fetch(`http://localhost:5000/api/products/${myJson[0].category}/${myJson[0].product_model}-IS`)
+                        .then(response => response.json())
+                        .then(myJson => dispatch({type: 'RECIVE_RIGHT_PRODUCT', payload: myJson}))
+                        .catch(err => dispatch({type: 'ERROR', payload: err}))
                 )
                 .catch(err => dispatch({type: 'ERROR', payload: err}));
         }

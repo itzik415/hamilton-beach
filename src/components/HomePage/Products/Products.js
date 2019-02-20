@@ -26,7 +26,7 @@ const products = (props) => {
                                             <p className="products__section-top-product-details-lastPrice">מחיר קודם {`${item.last_price}.99₪`}</p>
                                             <p className="products__section-top-product-details-price">{`${item.price}.99₪`}</p>
                                             <p className="products__section-top-product-details-save">חיסכון של {`${item.last_price - item.price}₪`}</p>
-                                            <p className="products__section-top-product-details-cart">הוסף לעגלה</p>
+                                            <p className="products__section-top-product-details-cart ">הוסף לעגלה</p>
                                         </div>
                                     </Link>:
                                 null
@@ -49,7 +49,7 @@ const products = (props) => {
                                             <p className="products__section-bottom-product-details-lastPrice">מחיר קודם {`${item.last_price}.99₪`}</p>
                                             <p className="products__section-bottom-product-details-price">{`${item.price}.99₪`}</p>
                                             <p className="products__section-bottom-product-details-save">חיסכון של {`${item.lastprice - item.price}₪`}</p>
-                                            <p className="products__section-bottom-product-details-cart">הוסף לעגלה</p>
+                                            <p className="products__section-bottom-product-details-cart ">הוסף לעגלה</p>
                                         </div>
                                     </Link>:
                                 null

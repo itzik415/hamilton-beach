@@ -18,8 +18,8 @@ export const initialState = {
     sliderImages: [],
     sparePartsByProductModel: [],
     sparePartsPage: {
-        situationDisplay: 'none',
         partsGridDisplay: 'none',
+        situationDisplay: 'none',
         sparePartsByProductModel: [],
     },
     translateYHidden: '-400px',
@@ -38,7 +38,7 @@ export const rootReducer = (state = initialState, action) => {
                 sparePartsPage: {
                     situationDisplay: 'none',
                     partsGridDisplay: 'flex',
-                    sparePartsByProductModel: action.payload
+                    sparePartsByProductModel: action.payload,
                 }
             }
         case 'SPARE_PARTS_NOT_FOUND':
@@ -48,7 +48,8 @@ export const rootReducer = (state = initialState, action) => {
                     situationDisplay: 'block',
                     partsGridDisplay: 'none',
                     sparePartsByProductModel: [],
-                }
+                },
+                chosenProduct: action.payload
             }
         case 'RECIVE_RIGHT_PRODUCT':
             return {
