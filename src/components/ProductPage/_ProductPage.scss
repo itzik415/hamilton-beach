@@ -11,6 +11,7 @@
             border-right: 0;
             border-left: 0;
             padding: 10px;
+            max-width: 1400px;
 
             &-btn {
                 font-size: 2.2rem;
@@ -39,6 +40,7 @@
                 &-div2 {
                     justify-content: flex-end;
                     text-align: end;
+                    display: flex;
                     
                     &-sparePart {
                         display: flex;
@@ -54,18 +56,18 @@
                         img {
                             height: 220px;
                             width: 220px;
-                            object-fit: cover;
                             border: 1px solid black;
                         }
                         
                         &-name {
-                            font-size: 2rem;
+                            font-size: 1.8rem;
+                            text-decoration: underline;
                             color: black;
                             width: 100%;
                             font-weight: 900;
                         }
                         &-price {
-                            font-size: 1.8rem;
+                            font-size: 1.6rem;
                             color: $red-dark;
                             font-weight: 900;
                             width: 100%;
@@ -79,6 +81,7 @@
             border-right: 0;
             border-left: 0;
             padding: 10px;
+            max-width: 1400px;
 
             &-btn {
                 font-size: 2.2rem;

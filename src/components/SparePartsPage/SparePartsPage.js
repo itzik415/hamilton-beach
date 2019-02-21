@@ -11,7 +11,6 @@ class SpareParts extends Component {
     }
 
     render() {
-        console.log(this.props.chosenProduct)
         const style1 = {
             display: `${this.props.situationDisplay}`
         }
@@ -66,8 +65,7 @@ class SpareParts extends Component {
                             </div>
                         </div>
                     </div>
-                    {
-                        // this.state.sparePartsByProductModel.length > 0 ?
+                        {
                             this.props.chosenProduct.map((item,index) => {
                                 return (
                                     <div className="spareParts-main-product" key={index}>
@@ -82,13 +80,12 @@ class SpareParts extends Component {
                                     
                                 )
                             })
-                        // null
-                    }
+                        }
                     <div className="spareParts-main-allParts" style={style2}>
                         {
                             this.props.sparePartsByProductModel.map((part,index) => {
                                 return (
-                                    <Link to={`/spare-parts/${part.name}`} key={index} className="spareParts-main-allParts-sparePart">
+                                    <Link to={`/spare-parts/${part.product_model}/${part.part_model}`} key={index} className="spareParts-main-allParts-sparePart">
                                         <img src={part.image_url} alt={part.hebrew_name} />
                                         <p className="spareParts-main-allParts-sparePart-name">{part.hebrew_name}</p>
                                         <p className="spareParts-main-allParts-sparePart-model">{part.part_model} # פריט</p>

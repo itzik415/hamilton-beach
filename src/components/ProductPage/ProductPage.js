@@ -3,7 +3,7 @@ import ProductHeader from '../ProductPage/ProductHeader/ProductHeader';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { store } from '../../Redux/store';
-import { accordionToggle1, accordionToggle2, productHandle, fetchSparePartsByProductModel } from '../../Redux/actions';
+import { accordionToggle1, accordionToggle2, productHandle, fetchSparePartsByProductModel, getPartByClick } from '../../Redux/actions';
 
 class ProductPage extends Component {
     componentDidMount() {
@@ -12,6 +12,7 @@ class ProductPage extends Component {
     }
 
     render() {
+        // console.log(this.props.sparePartsByProductModel)
         return (
             <div className="productPage">
                 <ProductHeader 
@@ -43,7 +44,7 @@ class ProductPage extends Component {
                                 }
                             </div>
                         </div>
-                        <div className="slider-dot-control">
+                        <div className="slider-dot-control2">
                             {
                                 this.props.productsImages.map((item,index) => {
                                     return(
@@ -86,16 +87,18 @@ class ProductPage extends Component {
                             <h1 className="productPage-accordion-line2-div-title mb-0">חלקי חילוף</h1>
                             <h1 onClick={this.props.openAccordion2} className="productPage-accordion-line-btn"><ion-icon name="add"></ion-icon></h1>
                         </div>
-                        <div className="row productPage-accordion-line2-text" style={{display: `${this.props.dis2}`}}>
+                        <div className="productPage-accordion-line2-text" style={{display: `${this.props.dis2}`}} >
                             <div className="productPage-accordion-line2-text-div2">
                                 {
                                     this.props.sparePartsByProductModel.map((part, index) => {
                                         return (
-                                            <Link to={`/spare-parts/${part.name}`} key={index} className="productPage-accordion-line2-text-div2-sparePart">
-                                                <img src={part.image_url} alt={part.hebrew_name} />
+                                            // <div>
+                                            <Link to={`/spare-parts/${part.product_model}/${part.part_model}`} key={index} className="productPage-accordion-line2-text-div2-sparePart">
+                                                <img onClick={this.props.getPartByClick} src={part.image_url} alt={part.hebrew_name} />
                                                 <p className="productPage-accordion-line2-text-div2-sparePart-name">{part.hebrew_name}</p>
-                                                <p className="productPage-accordion-line2-text-div2-sparePart-price">{`${part.price}₪`}</p>
+                                                <p className="productPage-accordion-line2-text-div2-sparePart-price">{`${part.price}.99₪`}</p>
                                             </Link>
+                                            // {/* </div> */}
                                         )
                                     })
                                 }
@@ -103,8 +106,7 @@ class ProductPage extends Component {
                         </div>
                     </div>
                 </div>
-        </div>
-
+            </div>
         )
     }
 }
@@ -123,6 +125,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         openAccordion1: () => dispatch(accordionToggle1()),
         openAccordion2: () => dispatch(accordionToggle2()),
+        getPartByClick: (e) => dispatch(getPartByClick(e))
     }
 }
 

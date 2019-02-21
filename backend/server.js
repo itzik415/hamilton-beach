@@ -83,6 +83,11 @@ app.get('/api/spare_parts/:product_model', (req, res) => {
         .then(product_model => res.json(product_model))  
 })
 
+app.get('/api/spare_parts/:product_model/:part_model', (req, res) => {
+    db('spare_parts').where({product_model: req.params.product_model, part_model: req.params.part_model}).select('*')
+        .then(part_model => res.json(part_model))  
+})
+
 app.get('/api/servicelocations', (req, res) => {
     db.select('*').from('servicelocations')
         .then(locations => res.json(locations))

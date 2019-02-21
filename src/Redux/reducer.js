@@ -3,6 +3,14 @@ export const initialState = {
     accordionToggleDis1: 'none',
     accordionToggleDis2: 'none',
     authorizedStores: [],
+
+
+
+    chosenPart: [],
+
+
+
+
     chosenProduct: [],
     chosenRecipe: [],
     chosenProductCategory: [],
@@ -55,6 +63,11 @@ export const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 chosenProduct: action.payload,
+            }
+        case 'RECIVE_RIGHT_SPARE_PART':
+            return {
+                ...state,
+                chosenPart: action.payload,
             }
         case 'RECIVE_RIGHT_PRODUCT_CATEGORY':
             return {

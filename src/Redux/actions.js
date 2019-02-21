@@ -134,7 +134,7 @@ export function closeAll() {
     }
 }
 
-//Choosing the right product
+//Choosing the right product by click
 export function getProductByClick(selectedProductId) {
     return function(dispatch) {
         let chosenProductArray = store.getState().products.filter(item => {
@@ -142,6 +142,26 @@ export function getProductByClick(selectedProductId) {
         })
         dispatch({type: 'RECIVE_RIGHT_PRODUCT', payload: initialState.chosenProduct = chosenProductArray[0]})
     }
+}
+
+//Choosing the right spare part by click
+export function getPartByClick(selectedPart) {
+    return function(dispatch) {
+        let chosenPartArray = store.getState().sparePartsByProductModel.filter(item => {
+            return selectedPart.target.alt === item.hebrew_name;
+        })
+        dispatch({type: 'RECIVE_RIGHT_SPARE_PART', payload: initialState.chosenPart = chosenPartArray})
+    }
+}
+
+//Fetching the right part when refreshing the page
+export function partHandle() {
+    let urlLocation = window.location.href;
+    let pageUrl = urlLocation.slice(urlLocation.indexOf('spare-parts/')+12);
+    fetch(`http://localhost:5000/api/spare_parts/${pageUrl}`)
+        .then(response => response.json())
+        .then(myJson => store.dispatch({type: 'RECIVE_RIGHT_SPARE_PART', payload: myJson}))
+        .catch(err => store.dispatch({type: 'ERROR', payload: err}));
 }
 
 //Choosing the right product category
