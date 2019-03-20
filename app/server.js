@@ -487,10 +487,15 @@ app.get('/api/cart/:email', (req,res) => {
 })
 
 
-const port = process.env.port || 5000;
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
     console.log(`Server start at ${port}`)
 });
+
+// app.listen(process.env.PORT || 5000, function(){
+//     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+//   });
+  
 
 
 // COPY authorized_stores FROM '/Users/itzikshaoulian/Desktop/hamilton-beach/backend/stores-list.csv' DELIMITER ';' ;
