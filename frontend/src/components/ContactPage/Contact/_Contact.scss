@@ -1,0 +1,218 @@
+.contact {
+    max-width: 870px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0rem auto;
+
+    &-topFields,
+    &-bottomFields {
+        display: flex;
+
+        @media screen and (max-width: 570px) {
+            flex-direction: column-reverse;
+            align-items: center;
+            width: 100%;
+        }
+
+        &-image {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin: 0 3rem;  
+
+            @media screen and (max-width: 570px) {
+                width: 90%;
+            }
+
+            &-input {
+                width: 39.6rem;
+                height: 3.5rem;
+                margin: 2.5rem 0;
+                font-size: 17px;
+                cursor: pointer;
+                transition: .3s;
+                
+                @media screen and (max-width: 870px) {
+                    width: 23.6rem;
+                }
+
+
+                &:hover {
+                    box-shadow: 3px 3px 5px grey;
+                }
+        
+                    &:focus {
+                        outline: none;
+                    }
+
+                    &:before {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center; 
+                        content: "+ הוסף תמונה";
+                        background-color: $main-color;
+                        color: $white;
+                        position: absolute;
+                        top: 20px;
+                        bottom: 25px;
+                        left: 0;
+                        right: 0;
+
+                        @media screen and (max-width: 870px) {
+                            width: 23.6rem;
+                        }
+
+                        @media screen and (max-width: 570px) {
+                            width: 100%;
+                        }
+                        
+                    }
+        
+            }
+        }
+
+        &-email,
+        &-name,
+        &-phone {
+            position: relative;
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+            margin: 0 3rem;
+
+            @media screen and (max-width: 570px) {
+                width: 90%;
+            }
+
+            &-input {
+                width: 36rem;
+                padding: 1.3rem 0.2rem;
+                text-align: start;
+                height: 3.5rem;
+                margin: 2.5rem 0;
+                background-color:rgba(255, 255, 255, 0.742);
+                font-size: 17px;
+                border: none;
+                border-bottom: 1px solid grey;
+
+                @media screen and (max-width: 870px) {
+                    width: 20rem;
+                }
+
+                @media screen and (max-width: 570px) {
+                    width: 90%;
+                }
+    
+                &:focus {
+                    border-bottom: 3px solid $blue-dark;
+                    outline: none;
+    
+                    & + #email-icon,
+                    & + #name-icon,
+                    & + #phone-icon {
+                        color: $blue-dark;
+                        font-size: 30px;
+                    }
+                    
+    
+                    &:invalid {
+                        border-bottom: 3px solid $orange-dark;
+                        outline: none;
+                        text-align: start;
+    
+                        & + #email-icon,
+                        & + #name-icon,
+                        & + #phone-icon {
+                            color: $orange-dark;
+                            font-size: 3.1rem;
+                        }
+
+                    }
+    
+                    & + #email-icon + p,
+                    & + #name-icon + p,
+                    & + #phone-icon + p {
+                        opacity: 1;
+                        animation-duration: 0.3s;
+                        animation-name: moveUp;
+                        animation-fill-mode: forwards;  
+                    }
+    
+                    &::placeholder {
+                        opacity: 0;
+                    }
+    
+                }
+
+                &::placeholder {
+                    text-align: start;
+                }
+            }
+    
+            p {
+                position: absolute;
+                right: 45px;
+                bottom:0;
+                font-size: 12px;
+                color: grey;
+                opacity: 0;
+            }
+        }
+    }
+
+    &-text {
+        display: flex;
+
+        @media screen and (max-width: 570px) {
+            width: 90%;
+        }
+        
+        &-textarea {
+            width: 85rem;
+            height: 30rem;
+            font-size: 2.5rem;
+            text-align: start;
+            outline: none;
+            padding: 10px;
+
+            @media screen and (max-width: 870px) {
+                width: 53rem;
+            }
+
+            @media screen and (max-width: 570px) {
+                width: 100%;
+                border: 1px solid $grey-light;
+                box-shadow: 1px 2px 5px grey;
+                margin-bottom: 10px;
+            }
+        }
+    }
+
+    &-message,
+    &-message2 {
+        width: 100%;
+        font-size: 2rem;
+        text-align: start;
+    }
+
+    &-submitButton {
+        padding: 0.4rem 6rem;
+        font-size: 2rem;
+        margin: 1rem 0;
+        color: $white;
+        border-radius: 3px;
+        cursor: pointer;
+        background-color: #c82027;
+    }
+}
+
+
+#email-icon,
+#name-icon,
+#phone-icon {
+    margin-left: 1rem;
+    font-size: 2.6rem;
+    color: black;
+}
+

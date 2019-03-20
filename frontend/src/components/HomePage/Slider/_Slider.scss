@@ -1,0 +1,124 @@
+/*---- NUMBER OF SLIDE CONFIGURATION ----*/
+.slider {
+    width: 100%;
+    height: 680px;
+    position: relative;
+    margin-top: 1rem;
+
+    @media screen and(max-width: 600px) {
+        height: 380px;
+    }
+
+    &-input {
+        display: none;
+    }
+}
+
+.inner {
+    width: 2000%;
+    display: flex;
+}
+
+article {
+    width: 5%;
+    float: right;
+    position: relative;
+}
+
+article img {
+    width: 100%;
+    height: 630px;
+    object-fit: cover;
+
+    @media screen and(max-width: 600px) {
+        height: 330px;
+    }
+}
+
+/*---- SET UP CONTROL ----*/
+
+.slider-dot-control {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+}
+
+.slider-dot-control label {
+    cursor: pointer;
+    border-radius: 50%;
+    border: 5px solid black;
+    height: 25px;
+    width: 25px;
+    margin: 0 2px;
+    background: #bbb;
+    transition: all 0.3s;
+}
+
+.slider-dot-control label:hover {
+    background: #ccc;
+    border-color: #777;
+}
+
+
+/* Slider Styling */
+.slider-wrapper {
+    width: 100%;
+    overflow: hidden;
+    transition: all 500ms ease-out;
+}
+.slider-wrapper .inner {
+    transition: all 800ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/*---- SET POSITION FOR SLIDE ----*/
+
+$class-slug1: slide !default;
+$class-slug2: slider-dot-control label !default;
+$class-slug5: slider-dot-control2 label !default;
+
+@for $i from 1 through 20 {
+  ##{$class-slug1}#{$i}:checked ~ .#{$class-slug2}:nth-child(#{$i}) {
+      background: #333;
+      transform: scale(1.3);
+      margin: 0 5px;
+
+  }
+}
+
+@for $i from 1 through 20 {
+  ##{$class-slug1}#{$i}:checked ~ .#{$class-slug5}:nth-child(#{$i}) {
+      background: #333;
+      transform: scale(1.2);
+      margin: 0 5px;
+
+  }
+}
+
+
+$class-slug3: slider-wrapper !default;
+$class-slug4: inner !default;
+
+@for $i from 0 through 20 {
+  ##{$class-slug1}#{$i+1}:checked ~ .#{$class-slug3} .#{$class-slug4} {
+    margin-right: $i * -100%;
+
+  }
+}
+
+/*---- TABLET ----*/
+@media only screen and (max-width: 850px) and (min-width: 450px) {
+  .slider-wrapper {
+    border-radius: 0;
+  }
+}
+/*---- MOBILE----*/
+@media only screen and (max-width: 450px) {
+  .slider-wrapper {
+    border-radius: 0;
+  }
+
+  .slider-wrapper .info {
+    opacity: 0;
+  }
+}

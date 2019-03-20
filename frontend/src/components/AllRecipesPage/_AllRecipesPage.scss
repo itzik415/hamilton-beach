@@ -1,0 +1,237 @@
+.allRecipes {
+
+    &__section {
+        width: 100%;
+        height: 380px;
+        margin-top: 1rem;
+        background-color: $orange;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        background-image: url('https://www.hamiltonbeach.com/media/cat-headers/category_banner_recipes.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        align-items: center;
+        position: relative;
+
+        &-type {
+            font-size: 1.8rem;
+            padding: 2px 5px;
+            background-color: #fc0;
+            box-shadow: 1px 2px 1px black;
+            font-family: "Suez One", serif;
+            z-index: 10;
+        }
+
+        &-title {
+            color: white;
+            margin-bottom: 20px;
+            font-family: $suez-font;
+            font-size: 7rem;
+            text-shadow: 1px 2px 5px gray;
+            text-align: center;
+            z-index: 10;
+            
+            @media screen and(max-width: 700px) {
+                font-size: 4rem;
+            }
+        }
+    }
+
+    &-shortDescription {    
+        max-width: 1400px;
+        margin: 2rem auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        &-title {
+            font-size: 2rem;
+            font-weight: bolder;
+            text-align: start;
+
+            @media screen and(max-width: 700px) {
+                font-size: 1.8rem;
+                margin: 10px;
+            }
+        }
+        
+        &-text {
+            font-size: 2rem;
+            color: grey;
+            text-align: start;
+            
+            @media screen and(max-width: 700px) {
+                font-size: 1.8rem;
+                margin: 10px;
+            }
+        }
+    }
+
+    &-filterTitle {
+        max-width: 1400px;
+        margin: 0rem auto;
+        font-size: 2.5rem;
+        font-weight: bolder;
+        text-align: start;
+        text-decoration: underline;
+
+        @media screen and(max-width: 654px) { 
+            text-align: center;
+        }
+    }
+
+    &-recipesPart {
+        max-width: 1400px;
+        margin: 1rem auto;
+        display: flex;
+        @media screen and(max-width: 1015px) {
+            flex-direction: column;
+        }
+        
+        &-leftSide {
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            width: 75%;
+
+            @media screen and(max-width: 1015px) {
+                width: 100%;
+            }
+            
+
+            &-imageDiv {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                margin: 2rem 1rem;
+                color: black;
+                transition: .3s;
+                overflow:hidden;
+                
+
+                &:hover {
+                    text-decoration: none;
+                    color: black;
+                }
+                
+                img {
+                    width: 330px;
+                    height: 330px;
+                    object-fit: cover;
+                    transition: .3s;
+                    transform-origin: 50% 100%;
+
+                    @media screen and(max-width: 654px) { 
+                        width: 100%;
+                        height: 380px;
+                        margin: inherit 0;
+                    }
+                    
+
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+                }
+                
+                p{
+                    background-color: $yellow;
+                    padding: 0.5rem;
+                    width: 100%;
+                    text-align: start;
+                    font-size: 1.6rem;
+                    font-weight: 900;
+                }
+            }
+        }
+
+        &-rightSide {
+            display: flex;
+            flex-direction: column;
+            margin-top: 1rem;
+            width: 350px;
+
+            
+            @media screen and(max-width: 1015px) {
+                margin-left: auto;
+                max-width: 350px;
+                flex-direction: row;
+            }
+
+            @media screen and(max-width: 654px) { 
+                margin:auto;
+            }
+            
+            &-div {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-items: center;
+                width: 100%;
+
+                @media screen and(max-width: 654px) { 
+                    align-items: center;
+                }
+                
+                &-text {
+                    width: 70%;
+
+                    @media screen and(max-width: 654px) { 
+                        min-width: 100%;
+                    }
+                }
+
+                p {
+                    margin: 1rem 0;
+                    transition: .3s;
+                    text-align: start;
+                    padding:1rem 2rem 1rem 0;
+                    font-size: 1.5rem;
+                    color: $main-color;
+                    position: relative;
+                    border: 2px solid grey;
+                    cursor: pointer;
+                    
+                    &:hover {
+
+                        
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            z-index: -1;
+                            top: 0;
+                            bottom: 0;
+                            right: 0;
+                            animation-name: textBackground;
+                            animation-iteration-count: 1;
+                            animation-duration: .8s;
+                        }
+                    }
+                    
+                }
+            }
+        }
+    }
+}
+@keyframes textBackground {
+    0% {
+        width: 0;
+    }
+    100%{
+        background-color: $grey-light;
+        width: 100%;
+    }
+}
+
+#recipe-all,
+#recipe-vegeterian, 
+#recipe-dairy, 
+#recipe-meat, {
+    transition: .3s;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: none;
+    }
+}

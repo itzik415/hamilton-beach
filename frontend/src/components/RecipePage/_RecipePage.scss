@@ -1,0 +1,249 @@
+.recipePage {
+
+    
+    &-details {
+        max-width: 1400px;
+        margin: 20px auto;
+        display: flex;
+        flex-direction: column;
+        
+        &-img {
+            max-width: 1400px;
+            height: 600px;
+            object-fit: cover;
+            border: 3px solid black;
+
+            @media screen and(max-width: 700px) {
+                height: 400px;
+            }
+        }
+
+        &-name {
+            text-align: start;
+            font-size: 1.5rem;
+            font-family: sans-serif;
+        }
+        
+        &-div {
+            display: flex;
+            border-top: 1px solid gray;
+            padding-top: 2rem;
+            width: 100%;
+            margin-top: 2rem;
+
+            @media screen and(max-width: 700px) {
+                flex-direction: column;
+            }
+
+            &-rightSide {
+                width: 50%;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                border-right: 1px solid gray;
+                padding-right: 20px;
+
+                @media screen and(max-width: 700px) {
+                    width: 96%;
+                    border: 0;
+                    margin: auto;
+                    border-top: 1px solid grey;
+                    padding-top: 2rem;
+                }
+
+                &-title {
+                    font-family: $suez-font;
+                    font-size: 3rem;
+                    margin-bottom: 3rem;
+                    border-bottom: 1px solid black;
+
+                    @media screen and(max-width: 700px) {
+                        font-size: 2rem;
+                    }
+                }
+
+                &-container {
+                    display: block;
+                    position: relative;
+                    margin: 0 1.5rem 3.5rem 0;
+                    cursor: pointer;
+                    width: 100%;
+                    user-select: none;
+                    
+    
+                    &-ingredient {
+                        position: absolute;
+                        right: 30px;
+                        top: -6px;
+                        font-size: 1.9rem;
+                        display: flex;
+                        justify-content: flex-start;
+                        font-family: $sans-serif;
+                        text-align: start;
+
+                        @media screen and(max-width: 700px) {
+                            font-size: 1.6rem;
+                        }
+
+                        p {
+                            margin-left: 5px;
+                            font-size: 2.1rem;
+                            font-weight: 900;
+
+                            @media screen and(max-width: 700px) {
+                                font-size: 1.6rem;
+                            }
+                        }
+                    }
+
+                    &:hover input ~ .recipePage-details-div-rightSide-container-checkmark {
+                        background-color: $orange-light;
+                        transition: .2s;
+                    }
+    
+                    input {
+                        display: none;
+    
+                        &:checked ~ .recipePage-details-div-rightSide-container-checkmark {
+                            background-color: $main-color;
+                        }
+    
+                        &:checked ~ .recipePage-details-div-rightSide-container-checkmark:after {
+                            display: block;
+                            position: absolute;
+                        }
+                    }
+                    
+                    &-checkmark {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        height: 17px;
+                        width: 17px;
+                        background-color: white;
+                        border: 2px solid black;
+
+                        @media screen and(max-width: 700px) {
+                            top: -3px;
+                        }
+    
+                        &:after {
+                            content: "";
+                            position: absolute;
+                            display: none;
+                            left: 5px;
+                            top: 2px;
+                            width: 4px;
+                            height: 8px;
+                            border: solid white;
+                            border-width: 0 1px 1px 0;
+                            transform: rotate(45deg);
+                        }
+                    }
+                }
+
+                &-tags {
+                    display: flex;
+                    margin-top: 20px;
+                    padding-right: 20px;
+
+                    &-feature {
+                        font-size: 1.5rem;
+                        color: white;
+                        background-color: black;
+                        border-radius: 3px;
+                        padding: 3px 10px;
+                        margin: 3px;
+                        transition: .3s;
+
+                        &:hover {
+                            color: $orange;
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+
+            &-leftSide {
+                width: 50%;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                margin-right: 10px;
+
+                @media screen and(max-width: 700px) {
+                    width: 96%;
+                    margin: auto;
+                }
+
+                &-title {
+                    font-family: $suez-font;
+                    font-size: 3rem;
+                    border-bottom: 1px solid black;
+
+                    @media screen and(max-width: 700px) {
+                        font-size: 2rem;
+                    }
+                }
+
+                &-instructions {
+                    max-width: 700px;
+                    margin: 0 0 0 auto;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    text-align: start;
+                    
+                    label {
+                        
+                        p {
+                            font-size: 2rem;
+                            font-family: $sans-serif;
+                            display: flex;
+                            align-items: baseline;
+                            flex-direction: row-reverse;
+                            padding-left: 3rem;
+                            cursor: pointer;
+                            text-align: start;
+
+                            @media screen and(max-width: 700px) {
+                                font-size: 1.7rem;
+                            }
+                            
+                            span {
+                                font-size: 3rem;
+                                font-family: $suez-font;
+                                margin: 0 10px;
+                                
+                                @media screen and(max-width: 700px) {
+                                    font-size: 1.9rem;
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#tag-icon {
+    font-size: 3rem;
+}
+
+$btn: btnControl !default;
+
+@for $i from 0 through 20 {
+  ##{$btn}#{$i} {
+    display: none;
+  }
+}
+
+@for $i from 0 through 20 {
+  ##{$btn}#{$i}:checked + label > p {
+    color: $red-dark;
+    text-decoration: line-through;
+    opacity: 0.5;
+  }
+}

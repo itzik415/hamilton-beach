@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="rtl">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+</head>
+
+<body style="font-family: sans-serif; margin: 0 auto; max-width: 800px;">
+  <style type="text/css"></style>
+  <section style="align-items: center; background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://storage.googleapis.com/hamilton-beach-israel/different-images/payment-email-image.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover; height: 300px; position: relative;">
+    <img src="https://storage.googleapis.com/hamilton-beach-israel/different-images/logo.png" class="logo-white" alt="logo" style="bottom: 0; left: 0; margin: auto; position: absolute; right: 0; top: 0; width: 80%;">
+  </section>
+  <p class="welcome-para" style="font-family: sans-serif; font-size: 25px; font-weight: 900; margin: 10px 0;">שלום, {{name}}</p>
+  <p class="welcome-para1" style="font-size: 25px; font-weight: 100; margin: 10px 0;"> תודה על הרכישה שביצעת בחברת Hamilton Beach.</p>
+  <p>אנו מבטיחים שנעשה כל שביכולתנו על מנת לתת לך את השירות הטוב ביותר!</p>
+  <p>הרכישה שביצעת עברה למחלקת ההזמנות והיא תשלח אליך עד 7 ימי עסקים.</p>
+  <p></p>
+  <p>בינתיים במידה ותרצה ליצור איתנו קשר תוכל לעשות זאת ב:</p>
+  <p>דואר אלקטרוני: <a class="email" href="mailto:sherut@shaoulian.co.il" style="color: blue; text-decoration: underline;">sherut@shaoulian.co.il</a></p>
+  <p class="phone-number"> טלפון: <span style="color: blue; text-decoration: underline;">09-7409835/6</span></p>
+  <p class="button" style="margin: 30px 0;"><a class="website-button" href="https://www.hamiltonbeach.co.il" target="_blank" style="background-color: #0062ff; color: white; font-size: 13px; padding: 10px 35px; text-decoration: none;">עבור לאתר</a></p>
+  <p>תודה ונשמח לראותך שוב בקרוב,</p>
+  <p> צוות Hamilton Beach Israel</p>
+  <div class="footer" style="background-color: rgb(235,235,235); border-top: 3px solid black;">
+    <div class="footer__section" style="display: flex; justify-content: space-around; margin: 0 auto; padding: 20px 0;">
+      <div class="footer__section-socialMedia" style="display: flex; flex-direction: column;">
+        <div class="footer__section-socialMedia-div">
+          <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/HamiltonBeach" class="fab fa-facebook-f" style="background-color: black; border-radius: 50%; color: white; font-size: 20px; height: 22px; margin-left: 3px; margin-top: 0px; padding: 6px 2px; text-align: center; text-decoration: none; transition: .3s; width: 30px;">
+            <p></p>
+          </a>
+          <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/hamiltonbeach/" class="fab fa-instagram" style="background-color: black; border-radius: 50%; color: white; font-size: 20px; height: 22px; margin-left: 3px; margin-top: 0px; padding: 6px 2px; text-align: center; text-decoration: none; transition: .3s; width: 30px;">
+            <p></p>
+          </a>
+          <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/HamiltonBeach" class="fab fa-twitter" style="background-color: black; border-radius: 50%; color: white; font-size: 20px; height: 22px; margin-left: 3px; margin-top: 0px; padding: 6px 2px; text-align: center; text-decoration: none; transition: .3s; width: 30px;">
+            <p></p>
+          </a>
+          <a target="_blank" rel="noopener noreferrer" href="https://www.pinterest.com/hamiltonbeach/" class="fab fa-pinterest-p" style="background-color: black; border-radius: 50%; color: white; font-size: 20px; height: 22px; margin-left: 3px; margin-top: 0px; padding: 6px 2px; text-align: center; text-decoration: none; transition: .3s; width: 30px;">
+            <p></p>
+          </a>
+        </div>
+      </div>
+    </div>
+    <p class="footer-copyright" style="background-color: black; color: white; display: flex; font-size: 12px; font-weight: 900; justify-content: center; margin: 0; padding: 10px 0; text-align: center;">שאוליאן סחר בע״מ</p>
+  </div>
+
+  <script src="https://unpkg.com/ionicons@4.5.5/dist/ionicons.js"></script>
+
+
+</body>
+
+</html>

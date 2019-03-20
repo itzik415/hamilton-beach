@@ -1,92 +1,75 @@
-[
-    {
-        "products": [{ 
-            "id": "number that is generating by the database",
-            "model": "string",
-            "mainImage": "src",
-            "shortDescription": "string",
-            "lastPrice": "number",
-            "price": "number",
-            "saving": "number",
-            "category": "string",
-            "sliderImages": ["src", "src", "src"], // separate table
-            "features": ["string"] // separate table
-        }]
-    },
-    {
-        "spareParts": [{
-            "id": "number that is generating by the database",
-            "model": "string",
-            "image": "src",
-            "category":"string",
-            "price": "number",
-            "name": "string"
-        }]
-    },
-    {
-        "recipes": [{
-            "id": "number that is generating by the database",
-            "name":"string",
-            "image": "src",
-            "category":"string",
-            "level": "string",
-            "time": "string",
-            "kosher": "string",
-            "type": "string",
-            "recipeingredients": ["string", "string"], // separate table
-            "recipeinstructions": ["string", "string"], // separate table
-            "recipeproperties": ["string", "string"] // separate table
-        }]
-    },
-    {
-        "slider": [{
-            "id":"number that is generating by the database",
-            "image":"src"
-        }]
-    },
-    {
-        "authorizedSellers": [{
-            "id":"number that is generating by the database",
-            "name":"string",
-            "city": "string",
-            "address": "string",
-            "phoneNumber": "number"
-        }]
-    },
-    {
-        "serviceLocations": [{
-            "id":"number that is generating by the database",
-            "name":"string",
-            "city": "string",
-            "address": "string",
-            "phoneNumber": "number"
-        }]
-    }
-]
 
 // ALTER TABLE sliderimages RENAME TO promotional-images;
 
 // INSERT into products(model,mainimage,shortdescription,lastprice,price,saving,category) VALUES(58149, 'https://www.hamiltonbeach.com/media/products/blender-chopper-58149.jpg', 'מותאם לכל סוגי השייקים כולל פירות וירקות קשים', 299.99, 249.99, 50, 'blenders');
 
 //insert into recipe table
-INSERT INTO recipes(name, englishname,imageurl, category, type, kosher, cookingtime, level) VALUES ('צלי בשר בבישול איטי', 'Slow Cooker Beef Pot Roast', 'https://www.hamiltonbeach.com/media/recipes/pot-roast-10.jpg', 'meat', 'בשרי', 'כשר', '5-8 שעות', 'בינוני');
-INSERT INTO recipes(name, englishname,imageurl, category, type, kosher, cookingtime, level) VALUES ('סלסה עגבניות', 'Fresh and Spicy Salsa', 'https://www.hamiltonbeach.com/media/recipes/Salsa.jpg', 'vegan', 'טבעוני', 'כשר', '20 דקות', 'קל מאוד');
-INSERT INTO recipes(name, englishname,imageurl, category, type, kosher, cookingtime, level) VALUES ('גוואקמולי', 'Guacamole', 'https://www.hamiltonbeach.com/media/recipes/guacamole.jpg', 'vegan', 'טבעוני', 'כשר', '15 דקות', 'קל מאוד');
+INSERT INTO recipes(lower_case_name, name, english_name, image_url, category, type, kosher, cooking_time, level) VALUES 
+('slow cooker beef pot roast', 'צלי בשר בבישול איטי', 'Slow Cooker Beef Pot Roast', 'https://www.hamiltonbeach.com/media/recipes/pot-roast-10.jpg', 'meat', 'בשרי', 'כשר', '5-8 שעות', 'בינוני'),
+('fresh and spicy salsa', 'סלסה עגבניות', 'Fresh and Spicy Salsa',  'https://www.hamiltonbeach.com/media/recipes/Salsa.jpg', 'vegan', 'טבעוני', 'כשר', '20 דקות', 'קל מאוד'),
+('guacamole', 'גוואקמולי', 'Guacamole', 'https://www.hamiltonbeach.com/media/recipes/guacamole.jpg', 'vegan', 'טבעוני', 'כשר', '15 דקות', 'קל מאוד');
+
+CREATE TABLE recipes(
+    id SERIAL PRIMARY KEY,
+    lower_case_name text NOT NULL,
+    name text NOT NULL,
+    english_name text NOT NULL,
+    image_url text NOT NULL,
+    category text NOT NULL,
+    level text NOT NULL,
+    cooking_time text NOT NULL,
+    kosher text NOT NULL,
+    type text NOT NULL
+);
+
+
+CREATE TABLE payments(
+    id SERIAL PRIMARY KEY,
+    email text NOT NULL,
+    name text NOT NULL,
+    total_amount text NOT NULL,
+);
+
+
+CREATE TABLE products(
+    id SERIAL PRIMARY KEY,
+    type text NOT NULL,
+    category text NOT NULL,
+    price integer NOT NULL,
+    hebrew_category text NOT NULL,
+    last_price integer NOT NULL,
+    short_description text NOT NULL,
+    image_url text NOT NULL,
+    model text NOT NULL,
+    serial text NOT NULL
+);
 
 //insert into product table
-INSERT INTO products(type, category, hebrew_category, price, last_price, short_description, image_url, model) 
-VALUES ('מטחנת קפה', 'grinders', 'מטחנות קפה', '179', '219', 'מטחנת קפה המתאימה גם לכל סוגי התבלינים', 'https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/80393/80393-1.jpg', '80393-IS'),
-('מעבד מזון', 'food-processors', 'מעבדי מזון', '1399', '1699', 'מעבד מזון מקצועי עם שלל אביזרים', 'https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/70825/70825-1.jpg', '70825-IS'),
-('סיר רב תכליתי', 'multi-cookers', 'סירים רב תכליתיים', '339', '399', 'סיר רב תכליתי לבישול מגוון רחב של מתכונים', 'https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/37571/37571-1.jpg', '37571-IS'),
-('וופל מייקר', 'waffle-makers', 'וופל מייקרים', '349', '399', 'מכשיר להכנת וופל בלגי המתאים ל 4 בו זמנית', ' https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/26021/26021-1.jpg', '26021-IS'),
-('וופל מייקר', 'waffle-makers', 'וופל מייקרים', '299', '349', 'מכשיר להכנת וופל בלגי המתאים ל 2 בו זמנית', 'https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/22083/22083-1.jpg', '22083-IS'),
-('טוסטר לחיצה', 'toasters', 'טוסטרים', '149', '179', 'טוסטר שטוח קומפקטי', 'https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/22082/22082-1.jpg', '22082-IS'),
-('מעבד מזון', 'food-processors', 'מעבדי מזון', '269', '319', 'מעבד מזון ביתי עם שלל חלקים', 'https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/70450/70450-1.jpg', '70450-IS'),
-('מסחטת מיצים', 'juciers', 'מסחטות מיצים', '579', '699', 'מסחטת מיצים להכנת מיצים צלולים וסמיכים', 'https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/67750/67750-1.jpg', '67750-IS');
+INSERT INTO products(type, category, hebrew_category, price, last_price, short_description, image_url, model, serial) VALUES 
+('בלנדר', 'blenders', 'בלנדרים', '899', '1079', 'עוצמתי ועם מינימום רעש', 'https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/53602/53602-1.jpg', '53602-IS', '0'),
+('בלנדר', 'blenders', 'בלנדרים', '499', '599', 'שייק מושלם בכל פעם מחדש', 'https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/58151/58151-1.jpg', '58151-IS', '0'),
+('מטחנת קפה', 'grinders', 'מטחנות קפה', '179', '219', 'מטחנת קפה המתאימה גם לכל סוגי התבלינים', 'https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/80393/80393-1.jpg', '80393-IS', '0'),
+('מעבד מזון', 'food-processors', 'מעבדי מזון', '1399', '1699', 'מעבד מזון מקצועי עם שלל אביזרים', 'https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/70825/70825-1.jpg', '70825-IS', '0'),
+('סיר רב תכליתי', 'multi-cookers', 'סירים רב תכליתיים', '339', '399', 'סיר רב תכליתי לבישול מגוון רחב של מתכונים', 'https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/37571/37571-1.jpg', '37571-IS', '0'),
+('וופל מייקר', 'waffle-makers', 'וופל מייקרים', '349', '399', 'מכשיר להכנת וופל בלגי המתאים ל 4 בו זמנית', ' https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/26021/26021-1.jpg', '26021-IS', '0'),
+('וופל מייקר', 'waffle-makers', 'וופל מייקרים', '299', '349', 'מכשיר להכנת וופל בלגי המתאים ל 2 בו זמנית', 'https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/22083/22083-1.jpg', '22083-IS', '0'),
+('טוסטר לחיצה', 'toasters', 'טוסטרים', '149', '179', 'טוסטר שטוח קומפקטי', 'https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/22082/22082-1.jpg', '22082-IS', '0'),
+('מעבד מזון', 'food-processors', 'מעבדי מזון', '269', '319', 'מעבד מזון ביתי עם שלל חלקים', 'https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/70450/70450-1.jpg', '70450-IS', '0'),
+('מסחטת מיצים', 'juciers', 'מסחטות מיצים', '579', '699', 'מסחטת מיצים להכנת מיצים צלולים וסמיכים', 'https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/67750/67750-1.jpg', '67750-IS', '0');
 
 //insert into spare_parts table
 INSERT INTO spare_parts(image_url, product_model, category, part_model, price, name, hebrew_name) 
-VALUES ('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/70825/70825-1.jpg', '70825', 'food-processors', '990218300', '109', 'Dicing Grid', '(רשת קוביות (לא כולל הסכין'),
+VALUES 
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/80393/80393-1.jpg', '80393', 'grinders', '990099701', '44', 'Cover', 'כיסוי המכשיר'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/80393/80393-2.jpg', '80393', 'grinders', '990099601', '55', 'Removable Grinding Chamber', 'כוס נשלפת');
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/53602/53602-1.jpg', '53602', 'blenders', '990243700', '27', 'Jar Collar', 'טבעת כד זכוכית'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/53602/53602-2.jpg', '53602', 'blenders', '990243600', '44', 'Cutting Blade Assembly', 'סכין מסתובבת'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/53602/53602-3.jpg', '53602', 'blenders', '990243500', '50', 'Jar Lid', 'מכסה כד זכוכית'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/53602/53602-4.jpg', '53602', 'blenders', '990243400', '138', 'Jar, 52oz., Glass', 'כד זכוכית 1.5 ליטר'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/53602/53602-5.jpg', '53602', 'blenders', '990243300', '277', 'Quiet Shield', 'חוסם רעשים'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/53602/53602-6.jpg', '53602', 'blenders', '990207900', '33', 'Personal Jar Travel Lid', 'מכסה לכד אישי'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/53602/53602-7.jpg', '53602', 'blenders', '990207800', '72', 'Personal Jar', 'כד אישי');
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/70825/70825-1.jpg', '70825', 'food-processors', '990218300', '109', 'Dicing Grid', '(רשת קוביות (לא כולל הסכין'),
 ('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/70825/70825-2.jpg', '70825', 'food-processors', '990218700', '15', 'Grid Cleaning Tool', 'מנקה רשת'),
 ('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/70825/70825-3.jpg', '70825', 'food-processors', '990219000', '109', 'Shedding Disc', 'דיסק פומפיה'),
 ('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/70825/70825-4.jpg', '70825', 'food-processors', '990218900', '219', 'Slice Disc', 'דיסק סלייסר'),
@@ -100,16 +83,228 @@ VALUES ('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spa
 ('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/70825/70825-12.jpg', '70825', 'food-processors', '990218100', '55', 'Large Pusher', 'דחסן גדול'),
 ('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/70825/70825-13.jpg', '70825', 'food-processors', '990217900', '27', 'Small Pusher', 'דחסן קטן');
 
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/67750/67750-1.jpg', '67750', 'juicers', '990193160', '110', 'Pulp Container', 'מיכל לאיסוף אשפה'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/67750/67750-2.jpg', '67750', 'juicers', '990193150', '28', 'Pitcher Cover', 'כיסוי כד מילוי'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/67750/67750-3.jpg', '67750', 'juicers', '990193140', '50', 'Pitcher', 'כד מילוי'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/67750/67750-4.jpg', '67750', 'juicers', '990193120', '61', 'Juicer Cover', 'מכסה המסחטה'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/67750/67750-5.jpg', '67750', 'juicers', '990193100', '50', 'Strainer Bowl', 'משפך'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/67750/67750-6.jpg', '67750', 'juicers', '990028502', '44', 'Pusher, Black', 'דחסן'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/67750/67750-7.jpg', '67750', 'juicers', '990028300', '88', 'Micro-Mesh Strainer Basket', 'רשת סינון'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/67750/67750-8.jpg', '67750', 'juicers', '967700100', '44', 'CLEANING BRUSH/JUICER', 'מברשת לניקוי');
+
+
 
 //insert into product_category_details table
 INSERT INTO product_category_details(category, title, para_text) VALUES 
+('blenders', 'בלנדרים אטרקטיביים ורבי עוצמה לכל מטבח', 'הבלנדרים של המילטון ביץ׳ ידועים ברחבי העולם להכנת שייקים טעימים בעלי מרקם חלק. במהלך השנים, אנשים הסתמכו על הבלנדר של המילטון ביץ׳ עבור משקאות קרים, שייקיםת רטבים וכמובן החדשנות שהמותג ההיסטורי הזה מפורסם בגללה. עם תכונות חכמות כמו פעולת הגליםת הרשומות כפטנטים של החברה , בלנדרים אלה מציעים את הביצועים שאתם צריכים עבור משקאות בלי מרקם חלק בכל פעם');
 ('grinders', 'פעולה ללא ידיים ומדידה מדויקת עד לקבלת טחינה ברמה המושלמת בשבילכם', 'מטחנות התבלינים של המילטון ביץ׳ בעלות הטחינה המותאמת הן האידיאליות ביותר עבור קפה ותבלינים עד לקבלת המרקם המדויק עבורכם בכל פעם. הגדרות מוסברות היטב המבטיחות תוצאות מושלמות וסימנים ברורים הנמצאים על הכוס אשר יבטיחו לכם מדידה מדוייקת להבטיח מדידה קפדנית. המטחנות שלנו קלות לשימוש ונקיון. הן מציעות טחינה ללא שימוש בידיים עם כיבוי אוטומטי, כמו גם מיקום מוסתר לאיכסון הכבל. חלק ממטחנות הקפה אף כוללות קערית נירוסטה מחוספסת נשלפת לניקוי קל במדיח כלים.'),
 ('food-processors', 'מעבדי המזון שלנו מפחיתים את זמן ההכנה עם מנועים חזקים ואביזרים קלים לניקוי','מעבדי המזון של המילטון ביץ׳ מסתמכים על מנועים חזקים כדי ליקצוץ, לפרוס, לגרוס ולערבב כמעט כל דבר שתוסיפו לקערה. מהירים וקלים לשימוש, ובעלי  רעיונות חכמים ומגוונים - במיוחד בדגמים בעלי פתח ההזנה הרחב אשר מאפשרים הכנסה של מזון בשלמותו. בעוד מעבדי מזון יכולים להוות מטרד כאשר מדובר על ניקיון המוצר, העיצוב הקפדני והזהיר שלנו מאפשר אחסנה נוחה של המוצרים בארון וניקיון רוב החלקים במדיח. ביחרו את גודל מעבד המזון שעובד ומתאים לצרכיכם האישיים בצורה הטובה ביותר. מעבדי המזון של המילטון ביץ׳ הם המוצרים האולטימטיביים, בין אם אתם מבשלים עבור שניים או בין אם אתם מבשלים עבור אירוע משפחתי'),
-('waffle-makers', 'פריך, היישר מהאופה בהבלגי האישי שלכם', 'איפו וופלים פריכים בתוך דקות עם האוסף הפופולרי של המילטון ביץ׳ Waffle Makers. נורית הביקורת תאמר לכם כאשר הוופל שלכם מוכן לאכילה, ולוחיות ה nonstick שלנו יעשו את עבודת הוצאת הוופל מהמכשיר בצורה חלקה ומושלמת.
-הWaffle Makers של המילטון ביץ׳ מיועדים לניקוי מהיר, ובדגמים נבחרים אשר כוללים: ציפוי nonstick וגומחה לשאריות הנוזל עושים את עבודת הניקוי לקלה במיוחד. את משטחי ה nonstick קל לנקות עם מטלית לחה, ובדגמים נבחרים אף ניתן לשלוף את הפלטות ולהכניסם לניקיון במדיח'),
+('waffle-makers', 'פריך, היישר מהאופה בהבלגי האישי שלכם', 'איפו וופלים פריכים בתוך דקות עם האוסף הפופולרי של המילטון ביץ׳ Waffle Makers. נורית הביקורת תאמר לכם כאשר הוופל שלכם מוכן לאכילה, ולוחיות ה nonstick שלנו יעשו את עבודת הוצאת הוופל מהמכשיר בצורה חלקה ומושלמת. הWaffle Makers של המילטון ביץ׳ מיועדים לניקוי מהיר, ובדגמים נבחרים אשר כוללים: ציפוי nonstick וגומחה לשאריות הנוזל עושים את עבודת הניקוי לקלה במיוחד. את משטחי ה nonstick קל לנקות עם מטלית לחה, ובדגמים נבחרים אף ניתן לשלוף את הפלטות ולהכניסם לניקיון במדיח'),
 ('toasters', 'טוסטים פריכים בתוך דקות', 'הכינו טוסטים פריכים בתוך דקות עם אוסף הטוסטרים של המילטון ביץ׳. נורית הביקורת תאמר לכם כאשר הטוסטר הגיע לטמפרטורה הרצויה. לוחיות ה nonstick שלנו יעשו את עבודת הוצאת הטוסט קלה ובצורה חלקה ומושלמת. הטוסטרים של המילטון ביץ׳ מיועדים לניקוי מהיר. את משטחי ה nonstick קל לנקות עם מטלית לחה, ובדגמים נבחרים אף ניתן לשלוף את הפלטות ולהכניסם לניקיון במדיח'),
 ('juciers', 'עבור המיצים האיכותיים ביותר', 'המסחטות של המילטון ביץ׳ מושלמות בכדי להכין מיצים טריים, מלהיבים וכמובן בריאים. גזרים, תפוזים, תפוחים, כרוב וסלק הם רק תמצית משלל הפירות והירקות שבהם תוכלו להשתמש בכדי להכין את המיץ המושלם עבורכם. בידקו את המתכונים שלנו למיצים טבעיים ובריאים על מנת לקבל טעימה מיעילות המכשירים שלנו. כמו כל שאר המוצרים של המילטון ביץ גם המסחטות שלנו מציעות יעילות ושוב פעם יעילות. אנו מציעים דגמים עם מנועים רבי עוצמה המסוגלים לסחוט מיץ ממגוון של פירות וירקות. הפיה הגדולה מאפשרת יתרון נוסף אשר לא תצטרכו לחתוך את הפרי/ירק לפני אלא, תוכלו להכניס אותו בשלמותו ובכך לחסוך זמן ומאמץ נוספים בזמן ההכנה. ייתרון נוסף הוא שרוב החלקים כמובן בטוחים לשימוש במדיח. ביחרו מתוך שלל הדגמים שאנו מציעים ועוד מגוון של עיצובים אחרים אשר ייסיעו לכם להנות ממיצים בריאים וטעימים בכל עת'),
-('multi-cookers', 'לשלל מאכלים עם שימוש במכשיר אחד בלבד', 'המולטי קוקר של המילטון ביץ׳ מושלם בכדי להכין מגוון רחב של מאכלים ותבשילים. אורז ומרקים הם רק תמצית משלל התבשילים והמאכלים אשר תוכלו להכין באמצעות המכשיר. בידקו את המתכונים שלנו למגוון המאכליםשלנו על מנת לקבל טעימה מיעילות המכשיר. כמו כל שאר המוצרים של המילטון ביץ גם המולטי קוקר שלנו מציע יעילות רבה. פנים המוצר עשוי שכבת nonestick אשר מונעת ממאכלים מסויימים להידבק למכשיר ובאותו הזמן כמובן גם נוכה מאוד לניקיון.');
+('multi-cookers', 'לשלל מאכלים עם שימוש במכשיר אחד בלבד', 'המולטי קוקר של המילטון ביץ׳ מושלם בכדי להכין מגוון רחב של מאכלים ותבשילים. אורז ומרקים הם רק תמצית משלל התבשילים והמאכלים אשר תוכלו להכין באמצעות המכשיר. בידקו את המתכונים שלנו למגוון המאכליםשלנו על מנת לקבל טעימה מיעילות המכשיר. כמו כל שאר המוצרים של המילטון ביץ גם המולטי קוקר שלנו מציע יעילות רבה. פנים המוצר עשוי שכבת nonestick אשר מונעת ממאכלים מסויימים להידבק למכשיר ובאותו הזמן כמובן גם נוכה מאוד לניקיון.'),
+
+//insert into product_feature table
+INSERT INTO product_features(product_model, feature) VALUES 
+('22082-IS', 'מתאים ל-2 פרוסות'),
+('22082-IS', 'תרמוסטט אוטומטי'),
+('22082-IS', 'משטח גריל עם פסים'),
+('22082-IS', 'משטחים עם ציפויי טלפון קלים'),
+('22082-IS', 'מנגנון נגד חימום יתר'),
+('22082-IS', 'גוף מנירוסטה מוברשת'),
+('22082-IS', 'ידית מבודדת'),
+('22082-IS', 'נורית ניקורת להפעלה'),
+('22082-IS', 'נורית ביקורת לסיום ההפעלה'),
+('26021-IS', 'מקום ל-4 פרוסות בו זמנית'),
+('26021-IS', 'משטח עבודה בעומק 9 ממ להכנת וופל בעובי מושלם'),
+('26021-IS', 'משטח עבודה מצופה nonestick המונע הדבקות'),
+('26021-IS', 'שליחה נוחה של הוופל'),
+('26021-IS', 'משטחי עבודה נשלפים ומתחלפים וופל וטוסט'),
+('26021-IS', 'נורית בקרה למצב מוכן'),
+('26021-IS', 'נעילת קליפ לנוחות ובטיחות'),
+('26021-IS', 'אחסון אנכי'),
+('26021-IS', 'ידית אחיזה קרה'),
+('22083-IS', 'מתאים ל-2 פרוסות'),
+('22083-IS', 'משטח עבודה בעומק 9 ממ להכנת וופל בעובי מושלם'),
+('22083-IS', 'משטח עבודה מצופה nonestick המונע הדבקות'),
+('22083-IS', 'שליחה נוחה של הוופל'),
+('22083-IS', 'משטחי עבודה נשלפים ומתחלפים וופל וטוסט'),
+('22083-IS', 'נורית בקרה למצב מוכן'),
+('22083-IS', 'נעילת קליפ לנוחות ובטיחות'),
+('22083-IS', 'אחסון אנכי'),
+('22083-IS', 'ידית אחיזה קרה');
+('53602-IS', 'מגן רעש משני חלקים בכדי להוריד את עוצמת הרעש בזמן הפעולה'),
+('53602-IS', 'BPA-FREE קנקן 1.5 ליטר העשוי'),
+('53602-IS', 'BPA-FREE קנקן 0.6 ליטר העשוי'),
+('53602-IS', '5 מהירויות'),
+('53602-IS', '3 תוכניות פעולה: ניקיון, קטישת קרח והכנת שייקים'),
+('53602-IS', 'מנוע 950 וואט');
+('80393-IS', 'מסוגל לטחון כמות של עד 14 כוסות קפה בפעם אחת'),
+('80393-IS', 'כוס העשויה נרוסטה הנשלפת, לניקוי פשוט ולהוצאת תכולת הכוס ללא כל בעיה'),
+('80393-IS', 'מספר פעולות טחינה מגוונות אשר מאפשרות לכם לקבל את המרקם הרצוי עבורכם'),
+('80393-IS', 'שימוש ללא מגע. לאחר בחירת הדרגה הרצויה המכשיר יבצע את הפעולה ויכבה אוטומטית בסיומה'),
+('80393-IS', 'איכסון חבוי ונוח לכבל החשמל'),
+('80393-IS', 'כוס המילוי ניתנת לשטיפה במדיח'),
+('80393-IS', 'ידית הזזה נוחה לבחירת דרגת הטחינה'),
+('70825-IS', 'חותך לקוביות, פריסה דקה עד עבה, לישה, קציצה, ריסוקת ועירבוב'),
+('70825-IS', 'שימוש נוח וקל בשל האיבזרים ללא כל מאמץ'),
+('70825-IS', 'מכשיר יציב'),
+('70825-IS', 'כולל חמישה אביזרים וקופסה ולאחסון'),
+('70825-IS', 'נפח של עד 14 כוסות'),
+('70825-IS', 'BPA-FREE מיכל עשוי'),
+('70825-IS', 'הסכינים המכסה והקערה ניתנים לשטיפה במדיח'),
+('70825-IS', 'מדריך נוח לשימוש'),
+('70825-IS', 'לוח טאצ׳ בעל לוחית לד הקל לניקוי'),
+('70825-IS', 'פתח ההזנה בשלוש גדלים שונים המתאימים לכל סוגי המזון'),
+('70825-IS', '2 דרגות מהירות כולל לחצן פולסים'),
+('70825-IS', 'בכל האזורים שבאים במגע עם האוכל BPA-FREE'),
+('37571-IS', 'תכולה של עד 20 סוכות אורז מבושל וכ 10 כוסות אורז שאיננו מבושל'),
+('37571-IS', '14 אפשרויות בישול שונות'),
+('37571-IS', 'בישול איטית, גבוה ונמוך'),
+('37571-IS', 'קל ונוח לניקוי ומתאים לשטיפה במדיח nonestick סיר נשלף'),
+('37571-IS', 'טיימר עם תצוגת לד'),
+('37571-IS', 'כיסוי פנימי נשלף ונוח לניקוי'),
+('37571-IS', 'רשת פלסטיק המיועדת לבישול באדים'),
+('37571-IS', 'כולל מרית'),
+('70450-IS', 'מגיע עם שתי סכינים לקציצה ועירבוב, ודיסק דו צדדי לגירוד/ריסוק ופריסה'),
+('70450-IS', 'אחסון הסכין בגוף המכשיר'),
+('70450-IS', 'עיצוב קומפקטי: 27סמ גובה, 34סמ רוחב, 19סמ עומק'),
+('70450-IS', 'מנוע 300 וואט'),
+('70450-IS', 'מתג לחיצה לפולסים'),
+('70450-IS', 'בטוח לשטיפה במדיח'),
+('70450-IS', 'TrueShap סכין'),
+('70450-IS', 'בכל האזורים שבאים במגע עם האוכל BPA-FREE'),
+('67750-IS', 'הכנה מהירה של מיץ בריא וטרי'),
+('67750-IS', 'פתח הזנה רכב המתאים להכנסה של פרי/ירק בשלמותו'),
+('67750-IS', 'מנוע 1.1 כוח סוס עם 2 מהירויות'),
+('67750-IS', 'עם מכסה ומפריד קצף BPA-FREE קנקן העשוי'),
+('67750-IS', 'חלקים המתאימים לשימוש במדיח'),
+('67750-IS', 'כולל מברשת לניקוי'),
+('67750-IS', 'נוח לאחסון'),
+('67750-IS', 'בכל האזורים שבאים במגע עם הפרי או הירק BPA-FREE'),
+('58151-IS', 'BPA-FREE קנקן 1.4 ליטר העשוי'),
+('58151-IS', 'מסנן מתכתי לקבלת מרקם חלק'),
+('58151-IS', 'בכל האזורים שבאים במגע עם הפרי או הירק BPA-FREE'),
+('58151-IS', ''),
+('58151-IS', ''),
+('58151-IS', 'מנוע 350 וואט');
+
+CREATE TABLE product_features(
+    id SERIAL PRIMARY KEY,
+    product_model text NOT NULL,
+    feature text NOT NULL
+);
+
+CREATE TABLE recipe_ingredients(
+    id SERIAL PRIMARY KEY,
+    recipe_name text NOT NULL,
+    ingredient text NOT NULL,
+    quantity text
+);
+
+//insert into  recipe_ingredients table
+INSERT INTO recipe_ingredients(recipe_name, ingredient, quantity) VALUES 
+('guacamole', 'בצל סגול בינוני מחולק לרבעים', '1'),
+('guacamole', 'פלפל ירוק חריף מחולק לרבעים', '1'),
+('guacamole', 'עגבניות המחולקות לרבעים ללא הגרעינים', '2'),
+('guacamole', 'כוס עלי כוסברה', '1'),
+('guacamole', 'ראש שום', '1'),
+('guacamole', 'כפית מלח', '1'),
+('guacamole', 'חצי כפית פלפל שחור', '1'),
+('guacamole', 'אבוקדואים נקיים מהקליפה וללא הגרעין', '4'),
+('guacamole', 'כפות מיץ ליים', '2'),
+('fresh and spicy salsa', 'בצל סגול בינוני מחולק לרבעים', '1'),
+('fresh and spicy salsa', 'ראש שום', '1'),
+('fresh and spicy salsa', 'פלפל ירוק חריף מחולק לרבעים', '1'),
+('fresh and spicy salsa', 'עגבניות המחולקות לרבעים', '4'),
+('fresh and spicy salsa', 'רבע כוס כוסברה',''),
+('fresh and spicy salsa', 'כף מיץ ליים', '1'),
+('fresh and spicy salsa', 'מלח ופלפל לפי הטעם', ''),
+('slow cooker beef pot roast', 'קילו של פילה מדומה/שריר', '1.5-2'),
+('slow cooker beef pot roast', 'כפית מלח', '1'),
+('slow cooker beef pot roast', 'רבע כפית פלפל שחור',''),
+('slow cooker beef pot roast', 'תפוחי אדמה לרבעים', '3-4'),
+('slow cooker beef pot roast', 'גזרים חתוכים לרצועות של 5סמ', '3-4'),
+('slow cooker beef pot roast', 'בצלים לבנים מחולקים לרבעים', '2'),
+('slow cooker beef pot roast', 'חצי כוס מרק בשר', '');
+
+CREATE TABLE recipe_instructions(
+    id SERIAL PRIMARY KEY,
+    recipe_name text NOT NULL,
+    instructions text NOT NULL,
+    instruction_number integer NOT NULL
+);
+
+//insert into  recipe_instructions table
+INSERT INTO recipe_instructions(recipe_name, instructions, instruction_number) VALUES 
+('slow cooker beef pot roast', 'תחילה יש לערבב את הבשר עם המלח ופלפל', 1),
+('slow cooker beef pot roast', 'בסיר לבישול איטי יש להניח בתחתית חצי מהירקות החתוכים, מעליהם את הבשר ומעל לבשר את שאר הירקות הנותרים', 2),
+('slow cooker beef pot roast', 'יש להוסיף את חצי כוס מרק הבשר', 3),
+('slow cooker beef pot roast', 'יש לכסות את הסיר לבשל על בישול בטמפרטורה נמוכה למשך 8 שעות או בישול בטמפרטורה גבוה למשך 5 שעות', 4),
+('guacamole', 'הכנס למעבד המזון את הבצל, פלפל ירוק, עגבניות, כוסברה, מלח ופלפל שחור', 1),
+('guacamole', 'השתמש הפעולת הפולסים עד לקבלת מרקם גושי', 2),
+('guacamole', 'הוסף למעבד המזון את האבוקדו ומיץ הלימון', 3),
+('guacamole', 'הפעל שוב את פעולת המעבד על פולסים עד לקבלת מרקם אחיד', 4),
+('fresh and spicy salsa', 'הכנס למעבד המזון את הבצל, שום, ופלפל ירוק חריף', 1),
+('fresh and spicy salsa', 'קצוץ את המרכיבים באמצעות מעבד מזון עד לקיצוץ כלל המרכיבים', 2),
+('fresh and spicy salsa', 'הוסף למעבד המזון את העגבניות, כוסברה, כמון, מיץ ליים, מלח ופלפל', 3),
+('fresh and spicy salsa', 'קצוץ את תכולת המיכל עד לקבלת קיצוץ של כלל המרכיבים', 4);
+
+//insert into  productsimages
+INSERT INTO productimages(imageurl, model) VALUES 
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/58151/58151-1.jpg', '58151-IS'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/58151/58151-2.jpg', '58151-IS'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/58151/58151-3.jpg', '58151-IS'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/58151/58151-4.jpg', '58151-IS'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/53602/53602-1.jpg', '53602-IS'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/53602/53602-2.jpg', '53602-IS'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/53602/53602-3.jpg', '53602-IS'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/53602/53602-4.jpg', '53602-IS'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/53602/53602-5.jpg', '53602-IS'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/53602/53602-6.jpg', '53602-IS'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/53602/53602-7.jpg', '53602-IS'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/53602/53602-8.jpg', '53602-IS'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/53602/53602-9.jpg', '53602-IS'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/53602/53602-10.jpg', '53602-IS'),
+('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/53602/53602-11.jpg', '53602-IS');
+
+CREATE TABLE recipeproperties(
+    id SERIAL PRIMARY KEY,
+    recipe_id smallint NOT NULL,
+    property text NOT NULL
+);
+
+DELETE FROM productimages WHERE id > 30;
+
+
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    name text NOT NULL,
+    email text UNIQUE NOT NULL,
+    joined TIMESTAMP NOT NULL
+);
+
+CREATE TABLE login (
+    id SERIAL PRIMARY KEY,
+    hash text NOT NULL,
+    email text UNIQUE NOT NULL
+);
+
+CREATE TABLE carts (
+    id SERIAL PRIMARY KEY,
+    email text NOT NULL,
+    model text NOT NULL,
+    price integer NOT NULL,
+    serial text NOT NULL,
+    amount integer DEFAULT 0 NOT NULL,
+    image_url text NOT NULL,
+    category text NOT NULL
+);
+
+INSERT INTO carts(email, model, price, serial, amount, image_url, category) VALUES
+('p@gmail.com', '70825-IS', 1399, 0, 2, 'https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/70825/70825-1.jpg', 'מעבד מזון'),
+('p@gmail.com', '80393-IS', 179, 0, 4, 'https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/80393/80393-1.jpg', 'מטחנת קפה');
+
 
 
 CREATE TABLE product_category_details (
@@ -130,18 +325,6 @@ CREATE TABLE spare_parts(
     hebrew_name text NOT NULL
 );
 
-CREATE TABLE products(
-    id SERIAL PRIMARY KEY,
-    type text NOT NULL,
-    category text NOT NULL,
-    price integer NOT NULL,
-    hebrew_category text NOT NULL,
-    last_price integer NOT NULL,
-    short_description text NOT NULL,
-    image_url text NOT NULL,
-    model text NOT NULL
-);
-
 CREATE TABLE recipes(
     id SERIAL PRIMARY KEY,
     name text NOT NULL,
@@ -157,29 +340,9 @@ CREATE TABLE recipes(
 INSERT into servicelocations(name,city,address,phonenumber) 
 VALUES(046903674, '44 רסקו', 'קרית שמונה', 'שרות רם');
 
-CREATE TABLE recipeingredients(
-    id SERIAL PRIMARY KEY,
-    recipe_id smallint NOT NULL,
-    ingredient text NOT NULL
-);
 
-CREATE TABLE recipeinstructions(
-    id SERIAL PRIMARY KEY,
-    recipe_id smallint NOT NULL,
-    instructions text NOT NULL
-);
 
-CREATE TABLE recipeproperties(
-    id SERIAL PRIMARY KEY,
-    recipe_id smallint NOT NULL,
-    property text NOT NULL
-);
 
-CREATE TABLE productfeature(
-    id SERIAL PRIMARY KEY,
-    product_id smallint NOT NULL,
-    feature text NOT NULL
-);
 
 
 CREATE TABLE authorizedsellers(

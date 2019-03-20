@@ -1,0 +1,140 @@
+.hiddenNav {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    border-bottom: 5px solid black;
+    background-color: $yellow;
+
+    @media screen and(min-width: 1001px) {
+        display: none;
+    }
+
+    &-category1, 
+    &-category2, 
+    &-category3, 
+    &-category4, 
+    &-category5,
+    &-category6 {
+        background-color: white;
+        text-align: start;
+        font-size: 2rem;
+        width: 100%;
+        padding: 1rem;
+        color: black;
+        background-color: $grey-dark;
+        border-bottom: 1px solid grey;
+        transition: .3s;
+
+        &:hover,
+        &:active {
+            color: $yellow;
+            cursor: pointer;
+            text-decoration: none;
+            background-color: $grey-dark3;
+            transform: translateX(-15px);
+        }
+
+    }
+    
+    &-dropDown {
+        display: none;
+        width: 100%;
+        background-color: $yellow;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    &-categorySearch {
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        text-align: end;
+        font-size: 2.2rem;
+        width: 100%;
+        padding: 1rem;
+        color: black;
+        background-color: $grey-dark;
+        border-bottom: 1px solid grey;
+        transition: .3s;
+
+        &:hover > #search-button-hidden,
+        &:hover > input::placeholder {
+            color: $yellow;
+            cursor: pointer;
+        }
+
+        // &:hover > input::placeholder {
+        //     color: $yellow;
+        // }
+
+        input {
+            background-color: $grey-dark;
+            border: 0;
+            // border-bottom: 2px solid grey;
+            text-align: start;
+            margin-right: 1rem;
+            outline: none;
+            
+            &:focus {
+                animation-duration: 0.3s;
+                animation-name: moveLeft;
+                animation-fill-mode: forwards; 
+                border-bottom: 1px solid $yellow; 
+                width: 330px;
+
+                & + #search-button-hidden {
+                    color: $yellow;
+                }
+
+                &::placeholder {
+                    color: $yellow;
+                }
+            }
+        }
+    }
+
+}
+
+#search-button-hidden {
+    background-color: white;
+    font-size: 3rem;
+    color: black;
+    background-color: $grey-dark;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+#Link5 {
+    color: black;
+    font-size: 1.8rem;
+    background-color: $grey-dark;
+    width: 100%;
+    text-align: start;
+    padding: 1rem 2.5rem 1rem 0;
+    transition: .3s;
+
+    &:hover {
+        text-decoration: none;
+        color: $yellow;
+        transform: translateX(-15px);
+        background-color: $grey-dark3;
+        padding-right: 1rem;
+    }
+}
+
+.displayChange {
+    display: flex;
+}
+
+.linkStyleChange {
+    text-decoration: none;
+    color: $yellow;
+    background-color: $grey-dark3;
+    padding-right: 1rem;
+}
+
