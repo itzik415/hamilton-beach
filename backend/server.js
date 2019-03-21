@@ -10,8 +10,8 @@ const paypal = require('paypal-rest-sdk');
 const uuidv1 = require('uuid/v1');
 
 const JWT = process.env.JWT_WEB_SERIAL;
-const PAYPAL_ID = PAYPAL_CLIENT_ID;
-const PAYPAL_SECRET = PAYPAL_CLIENT_SECRET;
+const PAYPAL_ID = process.env.PAYPAL_CLIENT_ID;
+const PAYPAL_SECRET = process.env.PAYPAL_CLIENT_SECRET;
 
 const bcrypt = require('bcrypt-nodejs');
 const bodyParser = require('body-parser');
