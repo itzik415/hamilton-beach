@@ -9,6 +9,10 @@ const ejs = require('ejs');
 const paypal = require('paypal-rest-sdk');
 const uuidv1 = require('uuid/v1');
 
+const JWT = process.env.JWT_WEB_SERIAL;
+const PAYPAL_ID = PAYPAL_CLIENT_ID;
+const PAYPAL_SECRET = PAYPAL_CLIENT_SECRET;
+
 const bcrypt = require('bcrypt-nodejs');
 const bodyParser = require('body-parser');
 const nodemailer = require("nodemailer");
@@ -24,8 +28,8 @@ app.use(bodyParser.urlencoded({ extended: false}));
 
 paypal.configure({
     'mode': 'sandbox', //sandbox or live
-    'client_id': 'ASPY9AWImgC6uBxh_r1QETrL1QXbtLwud8Lmd1jRrNw3EYn8weaSEABWseTAUckE0HNieCEVdOLANbnd',
-    'client_secret': 'EDjfERfL26NXjDmt3DW8RiLa4e5dspm4crjyz8q6KSUdhV16c8T1PxVyfmNWAB8fzT5_KHVxa-D4_tZ6'
+    'client_id': PAYPAL_ID,
+    'client_secret': PAYPAL_SECRET
 })
 
 
@@ -257,15 +261,15 @@ const db = knex({
     }
 });
 
-if(!config.get('jwtPrivateKey')) {
-    console.error('FATAL ERROR: jwtPrivateKey is not defined.')
-    process.exit(1);
-}
+// if(!config.get('jwtPrivateKey')) {
+//     console.error('FATAL ERROR: jwtPrivateKey is not defined.')
+//     process.exit(1);
+// }
 
 
 
 app.get('/user', verifyToken, async (req,res) => {
-    const payload = await jwt.verify(req.token, config.get('jwtPrivateKey'))
+    const payload = await jwt.verify(req.token, JWT)
     let me = await db('users').where('email', '=', payload.user.email).select('*')
     res.end(JSON.stringify(me[0]))
 })
@@ -330,7 +334,7 @@ app.post('/signin', (req,res) => {
                     .then(cart =>{
                         return db('users').where('email', '=', req.body.email).select('*')
                         .then(user => { 
-                            jwt.sign({user: req.body, cart: cart}, config.get('jwtPrivateKey'),{ expiresIn: '7d' }, (err, token) => {
+                            jwt.sign({user: req.body, cart: cart}, JWT,{ expiresIn: '7d' }, (err, token) => {
                                 res.json({
                                     token: token,
                                     user: user[0],
@@ -402,7 +406,7 @@ app.post('/register', (req,res) => {
                         res.send('working!')
                     });
                     return (
-                        jwt.sign({user: req.body}, config.get('jwtPrivateKey'),{ expiresIn: '7d' }, (err, token) => {
+                        jwt.sign({user: req.body}, JWT,{ expiresIn: '7d' }, (err, token) => {
                             res.json({
                                 token: token,
                                 user: user[0]
