@@ -40,7 +40,7 @@ paypal.configure({
 //     res.render('index')
 // })
 app.get('/', function (req, res) { 
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+    res.sendFile(__dirname+'../frontend/public/index.html');
   });
 app.post('/api/pay', (req,res) => {
     var allProducts = [];
