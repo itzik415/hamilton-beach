@@ -38,6 +38,7 @@ paypal.configure({
 // app.get('/payment', (req,res) => {
 //     res.render('index')
 // })
+app.get('/', function (req, res) { res.send('Hello'); });
 
 app.post('/api/pay', (req,res) => {
     var allProducts = [];
