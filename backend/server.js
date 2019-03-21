@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken');
 
 const ejs = require('ejs');
 const paypal = require('paypal-rest-sdk');
+const uuidv1 = require('uuid/v1');
 
 const bcrypt = require('bcrypt-nodejs');
 const bodyParser = require('body-parser');
@@ -21,11 +22,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 
 
-
-
-
-
-
 paypal.configure({
     'mode': 'sandbox', //sandbox or live
     'client_id': 'ASPY9AWImgC6uBxh_r1QETrL1QXbtLwud8Lmd1jRrNw3EYn8weaSEABWseTAUckE0HNieCEVdOLANbnd',
@@ -38,14 +34,13 @@ paypal.configure({
 // app.get('/payment', (req,res) => {
 //     res.render('index')
 // })
-var allProducts = [];
-var userEmail = [];
-var userName = [];
+
 app.post('/api/pay', (req,res) => {
+    var allProducts = [];
     db('carts').where({email: req.body.user}).select('category', 'model', 'price', 'amount', 'serial')
         .then(item => {
             for(let i = 0; i < item.length; i++){
-                const product = {
+                let product = {
                     "name": item[i].category,
                     "sku": item[i].model +' '+ item[i].serial,
                     "price": item[i].price,
@@ -54,16 +49,32 @@ app.post('/api/pay', (req,res) => {
                 }
                 allProducts.push(product)
             }
-            userEmail.push(req.body.email)
-            userName.push(req.body.name)
+            allProducts.push({
+                "name": "משלוח",
+                "sku": "משלוח",
+                "price": "70.00",
+                "currency": "ILS",
+                "quantity": 1
+            })
+            let orderId = uuidv1();
+            db('orders').insert({
+                order_id: orderId,
+                signin_email: req.body.user,
+                user_email: req.body.email,
+                user_name: req.body.name,
+                total_sum: allProducts.map(item => item.price * item.quantity).reduce((a,b) => a+b, 0) })
+                .then(item => {item})
+
+            let returnUrl = req.body.url + '/process-payment'
+            let cancelUrl = req.body.url + '/cancel-payment'
             const create_payment_json = {
                 "intent": "sale",
                 "payer": {
                     "payment_method": "paypal"
                 },
                 "redirect_urls": {
-                    "return_url": "http://localhost:5000/success",
-                    "cancel_url": "http://localhost:5000/cancel"
+                    "return_url": returnUrl + '/?orderId=' + orderId,
+                    "cancel_url": cancelUrl
                 },
                 "transactions": [{
                     "item_list": {
@@ -76,79 +87,100 @@ app.post('/api/pay', (req,res) => {
                     "description": "Hamilton Beach products"
                 }]
             };
+        
 
             paypal.payment.create(create_payment_json, function (error, payment) {
                 if (error) {
+                
                     throw error;
                 } else {
                     for(let i = 0; i < payment.links.length; i++) {
                         if(payment.links[i].rel === 'approval_url'){
-                            res.redirect(payment.links[i].href);
+                            res.json({paypalUrl: payment.links[i].href});
                         }
                     }
                 }
             });
-
+            
         });
 })
 
 app.get('/success', (req,res) => {
-    const template = fs.readFileSync('./views/payment.hjs', 'utf-8')
-    const compiledTemplate = Hogan.compile(template)
-    console.log(req.body)
-    let transporter = nodemailer.createTransport({
-        host: 'smtp.gmail.com',
-        port: 587,
-        secure: false, 
-        auth: {
-            user: 'issacshaouli@gmail.com', 
-            pass: 'isaac615243?'  
-        },
-        tls: {
-            rejectUnauthorized: false
-        }
-    });
-
-    let mailOptions = {
-        from: `${userEmail[0]}`, // sender address
-        to: "itzikshaoulian@gmail.com", // list of receivers
-        subject: "אישור רכישת מוצרים מאתר Hamilton Beach", // Subject line
-        text: "Hello world?", // plain text body
-        html: compiledTemplate.render({name: userName}) // html body
-    };
-    const payerId = req.query.PayerID;
-    const paymentId = req.query.paymentId;
-    const execute_payment_json = {
-        "payer_id": payerId,
-        "transactions": [{
-            "amount": {
-                "total": allProducts.map(item => item.price * item.quantity).reduce((a,b) => a+b, 0),
-                "currency": "ILS",
-            }
-        }]
-      };
-
-    paypal.payment.execute(paymentId, execute_payment_json, function (error, payment) {
-        if (error) {
-            throw error;
-        } else {
-            console.log(JSON.stringify(payment)); //putting this information in the database after it succeed
-            // res.redirect('http://localhost:3000/success-payment');
-            transporter.sendMail(mailOptions, (error, info) => {
-                if(error) {
-                    return console.log(error);
+    db('orders').where({order_id: req.query.orderId}).select('*')
+        .then(order => {
+            const template = fs.readFileSync('./views/payment.hjs', 'utf-8')
+            const compiledTemplate = Hogan.compile(template)
+            let transporter = nodemailer.createTransport({
+                host: 'smtp.gmail.com',
+                port: 587,
+                secure: false, 
+                auth: {
+                    user: 'issacshaouli@gmail.com', 
+                    pass: 'isaac615243?'  
+                },
+                tls: {
+                    rejectUnauthorized: false
                 }
-                
-                console.log("Message sent: %s", info.messageId);
-                console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));        
-                res.redirect('http://localhost:3000/success-payment');
             });
-        }
-    });
+        
+            let mailOptions = {
+                from: `${order.user_email}`, // sender address
+                to: "itzikshaoulian@gmail.com", // list of receivers
+                subject: "אישור רכישת מוצרים מאתר Hamilton Beach", // Subject line
+                text: "Hello world?", // plain text body
+                html: compiledTemplate.render({name: order[0].user_name}) // html body
+            };
+            const payerId = req.query.PayerID;
+            const paymentId = req.query.paymentId;
+            const execute_payment_json = {
+                "payer_id": payerId,
+                "transactions": [{
+                    "amount": {
+                        "total": order[0].total_sum.toString(),
+                        "currency": "ILS",
+                    }
+                }]
+              };
+        
+            paypal.payment.execute(paymentId, execute_payment_json, function (error, payment) {
+                if (error) {
+                    throw error;
+                } else {
+                    console.log(JSON.stringify(payment)); //putting this information in the database after it succeed
+                    db('carts').where({email: order[0].signin_email}).del()
+                        .then(cart => {
+                            for(let i = 0; i < cart; i++) {
+                                db('payments').insert({
+                                    email: order[0].user_email,
+                                    user_name: order[0].user_name,
+                                    product_name: payment.transactions[0].item_list.items[i].name,
+                                    model: payment.transactions[0].item_list.items[i].sku.slice(0, payment.transactions[0].item_list.items[i].sku.indexOf(' ')), 
+                                    serial: payment.transactions[0].item_list.items[i].sku.slice(payment.transactions[0].item_list.items[i].sku.indexOf(' ')), 
+                                    amount: payment.transactions[0].item_list.items[i].quantity,
+                                    unit_price: payment.transactions[0].item_list.items[i].price,
+                                    total_price: (Number(payment.transactions[0].item_list.items[i].price) * payment.transactions[0].item_list.items[i].quantity).toString()})
+                                    .then(item => item)
+                            }
+        
+                        
+                            transporter.sendMail(mailOptions, (error, info) => {
+                                if(error) {
+                                    return console.log(error);
+                                }
+                                
+                                console.log("Message sent: %s", info.messageId);
+                                console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));        
+                                res.json({successUrl: 'http://localhost:3000/success-payment'});
+                            });
+                        })
+                }
+            });
+        })
 
 });
 
 app.get('/cancel', (req,res) =>{
+
     res.send('Cancelled')
 });
 
@@ -487,15 +519,10 @@ app.get('/api/cart/:email', (req,res) => {
 })
 
 
-const port = process.env.PORT || 5000;
+const port = process.env.port || 5000;
 app.listen(port, () => {
     console.log(`Server start at ${port}`)
 });
-
-// app.listen(process.env.PORT || 5000, function(){
-//     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-//   });
-  
 
 
 // COPY authorized_stores FROM '/Users/itzikshaoulian/Desktop/hamilton-beach/backend/stores-list.csv' DELIMITER ';' ;

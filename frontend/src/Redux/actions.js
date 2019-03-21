@@ -353,7 +353,6 @@ export function handleSubmitCart(e){
             method: 'post',
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin':'*'
             },
             body: JSON.stringify({
                 name: e.target.name.value,
@@ -362,11 +361,21 @@ export function handleSubmitCart(e){
                 street: e.target.street.value,
                 user: user,
                 city: e.target.city.value,
-                zip: e.target.zip.value
+                zip: e.target.zip.value,
+
+                url: window.location.href.slice(0, window.location.href.lastIndexOf('/'))
             })
         })
         .then(response => response.json())
-        .then(user => {console.log(user)})
+        .then(response => window.location = response.paypalUrl)
+        .catch(err => console.log(err))
+}
+
+//Process payment
+export function processPayment(){
+    fetch(`http://localhost:5000/success?orderId=${window.location.href.slice(window.location.href.lastIndexOf('orderId')+8)}`)
+        .then(response => response.json())
+        .then(response => window.location = response.successUrl)
         .catch(err => console.log(err))
 }
 

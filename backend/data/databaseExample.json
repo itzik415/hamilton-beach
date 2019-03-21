@@ -23,12 +23,32 @@ CREATE TABLE recipes(
 );
 
 
+CREATE TABLE orders(
+    id SERIAL PRIMARY KEY,
+    order_id text NOT NULL,
+    signin_email text NOT NULL,
+    user_email text NOT NULL,
+    user_name text NOT NULL,
+    total_sum integer NOT NULL
+);
+
+
 CREATE TABLE payments(
     id SERIAL PRIMARY KEY,
     email text NOT NULL,
-    name text NOT NULL,
-    total_amount text NOT NULL,
+    user_name text NOT NULL,
+    product_name text NOT NULL,
+    model text NOT NULL,
+    serial text NOT NULL,
+    amount integer NOT NULL,
+    unit_price text NOT NULL,
+    total_price text NOT NULL
 );
+
+//insert into product table
+INSERT INTO payments(email, user_name, product_name, model, serial, amount, unit_price, total_price) VALUES 
+(),
+
 
 
 CREATE TABLE products(

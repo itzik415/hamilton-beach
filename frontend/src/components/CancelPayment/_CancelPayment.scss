@@ -1,0 +1,44 @@
+.cancelPayment {
+    max-width: 1400px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: start;
+    flex: 1;
+
+    @media screen and(max-width: 1400px) {
+        margin: 2rem;
+    }
+
+    &-header {
+        font-size: 5rem;
+        margin: 2rem 0;
+
+        @media screen and(max-width: 1400px) {
+            font-size: 3rem;
+        }
+
+        .fas {
+            color: $red-dark;
+        }
+    }
+
+    &-line {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+
+        @media screen and(max-width: 1400px) {
+            font-size: 1.8rem;
+        }
+
+        &:nth-child(7) {
+            font-weight: bolder;
+        }
+
+        span {
+            color: blue;
+            text-decoration: underline;
+        }
+    }
+}

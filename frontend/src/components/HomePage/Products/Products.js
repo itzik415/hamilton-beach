@@ -46,8 +46,8 @@ const products = (props) => {
                                             <p className="products__section-bottom-product-details-category">{item.type}</p>
                                             <p className="products__section-bottom-product-details-description">{item.short_description}</p>
                                             <p className="products__section-bottom-product-details-model">{item.model} דגם</p>
-                                            <p className="products__section-bottom-product-details-lastPrice">מחיר קודם {`${item.last_price}.99₪`}</p>
-                                            <p className="products__section-bottom-product-details-price">{`${item.price}.99₪`}</p>
+                                            <p className="products__section-bottom-product-details-lastPrice">מחיר קודם {`${item.last_price}₪`}</p>
+                                            <p className="products__section-bottom-product-details-price">{`${item.price}₪`}</p>
                                             <p className="products__section-bottom-product-details-save">חיסכון של {`${item.last_price - item.price}₪`}</p>
                                             <button onClick={openingForm} id={item.model} value={item.category} className="products__section-bottom-product-details-cart">הוסף לעגלה</button>
                                         </div>

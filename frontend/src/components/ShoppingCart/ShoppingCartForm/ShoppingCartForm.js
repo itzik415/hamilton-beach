@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { handleSubmitCart } from '../../../Redux/actions';
-const jwt =  require('jsonwebtoken');
+import { handleSubmitCart } from '../../../Redux/actions';
 
 class ShoppingCartForm extends Component {
 
     render() {
         return (
-            <form className="shoppingCartForm"  action="http://localhost:5000/api/pay" method="post">
-                <input type="text" name="user" value={jwt.decode(localStorage.jwt).user.email} style={{display: 'none'}} readOnly/>
+            <form className="shoppingCartForm" onSubmit={handleSubmitCart}>
                 <h1 className="shoppingCartForm-header">פרטים אישיים</h1>
                 <div className="shoppingCartForm-main">
                     <div className="shoppingCartForm-main-personalData">
@@ -80,12 +78,20 @@ class ShoppingCartForm extends Component {
                 </div>
                 <div className="shoppingCartForm-payment">
                     <p className="shoppingCartForm-payment-price">עלות ללא משלוח: {`${this.props.shoppingCart.totalCartPrice}₪`}</p>
-                    <p className="shoppingCartForm-payment-delivery">עלות משלוח: 70₪ (משלוח עד הבית)</p>
-                    <p className="shoppingCartForm-payment-totalPrice">סה״כ לתשלום: {`${this.props.shoppingCart.totalCartPrice + 60}₪`}</p>
-                    {/* <p className="shoppingCartForm-payment-totalPrice">עלות משלוח: {`${this.props.shoppingCart.totalCartPrice}₪`}</p>
-                    <p className="shoppingCartForm-payment-totalPrice">עלות לא כולל משלוח: {`${this.props.shoppingCart.totalCartPrice}₪`}</p>
-                    <p className="shoppingCartForm-payment-totalPrice">סה״כ לתשלום: {`${this.props.shoppingCart.totalCartPrice}₪`}</p> */}
-                    {/* <button className="shoppingCartForm-payment-checkoutBtn">לתשלום</button> */}
+                    <p className="shoppingCartForm-payment-delivery">
+                        {
+                            this.props.shoppingCart.totalCartPrice === 0?
+                            'עלות משלוח: 0₪ (משלוח עד הבית)':
+                            'עלות משלוח: 70₪ (משלוח עד הבית)'
+                        }
+                    </p>
+                    <p className="shoppingCartForm-payment-totalPrice">סה״כ לתשלום: 
+                        {
+                            this.props.shoppingCart.totalCartPrice === 0?
+                            `${this.props.shoppingCart.totalCartPrice + 0}₪`:
+                            `${this.props.shoppingCart.totalCartPrice + 70}₪`
+                        }
+                    </p>
                     <button className="shoppingCartForm-payment-button" type="submit">
                         <img className="shoppingCartForm-payment-button-img" src="https://storage.googleapis.com/hamilton-beach-israel/different-images/paypal-payment-button.png" alt="Check out with PayPal" />
                     </button>
@@ -100,11 +106,5 @@ const mapStateToProps = state => {
         shoppingCart: state.shoppingCart
     }
 }
-
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         deleteProduct: () => dispatch(deleteProduct())
-//     }
-// }
 
 export default connect(mapStateToProps, null)(ShoppingCartForm);

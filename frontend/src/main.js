@@ -18,7 +18,9 @@ import ProductCategoryPage from './components/ProductCategoryPage/ProductCategor
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import AddToCartForm from './components/User/AddToCart/AddToCart';
-import SuccessPayment from './components/SuccessPayment/SuccessPayment'
+import SuccessPayment from './components/SuccessPayment/SuccessPayment';
+import ProcessPayment from './components/ProcessPayment/ProcessPayment';
+import CancelPayment from './components/CancelPayment/CancelPayment';
 
 const Main = () => {
     return (
@@ -34,6 +36,8 @@ const Main = () => {
                     <Route path='/service-locations' component={ServiceLocationsPage} />
                     <Route path='/shopping-cart' component={ShoppingCart} />
                     <Route path='/success-payment' component={SuccessPayment} />
+                    <Route path='/process-payment' component={ProcessPayment} />
+                    <Route path='/cancel-payment' component={CancelPayment} />
                     <Route exact path='/spare-parts' component={SparePartsPage} />
                     <Route exact path='/spare-parts/:productmodel/:partmodel' component={PartPage} />
                     <Route exact path='/recipes' component={AllRecipesPage} />

@@ -37,7 +37,7 @@ const footer = () => {
                     <h1 className="footer__section-companyDetails-title">מידע נוסף</h1>
                     <p className="footer__section-companyDetails-phone">טלפון: 09-7409835/6</p>
                     <p className="footer__section-companyDetails-address">כתובת: הרימון 3 אבן יהודה</p>
-                    <p className="footer__section-companyDetails-email">sherut@shaoulian.co.il :מייל</p>
+                    <p className="footer__section-companyDetails-email">דואר אלקטרוני: sherut@shaoulian.co.il</p>
                     <p className="footer__section-companyDetails-workingHours">שעות פעילות: א׳ - ה׳ בין השעות 9:00-17:00</p>
                 </div>
             </div>
