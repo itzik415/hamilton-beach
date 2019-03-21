@@ -39,9 +39,19 @@ paypal.configure({
 // app.get('/payment', (req,res) => {
 //     res.render('index')
 // })
-app.get('/', function (req, res) { 
-    res.sendFile(__dirname+'../frontend/public/index.html');
-  });
+if (process.env.NODE_ENV === 'production') {
+    // Serve any static files
+    app.use(express.static(path.join(__dirname, '/..frontend/build')));
+  // Handle React routing, return all requests to React app
+    app.get('*', function(req, res) {
+      res.sendFile(path.join(__dirname, '/..frontend/build', 'index.html'));
+    });
+  }
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname, '/../frontend/public', 'index.html'));
+});
+
+
 app.post('/api/pay', (req,res) => {
     var allProducts = [];
     db('carts').where({email: req.body.user}).select('category', 'model', 'price', 'amount', 'serial')
