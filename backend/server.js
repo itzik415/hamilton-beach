@@ -14,6 +14,7 @@ const PAYPAL_ID = process.env.PAYPAL_CLIENT_ID;
 const PAYPAL_SECRET = process.env.PAYPAL_CLIENT_SECRET;
 
 const bcrypt = require('bcrypt-nodejs');
+const path = require('path');
 const bodyParser = require('body-parser');
 const nodemailer = require("nodemailer");
 const Hogan = require('hogan.js');
@@ -38,8 +39,9 @@ paypal.configure({
 // app.get('/payment', (req,res) => {
 //     res.render('index')
 // })
-app.get('/', function (req, res) { res.send('Hello'); });
-
+app.get('/', function (req, res) { 
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  });
 app.post('/api/pay', (req,res) => {
     var allProducts = [];
     db('carts').where({email: req.body.user}).select('category', 'model', 'price', 'amount', 'serial')
