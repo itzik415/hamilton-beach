@@ -326,10 +326,6 @@
     position: relative;
     margin-top: 1rem;
 
-    @media screen and(max-width: 1000px) {
-        // margin: 2rem auto;
-    }
-
     &-input {
         display: none;
     }
@@ -352,8 +348,8 @@
 }
 
 .article img {
-    width: 600px;
-    height: 600px;
+    width: 530px;
+    height: 530px;
 
     @media screen and(max-width: 1000px) {
         width: 70%;
