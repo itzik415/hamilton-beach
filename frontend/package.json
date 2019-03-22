@@ -1,5 +1,9 @@
 {
   "name": "hamilton-beach",
+  "engines": {
+    "node": ">=8.0.0",
+    "npm": ">=6.0.0"
+  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -24,9 +28,6 @@
     "eject": "react-scripts eject",
     "build-css": "node-sass --include-path scss src/main.scss   src/App.css",
     "watch-css": "nodemon -e scss -x \"npm run build-css\""
-  },
-  "engines": {
-    "node": "v8.10.0"
   },
   "eslintConfig": {
     "extends": "react-app"
