@@ -57,9 +57,9 @@ class SpareParts extends Component {
                                         </button>
                                         <h3 className="modal-title" id="exampleModalLabel">ניתן למצוא מדבקה זו בתחתית המוצר</h3>
                                     </div>
-                                <div className="modal-body">
-                                    <img style={{width: '100%'}} src={require('../../images/sticker-model.png')} alt="מדבקת מוצר"/>
-                                </div>
+                                    <div className="modal-body">
+                                        <img style={{width: '100%'}} src={require('../../images/sticker-model.png')} alt="מדבקת מוצר"/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -67,7 +67,7 @@ class SpareParts extends Component {
                         {
                             this.props.chosenProduct.map((item,index) => {
                                 return (
-                                    <div className="spareParts-main-product" key={index}>
+                                    <div className="spareParts-main-product" key={index} >
                                         <img className="spareParts-main-product-img" src={item.image_url} alt={item.hebrew_name} />
                                         <div className="spareParts-main-product-rightDiv">
                                             <p className="spareParts-main-product-rightDiv-title">חלקים עבור:</p>
