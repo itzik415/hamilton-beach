@@ -95,10 +95,19 @@
             display: flex;
             flex-direction: column;
 
+            @media screen and(max-width: 500px) {
+                margin: auto;
+                width: 300px;
+            }
+
             &-img {
                 height: 300px;
                 width: 300px;
                 object-fit: cover;
+
+                @media screen and(max-width: 500px) {
+                    margin: auto;
+                }
             }
 
             &-title {

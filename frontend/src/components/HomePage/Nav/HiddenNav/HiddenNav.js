@@ -36,7 +36,7 @@ class HiddenNav extends Component {
                     {
                         this.props.productsCategories.map((item,index) => {
                             return (
-                                <Link onClick={this.props.closeAll} key={index} id="Link5" to={`/products/${item[0]}`}>{item[1]}</Link>
+                                <Link onClick={this.props.closeAll} key={index} id="Link5" to={`/products/${item[0]}`}>{item[3]}</Link>
                             )
                         })   
                     }
