@@ -1,9 +1,5 @@
 {
   "name": "hamilton-beach",
-  "engines": {
-    "node": ">=8.0.0",
-    "npm": ">=6.0.0"
-  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {
