@@ -22,6 +22,18 @@ CREATE TABLE recipes(
     type text NOT NULL
 );
 
+CREATE TABLE promotionalimages(
+    id SERIAL PRIMARY KEY,
+    imageurl text NOT NULL
+);
+
+INSERT INTO promotionalimages(imageurl) VALUES 
+('https://storage.googleapis.com/hamilton-beach-israel/promotional-images/image-1.jpg'),
+('https://storage.googleapis.com/hamilton-beach-israel/promotional-images/image-4.jpg'),
+('https://storage.googleapis.com/hamilton-beach-israel/promotional-images/image-2.jpg'),
+('https://storage.googleapis.com/hamilton-beach-israel/promotional-images/image-5.jpeg'),
+('https://storage.googleapis.com/hamilton-beach-israel/promotional-images/image-3.jpeg');
+
 INSERT INTO product_category_background_images(imageurl, category) VALUES 
 ('https://www.hamiltonbeach.com/media/cat-headers/category_banner_coffee_grinders.jpg' , 'grinders'),
 ('https://www.hamiltonbeach.com/media/cat-headers/category_banner_waffle_maker.jpg' , 'waffle-makers'),

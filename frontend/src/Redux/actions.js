@@ -421,6 +421,7 @@ export function handleSubmitSignin(e){
         })
         .then(response => response.json())
         .then(user => {
+            console.log(user)
             if(user.user.id) {
                 localStorage.setItem('jwt', user.token);
                 setAuthorizationToken(user.token);
