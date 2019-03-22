@@ -396,8 +396,12 @@ export function handleSubmitRegister(e){
             })
         })
         .then(response => response.json())
+        console.log('response',  response)
         .then(user => {
+            console.log('user',  user)
             if(user.user.id) {
+                console.log('user.user',  user.user)
+                console.log('user.user.id',  user.user.id)
                 localStorage.setItem('jwt', user.token);
                 setAuthorizationToken(user.token);
                 store.dispatch(setCurrentUser(jwt.decode(user.token)))
