@@ -22,22 +22,6 @@ const fs = require('fs');
 const app = express();
 app.use(cors());
 
-// const { Client } = require('pg');
-
-// const client = new Client({
-//   connectionString: process.env.DATABASE_URL,
-//   ssl: true,
-// });
-
-// client.connect();
-
-// client.query('SELECT name FROM products;', (err, res) => {
-//   if (err) throw err;
-//   for (let row of res.rows) {
-//     console.log(JSON.stringify(row));
-//   }
-//   client.end();
-// });
 //Body Parser Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
@@ -49,8 +33,6 @@ const db = knex({
         ssl: true,
     }
 });
-
-console.log(JWT)
 
 paypal.configure({
     'mode': 'sandbox', //sandbox or live

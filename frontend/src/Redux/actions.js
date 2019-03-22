@@ -396,7 +396,6 @@ export function handleSubmitRegister(e){
             })
         })
         .then(response => response.json())
-        console.log('response',  response)
         .then(user => {
             console.log('user',  user)
             if(user.user.id) {
