@@ -82,6 +82,10 @@
         text-align: start;
         text-decoration: underline;
 
+        @media screen and(max-width: 1400px) {
+            margin-right: 1rem;
+        }
+
         @media screen and(max-width: 654px) { 
             text-align: center;
         }
@@ -158,6 +162,10 @@
             width: 350px;
 
             
+            @media screen and(max-width: 1400px) {
+                margin-right: 1rem;
+            }
+
             @media screen and(max-width: 1015px) {
                 margin-left: auto;
                 max-width: 350px;
