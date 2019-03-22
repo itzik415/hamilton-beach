@@ -437,14 +437,18 @@ export function handleSubmitSignin(e){
 }
 
 export function setCart(user) {
-    if(user.cart) {
-        return {
-            type: 'SET_CURRENT_USER_CART',
-            payload: user.cart,
-            payload2: user.cart.map(item => item.price * item.amount).reduce((a,b) => a+b, 0),
-            payload3: user.cart.map(item => item.amount).reduce((a,b) => a+b, 0),
+    console.log(user)
+    if(user !== null){
+        if(user.cart) {
+            return {
+                type: 'SET_CURRENT_USER_CART',
+                payload: user.cart,
+                payload2: user.cart.map(item => item.price * item.amount).reduce((a,b) => a+b, 0),
+                payload3: user.cart.map(item => item.amount).reduce((a,b) => a+b, 0),
+            }
         }
-    }else {
+    }
+    else {
         return {
             type: 'SET_CURRENT_USER_CART',
             payload: [],
