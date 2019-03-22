@@ -50,7 +50,7 @@ const db = knex({
     }
 });
 
-console.log(process.env.DATABASE_URL)
+console.log(JWT)
 
 paypal.configure({
     'mode': 'sandbox', //sandbox or live
