@@ -1,11 +1,11 @@
+// const config = require('config');
+// const cons = require('consolidate');
+// const ejs = require('ejs');
 require('dotenv').config();
-const config = require('config');
 const cors = require('cors');
 const express = require('express');
 const knex = require('knex');
 const jwt = require('jsonwebtoken');
-// const cons = require('consolidate');
-// const ejs = require('ejs');
 const paypal = require('paypal-rest-sdk');
 const uuidv1 = require('uuid/v1');
 
@@ -22,6 +22,23 @@ const fs = require('fs');
 const app = express();
 app.use(cors());
 
+// const { Client } = require('pg');
+
+// const client = new Client({
+//   connectionString: process.env.DATABASE_URL,
+//   ssl: true,
+// });
+
+// client.connect();
+
+// client.query('SELECT name FROM products;', (err, res) => {
+//   if (err) throw err;
+//   for (let row of res.rows) {
+//     console.log(JSON.stringify(row));
+//   }
+//   client.end();
+// });
+console.log(process.env.DATABASE_URL)
 //Body Parser Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
@@ -543,7 +560,7 @@ app.listen(port, () => {
 });
 
 
-// COPY authorized_stores FROM '/Users/itzikshaoulian/Desktop/hamilton-beach/backend/stores-list.csv' DELIMITER ';' ;
+// COPY servicelocations FROM '/Users/itzikshaoulian/Desktop/hamilton-beach/backend/service-locations-list.csv' DELIMITER ';' ;
 
     // Connecting to a json file
     // fs.readFile('./data/sliderImages.json', (err, json) => {
