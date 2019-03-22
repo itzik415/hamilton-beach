@@ -38,11 +38,19 @@ app.use(cors());
 //   }
 //   client.end();
 // });
-console.log(process.env.DATABASE_URL)
 //Body Parser Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 
+const db = knex({
+    client: 'pg',
+    connection: {
+        connectionString: process.env.DATABASE_URL,
+        ssl: true,
+    }
+});
+
+console.log(process.env.DATABASE_URL)
 
 paypal.configure({
     'mode': 'sandbox', //sandbox or live
@@ -280,16 +288,6 @@ app.post('/api/form',(req,res) => {
         console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));        
         res.send('working!')
     });
-});
-
-const db = knex({
-    client: 'pg',
-    connection: {
-        host : '127.0.0.1',
-        user : 'itzikshaoulian',
-        password : '',
-        database : 'hamilton-beach'
-    }
 });
 
 // if(!config.get('jwtPrivateKey')) {
