@@ -18,10 +18,6 @@ class HiddenNav extends Component {
         let style = {
             transition: '1s',
             transform: `translateY(${this.props.translateY})`,
-            OTransition: '1s',
-            MsTransform: `translateY(${this.props.translateY})`,
-            WebkitTransform: `translateY(${this.props.translateY})`,
-            WebkitTransition: '1s'
         }
 
         const userLink = (

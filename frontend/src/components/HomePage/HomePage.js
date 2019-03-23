@@ -33,7 +33,7 @@ class HomePage extends Component {
     document.body.scrollTop = 0;
     this.timerID = setInterval(() => {
       this.sliderInterval()
-    },3200);
+    },4500);
   }
 
   componentWillUnmount() {
