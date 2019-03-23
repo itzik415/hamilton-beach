@@ -88,8 +88,8 @@ class ShoppingCartForm extends Component {
                     <p className="shoppingCartForm-payment-totalPrice">סה״כ לתשלום: 
                         {
                             this.props.shoppingCart.totalCartPrice === 0?
-                            `${this.props.shoppingCart.totalCartPrice + 0}₪`:
-                            `${this.props.shoppingCart.totalCartPrice + 70}₪`
+                            `${this.props.shoppingCart.totalCartPrice + 0}₪ `:
+                            `${this.props.shoppingCart.totalCartPrice + 70}₪ `
                         }
                     </p>
                     <button className="shoppingCartForm-payment-button" type="submit">

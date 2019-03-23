@@ -18,18 +18,18 @@ class ServiceLocations extends Component {
                     <p className="serviceLocations-main-para">שרות מוצרים קטנים הנתמך במעבדה ראשית ומחסן חלפים במרכז הלוגיסטי באשדוד ויותר מ-20 מעבדות שרות בפריסה ארצית.</p>
                     <div className="serviceLocations-main-chart">
                         <div className="serviceLocations-main-chart-header">
-                            <h1>שם</h1>
                             <h1>עיר</h1>
                             <h1>כתובת</h1>
+                            <h1>שם</h1>
                             <h1>טלפון</h1>
                         </div>
                         {
                             this.props.serviceLocationsList.map(place => {
                                 return (
                                     <div className="serviceLocations-main-chart-line" key={place.id}>
-                                        <p>{place.name}</p>
                                         <p>{place.city}</p>
                                         <p>{place.address}</p>
+                                        <p>{place.name}</p>
                                         <p>{place.phonenumber.toString().length === 8 ? 
                                             `0${place.phonenumber.toString().slice(1,2)}-${place.phonenumber.toString().slice(2)}` :
                                             `0${place.phonenumber.toString().slice(1,3)}-${place.phonenumber.toString().slice(3)}`}</p>

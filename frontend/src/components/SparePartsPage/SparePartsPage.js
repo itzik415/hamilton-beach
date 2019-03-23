@@ -47,7 +47,7 @@ class SpareParts extends Component {
                                 placeholder="...הכנס את מספר הדגם של המוצר" />
                         </div>
                         <p className="spareParts-main-find-notFound" style={style1}>הדגם שהוכנס שגוי יש לנסות שוב</p>
-                        <p className="spareParts-main-find-model" data-toggle="modal" data-target="#exampleModal">?היכן ניתן למצוא את דגם המוצר שלכם</p>
+                        <p className="spareParts-main-find-model" data-toggle="modal" data-target="#exampleModal">היכן ניתן למצוא את דגם המוצר שלכם?</p>
                         <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div className="modal-dialog" role="document">
                                 <div className="modal-content">
