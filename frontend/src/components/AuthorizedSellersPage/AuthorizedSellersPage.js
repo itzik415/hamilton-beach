@@ -27,9 +27,9 @@ class AuthorizedSellers extends Component {
                                 this.props.authorizedStoresList.map(place => {
                                     return (
                                         <div className="authorizedSellers-main-chart-line" key={place.id}>
-                                            <p>{place.city}</p>
-                                            <p>{place.address}</p>
                                             <p>{place.name}</p>
+                                            <p>{place.address}</p>
+                                            <p>{place.city}</p>
                                             <p>{place.phonenumber.toString().length === 8 ? 
                                                 `0${place.phonenumber.toString().slice(0,1)}-${place.phonenumber.toString().slice(1)}` :
                                                 `0${place.phonenumber.toString().slice(0,2)}-${place.phonenumber.toString().slice(2)}`}</p>
