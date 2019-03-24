@@ -74,6 +74,8 @@ export function getCart() {
     return function(dispatch) {
         // if(!isEmpty(store.getState().shoppingCart.products)) {
             const email = store.getState().user.email;
+            console.log(email)
+            console.log(store.getState().user)
             fetch(`https://hamiltonbeach.herokuapp.com/api/cart/${email}`)
                 .then(response => response.json())
                 .then(myJson => dispatch({type: 'RECIVE_CART', 
