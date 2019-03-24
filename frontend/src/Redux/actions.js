@@ -74,8 +74,6 @@ export function getCart() {
     return function(dispatch) {
         // if(!isEmpty(store.getState().shoppingCart.products)) {
             const email = store.getState().user.email;
-            console.log(email)
-            console.log(store.getState().user)
             fetch(`https://hamiltonbeach.herokuapp.com/api/cart/${email}`)
                 .then(response => response.json())
                 .then(myJson => dispatch({type: 'RECIVE_CART', 
@@ -448,6 +446,16 @@ export function setCart(user) {
                     payload: user.cart,
                     payload2: user.cart.map(item => item.price * item.amount).reduce((a,b) => a+b, 0),
                     payload3: user.cart.map(item => item.amount).reduce((a,b) => a+b, 0),
+                    })
+                )
+            }
+            else {
+                return (
+                    dispatch({
+                    type: 'SET_CURRENT_USER_CART',
+                    payload: [],
+                    payload2: 0,
+                    payload3: 0
                     })
                 )
             }
