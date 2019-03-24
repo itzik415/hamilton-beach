@@ -25,28 +25,28 @@ import CancelPayment from './components/CancelPayment/CancelPayment';
 const Main = () => {
     return (
         <Router>
-                <div className="router-div">
-                    <Nav />
-                    <ScrollToTop />
-                    <AddToCartForm />
-                    <Route exact path='/' component={HomePage} />
-                    <Route path='/about' component={About} />
-                    <Route path='/contact' component={ContactPage} />
-                    <Route path='/authorized-sellers' component={AuthorizedSellersPage} />
-                    <Route path='/service-locations' component={ServiceLocationsPage} />
-                    <Route path='/shopping-cart' component={ShoppingCart} />
-                    <Route path='/success-payment' component={SuccessPayment} />
-                    <Route path='/process-payment' component={ProcessPayment} />
-                    <Route path='/cancel-payment' component={CancelPayment} />
-                    <Route exact path='/spare-parts' component={SparePartsPage} />
-                    <Route exact path='/spare-parts/:productmodel/:partmodel' component={PartPage} />
-                    <Route exact path='/recipes' component={AllRecipesPage} />
-                    <Route exact path='/recipes/:category/:name' component={RecipePage} />
-                    <Route exact path='/products' component={AllProductsPage} />
-                    <Route exact path='/products/:category' component={ProductCategoryPage}/>
-                    <Route exact path='/products/:category/:model' component={ProductPage} />
-                    <Footer />
-                </div>
+            <div className="router-div">
+                <Nav />
+                <ScrollToTop />
+                <AddToCartForm />
+                <Route exact path='/' component={HomePage} />
+                <Route path='/about' component={About} />
+                <Route path='/contact' component={ContactPage} />
+                <Route path='/authorized-sellers' component={AuthorizedSellersPage} />
+                <Route path='/service-locations' component={ServiceLocationsPage} />
+                <Route path='/shopping-cart' component={ShoppingCart} />
+                <Route path='/success-payment' component={SuccessPayment} />
+                <Route path='/process-payment' component={ProcessPayment} />
+                <Route path='/cancel-payment' component={CancelPayment} />
+                <Route exact path='/spare-parts' component={SparePartsPage} />
+                <Route exact path='/spare-parts/:productmodel/:partmodel' component={PartPage} />
+                <Route exact path='/recipes' component={AllRecipesPage} />
+                <Route exact path='/recipes/:category/:name' component={RecipePage} />
+                <Route exact path='/products' component={AllProductsPage} />
+                <Route exact path='/products/:category' component={ProductCategoryPage}/>
+                <Route exact path='/products/:category/:model' component={ProductPage} />
+                <Footer />
+            </div>
         </Router>
     )
 }
