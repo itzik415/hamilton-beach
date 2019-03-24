@@ -9,9 +9,9 @@ const jwt = require('jsonwebtoken');
 const paypal = require('paypal-rest-sdk');
 const uuidv1 = require('uuid/v1');
 
-const JWT = process.env.JWT_WEB_SERIAL;
-const PAYPAL_ID = process.env.PAYPAL_CLIENT_ID;
-const PAYPAL_SECRET = process.env.PAYPAL_CLIENT_SECRET;
+// const JWT = process.env.JWT_WEB_SERIAL;
+// const PAYPAL_ID = process.env.PAYPAL_CLIENT_ID;
+// const PAYPAL_SECRET = process.env.PAYPAL_CLIENT_SECRET;
 
 const bcrypt = require('bcrypt-nodejs');
 const path = require('path');
@@ -375,7 +375,7 @@ app.post('/signin', (req,res) => {
 
 app.post('/register', (req,res) => {
     console.log('Itzik: Current dir: ' + path.join(__dirname, 'views/registration.hjs'))
-    
+
     const template = fs.readFileSync(path.join(__dirname, 'views/registration.hjs'), 'utf-8')
     const compiledTemplate = Hogan.compile(template)
     if(req.body.password !== req.body.confirmPassword) {
