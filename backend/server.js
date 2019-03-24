@@ -36,7 +36,7 @@ const db = knex({
 paypal.configure({
     'mode': 'live', //sandbox or live
     'client_id': process.env.PAYPAL_ID,
-    'client_secret': process.env.PAYPAL_SECRET
+    'client_secret': process.env.PAYPAL_CLIENT_SECRET
 })
 
 
