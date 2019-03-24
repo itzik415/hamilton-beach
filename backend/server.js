@@ -374,8 +374,9 @@ app.post('/signin', (req,res) => {
 })
 
 app.post('/register', (req,res) => {
-    console.log('Itzik: Current dir: ' + path.join(__dirname))
-    const template = fs.readFileSync('./views/registration.hjs', 'utf-8')
+    console.log('Itzik: Current dir: ' + path.join(__dirname, 'views/registration.hjs'))
+    
+    const template = fs.readFileSync(path.join(__dirname, 'views/registration.hjs'), 'utf-8')
     const compiledTemplate = Hogan.compile(template)
     if(req.body.password !== req.body.confirmPassword) {
         return res.send("The passwords don't match");
