@@ -48,20 +48,18 @@ paypal.configure({
 //     res.render('index')
 // })
 
-if (process.env.NODE_ENV === 'production') {
-    // Serve any static files
-    // app.use(express.static(path.join(__dirname, '/../frontend/build')));
-  // Handle React routing, return all requests to React app
-    // app.get('/*', function(req, res) {
-    //   res.sendFile(path.resolve(__dirname, '/../frontend/build', 'index.html'));
-    // });
-    app.get('/*', function(req, res) {
-        res.sendFile(path.join(__dirname, '/../frontend/public/index.html'), function(err) {
-          if (err) {
-            res.status(500).send(err)
-          }
-        })
-      })
+if (process.env.NODE_ENV === "production") {
+        app.use(express.static('/../frontend/build'));
+        app.get("/*", function(req, res) {
+            res.sendFile(path.join(__dirname, "/../frontend/public/index.html"));
+        });
+    }
+  
+    else {
+        app.use(express.static(path.join(__dirname, '/../frontend/build')));
+        app.get("/*", function(req, res) {
+            res.sendFile(path.join(__dirname, "/../frontend/public/index.html"));
+        });
 }
 
 
