@@ -62,17 +62,10 @@ paypal.configure({
 //         });
 // }
 
-if (process.env.NODE_ENV === 'production') {
-    // Serve any static files
-        // app.get('*', (req, res) => {
-        //     res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
-        // });
-    app.use(express.static(path.join(__dirname, '../frontend/build')));
-  // Handle React routing, return all requests to React app
-    app.get('/', function(req, res) {
-        res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
-    });
-}
+
+
+
+
 
 
 app.post('/api/pay', (req,res) => {
@@ -170,6 +163,7 @@ app.get('/success', (req,res) => {
                 text: "Hello world?", // plain text body
                 html: compiledTemplate.render({name: order[0].user_name}) // html body
             };
+
             const payerId = req.query.PayerID;
             const paymentId = req.query.paymentId;
             const execute_payment_json = {
@@ -180,7 +174,7 @@ app.get('/success', (req,res) => {
                         "currency": "ILS",
                     }
                 }]
-              };
+            };
         
             paypal.payment.execute(paymentId, execute_payment_json, function (error, payment) {
                 if (error) {
@@ -380,6 +374,7 @@ app.post('/signin', (req,res) => {
 })
 
 app.post('/register', (req,res) => {
+    console.log('Itzik: Current dir: ' + path.join(__dirname))
     const template = fs.readFileSync('./views/registration.hjs', 'utf-8')
     const compiledTemplate = Hogan.compile(template)
     if(req.body.password !== req.body.confirmPassword) {
@@ -547,6 +542,21 @@ app.get('/api/cart/:email', (req,res) => {
     db.select('*').from('carts').where({email:req.params.email})
         .then(products => res.json(products))
 })
+
+if (process.env.NODE_ENV === 'production') {
+    // app.get(\'/*\', (req, res) => {  
+    //     res.sendFile(path.join(__dirname, \'path/to/your/index.html\'), function(err) {    
+    //         if (err) {      
+    //             res.status(500).send(err)    
+    //         }  
+    //     })
+    // })
+    app.use(express.static(path.join(__dirname, '../frontend/build')));
+  // Handle React routing, return all requests to React app
+    app.get('/*', function(req, res) {
+        res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+    });
+}
 
 
 const port = process.env.PORT || 5000;
