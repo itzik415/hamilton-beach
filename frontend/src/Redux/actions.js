@@ -95,7 +95,7 @@ export function findSparePartEvent(e) {
     return function(dispatch) {
         const model2 = e.target.name;
         const model = document.querySelector('.spareParts-main-find-search-input').value;
-        if(!e.target.value && model === '') return 'nothing found';
+        if(!e.target.value && model === '') return dispatch({type: 'SPARE_PARTS_NOT_FOUND'});
         if(e.key === 'Enter' || model2 === 'search') {
             if(model === '' || model2 === '') return dispatch({type: 'SPARE_PARTS_NOT_FOUND'});
             fetch(`https://hamiltonbeach.herokuapp.com/api/spare_parts/${model}`)
@@ -397,10 +397,7 @@ export function handleSubmitRegister(e){
         })
         .then(response => response.json())
         .then(user => {
-            console.log('user',  user)
             if(user.user.id) {
-                console.log('user.user',  user.user)
-                console.log('user.user.id',  user.user.id)
                 localStorage.setItem('jwt', user.token);
                 setAuthorizationToken(user.token);
                 store.dispatch(setCurrentUser(jwt.decode(user.token)))
@@ -424,7 +421,6 @@ export function handleSubmitSignin(e){
         })
         .then(response => response.json())
         .then(user => {
-            console.log(user)
             if(user.user.id) {
                 localStorage.setItem('jwt', user.token);
                 setAuthorizationToken(user.token);
@@ -441,7 +437,6 @@ export function handleSubmitSignin(e){
 }
 
 export function setCart(user) {
-    console.log(user)
     if(user !== null){
         if(user.cart) {
             return {

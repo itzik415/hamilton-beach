@@ -55,7 +55,7 @@ class ProductCategoryPage extends Component {
                                         </Link>
                                         <p className="productCategoryPage-productsSection-item-title">{item.short_description}</p>
                                         <p className="productCategoryPage-productsSection-item-model">דגם {item.model}</p>
-                                        <p className="productCategoryPage-productsSection-item-price">{`${item.price}.99₪`}</p>
+                                        <p className="productCategoryPage-productsSection-item-price">{`${item.price}₪`}</p>
                                         <button onClick={openingForm} id={item.model} value={item.category} className="productCategoryPage-productsSection-item-btn">הוסף לעגלה</button>
                                     </div>:null
                                 
