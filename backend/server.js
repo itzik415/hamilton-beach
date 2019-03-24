@@ -5,6 +5,7 @@ const knex = require('knex');
 const jwt = require('jsonwebtoken');
 const paypal = require('paypal-rest-sdk');
 const uuidv1 = require('uuid/v1');
+const sendgridTransport = require('nodemailer-sendgrid-transport');
 
 //Don't neccesery for heroku
 // const JWT = process.env.JWT_WEB_SERIAL;
@@ -219,26 +220,31 @@ app.post('/api/form',(req,res) => {
         </div>
     `;
 
-    let transporter = nodemailer.createTransport({
-        host: 'smtp.gmail.com',
-        port: 587,
-        secure: false, // true for 465, false for other ports
+    let transporter = nodemailer.createTransport(sendgridTransport({
         auth: {
-            user: 'issacshaouli@gmail.com', // generated ethereal user
-            pass: 'isaac615243?'  // generated ethereal password
-        },
-        tls: {
-            rejectUnauthorized: false
+            api_key: process.env.EMAIL_API
         }
-    });
+    }));
+
+    // let transporter = nodemailer.createTransport({
+    //     host: 'smtp.gmail.com',
+    //     port: 587,
+    //     secure: false, // true for 465, false for other ports
+    //     auth: {
+    //         user: 'issacshaouli@gmail.com', // generated ethereal user
+    //         pass: 'isaac615243?'  // generated ethereal password
+    //     },
+    //     tls: {
+    //         rejectUnauthorized: false
+    //     }
+    // });
 
     // setup email data with unicode symbols
     //sherut@shaoulian.co.il
     let mailOptions = {
-        from: `${req.body.email}`, // sender address
         to: "itzikshaoulian@gmail.com", // list of receivers
+        from: `${req.body.email}`, // sender address
         subject: "פניה לשירות לקוחות", // Subject line
-        text: "Hello world?", // plain text body
         html: output // html body
     };
     
