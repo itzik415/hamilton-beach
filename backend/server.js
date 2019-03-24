@@ -1,6 +1,3 @@
-// const config = require('config');
-// const cons = require('consolidate');
-// const ejs = require('ejs');
 require('dotenv').config();
 const cors = require('cors');
 const express = require('express');
@@ -37,35 +34,10 @@ const db = knex({
 });
 
 paypal.configure({
-    'mode': 'sandbox', //sandbox or live
+    'mode': 'live', //sandbox or live
     'client_id': process.env.PAYPAL_ID,
     'client_secret': process.env.PAYPAL_SECRET
 })
-
-
-// app.set('view engine', 'ejs');
-
-// app.get('/payment', (req,res) => {
-//     res.render('index')
-// })
-
-// if (process.env.NODE_ENV === "production") {
-//         app.use(express.static('/../frontend/build'));
-//         app.get('/*', function(req, res) {
-//             res.sendFile(path.join(__dirname, "/../frontend/build/index.html"));
-//         });
-//     }
-  
-//     else {
-//         app.use(express.static(path.join(__dirname, '/../frontend/build')));
-//         app.get('/*', function(req, res) {
-//             res.sendFile(path.join(__dirname, "/../frontend/build/index.html"));
-//         });
-// }
-
-
-
-
 
 
 
@@ -124,8 +96,7 @@ app.post('/api/pay', (req,res) => {
         
 
             paypal.payment.create(create_payment_json, function (error, payment) {
-                if (error) {
-                
+                if (error) { 
                     throw error;
                 } else {
                     for(let i = 0; i < payment.links.length; i++) {
@@ -142,7 +113,7 @@ app.post('/api/pay', (req,res) => {
 app.get('/success', (req,res) => {
     db('orders').where({order_id: req.query.orderId}).select('*')
         .then(order => {
-            const template = fs.readFileSync('./views/payment.hjs', 'utf-8')
+            const template = fs.readFileSync(path.join(__dirname, 'views/payment.hjs'), 'utf-8')
             const compiledTemplate = Hogan.compile(template)
             let transporter = nodemailer.createTransport({
                 host: 'smtp.gmail.com',
@@ -375,8 +346,6 @@ app.post('/signin', (req,res) => {
 })
 
 app.post('/register', (req,res) => {
-    console.log('Itzik: Current dir: ' + path.join(__dirname, 'views/registration.hjs'))
-
     const template = fs.readFileSync(path.join(__dirname, 'views/registration.hjs'), 'utf-8')
     const compiledTemplate = Hogan.compile(template)
     if(req.body.password !== req.body.confirmPassword) {

@@ -362,7 +362,6 @@ export function handleSubmitCart(e){
                 user: user,
                 city: e.target.city.value,
                 zip: e.target.zip.value,
-
                 url: window.location.href.slice(0, window.location.href.lastIndexOf('/'))
             })
         })
