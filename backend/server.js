@@ -9,6 +9,7 @@ const jwt = require('jsonwebtoken');
 const paypal = require('paypal-rest-sdk');
 const uuidv1 = require('uuid/v1');
 
+//Don't neccesery for heroku
 // const JWT = process.env.JWT_WEB_SERIAL;
 // const PAYPAL_ID = process.env.PAYPAL_CLIENT_ID;
 // const PAYPAL_SECRET = process.env.PAYPAL_CLIENT_SECRET;
