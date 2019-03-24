@@ -37,8 +37,8 @@ const db = knex({
 
 paypal.configure({
     'mode': 'sandbox', //sandbox or live
-    'client_id': PAYPAL_ID,
-    'client_secret': PAYPAL_SECRET
+    'client_id': process.env.PAYPAL_ID,
+    'client_secret': process.env.PAYPAL_SECRET
 })
 
 
@@ -289,7 +289,7 @@ app.post('/api/form',(req,res) => {
 
 
 app.get('/user', verifyToken, async (req,res) => {
-    const payload = await jwt.verify(req.token, JWT)
+    const payload = await jwt.verify(req.token, process.env.JWT_WEB_SERIAL)
     let me = await db('users').where('email', '=', payload.user.email).select('*')
     res.end(JSON.stringify(me[0]))
 })
@@ -354,7 +354,7 @@ app.post('/signin', (req,res) => {
                     .then(cart =>{
                         return db('users').where('email', '=', req.body.email).select('*')
                         .then(user => { 
-                            jwt.sign({user: req.body, cart: cart}, JWT,{ expiresIn: '7d' }, (err, token) => {
+                            jwt.sign({user: req.body, cart: cart}, process.env.JWT_WEB_SERIAL,{ expiresIn: '7d' }, (err, token) => {
                                 res.json({
                                     token: token,
                                     user: user[0],
@@ -428,7 +428,7 @@ app.post('/register', (req,res) => {
                         res.send('working!')
                     });
                     return (
-                        jwt.sign({user: req.body}, JWT,{ expiresIn: '7d' }, (err, token) => {
+                        jwt.sign({user: req.body}, process.env.JWT_WEB_SERIAL,{ expiresIn: '7d' }, (err, token) => {
                             res.json({
                                 token: token,
                                 user: user[0]
