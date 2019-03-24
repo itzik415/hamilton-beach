@@ -462,6 +462,7 @@ export function setCart(user) {
                 })
             )
         }
+    }
 }
 
 
