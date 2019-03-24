@@ -14,4 +14,8 @@ if(localStorage.jwt) {
     store.dispatch(getCart())
 }
 
-ReactDOM.render(<Provider store={store}><Main /></Provider>, document.getElementById('root'));
+ReactDOM.render(
+    <Provider store={store}>
+        <Main />
+    </Provider>, document.getElementById('root')
+);

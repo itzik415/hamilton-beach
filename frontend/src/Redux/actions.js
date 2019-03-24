@@ -457,16 +457,17 @@ export function setCart(user) {
     }
 }
 
+
 export function setCurrentUser(user) {
-    if(!isEmpty(user)) {
-        return {
-            type: 'SET_CURRENT_USER',
-            payload: user.user.email
-        }
-    }else {
-        return {
-            type: 'SET_CURRENT_USER',
-            payload: user
+    return function (dispatch){
+        if(!isEmpty(user)) {
+            return (
+                dispatch({type: 'SET_CURRENT_USER',payload: user.user.email})
+            )
+        }else {
+            return (
+                dispatch({type: 'SET_CURRENT_USER', payload: user})
+            )
         }
     }
 }
