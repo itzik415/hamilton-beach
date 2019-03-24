@@ -72,7 +72,7 @@ export function fetchSparePartsByProductModel() {
 //Fetching spare_parts
 export function getCart() {
     return function(dispatch) {
-        if(!isEmpty(store.getState().shoppingCart.products)) {
+        // if(!isEmpty(store.getState().shoppingCart.products)) {
             const email = store.getState().user.email;
             fetch(`https://hamiltonbeach.herokuapp.com/api/cart/${email}`)
                 .then(response => response.json())
@@ -81,12 +81,12 @@ export function getCart() {
                     payload2: myJson.map(item => item.price * item.amount).reduce((a,b) => a+b, 0),
                     payload3: myJson.map(item => item.amount).reduce((a,b) => a+b, 0)}))
                 .catch(err => dispatch({type: 'ERROR', payload: err}));
-        }else {
-            dispatch({type: 'RECIVE_CART', 
-                payload: [], 
-                payload2: 0,
-                payload3: 0})
-        }
+        // }else {
+        //     dispatch({type: 'RECIVE_CART', 
+        //         payload: [], 
+        //         payload2: 0,
+        //         payload3: 0})
+        // }
     }
 }
 
