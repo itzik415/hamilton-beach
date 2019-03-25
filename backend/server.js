@@ -59,7 +59,7 @@ app.post('/api/pay', (req,res) => {
             }
             allProducts.push({
                 "name": "משלוח",
-                "sku": "משלוח 0",
+                "sku": "delivery 0",
                 "price": "70.00",
                 "currency": "ILS",
                 "quantity": 1
