@@ -5,12 +5,14 @@ const knex = require('knex');
 const jwt = require('jsonwebtoken');
 const paypal = require('paypal-rest-sdk');
 const uuidv1 = require('uuid/v1');
-const sendgridTransport = require('nodemailer-sendgrid-transport');
 
 //Don't neccesery for heroku
 // const JWT = process.env.JWT_WEB_SERIAL;
 // const PAYPAL_ID = process.env.PAYPAL_CLIENT_ID;
 // const PAYPAL_SECRET = process.env.PAYPAL_CLIENT_SECRET;
+
+const contactEmail = require('./sendingEmail/contactEmail');
+const registrationEmail = require('./sendingEmail/registrationEmail');
 
 const bcrypt = require('bcrypt-nodejs');
 const path = require('path');
@@ -187,56 +189,13 @@ app.get('/success', (req,res) => {
 });
 
 app.get('/cancel', (req,res) =>{
-
     res.send('Cancelled')
 });
 
 
 app.post('/api/form',(req,res) => {
-    const output = `
-        <div style="display: flex; flex-direction: column; align-items: flex-end">
-            <h3 style="font-size: 52px; text-align: end;">פנייה מהאתר של המילטון ביץ׳ לשירות לקוחות של שאוליאן</h3>
-            <p style="font-size: 30px; text-align: end;"> שם הלקוח: ${req.body.name}</p>
-            <p style="font-size: 30px; text-align: end;">${req.body.phonenumber} :טלפון</p>
-            <p style="font-size: 30px; text-align: end;">${req.body.email} :מייל</p>
-            <h3 style="font-size: 40px; text-align: end;">תוכן ההודעה</h3>
-            <p style="font-size: 30px; text-align: end;">${req.body.message}</p>
-        </div>
-    `;
-
-    let transporter = nodemailer.createTransport({
-        host: 'smtp.sendgrid.net',
-        port: 465,
-        secure: true, 
-        auth: {
-            user: 'apikey', 
-            pass: process.env.EMAIL_API  
-        },
-        tls: {
-            rejectUnauthorized: false
-        }
-    });
-
-    // setup email data with unicode symbols
-    // sherut@shaoulian.co.il
-    let mailOptions = {
-        from: `${req.body.email}`, // sender address
-        to: "itzikshaoulian@gmail.com", // list of receivers
-        subject: "פניה לשירות לקוחות", // Subject line
-        text: "Hello world?", // plain text body
-        html: output // html body
-    };
-        
-    
-    transporter.sendMail(mailOptions, (error, info) => {
-        if(error) {
-            return console.log(error);
-        }
-        
-        console.log("Message sent: %s", info.messageId);
-        console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));        
-        res.send('working!')
-    });
+    const {email, name, phonenumber, message} = req.body;
+    contactEmail(email, name, phonenumber, message)
 });
 
 // if(!config.get('jwtPrivateKey')) {
@@ -332,36 +291,38 @@ app.post('/signin', (req,res) => {
 })
 
 app.post('/register', (req,res) => {
-    const template = fs.readFileSync(path.join(__dirname, 'views/registration.hjs'), 'utf-8')
-    const compiledTemplate = Hogan.compile(template)
-    if(req.body.password !== req.body.confirmPassword) {
+    const {password, confirmPassword, email, name} = req.body;
+    if(password !== confirmPassword) {
         return res.send("The passwords don't match");
     }   
-    let transporter = nodemailer.createTransport({
-        host: 'smtp.sendgrid.net',
-        port: 465,
-        secure: true, 
-        auth: {
-            user: 'apikey', 
-            pass: process.env.EMAIL_API  
-        },
-        tls: {
-            rejectUnauthorized: false
-        }
-    });
 
-    let mailOptions = {
-        from: `${req.body.email}`, // sender address
-        to: "itzikshaoulian@gmail.com", // list of receivers
-        subject: "אישור הרשמה לאתר Hamilton Beach", // Subject line
-        text: "Hello world?", // plain text body
-        html: compiledTemplate.render({name: req.body.name}) // html body
-    };
-    const hash = bcrypt.hashSync(req.body.password);
+    // const template = fs.readFileSync(path.join(__dirname, 'views/registration.hjs'), 'utf-8')
+    // const compiledTemplate = Hogan.compile(template)
+    // let transporter = nodemailer.createTransport({
+    //     host: 'smtp.sendgrid.net',
+    //     port: 465,
+    //     secure: true, 
+    //     auth: {
+    //         user: 'apikey', 
+    //         pass: process.env.EMAIL_API  
+    //     },
+    //     tls: {
+    //         rejectUnauthorized: false
+    //     }
+    // });
+
+    // let mailOptions = {
+    //     from: `${email}`, // sender address
+    //     to: "itzikshaoulian@gmail.com", // list of receivers
+    //     subject: "אישור הרשמה לאתר Hamilton Beach", // Subject line
+    //     text: "Hello world?", // plain text body
+    //     html: compiledTemplate.render({name: name}) // html body
+    // };
+    const hash = bcrypt.hashSync(password);
     db.transaction(trx =>{
         trx.insert({
             hash: hash,
-            email: req.body.email
+            email: email
         })
         .into('login')
         .returning('email')
@@ -370,19 +331,20 @@ app.post('/register', (req,res) => {
                 .returning('*')
                 .insert({
                     email: loginEmail[0],
-                    name: req.body.name,
+                    name: name,
                     joined: new Date()
                 })
                 .then(user => {
-                    transporter.sendMail(mailOptions, (error, info) => {
-                        if(error) {
-                            return console.log(error);
-                        }
+                    // transporter.sendMail(mailOptions, (error, info) => {
+                    //     if(error) {
+                    //         return console.log(error);
+                    //     }
                         
-                        console.log("Message sent: %s", info.messageId);
-                        console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));        
-                        res.send('working!')
-                    });
+                    //     console.log("Message sent: %s", info.messageId);
+                    //     console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));        
+                    //     res.send('working!')
+                    // });
+                    registrationEmail(email, name)
                     return (
                         jwt.sign({user: req.body}, process.env.JWT_WEB_SERIAL,{ expiresIn: '7d' }, (err, token) => {
                             res.json({
