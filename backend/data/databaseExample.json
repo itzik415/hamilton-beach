@@ -55,6 +55,10 @@ CREATE TABLE orders(
     id SERIAL PRIMARY KEY,
     order_id text NOT NULL,
     signin_email text NOT NULL,
+    street text NOT NULL,
+    city text NOT NULL,
+    zip text NOT NULL,
+    phonenumber text NOT NULL,
     user_email text NOT NULL,
     user_name text NOT NULL,
     total_sum integer NOT NULL
@@ -64,8 +68,13 @@ CREATE TABLE orders(
 CREATE TABLE payments(
     id SERIAL PRIMARY KEY,
     email text NOT NULL,
+    token text NOT NULL,
     user_name text NOT NULL,
+    street text NOT NULL,
+    city text NOT NULL,
+    zip text NOT NULL,
     product_name text NOT NULL,
+    phonenumber text NOT NULL,
     model text NOT NULL,
     serial text NOT NULL,
     amount integer NOT NULL,
@@ -74,7 +83,7 @@ CREATE TABLE payments(
 );
 
 //insert into product table
-INSERT INTO payments(email, user_name, product_name, model, serial, amount, unit_price, total_price) VALUES 
+INSERT INTO payments(email, user_name, product_name, model, serial, amount, unit_price, total_price, token, payment_id) VALUES 
 (),
 
 

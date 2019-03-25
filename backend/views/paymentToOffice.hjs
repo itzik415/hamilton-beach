@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" dir="rtl">
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
 
 <body style="font-family: sans-serif; margin: 0 auto; max-width: 800px;">
@@ -11,17 +11,51 @@
   <section style="align-items: center; background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://storage.googleapis.com/hamilton-beach-israel/different-images/payment-email-image.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover; height: 300px; position: relative;">
     <img src="https://storage.googleapis.com/hamilton-beach-israel/different-images/logo.png" class="logo-white" alt="logo" style="bottom: 0; left: 0; margin: auto; position: absolute; right: 0; top: 0; width: 80%;">
   </section>
-  <p class="welcome-para" style="font-family: sans-serif; font-size: 25px; font-weight: 900; margin: 10px 0;">שלום, {{name}}</p>
-  <p class="welcome-para1" style="font-size: 25px; font-weight: 100; margin: 10px 0;"> תודה על הרכישה שביצעת בחברת Hamilton Beach.</p>
-  <p>אנו מבטיחים שנעשה כל שביכולתנו על מנת לתת לך את השירות הטוב ביותר!</p>
-  <p>הרכישה שביצעת עברה למחלקת ההזמנות והיא תשלח אליך עד 7 ימי עסקים.</p>
-  <p></p>
-  <p>בינתיים במידה ותרצה ליצור איתנו קשר תוכל לעשות זאת ב:</p>
-  <p>דואר אלקטרוני: <a class="email" href="mailto:sherut@shaoulian.co.il" style="color: blue; text-decoration: underline;">sherut@shaoulian.co.il</a></p>
-  <p class="phone-number"> טלפון: <span style="color: blue; text-decoration: underline;">09-7409835/6</span></p>
-  <p class="button" style="margin: 30px 0;"><a class="website-button" href="https://www.hamiltonbeach.co.il" target="_blank" style="background-color: #0062ff; color: white; font-size: 13px; padding: 10px 35px; text-decoration: none;">עבור לאתר</a></p>
-  <p>תודה ונשמח לראותך שוב בקרוב,</p>
-  <p> צוות Hamilton Beach Israel</p>
+  <p class="welcome-para" style="font-family: sans-serif; font-size: 25px; font-weight: 900; margin: 10px 0;">בוצעה רכישה באתר המילטון ביץ׳</p>
+  <p>אספקה עד 7 ימי עסקים</p>
+  <p><strong>סה״כ שולם: </strong>{{total_price}}</p>
+  <p><strong>שם הלקוח: </strong>{{name}}</p>
+  <p><strong>טלפון: </strong>{{phonenumber}}</p>
+  <p><strong>דואר אלקטרוני: </strong>{{email}}</p>
+  <h2>כתובת למשלוח</h2>
+  <p><strong>רחוב: </strong>{{street}}</p>
+  <p><strong>עיר: </strong>{{city}}</p>
+  <p><strong>מיקוד: </strong>{{zip}}</p>
+  <h2>עגלת קניות</h2>
+  <div class="cart" style="background-color: rgb(223,223,223); display: flex; padding: 10px 0;">
+    <p style="flex: 1; margin: 0 3px;">שם</p>
+    <p style="flex: 1; margin: 0 3px;">דגם</p>
+    <p style="flex: 1; margin: 0 3px;">מספר סידורי</p>
+    <p style="flex: 1; margin: 0 3px;">כמות</p>
+    <p style="flex: 1; margin: 0 3px;">מחיר</p>
+  </div>
+  <div class="cart-inner" style="display: flex; padding: 10px 0;">
+    <div style="display: flex; flex: 1; flex-direction: column; margin: 0 3px;">
+      {{#products_name}}
+        <p>{{name}}</p>
+        {{/products_name}}
+      </div>
+    <div style="display: flex; flex: 1; flex-direction: column; margin: 0 3px;">
+      {{#products_model}}
+        <p>{{model}}</p>
+      {{/products_model}}
+    </div>
+    <div style="display: flex; flex: 1; flex-direction: column; margin: 0 3px;">
+      {{#products_serial}}
+        <p>{{serial}}</p>
+      {{/products_serial}}
+    </div>
+    <div style="display: flex; flex: 1; flex-direction: column; margin: 0 3px;">
+      {{#products_amount}}
+        <p>{{amount}}</p>
+      {{/products_amount}}
+    </div>
+    <div style="display: flex; flex: 1; flex-direction: column; margin: 0 3px;">
+      {{#products_price}}
+        <p>{{price}}</p>
+      {{/products_price}}
+    </div>
+  </div>
   <div class="footer" style="background-color: rgb(235,235,235); border-top: 3px solid black;">
     <div class="footer__section" style="display: flex; justify-content: space-around; margin: 0 auto; padding: 20px 0;">
       <div class="footer__section-socialMedia" style="display: flex; flex-direction: column;">

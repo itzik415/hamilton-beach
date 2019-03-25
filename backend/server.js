@@ -13,13 +13,11 @@ const uuidv1 = require('uuid/v1');
 
 const contactEmail = require('./sendingEmail/contactEmail');
 const registrationEmail = require('./sendingEmail/registrationEmail');
-const confirmPaymentEmail = require('./sendingEmail/confirmPaymentEmail');
+const confirmPaymentToOfficeEmail = require('./sendingEmail/confirmPaymentToOfficeEmail');
 
 const bcrypt = require('bcrypt-nodejs');
 const path = require('path');
 const bodyParser = require('body-parser');
-const nodemailer = require("nodemailer");
-const Hogan = require('hogan.js');
 const fs = require('fs');
 
 const app = express();
@@ -61,7 +59,7 @@ app.post('/api/pay', (req,res) => {
             }
             allProducts.push({
                 "name": "משלוח",
-                "sku": "משלוח",
+                "sku": "משלוח 0",
                 "price": "70.00",
                 "currency": "ILS",
                 "quantity": 1
@@ -117,31 +115,9 @@ app.post('/api/pay', (req,res) => {
 app.get('/success', (req,res) => {
     db('orders').where({order_id: req.query.orderId}).select('*')
         .then(order => {
-            // const template = fs.readFileSync(path.join(__dirname, 'views/payment.hjs'), 'utf-8')
-            // const compiledTemplate = Hogan.compile(template)
-            // let transporter = nodemailer.createTransport({
-            //     host: 'smtp.sendgrid.net',
-            //     port: 465,
-            //     secure: true, 
-            //     auth: {
-            //         user: 'apikey', 
-            //         pass: process.env.EMAIL_API  
-            //     },
-            //     tls: {
-            //         rejectUnauthorized: false
-            //     }
-            // });
-        
-            // let mailOptions = {
-            //     from: `${order[0].user_email}`, // sender address
-            //     to: "itzikshaoulian@gmail.com", // list of receivers
-            //     subject: "אישור רכישת מוצרים מאתר Hamilton Beach", // Subject line
-            //     text: "Hello world?", // plain text body
-            //     html: compiledTemplate.render({name: order[0].user_name}) // html body
-            // };
-
             const payerId = req.query.PayerID;
             const paymentId = req.query.paymentId;
+            const token_payment = req.query.token;
             const execute_payment_json = {
                 "payer_id": payerId,
                 "transactions": [{
@@ -161,6 +137,11 @@ app.get('/success', (req,res) => {
                         .then(cart => {
                             for(let i = 0; i < cart; i++) {
                                 db('payments').insert({
+                                    token: token_payment,
+                                    street: order[0].street,
+                                    city: order[0].city,
+                                    zip: order[0].zip,
+                                    phonenumber: order[0].phonenumber,
                                     email: order[0].user_email,
                                     user_name: order[0].user_name,
                                     product_name: payment.transactions[0].item_list.items[i].name,
@@ -171,19 +152,50 @@ app.get('/success', (req,res) => {
                                     total_price: (Number(payment.transactions[0].item_list.items[i].price) * payment.transactions[0].item_list.items[i].quantity).toString()})
                                     .then(item => item)
                             }
-        
-                            confirmPaymentEmail(order[0].user_email, order[0].user_name)
-                            res.json({successUrl: 'https://hamiltonbeach.herokuapp.com/success-payment'});
-                            // transporter.sendMail(mailOptions, (error, info) => {
-                            //     if(error) {
-                            //         return console.log(error);
-                            //     }
-                                
-                            //     console.log("Message sent: %s", info.messageId);
-                            //     console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));        
-                            //     res.json({successUrl: 'https://hamiltonbeach.herokuapp.com/success-payment'});
-                            // });
                         })
+                        const productsList = payment.transactions[0].item_list.items;
+                        let products_name = productsList.map(item => {
+                            return (
+                                {name: item.name}
+                            )
+                        });
+                        let products_model = productsList.map(item => {
+                            return (
+                                {model: item.sku.slice(0, item.sku.indexOf(' '))}
+                            )
+                        });
+                        let products_serial = productsList.map(item => {
+                            return (
+                                {serial: item.sku.slice(item.sku.indexOf(' '))}
+                            )
+                        });
+                        let products_amount = productsList.map(item => {
+                            return (
+                                {amount: item.quantity}
+                            )
+                        });
+                        let products_price = productsList.map(item => {
+                            return (
+                                {price: item.price}
+                            )
+                        });
+                            
+                        confirmPaymentToOfficeEmail(
+                            order[0].user_name,
+                            order[0].user_email,
+                            order[0].phonenumber,
+                            order[0].street,
+                            order[0].city,
+                            order[0].zip,
+                            products_name,
+                            products_model,
+                            products_serial,
+                            products_amount,
+                            products_price,
+                            payment.transactions[0].amount.total
+                        )
+                        res.json({successUrl: 'http://localhost:3000/success-payment'});
+                    
                 }
             });
         })

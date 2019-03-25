@@ -199,42 +199,6 @@
     .cart p {
       margin: 0 3px;
     }
-    /*
-    .footer__section-websites {
-      display: flex;
-      flex-direction: column;
-      width: 300px;
-    }
-
-      @media screen and (max-width: 700px) {
-          text-align: center;
-          margin: 20px 0;
-      } 
-
-    .footer__section-websites-title {
-      font-size: 25px;
-      font-weight: 600;
-      text-decoration: underline;
-    }
-
-      @media screen and (max-width: 700px) {
-          text-align: center;
-      } 
-
-    .footer__section-websites-brandName {
-        font-size: 18px;
-        font-weight: 300;
-        color: black;
-        margin-bottom: 10px;
-    }
-
-    @media screen and (max-width: 700px) {
-        text-align: center;
-    }
-
-    .footer__section-websites-brandName:hover {
-        color: gray;
-    } */
 
     .footer-copyright {
       display: flex;
@@ -253,16 +217,13 @@
     <section> 
       <img src='https://storage.googleapis.com/hamilton-beach-israel/different-images/logo.png' class="logo-white" alt="logo"> </div>
     </section>
-    <p class="welcome-para">שלום, {{name}}</p>
-    <p class="welcome-para1"> תודה על הרכישה שביצעת בחברת Hamilton Beach.</p>
-    <p>אנו מבטיחים שנעשה כל שביכולתנו על מנת לתת לך את השירות הטוב ביותר!</p>
-    <p>הרכישה שביצעת עברה למחלקת ההזמנות והיא תשלח אליך עד 7 ימי עסקים.</p>
-    <p>בינתיים במידה ותרצה ליצור איתנו קשר תוכל לעשות זאת ב:</p>
-    <p>דואר אלקטרוני: <a class="email" href="mailto:sherut@shaoulian.co.il">sherut@shaoulian.co.il</a></p>
-    <p class="phone-number"> טלפון: <span>09-7409835/6</span></p>
-    <p class="button"><a class="website-button" href="https://www.hamiltonbeach.co.il" target="_blank">עבור לאתר</a></p>
-    <p>תודה ונשמח לראותך שוב בקרוב,</p>
-    <p> צוות Hamilton Beach Israel</p>
+    <p class="welcome-para">בוצעה רכישה באתר המילטון ביץ׳</p>
+    <p><strong>סה״כ שולם: </strong>{{total_price}}</p>
+    <p><strong>שם הלקוח: </strong>{{name}}</p>
+    <p><strong>טלפון: </strong>{{phonenumber}}</p>
+    <p><strong>דואר אלקטרוני: </strong>{{email}}</p>
+    <p><strong>כתובת למשלוח: </strong>{{address}}</p>
+    <p>אספקה עד 7 ימי עסקים</p>
     <div class="footer">
       <div class="footer__section">
           <div class="footer__section-socialMedia">
