@@ -119,7 +119,7 @@ app.get('/success', (req,res) => {
             let transporter = nodemailer.createTransport({
                 host: 'smtp.sendgrid.net',
                 port: 465,
-                secure: false, 
+                secure: true, 
                 auth: {
                     user: 'apikey', 
                     pass: process.env.EMAIL_API  
@@ -207,7 +207,7 @@ app.post('/api/form',(req,res) => {
     let transporter = nodemailer.createTransport({
         host: 'smtp.sendgrid.net',
         port: 465,
-        secure: false, 
+        secure: true, 
         auth: {
             user: 'apikey', 
             pass: process.env.EMAIL_API  
@@ -340,7 +340,7 @@ app.post('/register', (req,res) => {
     let transporter = nodemailer.createTransport({
         host: 'smtp.sendgrid.net',
         port: 465,
-        secure: false, 
+        secure: true, 
         auth: {
             user: 'apikey', 
             pass: process.env.EMAIL_API  
