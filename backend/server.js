@@ -13,6 +13,7 @@ const uuidv1 = require('uuid/v1');
 
 const contactEmail = require('./sendingEmail/contactEmail');
 const registrationEmail = require('./sendingEmail/registrationEmail');
+const confirmPaymentEmail = require('./sendingEmail/confirmPaymentEmail');
 
 const bcrypt = require('bcrypt-nodejs');
 const path = require('path');
@@ -116,28 +117,28 @@ app.post('/api/pay', (req,res) => {
 app.get('/success', (req,res) => {
     db('orders').where({order_id: req.query.orderId}).select('*')
         .then(order => {
-            const template = fs.readFileSync(path.join(__dirname, 'views/payment.hjs'), 'utf-8')
-            const compiledTemplate = Hogan.compile(template)
-            let transporter = nodemailer.createTransport({
-                host: 'smtp.sendgrid.net',
-                port: 465,
-                secure: true, 
-                auth: {
-                    user: 'apikey', 
-                    pass: process.env.EMAIL_API  
-                },
-                tls: {
-                    rejectUnauthorized: false
-                }
-            });
+            // const template = fs.readFileSync(path.join(__dirname, 'views/payment.hjs'), 'utf-8')
+            // const compiledTemplate = Hogan.compile(template)
+            // let transporter = nodemailer.createTransport({
+            //     host: 'smtp.sendgrid.net',
+            //     port: 465,
+            //     secure: true, 
+            //     auth: {
+            //         user: 'apikey', 
+            //         pass: process.env.EMAIL_API  
+            //     },
+            //     tls: {
+            //         rejectUnauthorized: false
+            //     }
+            // });
         
-            let mailOptions = {
-                from: `${order.user_email}`, // sender address
-                to: "itzikshaoulian@gmail.com", // list of receivers
-                subject: "אישור רכישת מוצרים מאתר Hamilton Beach", // Subject line
-                text: "Hello world?", // plain text body
-                html: compiledTemplate.render({name: order[0].user_name}) // html body
-            };
+            // let mailOptions = {
+            //     from: `${order[0].user_email}`, // sender address
+            //     to: "itzikshaoulian@gmail.com", // list of receivers
+            //     subject: "אישור רכישת מוצרים מאתר Hamilton Beach", // Subject line
+            //     text: "Hello world?", // plain text body
+            //     html: compiledTemplate.render({name: order[0].user_name}) // html body
+            // };
 
             const payerId = req.query.PayerID;
             const paymentId = req.query.paymentId;
@@ -171,16 +172,17 @@ app.get('/success', (req,res) => {
                                     .then(item => item)
                             }
         
-                        
-                            transporter.sendMail(mailOptions, (error, info) => {
-                                if(error) {
-                                    return console.log(error);
-                                }
+                            confirmPaymentEmail(order[0].user_email, order[0].user_name)
+                            res.json({successUrl: 'https://hamiltonbeach.herokuapp.com/success-payment'});
+                            // transporter.sendMail(mailOptions, (error, info) => {
+                            //     if(error) {
+                            //         return console.log(error);
+                            //     }
                                 
-                                console.log("Message sent: %s", info.messageId);
-                                console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));        
-                                res.json({successUrl: 'http://localhost:3000/success-payment'});
-                            });
+                            //     console.log("Message sent: %s", info.messageId);
+                            //     console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));        
+                            //     res.json({successUrl: 'https://hamiltonbeach.herokuapp.com/success-payment'});
+                            // });
                         })
                 }
             });
@@ -196,6 +198,7 @@ app.get('/cancel', (req,res) =>{
 app.post('/api/form',(req,res) => {
     const {email, name, phonenumber, message} = req.body;
     contactEmail(email, name, phonenumber, message)
+    res.end('working!')
 });
 
 // if(!config.get('jwtPrivateKey')) {
@@ -296,28 +299,6 @@ app.post('/register', (req,res) => {
         return res.send("The passwords don't match");
     }   
 
-    // const template = fs.readFileSync(path.join(__dirname, 'views/registration.hjs'), 'utf-8')
-    // const compiledTemplate = Hogan.compile(template)
-    // let transporter = nodemailer.createTransport({
-    //     host: 'smtp.sendgrid.net',
-    //     port: 465,
-    //     secure: true, 
-    //     auth: {
-    //         user: 'apikey', 
-    //         pass: process.env.EMAIL_API  
-    //     },
-    //     tls: {
-    //         rejectUnauthorized: false
-    //     }
-    // });
-
-    // let mailOptions = {
-    //     from: `${email}`, // sender address
-    //     to: "itzikshaoulian@gmail.com", // list of receivers
-    //     subject: "אישור הרשמה לאתר Hamilton Beach", // Subject line
-    //     text: "Hello world?", // plain text body
-    //     html: compiledTemplate.render({name: name}) // html body
-    // };
     const hash = bcrypt.hashSync(password);
     db.transaction(trx =>{
         trx.insert({
@@ -335,16 +316,8 @@ app.post('/register', (req,res) => {
                     joined: new Date()
                 })
                 .then(user => {
-                    // transporter.sendMail(mailOptions, (error, info) => {
-                    //     if(error) {
-                    //         return console.log(error);
-                    //     }
-                        
-                    //     console.log("Message sent: %s", info.messageId);
-                    //     console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));        
-                    //     res.send('working!')
-                    // });
                     registrationEmail(email, name)
+                    res.send('working!')
                     return (
                         jwt.sign({user: req.body}, process.env.JWT_WEB_SERIAL,{ expiresIn: '7d' }, (err, token) => {
                             res.json({
@@ -463,15 +436,7 @@ app.get('/api/cart/:email', (req,res) => {
 })
 
 if (process.env.NODE_ENV === 'production') {
-    // app.get(\'/*\', (req, res) => {  
-    //     res.sendFile(path.join(__dirname, \'path/to/your/index.html\'), function(err) {    
-    //         if (err) {      
-    //             res.status(500).send(err)    
-    //         }  
-    //     })
-    // })
     app.use(express.static(path.join(__dirname, '../frontend/build')));
-  // Handle React routing, return all requests to React app
     app.get('/*', function(req, res) {
         res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
     });
@@ -482,20 +447,6 @@ const port = process.env.PORT || 5000;
 app.listen(port, () => {
     console.log(`Server start at ${port}`)
 });
-
-
-// COPY servicelocations FROM '/Users/itzikshaoulian/Desktop/hamilton-beach/backend/service-locations-list.csv' DELIMITER ';' ;
-
-    // Connecting to a json file
-    // fs.readFile('./data/sliderImages.json', (err, json) => {
-    //     let obj = JSON.parse(json);
-    //     res.json(obj);
-    // });
-
-
-    // INSERT INTO authorized_stores  (phonenumber , address , name , city ) 
-    // VALUES 
-    // 
 
     
     

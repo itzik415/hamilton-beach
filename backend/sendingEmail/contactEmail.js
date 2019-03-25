@@ -35,9 +35,6 @@ function contactEmail(email, name, phonenumber, message){
         if(error) {
             return console.log(error);
         }
-            
-        console.log('send email')
-        res.end('working!')
     });
 }
 
