@@ -118,7 +118,7 @@ app.get('/success', (req,res) => {
             const compiledTemplate = Hogan.compile(template)
             let transporter = nodemailer.createTransport({
                 host: 'smtp.sendgrid.net',
-                port: 587,
+                port: 465,
                 secure: false, 
                 auth: {
                     user: 'apikey', 
@@ -192,22 +192,6 @@ app.get('/cancel', (req,res) =>{
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 app.post('/api/form',(req,res) => {
     const output = `
         <div style="display: flex; flex-direction: column; align-items: flex-end">
@@ -222,7 +206,7 @@ app.post('/api/form',(req,res) => {
 
     let transporter = nodemailer.createTransport({
         host: 'smtp.sendgrid.net',
-        port: 587,
+        port: 465,
         secure: false, 
         auth: {
             user: 'apikey', 
@@ -355,7 +339,7 @@ app.post('/register', (req,res) => {
     }   
     let transporter = nodemailer.createTransport({
         host: 'smtp.sendgrid.net',
-        port: 587,
+        port: 465,
         secure: false, 
         auth: {
             user: 'apikey', 
