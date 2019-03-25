@@ -117,12 +117,12 @@ app.get('/success', (req,res) => {
             const template = fs.readFileSync(path.join(__dirname, 'views/payment.hjs'), 'utf-8')
             const compiledTemplate = Hogan.compile(template)
             let transporter = nodemailer.createTransport({
-                host: 'smtp.gmail.com',
+                host: 'smtp.sendgrid.net',
                 port: 587,
                 secure: false, 
                 auth: {
-                    user: 'issacshaouli@gmail.com', 
-                    pass: 'isaac615243?'  
+                    user: 'apikey', 
+                    pass: process.env.EMAIL_API  
                 },
                 tls: {
                     rejectUnauthorized: false
@@ -220,33 +220,29 @@ app.post('/api/form',(req,res) => {
         </div>
     `;
 
-    let transporter = nodemailer.createTransport(sendgridTransport({
+    let transporter = nodemailer.createTransport({
+        host: 'smtp.sendgrid.net',
+        port: 587,
+        secure: false, 
         auth: {
-            api_key: process.env.EMAIL_API
+            user: 'apikey', 
+            pass: process.env.EMAIL_API  
+        },
+        tls: {
+            rejectUnauthorized: false
         }
-    }));
-
-    // let transporter = nodemailer.createTransport({
-    //     host: 'smtp.gmail.com',
-    //     port: 587,
-    //     secure: false, // true for 465, false for other ports
-    //     auth: {
-    //         user: 'issacshaouli@gmail.com', // generated ethereal user
-    //         pass: 'isaac615243?'  // generated ethereal password
-    //     },
-    //     tls: {
-    //         rejectUnauthorized: false
-    //     }
-    // });
+    });
 
     // setup email data with unicode symbols
-    //sherut@shaoulian.co.il
+    // sherut@shaoulian.co.il
     let mailOptions = {
-        to: "itzikshaoulian@gmail.com", // list of receivers
         from: `${req.body.email}`, // sender address
+        to: "itzikshaoulian@gmail.com", // list of receivers
         subject: "פניה לשירות לקוחות", // Subject line
+        text: "Hello world?", // plain text body
         html: output // html body
     };
+        
     
     transporter.sendMail(mailOptions, (error, info) => {
         if(error) {
@@ -358,12 +354,12 @@ app.post('/register', (req,res) => {
         return res.send("The passwords don't match");
     }   
     let transporter = nodemailer.createTransport({
-        host: 'smtp.gmail.com',
+        host: 'smtp.sendgrid.net',
         port: 587,
         secure: false, 
         auth: {
-            user: 'issacshaouli@gmail.com', 
-            pass: 'isaac615243?'  
+            user: 'apikey', 
+            pass: process.env.EMAIL_API  
         },
         tls: {
             rejectUnauthorized: false
