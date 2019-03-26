@@ -33,7 +33,7 @@ class ProductCategoryPage extends Component {
         return (
             <div className="productCategoryPage">
                 <div className="productCategoryPage__section" style={{backgroundImage: "url(" + this.props.backgroundImages + ")"}}>
-                    <p className="productCategoryPage__section-type">קטגורית מוצרים</p>
+                    {/* <p className="productCategoryPage__section-type">קטגורית מוצרים</p> */}
                     <h1 className="productCategoryPage__section-title">{this.props.chosenProductCategory}</h1>
                 </div>
                 <div className="productCategoryPage-shortDescription">
