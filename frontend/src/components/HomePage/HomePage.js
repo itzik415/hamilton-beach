@@ -31,9 +31,9 @@ class HomePage extends Component {
     this.props.dispatch(getProducts());
     this.props.dispatch(fetchRecipes());
     document.body.scrollTop = 0;
-    this.timerID = setInterval(() => {
-      this.sliderInterval()
-    },4500);
+    // this.timerID = setInterval(() => {
+    //   this.sliderInterval()
+    // },4500);
   }
 
   componentWillUnmount() {

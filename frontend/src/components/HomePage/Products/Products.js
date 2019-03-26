@@ -20,7 +20,7 @@ const products = (props) => {
                                         <div className="products__section-top-product-details">
                                             <p className="products__section-top-product-details-category">{item.type}</p>
                                             <p className="products__section-top-product-details-description">{item.short_description}</p>
-                                            <p className="products__section-top-product-details-model">{item.model} דגם</p>
+                                            <p className="products__section-top-product-details-model">דגם {item.model}</p>
                                             <p className="products__section-top-product-details-lastPrice">מחיר קודם {`${item.last_price}₪`}</p>
                                             <p className="products__section-top-product-details-price">{`${item.price}₪`}</p>
                                             <p className="products__section-top-product-details-save">חיסכון של {`${item.last_price - item.price}₪`}</p>
@@ -45,7 +45,7 @@ const products = (props) => {
                                         <div className="products__section-bottom-product-details">
                                             <p className="products__section-bottom-product-details-category">{item.type}</p>
                                             <p className="products__section-bottom-product-details-description">{item.short_description}</p>
-                                            <p className="products__section-bottom-product-details-model">{item.model} דגם</p>
+                                            <p className="products__section-bottom-product-details-model">דגם {item.model}</p>
                                             <p className="products__section-bottom-product-details-lastPrice">מחיר קודם {`${item.last_price}₪`}</p>
                                             <p className="products__section-bottom-product-details-price">{`${item.price}₪`}</p>
                                             <p className="products__section-bottom-product-details-save">חיסכון של {`${item.last_price - item.price}₪`}</p>

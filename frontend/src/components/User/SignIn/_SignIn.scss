@@ -55,7 +55,7 @@
             }
 
             &:focus {
-                border-bottom: 3px solid $blue-dark;
+                border-bottom: 2px solid $blue-dark;
                 outline: none;
 
                 & + #email-icon,
@@ -71,7 +71,7 @@
                 
 
                 &:invalid {
-                    border-bottom: 3px solid $orange-dark;
+                    border-bottom: 2px solid $orange-dark;
                     outline: none;
 
                     & + #email-icon,
