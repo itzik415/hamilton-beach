@@ -1,44 +1,32 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
-const Slider = (props) => {
+const Slider = () => {
     return (
-    <div className="slider">
-        <input defaultChecked type="radio" className="slider-input" name="slider" id="slide1"/>
-        <input type="radio" className="slider-input" name="slider" id="slide2" />
-        <input type="radio" className="slider-input" name="slider" id="slide3" />
-        <input type="radio" className="slider-input" name="slider" id="slide4" />
-        <input type="radio" className="slider-input" name="slider" id="slide5" />
-
-        <div className="slider-wrapper">
-            <div className="inner">
-                {
-                    props.sliderImages.map((item) => {
-                        return(
-                            <article key={item.id}>
-                                <img src={item.imageurl}  alt="slider company"/>
-                            </article>
-                        )
-                    }) 
-                }
-            </div>
+        <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel" data-interval="3000" data-pause="false">
+        <ol className="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+        </ol>
+        <div className="carousel-inner">
+            <div className="carousel-item active"></div>
+            <div className="carousel-item"></div>
+            <div className="carousel-item"></div>
+            <div className="carousel-item"></div>
+            <div className="carousel-item"></div>
         </div>
-        <div className="slider-dot-control">
-            <label htmlFor="slide1"></label>
-            <label htmlFor="slide2"></label>
-            <label htmlFor="slide3"></label>
-            <label htmlFor="slide4"></label>
-            <label htmlFor="slide5"></label>
-        </div>
+        <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span className="sr-only">Previous</span>
+        </a>
+        <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+            <span className="sr-only">Next</span>
+        </a>
     </div>
-
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        sliderImages: state.sliderImages
-    }
-}
-
-export default connect(mapStateToProps, null)(Slider);
+export default Slider;

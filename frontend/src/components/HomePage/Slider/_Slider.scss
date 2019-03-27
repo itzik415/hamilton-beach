@@ -1,124 +1,53 @@
-/*---- NUMBER OF SLIDE CONFIGURATION ----*/
-.slider {
-    width: 100%;
-    height: 480px;
-    position: relative;
-    margin-top: 1rem;
-
-    @media screen and(max-width: 600px) {
-        height: 380px;
-    }
-
-    &-input {
-        display: none;
-    }
+.carousel {
+  margin-bottom: 9rem;
 }
 
-.inner {
-    width: 2000%;
-    display: flex;
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  margin: auto 0;
+}
+.carousel-indicators {
+  position: absolute;
+  bottom: -6rem;
 }
 
-article {
-    width: 5%;
-    float: right;
-    position: relative;
+.carousel-indicators .active {
+  background-color: $grey-dark;
 }
 
-article img {
-    width: 100%;
-    height: 430px;
-    object-fit: cover;
-
-    @media screen and(max-width: 600px) {
-        height: 330px;
-    }
+.carousel-indicators li {
+  height: 10px;
+  cursor: pointer;
+  background-color: $grey-light;
 }
 
-/*---- SET UP CONTROL ----*/
-
-.slider-dot-control {
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    text-align: center;
-}
-
-.slider-dot-control label {
-    cursor: pointer;
-    border-radius: 50%;
-    border: 5px solid black;
-    height: 25px;
-    width: 25px;
-    margin: 0 2px;
-    background: #bbb;
-    transition: all 0.3s;
-}
-
-.slider-dot-control label:hover {
-    background: #ccc;
-    border-color: #777;
-}
-
-
-/* Slider Styling */
-.slider-wrapper {
-    width: 100%;
-    overflow: hidden;
-    transition: all 500ms ease-out;
-}
-.slider-wrapper .inner {
-    transition: all 800ms cubic-bezier(0.77, 0, 0.175, 1);
-}
-
-/*---- SET POSITION FOR SLIDE ----*/
-
-$class-slug1: slide !default;
-$class-slug2: slider-dot-control label !default;
-$class-slug5: slider-dot-control2 label !default;
-
-@for $i from 1 through 20 {
-  ##{$class-slug1}#{$i}:checked ~ .#{$class-slug2}:nth-child(#{$i}) {
-      background: #333;
-      transform: scale(1.3);
-      margin: 0 5px;
-
-  }
-}
-
-@for $i from 1 through 20 {
-  ##{$class-slug1}#{$i}:checked ~ .#{$class-slug5}:nth-child(#{$i}) {
-      background: #333;
-      transform: scale(1.2);
-      margin: 0 5px;
-
-  }
-}
-
-
-$class-slug3: slider-wrapper !default;
-$class-slug4: inner !default;
-
-@for $i from 0 through 20 {
-  ##{$class-slug1}#{$i+1}:checked ~ .#{$class-slug3} .#{$class-slug4} {
-    margin-right: $i * -100%;
-
-  }
-}
-
-/*---- TABLET ----*/
-@media only screen and (max-width: 850px) and (min-width: 450px) {
-  .slider-wrapper {
-    border-radius: 0;
-  }
-}
-/*---- MOBILE----*/
-@media only screen and (max-width: 450px) {
-  .slider-wrapper {
-    border-radius: 0;
+.carousel-item {
+  background: url('https://storage.googleapis.com/hamilton-beach-israel/promotional-images/image-1.jpg');
+  height: 60vh;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  @media screen and(max-width: 600px) {
+    height: 300px;
   }
 
-  .slider-wrapper .info {
-    opacity: 0;
+  &:nth-child(1) {
+
+  }
+
+  &:nth-child(2) {
+
+  }
+
+  &:nth-child(3) {
+
+  }
+
+  &:nth-child(4) {
+
+  }
+
+  &:nth-child(5) {
+
   }
 }
