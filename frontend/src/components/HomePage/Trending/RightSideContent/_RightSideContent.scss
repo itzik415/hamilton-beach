@@ -18,23 +18,12 @@
         justify-content: center;
         flex-direction: column;
         align-items: center;
-        background-image: url("https://www.hamiltonbeach.com/media/cat-headers/category_banner_tips_and_tutorials.jpg");
+        background-image: url("https://storage.googleapis.com/hamilton-beach-israel/category-page-images/matkonim.jpg");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
         align-items: center;
         position: relative;
-
-        &::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background-color: black;
-            opacity: 0.2;
-        }
 
         &-title {
             color: white;

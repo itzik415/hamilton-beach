@@ -61,7 +61,7 @@ class NavBar extends Component {
                         </span>
                     </div>
                     <div className="navBar__section-leftSide">
-                        <Link to="/"><img className="navBar__section-leftSide-logo" src={require('../../../../images/logo.png')} alt="Hamilton Beach logo"/></Link>
+                        <Link to="/"><img className="navBar__section-leftSide-logo" src='https://storage.googleapis.com/hamilton-beach-israel/different-images/logo-navbar.png' alt="Hamilton Beach logo"/></Link>
                     </div>
                 </div>
             </div>

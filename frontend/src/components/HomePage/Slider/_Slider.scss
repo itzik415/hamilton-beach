@@ -22,7 +22,6 @@
 }
 
 .carousel-item {
-  background: url('https://storage.googleapis.com/hamilton-beach-israel/promotional-images/image-1.jpg');
   height: 60vh;
   background-size: cover;
   background-position: center center;
@@ -32,22 +31,22 @@
   }
 
   &:nth-child(1) {
-
+    background-image: url("https://storage.googleapis.com/hamilton-beach-israel/promotional-images/image-1.jpg");
   }
 
   &:nth-child(2) {
-
+    background-image: url("https://storage.googleapis.com/hamilton-beach-israel/promotional-images/image-2.jpg");
   }
 
   &:nth-child(3) {
-
+    background-image: url("https://storage.googleapis.com/hamilton-beach-israel/promotional-images/image-3.jpg");
   }
 
   &:nth-child(4) {
-
+    background-image: url("https://storage.googleapis.com/hamilton-beach-israel/promotional-images/image-4.jpg");
   }
 
   &:nth-child(5) {
-
+    background-image: url("https://storage.googleapis.com/hamilton-beach-israel/promotional-images/image-5.jpg");
   }
 }
