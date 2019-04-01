@@ -292,7 +292,7 @@ export function fetchChosenRecipe() {
         let pageRecipeName = urlLocation.slice(urlLocation.indexOf('recipes/')+8).replace(/-/g, ' ').toLowerCase();
         fetch(`https://hamiltonbeach.herokuapp.com/api/recipes/${pageRecipeName}`)
             .then(response => response.json())
-            .then(myJson => store.dispatch({type: 'RECIVE_RIGHT_RECIPE', payload: myJson.filter(item => item.lower_case_name === pageRecipeName.slice(pageRecipeName.lastIndexOf('/')+1).replace(/-/g, " "))}))
+            .then(myJson => store.dispatch({type: 'RECIVE_RIGHT_RECIPE', payload: myJson.filter(item => item.english_name.toLowerCase() === pageRecipeName.slice(pageRecipeName.lastIndexOf('/')+1).replace(/-/g, " "))}))
             .catch(err => store.dispatch({type: 'ERROR', payload: err}));
     }
 }
@@ -302,7 +302,7 @@ export function fetchChosenRecipe() {
 export function getRecipeByClick(selectedRecipetId) {
     return function(dispatch) {
         let chosenRecipeArray = store.getState().recipes.filter(item => {
-            return selectedRecipetId.target.alt === item.lower_case_name;
+            return selectedRecipetId.target.alt === item.english_name.toLowerCase();
         })
         store.dispatch({type: 'RECIVE_RIGHT_RECIPE', payload: initialState.chosenRecipe = chosenRecipeArray})
     }

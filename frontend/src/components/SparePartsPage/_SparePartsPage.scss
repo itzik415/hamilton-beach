@@ -20,7 +20,7 @@
             font-size: 1.8rem;
             padding: 2px 5px;
             background-color: #fc0;
-            font-family: "Suez One", serif;
+            font-family: 'Rubik', sans-serif;
             z-index: 10;
         }
 
@@ -55,7 +55,7 @@
     
             &-title {
                 font-size: 2rem;
-                font-weight: 900;
+                font-weight: 700;
                 color: $grey-dark2;
                 text-align: start;
 
@@ -84,7 +84,7 @@
 
             &-title {
                 font-size: 1.7rem;
-                font-weight: 900;
+                font-weight: 700;
                 color: black;
 
                 @media screen and(max-width: 700px) {
@@ -197,7 +197,7 @@
                     margin: 2rem 0;
                     color: black;
                     width: 100%;
-                    font-weight: 900;
+                    font-weight: 700;
                 }
 
                 &-model {
@@ -212,7 +212,7 @@
                     text-align: start;
                     font-size: 1.8rem;
                     color: $red-dark;
-                    font-weight: 900;
+                    font-weight: 400;
                     width: 100%;
                 }
 
@@ -222,7 +222,7 @@
                     font-size: 1.7rem;
                     color: $white;
                     background-color: $red-dark;
-                    font-weight: 900;
+                    font-weight: 400;
                     transform: perspective(1px) translateZ(0);
                     box-shadow: 0 0 1px rgba(0, 0, 0, 0);
                     position: relative;

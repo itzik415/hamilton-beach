@@ -26,7 +26,7 @@ class ProductPage extends Component {
         var promise = new Promise((resolve, reject) => { 
           setTimeout(() => {
             resolve('This is my data.');
-          }, 100);
+          }, 500);
         });
     
     
@@ -65,9 +65,9 @@ class ProductPage extends Component {
                     title={this.props.chosenProduct[0].type} 
                     price={this.props.chosenProduct[0].price} 
                     model={this.props.chosenProduct[0].model}/>
-                <div className="productPage-main row">
-                    <div className="col-lg-3 col-xl-2"></div>
-                    <div className="sliderr my-5 col-12 col-md-12 col-lg-5 col-xl-5 d-flex align-items-center">
+                <div className="productPage-main row col-12">
+                    <div className="col-0 col-lg-2 col-xl-2"></div>
+                    <div className="sliderr my-5 col-12 col-md-12 col-lg-6 col-xl-5 d-flex align-items-center">
                         {
                             this.props.productsImages.map((item,index) => {
                                 return(
@@ -81,7 +81,6 @@ class ProductPage extends Component {
                                     this.props.productsImages.map((item,index) => {
                                         return(
                                             <article className="article" key={item.id}>
-                                                {console.log(`https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/${item.model.slice(0,5)}/${item.model.slice(0,5)}-${index+1}.jpg`)}
                                                 <img 
                                                     className="mb-5" src={`https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/${item.model.slice(0,5)}/${item.model.slice(0,5)}-${index+1}.jpg`} 
                                                     alt={`${item.model}`}/>

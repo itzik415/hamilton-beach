@@ -5,14 +5,23 @@ INSERT into products(model,mainimage,shortdescription,lastprice,price,saving,cat
 (58149, 'https://www.hamiltonbeach.com/media/products/blender-chopper-58149.jpg', 'מותאם לכל סוגי השייקים כולל פירות וירקות קשים', 299.99, 249.99, 50, 'blenders');
 
 //insert into recipe table
-INSERT INTO recipes(lower_case_name, name, english_name, image_url, category, type, kosher, cooking_time, level) VALUES 
-('slow cooker beef pot roast', 'צלי בשר בבישול איטי', 'Slow Cooker Beef Pot Roast', 'https://www.hamiltonbeach.com/media/recipes/pot-roast-10.jpg', 'meat', 'בשרי', 'כשר', '5-8 שעות', 'בינוני'),
-('fresh and spicy salsa', 'סלסה עגבניות', 'Fresh and Spicy Salsa',  'https://www.hamiltonbeach.com/media/recipes/Salsa.jpg', 'vegan', 'טבעוני', 'כשר', '20 דקות', 'קל מאוד'),
-('guacamole', 'גוואקמולי', 'Guacamole', 'https://www.hamiltonbeach.com/media/recipes/guacamole.jpg', 'vegan', 'טבעוני', 'כשר', '15 דקות', 'קל מאוד');
+INSERT INTO recipes(name, english_name, image_url, category, type, kosher, cooking_time, level) VALUES 
+('קוסקוס', 'Cuscus', 'https://storage.googleapis.com/hamilton-beach-israel/recipes-images/image-1.jpg', 'vegan', 'טבעוני', 'כשר', '30 דקות', 'קל מאוד'),
+('מרק תימני', 'Yemenite Soup', 'https://storage.googleapis.com/hamilton-beach-israel/recipes-images/image-2.jpg', 'meat', 'בשרי', 'כשר', '2-3 שעות', 'בינוני'),
+('אורז לסושי', 'Sushi rice',  'https://storage.googleapis.com/hamilton-beach-israel/recipes-images/image-3.jpg', 'vegan', 'טבעוני', 'כשר', '30 דקות', 'קל מאוד'),
+('אורז מלא', 'Brown Rice', 'https://storage.googleapis.com/hamilton-beach-israel/recipes-images/image-4.jpg', 'vegan', 'טבעוני', 'כשר', '30 דקות', 'קל מאוד'),
+('אורז טנזיה', 'Tanzia Rise', 'https://storage.googleapis.com/hamilton-beach-israel/recipes-images/image-5.jpg', 'vegan', 'טבעוני', 'כשר', '30 דקות', 'בינוני'),
+('ירקות מאודים עם סלמון', 'Steamed Vegetables with Salmon', 'https://storage.googleapis.com/hamilton-beach-israel/recipes-images/image-6.jpg', 'vegetarian', 'צמחוני', 'כשר', 'כשעה', 'קל'),
+('אורז מקלובה ירקות', 'Macluba Rice and Vegetables', 'https://storage.googleapis.com/hamilton-beach-israel/recipes-images/image-7.jpg', 'vegan', 'טבעוני', 'כשר', '30 דקות', 'קל מאוד'),
+('קלחי תירס מאודים/ מבושלים', 'Steamed Corn', 'https://storage.googleapis.com/hamilton-beach-israel/recipes-images/image-8.jpg', 'vegan', 'טבעוני', 'כשר', 'כשעה', 'קל מאוד'),
+('ז׳ארקויה', 'Jarkoia', 'https://storage.googleapis.com/hamilton-beach-israel/recipes-images/image-9.jpg', 'meat', 'בשרי', 'כשר', '2-3 שעות', 'בינוני'),
+('צ׳ולנט/חמין', 'Cholent', 'https://storage.googleapis.com/hamilton-beach-israel/recipes-images/image-10.jpg', 'meat', 'בשרי', 'כשר', '12 שעות', 'בינוני'),
+('קינואה', 'Quinoa', 'https://storage.googleapis.com/hamilton-beach-israel/recipes-images/image-11.jpg', 'vegan', 'טבעוני', 'כשר', 'כשעה', 'בינוני'),
+('בוגוס', 'Bogus', 'https://storage.googleapis.com/hamilton-beach-israel/recipes-images/image-12.jpg', 'vegan', 'בשרי', 'כשר', '2-3 שעות', 'בינוני');
+
 
 CREATE TABLE recipes(
     id SERIAL PRIMARY KEY,
-    lower_case_name text NOT NULL,
     name text NOT NULL,
     english_name text NOT NULL,
     image_url text NOT NULL,
@@ -123,16 +132,22 @@ VALUES
 ('https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-spare-parts-images/67750/67750-8.jpg', '67750', 'juicers', '967700100', '44', 'CLEANING BRUSH/JUICER', 'מברשת לניקוי');
 
 
+CREATE TABLE product_category_details (
+    id SERIAL PRIMARY KEY,
+    category text NOT NULL,
+    title text NOT NULL,
+    para_text text NOT NULL
+);
 
 //insert into product_category_details table
 INSERT INTO product_category_details(category, title, para_text) VALUES 
-('blenders', 'בלנדרים אטרקטיביים ורבי עוצמה לכל מטבח', 'הבלנדרים של המילטון ביץ׳ ידועים ברחבי העולם להכנת שייקים טעימים בעלי מרקם חלק. במהלך השנים, אנשים הסתמכו על הבלנדר של המילטון ביץ׳ עבור משקאות קרים, שייקיםת רטבים וכמובן החדשנות שהמותג ההיסטורי הזה מפורסם בגללה. עם תכונות חכמות כמו פעולת הגליםת הרשומות כפטנטים של החברה , בלנדרים אלה מציעים את הביצועים שאתם צריכים עבור משקאות בלי מרקם חלק בכל פעם');
+('blenders', 'בלנדרים אטרקטיביים ורבי עוצמה לכל מטבח', 'הבלנדרים של המילטון ביץ׳ ידועים ברחבי העולם להכנת שייקים טעימים בעלי מרקם חלק. במהלך השנים, אנשים הסתמכו על הבלנדר של המילטון ביץ׳ עבור משקאות קרים, שייקיםת רטבים וכמובן החדשנות שהמותג ההיסטורי הזה מפורסם בגללה. עם תכונות חכמות כמו פעולת הגליםת הרשומות כפטנטים של החברה , בלנדרים אלה מציעים את הביצועים שאתם צריכים עבור משקאות בלי מרקם חלק בכל פעם'),
 ('grinders', 'פעולה ללא ידיים ומדידה מדויקת עד לקבלת טחינה ברמה המושלמת בשבילכם', 'מטחנות התבלינים של המילטון ביץ׳ בעלות הטחינה המותאמת הן האידיאליות ביותר עבור קפה ותבלינים עד לקבלת המרקם המדויק עבורכם בכל פעם. הגדרות מוסברות היטב המבטיחות תוצאות מושלמות וסימנים ברורים הנמצאים על הכוס אשר יבטיחו לכם מדידה מדוייקת להבטיח מדידה קפדנית. המטחנות שלנו קלות לשימוש ונקיון. הן מציעות טחינה ללא שימוש בידיים עם כיבוי אוטומטי, כמו גם מיקום מוסתר לאיכסון הכבל. חלק ממטחנות הקפה אף כוללות קערית נירוסטה מחוספסת נשלפת לניקוי קל במדיח כלים.'),
 ('food-processors', 'מעבדי המזון שלנו מפחיתים את זמן ההכנה עם מנועים חזקים ואביזרים קלים לניקוי','מעבדי המזון של המילטון ביץ׳ מסתמכים על מנועים חזקים כדי ליקצוץ, לפרוס, לגרוס ולערבב כמעט כל דבר שתוסיפו לקערה. מהירים וקלים לשימוש, ובעלי  רעיונות חכמים ומגוונים - במיוחד בדגמים בעלי פתח ההזנה הרחב אשר מאפשרים הכנסה של מזון בשלמותו. בעוד מעבדי מזון יכולים להוות מטרד כאשר מדובר על ניקיון המוצר, העיצוב הקפדני והזהיר שלנו מאפשר אחסנה נוחה של המוצרים בארון וניקיון רוב החלקים במדיח. ביחרו את גודל מעבד המזון שעובד ומתאים לצרכיכם האישיים בצורה הטובה ביותר. מעבדי המזון של המילטון ביץ׳ הם המוצרים האולטימטיביים, בין אם אתם מבשלים עבור שניים או בין אם אתם מבשלים עבור אירוע משפחתי'),
 ('waffle-makers', 'פריך, היישר מהאופה בהבלגי האישי שלכם', 'איפו וופלים פריכים בתוך דקות עם האוסף הפופולרי של המילטון ביץ׳ Waffle Makers. נורית הביקורת תאמר לכם כאשר הוופל שלכם מוכן לאכילה, ולוחיות ה nonstick שלנו יעשו את עבודת הוצאת הוופל מהמכשיר בצורה חלקה ומושלמת. הWaffle Makers של המילטון ביץ׳ מיועדים לניקוי מהיר, ובדגמים נבחרים אשר כוללים: ציפוי nonstick וגומחה לשאריות הנוזל עושים את עבודת הניקוי לקלה במיוחד. את משטחי ה nonstick קל לנקות עם מטלית לחה, ובדגמים נבחרים אף ניתן לשלוף את הפלטות ולהכניסם לניקיון במדיח'),
 ('toasters', 'טוסטים פריכים בתוך דקות', 'הכינו טוסטים פריכים בתוך דקות עם אוסף הטוסטרים של המילטון ביץ׳. נורית הביקורת תאמר לכם כאשר הטוסטר הגיע לטמפרטורה הרצויה. לוחיות ה nonstick שלנו יעשו את עבודת הוצאת הטוסט קלה ובצורה חלקה ומושלמת. הטוסטרים של המילטון ביץ׳ מיועדים לניקוי מהיר. את משטחי ה nonstick קל לנקות עם מטלית לחה, ובדגמים נבחרים אף ניתן לשלוף את הפלטות ולהכניסם לניקיון במדיח'),
-('juciers', 'עבור המיצים האיכותיים ביותר', 'המסחטות של המילטון ביץ׳ מושלמות בכדי להכין מיצים טריים, מלהיבים וכמובן בריאים. גזרים, תפוזים, תפוחים, כרוב וסלק הם רק תמצית משלל הפירות והירקות שבהם תוכלו להשתמש בכדי להכין את המיץ המושלם עבורכם. בידקו את המתכונים שלנו למיצים טבעיים ובריאים על מנת לקבל טעימה מיעילות המכשירים שלנו. כמו כל שאר המוצרים של המילטון ביץ גם המסחטות שלנו מציעות יעילות ושוב פעם יעילות. אנו מציעים דגמים עם מנועים רבי עוצמה המסוגלים לסחוט מיץ ממגוון של פירות וירקות. הפיה הגדולה מאפשרת יתרון נוסף אשר לא תצטרכו לחתוך את הפרי/ירק לפני אלא, תוכלו להכניס אותו בשלמותו ובכך לחסוך זמן ומאמץ נוספים בזמן ההכנה. ייתרון נוסף הוא שרוב החלקים כמובן בטוחים לשימוש במדיח. ביחרו מתוך שלל הדגמים שאנו מציעים ועוד מגוון של עיצובים אחרים אשר ייסיעו לכם להנות ממיצים בריאים וטעימים בכל עת'),
-('multi-cookers', 'לשלל מאכלים עם שימוש במכשיר אחד בלבד', 'המולטי קוקר של המילטון ביץ׳ מושלם בכדי להכין מגוון רחב של מאכלים ותבשילים. אורז ומרקים הם רק תמצית משלל התבשילים והמאכלים אשר תוכלו להכין באמצעות המכשיר. בידקו את המתכונים שלנו למגוון המאכליםשלנו על מנת לקבל טעימה מיעילות המכשיר. כמו כל שאר המוצרים של המילטון ביץ גם המולטי קוקר שלנו מציע יעילות רבה. פנים המוצר עשוי שכבת nonestick אשר מונעת ממאכלים מסויימים להידבק למכשיר ובאותו הזמן כמובן גם נוכה מאוד לניקיון.'),
+('juicers', 'עבור המיצים האיכותיים ביותר', 'המסחטות של המילטון ביץ׳ מושלמות בכדי להכין מיצים טריים, מלהיבים וכמובן בריאים. גזרים, תפוזים, תפוחים, כרוב וסלק הם רק תמצית משלל הפירות והירקות שבהם תוכלו להשתמש בכדי להכין את המיץ המושלם עבורכם. בידקו את המתכונים שלנו למיצים טבעיים ובריאים על מנת לקבל טעימה מיעילות המכשירים שלנו. כמו כל שאר המוצרים של המילטון ביץ גם המסחטות שלנו מציעות יעילות ושוב פעם יעילות. אנו מציעים דגמים עם מנועים רבי עוצמה המסוגלים לסחוט מיץ ממגוון של פירות וירקות. הפיה הגדולה מאפשרת יתרון נוסף אשר לא תצטרכו לחתוך את הפרי/ירק לפני אלא, תוכלו להכניס אותו בשלמותו ובכך לחסוך זמן ומאמץ נוספים בזמן ההכנה. ייתרון נוסף הוא שרוב החלקים כמובן בטוחים לשימוש במדיח. ביחרו מתוך שלל הדגמים שאנו מציעים ועוד מגוון של עיצובים אחרים אשר ייסיעו לכם להנות ממיצים בריאים וטעימים בכל עת'),
+('multi-cookers', 'לשלל מאכלים עם שימוש במכשיר אחד בלבד', 'המולטי קוקר של המילטון ביץ׳ מושלם בכדי להכין מגוון רחב של מאכלים ותבשילים. אורז ומרקים הם רק תמצית משלל התבשילים והמאכלים אשר תוכלו להכין באמצעות המכשיר. בידקו את המתכונים שלנו למגוון המאכליםשלנו על מנת לקבל טעימה מיעילות המכשיר. כמו כל שאר המוצרים של המילטון ביץ גם המולטי קוקר שלנו מציע יעילות רבה. פנים המוצר עשוי שכבת nonestick אשר מונעת ממאכלים מסויימים להידבק למכשיר ובאותו הזמן כמובן גם נוכה מאוד לניקיון.');
 
 //insert into product_feature table
 INSERT INTO product_features(product_model, feature) VALUES 
@@ -344,14 +359,6 @@ INSERT INTO carts(email, model, price, serial, amount, image_url, category) VALU
 ('p@gmail.com', '70825-IS', 1399, 0, 2, 'https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/70825/70825-1.jpg', 'מעבד מזון'),
 ('p@gmail.com', '80393-IS', 179, 0, 4, 'https://storage.googleapis.com/hamilton-beach-israel/hamilton-beach-images/80393/80393-1.jpg', 'מטחנת קפה');
 
-
-
-CREATE TABLE product_category_details (
-    id SERIAL PRIMARY KEY,
-    category text NOT NULL,
-    title text NOT NULL,
-    para_text text NOT NULL
-);
 
 CREATE TABLE spare_parts(
     id SERIAL PRIMARY KEY,
