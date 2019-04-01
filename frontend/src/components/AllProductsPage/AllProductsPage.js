@@ -14,7 +14,6 @@ class ProductsPage extends Component {
         return (
             <div className="productsPage">
                 <div className="productsPage__section">
-                    <p className="productsPage__section-type">מוצרים</p>
                     <h1 className="productsPage__section-title"> מוצרים לפי קטגוריה</h1>
                 </div>
                 <div className="productsPage-main">

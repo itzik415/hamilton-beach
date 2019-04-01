@@ -397,14 +397,9 @@ app.get('/api/recipes/:category', (req, res) => {
         .then(category => res.json(category))  
 })
 
-app.get(`/api/recipes/:category/:lower_case_name`, (req, res) => {
-    db('recipes').where({category: req.params.category, lower_case_name: req.params.lower_case_name}).select('*')
-        .then(lower_case_name => res.json(lower_case_name))
-})
-
-app.get(`/api/product_features/:product_model`, (req, res) => {
-    db('product_features').where({product_model: req.params.product_model}).select('*')
-        .then(features => res.json(features))
+app.get(`/api/recipes/:category/:english_name`, (req, res) => {
+    db('recipes').where({category: req.params.category, english_name: req.params.english_name}).select('*')
+        .then(name => res.json(name))
 })
 
 app.get(`/api/recipe_ingredients/:recipe_name`, (req, res) => {
@@ -415,6 +410,11 @@ app.get(`/api/recipe_ingredients/:recipe_name`, (req, res) => {
 app.get(`/api/recipe_instructions/:recipe_name`, (req, res) => {
     db('recipe_instructions').orderBy('instruction_number').where({recipe_name: req.params.recipe_name}).select('*')
         .then(instructions => res.json(instructions))
+})
+
+app.get(`/api/product_features/:product_model`, (req, res) => {
+    db('product_features').where({product_model: req.params.product_model}).select('*')
+        .then(features => res.json(features))
 })
 
 app.get('/api/spare_parts', (req, res) => {

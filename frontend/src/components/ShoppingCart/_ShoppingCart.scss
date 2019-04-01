@@ -9,14 +9,6 @@
         justify-content: center;
         flex-direction: column;
         align-items: center;
-
-        &-type {
-            font-size: 1.8rem;
-            padding: 2px 5px;
-            background-color: $main-color;
-            font-family: 'Rubik', sans-serif;
-            color: white;
-        }
         
         &-title {
             color: white;

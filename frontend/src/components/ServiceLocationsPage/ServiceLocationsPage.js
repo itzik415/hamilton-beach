@@ -11,7 +11,6 @@ class ServiceLocations extends Component {
         return (
             <div className="serviceLocations">
                 <div className="serviceLocations__section">
-                    <p className="serviceLocations__section-type">תמיכה</p>
                     <h1 className="serviceLocations__section-title">נקודות שירות</h1>
                 </div>
                 <div className="serviceLocations-main">

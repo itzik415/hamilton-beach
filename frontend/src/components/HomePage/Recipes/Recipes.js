@@ -17,9 +17,9 @@ const Recipes = (props) => {
                     props.recipes.map((recipe, index) => {
                         return (
                             index <= 2?
-                                <Link onClick={props.getRecipe} to={`/recipes/${recipe.category}/${recipe.lower_case_name.replace(/\s/g, '-')}`} key={recipe.id} className="recipes-container-recipe">
+                                <Link onClick={props.getRecipe} to={`/recipes/${recipe.category}/${recipe.english_name.toLowerCase().replace(/\s/g, '-')}`} key={recipe.id} className="recipes-container-recipe">
                                     <h1 className="recipes-container-recipe-title">סלטים</h1>
-                                    <img src={recipe.image_url} className="recipes-container-recipe-img pdLeft" alt={recipe.lower_case_name}/>
+                                    <img src={recipe.image_url} className="recipes-container-recipe-img pdLeft" alt={recipe.english_name.toLowerCase()}/>
                                     <div className="recipes-container-recipe-description">
                                         <h1 className="recipes-container-recipe-description-title">{recipe.name}</h1>
                                         <div className="recipes-container-recipe-description-recipe">

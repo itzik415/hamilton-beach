@@ -15,15 +15,7 @@
         background-size: cover;
         align-items: center;
         position: relative;
-
-        &-type {
-            font-size: 1.8rem;
-            padding: 2px 5px;
-            background-color: #fc0;
-            font-family: 'Rubik', sans-serif;
-            z-index: 10;
-        }
-
+        
         &-title {
             color: white;
             margin-bottom: 20px;

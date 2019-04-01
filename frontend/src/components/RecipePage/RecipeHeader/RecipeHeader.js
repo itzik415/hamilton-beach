@@ -4,7 +4,6 @@ const recipeHeader = (props) => {
     return (
         <div className="recipeHeader">
             <div className="recipeHeader__section">
-                <p className="recipeHeader__section-type">מתכון</p>
                 <h1 className="recipeHeader__section-title">{props.name}</h1>
                 <div className="recipeHeader__section-properties">
                     <span>{props.time.slice(0,3)}</span>

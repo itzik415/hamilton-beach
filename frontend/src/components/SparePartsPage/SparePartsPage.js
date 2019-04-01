@@ -21,7 +21,6 @@ class SpareParts extends Component {
         return (
             <div className="spareParts">
                 <div className="spareParts__section">
-                    <p className="spareParts__section-type">תמיכה</p>
                     <h1 className="spareParts__section-title">חלקי חילוף ואביזרים</h1>
                 </div>
                 <div className="spareParts-main">

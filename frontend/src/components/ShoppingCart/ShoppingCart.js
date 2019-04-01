@@ -9,7 +9,6 @@ class ShoppingCart extends Component {
         return (
             <div className="shoppingCart row">
                 <div className="shoppingCart__section">
-                    <p className="shoppingCart__section-type">קניות</p>
                     <h1 className="shoppingCart__section-title">עגלת קניות</h1>
                 </div>
                 <div className="shoppingCart-main row col-sm-11 col-12">

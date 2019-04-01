@@ -15,15 +15,6 @@
         align-items: center;
         position: relative;
 
-        &-type {
-            font-size: 1.8rem;
-            padding: 2px 5px;
-            background-color: #fc0;
-            box-shadow: 1px 2px 1px black;
-            font-family: "Suez One", serif;
-            z-index: 10;
-        }
-
         &-title {
             color: white;
             margin-bottom: 20px;
@@ -238,9 +229,9 @@
 }
 
 #recipe-all,
-#recipe-vegeterian, 
+#recipe-vegetarian, 
 #recipe-dairy, 
-#recipe-meat, {
+#recipe-meat {
     transition: .3s;
     cursor: pointer;
 

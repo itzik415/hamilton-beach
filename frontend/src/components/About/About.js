@@ -4,7 +4,6 @@ const about = () => {
     return (
         <div className="about">
             <div className="about__section">
-                <p className="about__section-type">אודות</p>
                 <h1 className="about__section-title">שאוליאן סחר בע״מ</h1>
             </div>
             <div className="about-main">

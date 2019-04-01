@@ -11,7 +11,6 @@ class AuthorizedSellers extends Component {
         return (
             <div className="authorizedSellers">
                 <div className="authorizedSellers__section">
-                    <p className="authorizedSellers__section-type">תמיכה</p>
                     <h1 className="authorizedSellers__section-title">משווקים מורשים</h1>
                 </div>
                 <div className="authorizedSellers-main">

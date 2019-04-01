@@ -14,7 +14,6 @@ class AllRecipes extends Component {
         return (
             <div className="allRecipes">
                 <div className="allRecipes__section">
-                    <p className="allRecipes__section-type">מהמטבח שלנו</p>
                     <h1 className="allRecipes__section-title">מתכונים</h1>
                 </div>
                 <div className="allRecipes-shortDescription">
@@ -35,7 +34,7 @@ class AllRecipes extends Component {
                             <div className="allRecipes-recipesPart-rightSide-div-text">
                                 <p onClick={this.props.fetchRecipes} id="recipes-all">כל המתכונים</p>
                                 <p onClick={this.props.fetchRecipesCategory} id="recipe-vegan">טבעוניים</p>
-                                <p onClick={this.props.fetchRecipesCategory} id="recipe-vegeterian">צמחוניים</p>
+                                <p onClick={this.props.fetchRecipesCategory} id="recipe-vegetarian">צמחוניים</p>
                                 <p onClick={this.props.fetchRecipesCategory} id="recipe-dairy">חלביים</p>
                                 <p onClick={this.props.fetchRecipesCategory} id="recipe-meat">בשריים</p>
                             </div>
@@ -48,9 +47,9 @@ class AllRecipes extends Component {
                                     <Link 
                                         onClick={this.props.getRecipeByClick}
                                         key={recipe.id} 
-                                        to={`recipes/${recipe.category}/${recipe.lower_case_name.replace(/\s+/g, '-')}`} 
+                                        to={`recipes/${recipe.category}/${recipe.english_name.toLowerCase().replace(/\s+/g, '-')}`} 
                                         className="allRecipes-recipesPart-leftSide-imageDiv">
-                                        <img src={`${recipe.image_url}`} alt={recipe.lower_case_name} />
+                                        <img src={`${recipe.image_url}`} alt={recipe.english_name.toLowerCase()} />
                                         <p>{recipe.name}</p>
                                     </Link>
                                 )
