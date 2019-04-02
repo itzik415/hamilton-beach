@@ -1,0 +1,85 @@
+//BASE
+@import './Scss/variables';
+@import './Scss/base';
+@import './Scss/animations';
+
+//Main Components
+@import './components/Footer/Footer';
+@import './components/HomePage/Nav/NavBar/NavBar';
+@import './components/HomePage/Nav/Nav';
+@import './components/HomePage/Nav//HiddenNav/HiddenNav';
+
+//Home page
+@import './components/HomePage/Slider/Slider';
+
+@import './components/HomePage/Products/Products';
+
+@import './components/HomePage/Trending/Trending';
+@import './components/HomePage/Trending/LeftSideContent/LeftSideContent';
+@import './components/HomePage/Trending/RightSideContent/RightSideContent';
+
+@import './components/HomePage/Recipes/Recipes';
+
+//About page
+@import './components/About/About';
+
+//All Recipes page
+@import './components/AllRecipesPage/AllRecipesPage';
+
+//Recipe page
+@import './components/RecipePage/RecipePage';
+@import './components/RecipePage/RecipeHeader/RecipeHeader';
+
+//All Products page
+@import './components/AllProductsPage/AllProductsPage';
+
+//Product page
+@import './components/ProductPage/ProductPage';
+@import './components/ProductPage/ProductHeader/ProductHeader';
+
+//Contact page
+@import './components/ContactPage/ContactPage';
+@import './components/ContactPage/Contact/Contact';
+@import './components/ContactPage/OfficeDetails/OfficeDetails';
+@import './components/ContactPage/StoreDetails/StoreDetails';
+
+//Authorized Sellers Page
+@import './components/AuthorizedSellersPage/AuthorizedSellersPage';
+
+//Service Locations Page
+@import './components/ServiceLocationsPage/ServiceLocationsPage';
+
+//Spare Parts page
+@import './components/SparePartsPage/SparePartsPage';
+@import './components/PartPage/PartPage';
+
+//Product category page
+@import './components/ProductCategoryPage/ProductCategoryPage';
+
+//Shopping cart
+@import './components/ShoppingCart/ShoppingCart';
+@import './components/ShoppingCart/ShoppingCartForm/ShoppingCartForm';
+
+//Success payment
+@import './components/SuccessPayment/SuccessPayment';
+
+//Process payment
+@import './components/ProcessPayment/ProcessPayment';
+
+//Cancel payment
+@import './components/CancelPayment/CancelPayment';
+
+
+
+//User
+@import './components/User/SignIn/SignIn';
+@import './components/User/Register/Register';
+@import './components/User/AddToCart/AddToCart';
+
+
+
+
+
+
+
+
