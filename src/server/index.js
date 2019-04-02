@@ -441,7 +441,7 @@ app.get('/api/cart/:email', (req,res) => {
 })
 
 // if (process.env.NODE_ENV === 'production') {
-    app.get('*', (req, res, next) => {
+    app.get('/*', (req, res, next) => {
         const activeRoute = routes.find((route) => matchPath(req.url, route)) || {}
         // const composeEnhancers = global.window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
         const store = createStore(rootReducer, applyMiddleware(thunk));
