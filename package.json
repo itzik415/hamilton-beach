@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack -p --config ./webpack.config.js --progress && node server.js",
-    "heroku-postbuild": "npm run build",
+    "start": "webpack -w & nodemon server.js",
+    "heroku-postbuild": "webpack -p  && npm run build",
     "build-css": "node-sass --include-path scss src/shered/app/main.scss   src/shered/app/index.css",
     "watch-css": "nodemon -e scss -x \"npm run build-css\""
   },
   "engines": {
-    "node": "8.10.0"
+    "node": "8.10.0",
+    "npm": "6.4.1"
   },
   "keywords": [],
   "author": "",
@@ -45,7 +46,7 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.0",
+    "@babel/core": "^7.4.3",
     "@babel/plugin-proposal-object-rest-spread": "^7.4.0",
     "@babel/plugin-transform-runtime": "^7.4.0",
     "@babel/preset-env": "^7.4.2",

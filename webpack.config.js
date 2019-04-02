@@ -16,7 +16,7 @@ const browserConfig = {
             { test: /\.(s*)css$/, use: [ 'style-loader', 'css-loader', 'sass-loader' ]}
         ]
     },
-    mode: 'production',
+    mode: 'development',
     plugins: [
         new webpack.DefinePlugin({
             __isBrowser__: "true"
@@ -40,7 +40,7 @@ const serverConfig = {
             { test: /\.(s*)css$/, use: [ 'style-loader', 'css-loader', 'sass-loader' ]}
       ]
     },
-    mode: 'production',
+    mode: 'development',
     plugins: [
       new webpack.DefinePlugin({
         __isBrowser__: "false"
