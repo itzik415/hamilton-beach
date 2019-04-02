@@ -16,11 +16,7 @@ const browserConfig = {
             { test: /\.(s*)css$/, use: [ 'style-loader', 'css-loader', 'sass-loader' ]}
         ]
     },
-    // choosing the port that the app will run on
-    // devServer: {
-    //     port: 3000 
-    // },
-    mode: 'development',
+    mode: 'production',
     plugins: [
         new webpack.DefinePlugin({
             __isBrowser__: "true"
@@ -44,7 +40,7 @@ const serverConfig = {
             { test: /\.(s*)css$/, use: [ 'style-loader', 'css-loader', 'sass-loader' ]}
       ]
     },
-    mode: 'development',
+    mode: 'production',
     plugins: [
       new webpack.DefinePlugin({
         __isBrowser__: "false"
