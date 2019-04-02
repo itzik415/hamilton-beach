@@ -10,8 +10,8 @@
     "watch-css": "nodemon -e scss -x \"npm run build-css\""
   },
   "engines": {
-    "node": "8.10.0",
-    "npm": "6.4.1"
+    "npm": "6.4.1",
+    "node": "8.10.0"
   },
   "keywords": [],
   "author": "",
