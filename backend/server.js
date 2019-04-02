@@ -399,7 +399,7 @@ app.get('/api/recipes/:category', (req, res) => {
 
 app.get(`/api/recipes/:category/:english_name`, (req, res) => {
     db('recipes').where({category: req.params.category, english_name: req.params.english_name}).select('*')
-        .then(name => res.json(name))
+        .then(english_name => res.json(english_name))
 })
 
 app.get(`/api/recipe_ingredients/:recipe_name`, (req, res) => {

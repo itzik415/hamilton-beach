@@ -289,13 +289,14 @@ export function fetchRecipesCategory(category) {
 export function fetchChosenRecipe() {
     return function(dispatch) {
         let urlLocation = window.location.href;
-        let pageRecipeName = urlLocation.slice(urlLocation.indexOf('recipes/')+8).replace(/-/g, ' ');
-        fetch(`http://localhost:5000/api/recipes/${pageRecipeName}`)
+        let pageRecipeName = urlLocation.slice(urlLocation.indexOf('recipes/')+8).replace(/-/g, ' ').toLowerCase();
+        fetch(`https://hamiltonbeach.herokuapp.com/api/recipes/${pageRecipeName}`)
             .then(response => response.json())
             .then(myJson => store.dispatch({type: 'RECIVE_RIGHT_RECIPE', payload: myJson.filter(item => item.english_name.toLowerCase() === pageRecipeName.slice(pageRecipeName.lastIndexOf('/')+1).replace(/-/g, " "))}))
             .catch(err => store.dispatch({type: 'ERROR', payload: err}));
     }
 }
+
 
 
 //Choosing the right recipe
