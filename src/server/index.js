@@ -13,11 +13,6 @@ import { matchPath, StaticRouter } from 'react-router-dom'
 import Main from '../shered/app/main'
 import routes from '../shered/app/routes'
 
-const JWT_WEB_SERIAL = process.env.JWT_WEB_SERIAL;
-const PAYPAL_ID = process.env.PAYPAL_ID;
-const PAYPAL_CLIENT_SECRET = process.env.PAYPAL_CLIENT_SECRET;
-const DATABASE_URL = process.env.DATABASE_URL;
-
 const knex = require('knex');
 const jwt = require('jsonwebtoken');
 const paypal = require('paypal-rest-sdk');
@@ -40,15 +35,15 @@ app.use(bodyParser.urlencoded({ extended: false}));
 const db = knex({
     client: 'pg',
     connection: {
-        connectionString: DATABASE_URL,
+        connectionString: process.env.DATABASE_URL,
         ssl: true,
     }
 });
 
 paypal.configure({
     'mode': 'live', //sandbox or live
-    'client_id': PAYPAL_ID,
-    'client_secret': PAYPAL_CLIENT_SECRET
+    'client_id': process.env.PAYPAL_ID,
+    'client_secret': process.env.PAYPAL_CLIENT_SECRET
 })
 
 
@@ -204,7 +199,7 @@ app.get('/success', (req,res) => {
                             products_price,
                             payment.transactions[0].amount.total
                         )
-                        res.json({successUrl: 'http://localhost:3000/success-payment'});
+                        res.json({successUrl: 'https://hamiltonbeach.herokuapp.com/success-payment'});
                     
                 }
             });
@@ -223,7 +218,7 @@ app.post('/api/form',(req,res) => {
 });
 
 app.get('/user', verifyToken, async (req,res) => {
-    const payload = await jwt.verify(req.token, JWT_WEB_SERIAL)
+    const payload = await jwt.verify(req.token, process.env.JWT_WEB_SERIAL)
     let me = await db('users').where('email', '=', payload.user.email).select('*')
     res.end(JSON.stringify(me[0]))
 })
@@ -287,7 +282,7 @@ app.post('/signin', (req,res) => {
                     .then(cart =>{
                         return db('users').where('email', '=', req.body.email).select('*')
                         .then(user => { 
-                            jwt.sign({user: req.body, cart: cart}, JWT_WEB_SERIAL,{ expiresIn: '7d' }, (err, token) => {
+                            jwt.sign({user: req.body, cart: cart}, process.env.JWT_WEB_SERIAL,{ expiresIn: '7d' }, (err, token) => {
                                 res.json({
                                     token: token,
                                     user: user[0],
@@ -330,7 +325,7 @@ app.post('/register', (req,res) => {
                 .then(user => {
                     registrationEmail(email, name)
                     return (
-                        jwt.sign({user: req.body}, JWT_WEB_SERIAL,{ expiresIn: '7d' }, (err, token) => {
+                        jwt.sign({user: req.body}, process.env.JWT_WEB_SERIAL,{ expiresIn: '7d' }, (err, token) => {
                             res.json({
                                 token: token,
                                 user: user[0]

@@ -11,7 +11,7 @@ const axios = require('axios');
 //Importing all the slider images from a json file
 export function getSliderImages() {
     return function(dispatch){
-        fetch('http://localhost:5000/api/backgroundimages')
+        fetch('https://hamiltonbeach.herokuapp.com/api/backgroundimages')
             .then(response => response.json())
             .then(myJson => dispatch({type: 'RECIVE_SLIDER_IMAGES', payload: myJson.map(value => value)}))
             .catch(err => dispatch({type: 'ERROR', payload: err}));
@@ -21,7 +21,7 @@ export function getSliderImages() {
 //Importing the service locations 
 export function getServiceLocations() {
     return function(dispatch) {
-        fetch('http://localhost:5000/api/servicelocations')
+        fetch('https://hamiltonbeach.herokuapp.com/api/servicelocations')
             .then(response => response.json())
             .then(myJson => dispatch({type: 'RECIVE_SERVICE_LOCATIONS', payload: myJson.map(value => value)}))
             .catch(err => dispatch({type: 'ERROR', payload: err}));
@@ -31,7 +31,7 @@ export function getServiceLocations() {
 //Importing the Authorized Sellers
 export function getAuthorizedStores() {
     return function(dispatch) {
-        fetch('http://localhost:5000/api/authorized-sellers')
+        fetch('https://hamiltonbeach.herokuapp.com/api/authorized-sellers')
             .then(response => response.json())
             .then(myJson => dispatch({type: 'RECIVE_AUTHORIZED_SELLERS', payload: myJson.map(value => value)}))
             .catch(err => dispatch({type: 'ERROR', payload: err}));
@@ -41,7 +41,7 @@ export function getAuthorizedStores() {
 //Importing the products
 export function getProducts() {
     return function(dispatch) {
-        fetch('http://localhost:5000/api/products')
+        fetch('https://hamiltonbeach.herokuapp.com/api/products')
             .then(response => response.json())
             .then(myJson => dispatch({type: 'RECIVE_PRODUCTS', payload: myJson}))
             .catch(err => dispatch({type: 'ERROR', payload: err}));
@@ -51,7 +51,7 @@ export function getProducts() {
 //Fetching recipes
 export function fetchRecipes() {
     return function(dispatch) {
-        fetch(`http://localhost:5000/api/recipes`)
+        fetch(`https://hamiltonbeach.herokuapp.com/api/recipes`)
             .then(response => response.json())
             .then(myJson => dispatch({type: 'RECIVE_RECIPES', payload: myJson}))
             .catch(err => dispatch({type: 'ERROR', payload: err}));
@@ -62,7 +62,7 @@ export function fetchRecipes() {
 export function fetchSparePartsByProductModel() {
     const sparePart = window.location.href.slice(window.location.href.lastIndexOf('/')+1, window.location.href.lastIndexOf('/')+6);
     return function(dispatch) {
-        fetch(`http://localhost:5000/api/spare_parts/${sparePart}`)
+        fetch(`https://hamiltonbeach.herokuapp.com/api/spare_parts/${sparePart}`)
             .then(response => response.json())
             .then(myJson => dispatch({type: 'RECIVE_SPARE_PARTS_BY_MODEL', payload: myJson.filter(item => item.product_model === sparePart)}))
             .catch(err => dispatch({type: 'ERROR', payload: err}));
@@ -74,7 +74,7 @@ export function getCart() {
     return function(dispatch) {
         // if(!isEmpty(store.getState().shoppingCart.products)) {
             const email = store.getState().user.email;
-            fetch(`http://localhost:5000/api/cart/${email}`)
+            fetch(`https://hamiltonbeach.herokuapp.com/api/cart/${email}`)
                 .then(response => response.json())
                 .then(myJson => dispatch({type: 'RECIVE_CART', 
                     payload: myJson, 
@@ -98,13 +98,13 @@ export function findSparePartEvent(e) {
         if(!e.target.value && model === '') return dispatch({type: 'SPARE_PARTS_NOT_FOUND'});
         if(e.key === 'Enter' || model2 === 'search') {
             if(model === '' || model2 === '') return dispatch({type: 'SPARE_PARTS_NOT_FOUND'});
-            fetch(`http://localhost:5000/api/spare_parts/${model}`)
+            fetch(`https://hamiltonbeach.herokuapp.com/api/spare_parts/${model}`)
                 .then(response => response.json())
                 .then(myJson => 
                     myJson.length === 0? 
                     dispatch({type: 'SPARE_PARTS_NOT_FOUND', payload: []}):
                     dispatch({type: 'SPARE_PARTS_FOUND', payload: myJson}) &&
-                    fetch(`http://localhost:5000/api/products/${myJson[0].category}/${myJson[0].product_model}-IS`)
+                    fetch(`https://hamiltonbeach.herokuapp.com/api/products/${myJson[0].category}/${myJson[0].product_model}-IS`)
                         .then(response => response.json())
                         .then(myJson => dispatch({type: 'RECIVE_RIGHT_PRODUCT', payload: myJson}))
                         .catch(err => dispatch({type: 'ERROR', payload: err}))
@@ -184,7 +184,7 @@ export function getPartByClick(selectedPart) {
 export function partHandle() {
     let urlLocation = window.location.href;
     let pageUrl = urlLocation.slice(urlLocation.indexOf('spare-parts/')+12);
-    fetch(`http://localhost:5000/api/spare_parts/${pageUrl}`)
+    fetch(`https://hamiltonbeach.herokuapp.com/api/spare_parts/${pageUrl}`)
         .then(response => response.json())
         .then(myJson => store.dispatch({type: 'RECIVE_RIGHT_SPARE_PART', payload: myJson}))
         .catch(err => store.dispatch({type: 'ERROR', payload: err}));
@@ -194,7 +194,7 @@ export function partHandle() {
 export function ingredientsHandle() {
     let urlLocation = window.location.href;
     let pageUrl = urlLocation.slice(urlLocation.lastIndexOf('/')+1).replace(/-/g, ' ');
-    fetch(`http://localhost:5000/api/recipe_ingredients/${pageUrl}`)
+    fetch(`https://hamiltonbeach.herokuapp.com/api/recipe_ingredients/${pageUrl}`)
         .then(response => response.json())
         .then(myJson => store.dispatch({type: 'RECIVE_INGREDIENTS', payload: myJson}))
         .catch(err => store.dispatch({type: 'ERROR', payload: err}));
@@ -204,7 +204,7 @@ export function ingredientsHandle() {
 export function instructionsHandle() {
     let urlLocation = window.location.href;
     let pageUrl = urlLocation.slice(urlLocation.lastIndexOf('/')+1).replace(/-/g, ' ').toLowerCase();
-    fetch(`http://localhost:5000/api/recipe_instructions/${pageUrl}`)
+    fetch(`https://hamiltonbeach.herokuapp.com/api/recipe_instructions/${pageUrl}`)
         .then(response => response.json())
         .then(myJson => store.dispatch({type: 'RECIVE_INSTRUCTIONS', payload: myJson}))
         .catch(err => store.dispatch({type: 'ERROR', payload: err}));
@@ -214,7 +214,7 @@ export function instructionsHandle() {
 export function featuresHandle() {
     let urlLocation = window.location.href;
     let pageUrl = urlLocation.slice(urlLocation.lastIndexOf('/')+1);
-    fetch(`http://localhost:5000/api/product_features/${pageUrl}`)
+    fetch(`https://hamiltonbeach.herokuapp.com/api/product_features/${pageUrl}`)
         .then(response => response.json())
         .then(myJson => store.dispatch({type: 'RECIVE_FEATURES', payload: myJson}))
         .catch(err => store.dispatch({type: 'ERROR', payload: err}));
@@ -223,7 +223,7 @@ export function featuresHandle() {
 //Choosing the right product category
 export function getProductCategory() {
     let category = window.location.href.slice(window.location.href.lastIndexOf('/')+1);
-    fetch(`http://localhost:5000/api/products/${category}`)
+    fetch(`https://hamiltonbeach.herokuapp.com/api/products/${category}`)
         .then(response => response.json())
         .then(myJson => store.dispatch({type: 'RECIVE_RIGHT_PRODUCT_CATEGORY', payload: myJson[0].hebrew_category}))
         .catch(err => store.dispatch({type: 'ERROR', payload: err}));
@@ -232,7 +232,7 @@ export function getProductCategory() {
 //Fetching product background image
 export function fetchProductImageBackground() {
     let category = window.location.href.slice(window.location.href.indexOf('products/')+9);
-    fetch(`http://localhost:5000/api/product-category-background-images/${category}`)
+    fetch(`https://hamiltonbeach.herokuapp.com/api/product-category-background-images/${category}`)
         .then(response => response.json())
         .then(myJson => store.dispatch({type: 'RECIVE_PRODUCT_BACKGROUND_IMAGE', payload: myJson[0].imageurl}))
         .catch(err => store.dispatch({type: 'ERROR', payload: err}));
@@ -243,7 +243,7 @@ export function fetchRightProductCategoryDetails() {
     return function(dispatch) {
         let urlLocation = window.location.href;
         let pageRecipeName = urlLocation.slice(urlLocation.indexOf('products/')+9);
-        fetch(`http://localhost:5000/api/product-category-details`)
+        fetch(`https://hamiltonbeach.herokuapp.com/api/product-category-details`)
             .then(response => response.json())
             .then(myJson => dispatch({type: 'RECIVE_RIGHT_PRODUCT_CATEGORY_DETAILS', payload: myJson.filter(item => item.category === pageRecipeName)}))
             .catch(err => dispatch({type: 'ERROR', payload: err}));
@@ -256,11 +256,11 @@ export function productHandle() {
     let pageUrl = urlLocation.slice(urlLocation.indexOf('products/')+9);
     let modelUrl = window.location.href.slice(-8);
     // .replace(/[\/\\(),.-]/, ' ').replace(/\s+/, '-').replace(/(^-|-$)/, '')
-    fetch(`http://localhost:5000/api/products/${pageUrl}`)
+    fetch(`https://hamiltonbeach.herokuapp.com/api/products/${pageUrl}`)
         .then(response => response.json())
         .then(myJson => store.dispatch({type: 'RECIVE_RIGHT_PRODUCT', payload: myJson}))
         .catch(err => store.dispatch({type: 'ERROR', payload: err}));
-    fetch(`http://localhost:5000/api/products-images/${modelUrl}`)
+    fetch(`https://hamiltonbeach.herokuapp.com/api/products-images/${modelUrl}`)
         .then(response => response.json())
         .then(myJson => store.dispatch({type: 'RECIVE_PRODUCT_IMAGES', payload: myJson.map(item => item)}))
         .catch(err => store.dispatch({type: 'ERROR', payload: err}));
@@ -268,7 +268,7 @@ export function productHandle() {
 
 //Fetching product category
 export function fetchProductCategory() {
-    fetch(`http://localhost:5000/api/products`)
+    fetch(`https://hamiltonbeach.herokuapp.com/api/products`)
         .then(response => response.json())
         .then(myJson => store.dispatch({type: 'RECIVE_PRODUCT_CATEGORY', payload: _.uniqBy(myJson, 'category').map(item => [item.category,item.type, item.image_url, item.hebrew_category])}))
         .catch(err => store.dispatch({type: 'ERROR', payload: err}));
@@ -278,7 +278,7 @@ export function fetchProductCategory() {
 export function fetchRecipesCategory(category) {
     return function(dispatch) {
         const type = category.target.id.slice(category.target.id.indexOf('-')+1);
-        fetch(`http://localhost:5000/api/recipes`)
+        fetch(`https://hamiltonbeach.herokuapp.com/api/recipes`)
             .then(response => response.json())
             .then(myJson => store.dispatch({type: 'RECIVE_RECIPES', payload: myJson.filter(item => item.category === type)}))
             .catch(err => store.dispatch({type: 'ERROR', payload: err}));
@@ -290,7 +290,7 @@ export function fetchChosenRecipe() {
     return function(dispatch) {
         let urlLocation = window.location.href;
         let pageRecipeName = urlLocation.slice(urlLocation.indexOf('recipes/')+8).replace(/-/g, ' ');
-        fetch(`http://localhost:5000/api/recipes/${pageRecipeName}`)
+        fetch(`https://hamiltonbeach.herokuapp.com/api/recipes/${pageRecipeName}`)
             .then(response => response.json())
             .then(myJson => store.dispatch({type: 'RECIVE_RIGHT_RECIPE', payload: myJson.filter(item => item.english_name.toLowerCase() === pageRecipeName.slice(pageRecipeName.lastIndexOf('/')+1).replace(/-/g, " "))}))
             .catch(err => store.dispatch({type: 'ERROR', payload: err}));
@@ -311,7 +311,7 @@ export function getRecipeByClick(selectedRecipetId) {
 //Submit the contact form
 export async function handleSubmit(e){
     e.preventDefault();
-    await axios.post('http://localhost:5000/api/form', {
+    await axios.post('https://hamiltonbeach.herokuapp.com/api/form', {
         name: e.target.name.value,
         email: e.target.email.value,
         phonenumber: e.target.phonenumber.value,
@@ -349,7 +349,7 @@ export async function handleSubmit(e){
 export function handleSubmitCart(e){
     const user = jwt.decode(localStorage.jwt).user.email;
     e.preventDefault();
-    fetch('http://localhost:5000/api/pay', {
+    fetch('https://hamiltonbeach.herokuapp.com/api/pay', {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json',
@@ -372,7 +372,7 @@ export function handleSubmitCart(e){
 
 //Process payment
 export function processPayment(){
-    fetch(`http://localhost:5000/success?orderId=${window.location.href.slice(window.location.href.lastIndexOf('orderId')+8)}`)
+    fetch(`https://hamiltonbeach.herokuapp.com/success?orderId=${window.location.href.slice(window.location.href.lastIndexOf('orderId')+8)}`)
         .then(response => response.json())
         .then(response => window.location = response.successUrl)
         .catch(err => console.log(err))
@@ -384,7 +384,7 @@ export function handleSubmitRegister(e){
     if(e.target.confirmPassword.value !== e.target.password.value){
         return store.dispatch({type: 'PASSWORD_ERROR'})
     }  
-    fetch('http://localhost:5000/register', {
+    fetch('https://hamiltonbeach.herokuapp.com/register', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -410,7 +410,7 @@ export function handleSubmitRegister(e){
 //Sign in form
 export function handleSubmitSignin(e){
     e.preventDefault();
-    fetch('http://localhost:5000/signin', {
+    fetch('https://hamiltonbeach.herokuapp.com/signin', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -526,8 +526,8 @@ export function openingForm(e) {
 
 export function addItemToCart(category, model, email, serial) {
     fetch(serial > 0 ?
-        `http://localhost:5000/api/spare_parts/${model.slice(0,5)}/${serial}`:
-        `http://localhost:5000/api/products/${category}/${model}`)
+        `https://hamiltonbeach.herokuapp.com/api/spare_parts/${model.slice(0,5)}/${serial}`:
+        `https://hamiltonbeach.herokuapp.com/api/products/${category}/${model}`)
             .then(res => res.json())
             .then(myJson => {
                 const productInCart = {
@@ -539,7 +539,7 @@ export function addItemToCart(category, model, email, serial) {
                     image_url: myJson[0].image_url,
                     category: myJson[0].type?myJson[0].type:myJson[0].hebrew_name
                 }
-                fetch(`http://localhost:5000/api/add-item`, {
+                fetch(`https://hamiltonbeach.herokuapp.com/api/add-item`, {
                     method: 'post',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({
@@ -566,8 +566,8 @@ export function upadateItemInCart(category, model, email, serial, objIndex) {
     const updatedObj = { ...products[objIndex], amount: products[objIndex].amount + 1};
     const updatedProducts = [...products.slice(0, objIndex), updatedObj,...products.slice(objIndex + 1)];
     fetch(Number(serial) > 0 ?
-        `http://localhost:5000/api/spare_parts/${model.slice(0,5)}/${serial}`:
-        `http://localhost:5000/api/products/${category}/${model}`)
+        `https://hamiltonbeach.herokuapp.com/api/spare_parts/${model.slice(0,5)}/${serial}`:
+        `https://hamiltonbeach.herokuapp.com/api/products/${category}/${model}`)
             .then(res => res.json())
             .then(myJson => {
                 const productInCart = {
@@ -579,7 +579,7 @@ export function upadateItemInCart(category, model, email, serial, objIndex) {
                     image_url: myJson[0].image_url,
                     category: myJson[0].type?myJson[0].type:myJson[0].hebrew_name
                 }
-                fetch(`http://localhost:5000/api/update-item`, {
+                fetch(`https://hamiltonbeach.herokuapp.com/api/update-item`, {
                     method: 'post',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({
@@ -618,7 +618,7 @@ export function deleteProduct(e) {
     products.splice(productIndex,1);
 
 
-    fetch(`http://localhost:5000/api/delete-item`, {
+    fetch(`https://hamiltonbeach.herokuapp.com/api/delete-item`, {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -704,7 +704,7 @@ export function plusProduct(e) {
         itemToIncrease = products.filter(item => item.model=== e.target.id);
     }
     itemToIncrease[0].amount++;
-    fetch(`http://localhost:5000/api/update-item`, {
+    fetch(`https://hamiltonbeach.herokuapp.com/api/update-item`, {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -735,7 +735,7 @@ export function minusProduct(e) {
             itemToDecrease = products.filter(item => item.model === e.target.id);
         }
         itemToDecrease[0].amount--;
-        fetch(`http://localhost:5000/api/update-item`, {
+        fetch(`https://hamiltonbeach.herokuapp.com/api/update-item`, {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
