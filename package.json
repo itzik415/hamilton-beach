@@ -5,10 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "heroku-postbuild": "webpack -p  && npm run build",
+    "heroku-postbuild": "npm run build",
     "build-css": "node-sass --include-path scss src/shered/app/main.scss   src/shered/app/index.css",
-    "watch-css": "nodemon -e scss -x \"npm run build-css\"",
-    "postinstall": "NODE_ENV=production webpack -p"
+    "watch-css": "nodemon -e scss -x \"npm run build-css\""
   },
   "engines": {
     "node": "8.10.0",
