@@ -13,7 +13,6 @@ class PartPage extends Component {
         return (
             <div className="partPage">
                 <div className="partPage__section">
-                    <p className="partPage__section-type">אביזר</p>
                     <h1 className="partPage__section-title">אביזר חלופי</h1>
                 </div>
                 <div className="partPage-main row">

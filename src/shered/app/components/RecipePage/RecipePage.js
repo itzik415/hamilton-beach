@@ -23,7 +23,7 @@ class RecipePage extends Component {
                 type={this.props.chosenRecipe[0].type}
                 />
             <div className="recipePage-details">
-                <img className="recipePage-details-img" src={`${this.props.chosenRecipe[0].image_url}`} alt="recipe name" />
+                <img className="recipePage-details-img" src={`${this.props.chosenRecipe[0].image_url}`} alt={this.props.chosenRecipe[0].name} />
                 <p className="recipePage-details-name">{this.props.chosenRecipe[0].name}</p>
                 <div className="recipePage-details-div">
                     <div className="recipePage-details-div-leftSide">
