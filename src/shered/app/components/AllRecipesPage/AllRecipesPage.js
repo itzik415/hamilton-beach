@@ -35,7 +35,6 @@ class AllRecipes extends Component {
                                 <p onClick={this.props.fetchRecipes} id="recipes-all">כל המתכונים</p>
                                 <p onClick={this.props.fetchRecipesCategory} id="recipe-vegan">טבעוניים</p>
                                 <p onClick={this.props.fetchRecipesCategory} id="recipe-vegetarian">צמחוניים</p>
-                                <p onClick={this.props.fetchRecipesCategory} id="recipe-dairy">חלביים</p>
                                 <p onClick={this.props.fetchRecipesCategory} id="recipe-meat">בשריים</p>
                             </div>
                         </div>
