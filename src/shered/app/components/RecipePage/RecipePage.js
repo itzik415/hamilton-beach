@@ -54,6 +54,7 @@ class RecipePage extends Component {
                                 )
                             })
                         }
+                        {<Link id="product-link" to={`/products/${this.props.chosenRecipe[0].product_category}/${this.props.chosenRecipe[0].product_model}`}>לחץ כדי להגיע ל{this.props.chosenRecipe[0].product_name} >></Link>}
                         <div className="recipePage-details-div-rightSide-tags">
                             <p className="recipePage-details-div-rightSide-tags-feature">{this.props.chosenRecipe[0].type}</p>
                             <p className="recipePage-details-div-rightSide-tags-feature">{this.props.chosenRecipe[0].kosher}</p>
