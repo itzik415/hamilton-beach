@@ -35,8 +35,8 @@
     height: 300px;
   }
 
-  @media screen and(max-width: 600px) {
-    height: 250px;
+  @media screen and(max-width: 450px) {
+    height: 200px;
   }
 
   &:nth-child(1) {
