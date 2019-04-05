@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import RecipeHeader from './RecipeHeader/RecipeHeader';
 import { fetchChosenRecipe, ingredientsHandle, instructionsHandle } from '../../Redux/actions';
 import { store } from '../../Redux/store';
+import { Link } from 'react-router-dom';
 
 class RecipePage extends Component {
     componentDidMount() {
