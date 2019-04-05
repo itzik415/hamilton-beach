@@ -35,6 +35,10 @@
     height: 300px;
   }
 
+  @media screen and(max-width: 600px) {
+    height: 250px;
+  }
+
   &:nth-child(1) {
     background-image: url("https://storage.googleapis.com/hamilton-beach-israel/promotional-images/image-1.jpg");
   }
