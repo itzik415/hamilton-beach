@@ -41,7 +41,8 @@ const footer = () => {
                     <p className="footer__section-companyDetails-workingHours">שעות פעילות: א׳ - ה׳ בין השעות 9:00-17:00</p>
                 </div>
             </div>
-            <p className="footer-copyright">כל הזכויות שמורות לחברת שאוליאן סחר בע״מ 2019 ©</p>
+            <p className="footer-copyright">המילטון ביץ׳ הוא סימן מסחרי רשום, בערבון מוגבל. תחת שימוש ברישיון של חברת שאוליאן סחר בע"מ. מותגי המילטון ביץ׳, בערבון מוגבל.</p>
+            <p className="footer-copyright">Hamilton beach &#174; is a registered trademark of Hamilton Beach Brands, Inc. used under license by Shaoulian Trading LTD, Israel © Hamilton beach brands, inc.</p>
         </div>
     )
 }
