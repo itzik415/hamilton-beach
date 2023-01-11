@@ -30,7 +30,7 @@
     "ignore-styles": "^5.0.1",
     "isomorphic-fetch": "^2.2.1",
     "jsonwebtoken": "^8.5.1",
-    "knex": "^0.16.3",
+    "knex": "^2.4.0",
     "node-sass": "^4.11.0",
     "nodemailer": "^6.0.0",
     "nodemailer-sendgrid-transport": "^0.2.0",
