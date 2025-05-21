@@ -1,10 +1,9 @@
 const nodemailer = require("nodemailer");
 
-const EMAIL_API =process.env.EMAIL_API;
+const EMAIL_API = process.env.EMAIL_API;
 
-function contactEmail(email, name, phonenumber, message){
-
-    const output = `
+function contactEmail(email, name, phonenumber, message) {
+  const output = `
         <div style="display: flex; flex-direction: column; align-items: flex-end">
             <h3 style="font-size: 52px; text-align: end;">פנייה מהאתר של המילטון ביץ׳ לשירות לקוחות של שאוליאן</h3>
             <p style="font-size: 30px; text-align: end;"> שם הלקוח: ${name}</p>
@@ -15,29 +14,28 @@ function contactEmail(email, name, phonenumber, message){
         </div>
     `;
 
-    let transporter = nodemailer.createTransport({
-        host: 'smtp.sendgrid.net',
-        port: 465,
-        auth: {
-            user: 'apikey', 
-            pass: EMAIL_API
-        }
-    });
+  let transporter = nodemailer.createTransport({
+    host: "smtp.sendgrid.net",
+    port: 465,
+    auth: {
+      user: "apikey",
+      pass: EMAIL_API,
+    },
+  });
 
-    let mailOptions = {
-        from: `${email}`, // sender address
-        to: "itzikshaoulian@gmail.com", // list of receivers
-        subject: "פנייה לשירות לקוחות מאתר המילטון ביץ,", // Subject line
-        text: "Hello world?", // plain text body
-        html: output // html body
-    };
-        
-    
-    transporter.sendMail(mailOptions, (error, info) => {
-        if(error) {
-            return console.log(error);
-        }
-    });
+  let mailOptions = {
+    from: `${email}`, // sender address
+    to: "itzikshaoulian@gmail.com", // list of receivers
+    subject: "פנייה לשירות לקוחות מאתר המילטון ביץ,", // Subject line
+    text: "Hello world?", // plain text body
+    html: output, // html body
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      return console.log(error);
+    }
+  });
 }
 
 module.exports = contactEmail;
