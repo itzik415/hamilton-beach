@@ -1,48 +1,46 @@
 .recipeHeader {
+  &__section {
+    width: 100%;
+    height: 190px;
+    margin-top: 1rem;
+    background-color: $yellow;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 
-    &__section {
-        width: 100%;
-        height: 190px;
-        margin-top: 1rem;
-        background-color: $yellow;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
+    &-title {
+      color: white;
+      margin-bottom: 20px;
+      font-family: $suez-font;
+      font-size: 7rem;
+      text-shadow: 1px 2px 5px gray;
+      text-align: center;
 
-        &-title {
-            color: white;
-            margin-bottom: 20px;
-            font-family: $suez-font;
-            font-size: 7rem;
-            text-shadow: 1px 2px 5px gray;
-            text-align: center;
-            
-            @media screen and(max-width: 700px) {
-                font-size: 5rem;
-            }
-        }
-
-        &-properties {
-            display: flex;
-
-            p {
-                color: black;
-                border-left: 1px solid black;
-                font-size: 1.8rem;
-                padding: 0 5px;
-                margin-left: 3px;
-
-                &:last-child {
-                    border: 0px;
-                }
-            }
-
-            span {
-                color: black;
-                font-size: 1.8rem;
-
-            }
-        }
+      @media screen and(max-width: 700px) {
+        font-size: 5rem;
+      }
     }
+
+    &-properties {
+      display: flex;
+
+      p {
+        color: black;
+        border-left: 1px solid black;
+        font-size: 1.8rem;
+        padding: 0 5px;
+        margin-left: 3px;
+
+        &:last-child {
+          border: 0px;
+        }
+      }
+
+      span {
+        color: black;
+        font-size: 1.8rem;
+      }
+    }
+  }
 }

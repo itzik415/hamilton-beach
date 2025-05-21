@@ -1,14 +1,14 @@
 .trending {
-    display: flex;
-    margin: 3rem auto;
-    max-width: 1400px;
-    overflow: hidden;
+  display: flex;
+  margin: 3rem auto;
+  max-width: 1400px;
+  overflow: hidden;
 
-    @media screen and(max-width: 700px) {
-        flex-direction: column;
-    }
+  @media screen and(max-width: 700px) {
+    flex-direction: column;
+  }
 
-    &-space {
-        width: 4%;
-    }
+  &-space {
+    width: 4%;
+  }
 }

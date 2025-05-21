@@ -1,49 +1,48 @@
 .leftSideContent {
-    width: 48%;
+  width: 48%;
 
-    @media screen and(max-width: 700px) {
-        width: 100%;
-        margin: 1rem 0;
+  @media screen and(max-width: 700px) {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &__section {
+    width: 100%;
+    height: 350px;
+    background-color: $grey-dark;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-image: url("https://storage.googleapis.com/hamilton-beach-israel/category-page-images/products.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    align-items: center;
+    position: relative;
+
+    &-title {
+      color: white;
+      font-family: $suez-font;
+      font-size: 7rem;
+      text-align: center;
+      z-index: 10;
+      animation-name: makeItBig;
+      animation-duration: 3s;
+      animation-iteration-count: infinite;
+      text-shadow: 0;
+
+      @media screen and(max-width: 700px) {
+        font-size: 4rem;
+      }
+
+      &:hover {
+        animation-play-state: paused;
+      }
     }
-    
-    &:hover {
-        text-decoration: none;
-    }
-    
-    &__section {
-        width: 100%;
-        height: 350px;
-        background-color: $grey-dark;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-        background-image: url("https://storage.googleapis.com/hamilton-beach-israel/category-page-images/products.jpg");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        align-items: center;
-        position: relative;
-
-        &-title {
-            color: white;
-            font-family: $suez-font;
-            font-size: 7rem;
-            text-align: center;
-            z-index: 10;
-            animation-name: makeItBig;
-            animation-duration: 3s;
-            animation-iteration-count: infinite;
-            text-shadow: 0;
-
-            @media screen and(max-width: 700px) {
-                font-size: 4rem;
-            }
-
-            &:hover {
-                animation-play-state: paused;
-            }
-        }
-    }
+  }
 }
-
